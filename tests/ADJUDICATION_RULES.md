@@ -1,6 +1,6 @@
 # Adjudication rules G1 to G6
 
-Moved verbatim from the archived State tab (28 September 2026). Referenced from CLAUDE.md. Changes go to James for approval.
+Moved verbatim from the archived State tab (28 September 2026). Referenced from CLAUDE.md. Changes go to James for approval. Apply in phase 5 only (CLAUDE.md, Research discipline).
 
 - G1 Universal wording: a clean counterexample makes the verdict at least narrowed and downgrades the modality to tendency; striking still needs standard 6.
 - G2 Existence ("can") claims: tested only inside the listed domains, reported as prevalence.
