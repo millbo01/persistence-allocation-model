@@ -42,4 +42,6 @@ The rule: if FM2 and FM3 hold, the Felicity ratio enters the model as a read-out
 2. the threshold is graded: protection extends somewhat above the previous peak and is greater the higher that peak was;
 3. a ratio below 1 marks a **scar** (compromise), not ordinary recovery: during recovery from a coupled acute episode, protection arrives before capacity fully returns. This makes the ratio more useful, because it separates "recovering" from "scarred", which the record cannot.
 
+**Decision (5 October 2026):** adopted in v0.8 as the Felicity read-out, on Claude's recommendation; James delegated the call ("your call"). Re-tuning in the model and engine is now set by the episode's peak load. TQ8 C7 reproduces the pattern in the engine.
+
 **Weight:** surface level; summaries only; FM1 and FM4 known in advance; FM3's rescue is a reassignment made after the result and checked once.

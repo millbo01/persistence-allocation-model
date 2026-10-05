@@ -86,3 +86,8 @@ See TQ8 (theory/sim/outputs/2026-10-05_TQ8/README.md) for what these generate, t
 - **Spending order:** ascending value × capacity still at stake × min(episode length so far + rebuild, T). Capacity still at stake is 1 − loss(E) ÷ 0.5: a part at its floor costs nothing more to load and becomes the fuse. Episode length counts consecutive steps on which total demand exceeded total capacity (at least 1). `run(episode_tau=False)` holds it at 1, for ablation only.
 - **Control parts** are valued at their full vital weight (always at the bottleneck).
 - The record has no restoring dynamics, so record dynamics (G12) are derived in the maths, not simulated.
+
+## v0.8 additions (5 October 2026; computed mode only)
+
+- **Peak-referenced re-tuning.** Each part records the peak demand it carries in an episode. At the end of a recovered episode it keeps a protected excess (peak minus normal capacity); strain builds only above max(current capacity, normal capacity + protected excess). The excess fades with the re-tuning memory (100 steps); a scar resets it. The graded protection (`protect`) is also set from the peak overload, not peak exposure.
+- Fixed mode keeps the v0.4 form exactly (checked: TQ5 and TQ7 unchanged).

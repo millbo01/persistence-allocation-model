@@ -136,3 +136,19 @@ Spending in ascending $p_i$ is the optimal policy only for a concave, separable 
 $$\rho(R)=\rho_0\min\!\Big(1,\frac{R}{\kappa R_{\max}}\Big)\quad\Rightarrow\quad t_{\text{rec}}\approx\frac{k}{\rho(R)}=\begin{cases}k/\rho_0 & R\ge\kappa R_{\max}\\[4pt] \dfrac{k\,\kappa R_{\max}}{\rho_0\,R} & R<\kappa R_{\max}\end{cases}$$
 
 Below the knee, recovery time grows as $1/R$ and has no upper bound as $R\to0$. This is critical slowing down: the record's mean stays at its setpoint while its recovery from each knock slows, so its lag-one autocorrelation and variance rise before the break. With no knee ($\kappa=0$) and a threshold switch, $t_{\text{rec}}$ is constant until the switch, and the record gives no warning. The engine's record is recalculated each step without restoring dynamics, so it cannot show this; the derivation stands on the release function alone.
+
+## 10. Additions in v0.8: peak-referenced protection and the Felicity read-out
+
+After a recovered episode in which part *i* carried a peak demand $D_i^\ast$ above its normal capacity $\kappa_i c_i$, the part carries without strain up to
+
+$$D_i^{k}(t)=\kappa_i c_i+X_i(t),\qquad X_i(t)=\big(D_i^\ast-\kappa_i c_i\big)\,e^{-t/\tau_m}$$
+
+where $t$ is the time since the episode ended and $\tau_m$ the re-tuning memory. Exposure, equation (3), then builds with
+
+$$\frac{dE_i}{dt}\propto\frac{\big[D_i-\max(c_i^{\text{eff}},\,D_i^{k})\big]_+}{c_i^{\text{eff}}}\,(1-\pi_i)$$
+
+with the graded protection $\pi_i$ also set by the peak overload, $\pi_i\mathrel{+}=\nu\min\!\big(1,(D_i^\ast/\kappa_i c_i-1)/u\big)$. A scar sets $X_i=\pi_i=0$. Because the threshold is $\max(c^{\text{eff}},D^k)$, protection covers loads up to the earlier peak even while capacity is still reduced during recovery.
+
+**The Felicity read-out.** With $D_{\text{on}}$ the demand at which strain first appears when load is raised:
+
+$$F=\frac{D_{\text{on}}}{D^\ast}\qquad\begin{cases}D_{\text{on}}\ge D^\ast & \text{protected or grown}\\ \kappa c\le D_{\text{on}}<D^\ast & \text{protection fading}\\ D_{\text{on}}<\kappa c & \text{scarred}\end{cases}$$
