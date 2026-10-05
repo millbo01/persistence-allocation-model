@@ -70,7 +70,8 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 | Search | System | Prompt | Status |
 |---|---|---|---|
 | TQ-DS1 | Fasting (H2) | tests/prompts/TQ-DS1.txt | Run 5 October 2026 (ChatGPT deep research; raw/2026-10-05_chatgpt_TQ-DS1.md). **Not exhaustive; superseded by TQ-DS1a to 1d** (see below) |
-| TQ-DS1a | Fasting: penguins and other birds | tests/prompts/TQ-DS1a.txt (template v2) | Built 5 October 2026; to run |
+| TQ-DS1a | Fasting: penguins and other birds | tests/prompts/TQ-DS1a.txt (template v2) | Run 5 October 2026 (ChatGPT deep research; raw/2026-10-05_chatgpt_TQ-DS1a.md). Literature pass not done; see assessment |
+| TQ-DS1a-L | Fasting, birds: literature enumeration only | tests/prompts/TQ-DS1a-L.txt | Built 5 October 2026; to run on Gemini deep research |
 | TQ-DS1b | Fasting: seals and other marine mammals | to build after TQ-DS1a returns | |
 | TQ-DS1c | Fasting: hibernators and laboratory rodents | | |
 | TQ-DS1d | Fasting: humans in prolonged fasts (Minnesota excluded) | | |
@@ -87,3 +88,11 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 - **One open dataset found:** northern elephant seals in the breeding fast (Dryad, CC0; 63 individuals, two time points each, oxidative-stress markers). Catalogued, not opened. Two time points and these variables cannot test F7, F4 or G3.
 
 **Template v2** (from TQ-DS1a on): no inferred entries (every row needs a cited source; "not stated" instead of estimates); a minimum depth (each repository's own search, a fixed query list, at least 50 results screened per query); a literature pass of at least 150 papers checking data statements, supplements and individual values printed in tables; a self-check; and one animal group per run, because breadth thinned depth (as in the earlier PN3 split).
+
+### TQ-DS1a assessment (5 October 2026)
+
+- **No values or findings reported:** passed.
+- **Literature pass:** failed. It claimed 150+ papers screened but listed one ("screening notes omitted for brevity"), against the template's logging rule. Its statement that no paper prints individual-animal tables cannot be relied on.
+- **Repository search:** thin but plausibly done ("first 50 screened"), without per-query counts. Nothing relevant found.
+- **The one dataset is not a fasting dataset:** single-capture morphometry and blood isotopes of Pygoscelis penguins (Palmer LTER; Gorman et al. 2014). One time point per bird; no fast. Not relevant to H2.
+- **Conclusion:** two ChatGPT runs have not established whether open bird fasting data are rare or the searches too shallow. Next: switch tool (Gemini deep research), and run the literature pass alone with a forced numbered table of at least 150 papers (TQ-DS1a-L), since classic fasting physiology often holds its individual data in papers and supplements rather than repositories.
