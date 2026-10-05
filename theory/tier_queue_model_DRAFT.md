@@ -42,7 +42,14 @@ x_{i→k} = x_i · (1/Ω_k) / Σ_j (1/Ω_j)
 
 over the receivers that still have reserve or spare capacity.
 
-**What sets resistance (reading of James's point, to confirm).** First-degree links resist load. People are invested in, and care for, their own team and direct reports, so the parts nearest someone with power are buffered against harm. Resistance is therefore high where the receiver's state is felt first-degree by someone who can push back, and low where the receiver is distant, has no voice, or sits outside the boundary. Load flows to the parts whose strain is felt least. This is the prior thread's "value to the centre, load to the weakest-feedback boundary", given a mechanism. In the body, the equivalent of resistance is priority enforced by control: the vessels to the brain and heart barely respond to the signals that cut flow elsewhere.
+**What sets resistance (James, 5 October 2026, for systems with low or no feedback coupling).** Load passed on through opacity has no origin from the receiver's point of view. It cannot be refused, because there is no one to refuse it to. Resistance exists only where the load arrives with a direct link to the part that generated it. So the model has two forces, as in water:
+
+- **Priority is height.** Load flows downhill, from protected parts towards expendable ones.
+- **Resistance is a barrier,** and only labelled load meets it. A part that can see where load came from can push back, so labelled load can be held at a tier.
+
+Unlabelled load meets no barrier anywhere, so it runs all the way to the lowest tier. This ties the destination of load to paper one's P2 (exported load arrives without its origin): the missing label is the reason it sinks to the bottom.
+
+*Earlier reading, superseded:* First-degree links resist load. People are invested in, and care for, their own team and direct reports, so the parts nearest someone with power are buffered against harm. Resistance is therefore high where the receiver's state is felt first-degree by someone who can push back, and low where the receiver is distant, has no voice, or sits outside the boundary. Load flows to the parts whose strain is felt least. This is the prior thread's "value to the centre, load to the weakest-feedback boundary", given a mechanism. In the body, the equivalent of resistance is priority enforced by control: the vessels to the brain and heart barely respond to the signals that cut flow elsewhere.
 
 **Why harm happens below.** Imported load arrives as demand on the receiver (m_k). It first uses the receiver's reserve, then displaces the receiver's own work, which becomes the receiver's debt D_k. This is James's point: load does harm by displacing the receiving part's own work, not by being "foreign".
 
@@ -64,7 +71,17 @@ Each part is in one of three states:
 | **Stressed but coping** | Demand above capacity, covered by drawing reserve, exporting or using spare capacity; any debt still inside the recovery window τ | Maintained | Normal |
 | **Compromised** | Reserve gone and debt older than τ, so capacity is eroding | Falls | A change, at last |
 
-For a permanent part (g = 0), compromise is the point of no return (Section 7). For a renewable part it is reversible, in principle, once load lifts.
+For a permanent part (g = 0), compromise is the point of no return (Section 7).
+
+**Which parts can be compromised (James, 5 October 2026).** Only working parts. Intake is a kind of working part: its work is bringing resource in (gut, leaves, roots, gills, a colony's foragers; in an institution, the functions that bring in revenue, referrals or staff). It is named separately only because of where it sits in the repayment path. Reserves are not compromised. They run full, drawing and empty, and refill (iron, fat, root carbohydrate). When a reserve is empty, the working parts that depended on it go into compromise. Edge case: a reserve that is also structural, such as bone as the calcium reserve, can be damaged, but only in its working role.
+
+**Compromise leaves a mark (James, 5 October 2026).** A burnt-out staff member who returns has changed: slower, more cautious, protective, possibly critical of the institution. In the body, a renewable organ under chronic injury heals with scar tissue rather than full regeneration (fibrosis in the liver, kidney and heart; Claude's recall, to verify), and an earlier insult blunts the next response (p53). So recovery from compromise restores the part with changed parameters:
+
+- **a lower ceiling** (μ_max falls);
+- **a shorter tolerance window** (τ falls);
+- **higher resistance:** the part now pushes back on load, which is James's "protective".
+
+Theorising: if recovered parts resist, unlabelled load shifts to parts without scars, such as new hires, who take a disproportionate share.
 
 **The record sees compromise, not stress.** A part's output, and so the record produced through it, stays normal through the whole stressed state. The only evidence of stress lies in the part's state signal and its falling reserve, which is where P4 places the warning. The stressed state is the buffer; its length is the silence before the break.
 
@@ -136,8 +153,8 @@ Answered 5 October 2026:
 
 Open:
 
-4. **Resistance.** Is the reading in Section 3 right: low resistance means distance from anyone with power who feels the receiver's state first-degree? Or is resistance something else, such as the receiver's ability to refuse?
-5. **Recovery of a compromised part.** Can a compromised renewable part return to optimal once its load lifts, or does compromise leave a lasting mark even on renewable parts (a lower ceiling, a shorter recovery window next time, like p53 desensitisation)?
+4. **Resistance.** Answered: load passed on through opacity has no origin and cannot be refused; resistance needs a direct link to the generating part (Section 3).
+5. **Recovery of a compromised part.** Answered: compromise leaves a mark; only working parts are compromised (Section 4a).
 
 ## 11. Candidate predictions (for later; none frozen)
 
@@ -146,7 +163,8 @@ Open:
 - **Order up:** recovery starts at the intake, and full recovery time is dominated by reserves and by any debt on low-renewal parts.
 - **Signal shape:** for the same total, sustained warnings lose weight relative to pulsed ones.
 - **Past control failure:** the depletion order breaks, and fixed capital is hit while buffers remain.
-- **Where load lands:** load lands in proportion to inverse resistance, so it lands most on the parts least felt first-degree by anyone with power.
+- **Where load lands:** in low-coupling systems, unlabelled load sinks to the lowest tier. Labelled load can be held higher up, where a part can see its origin and refuse it.
+- **Scars:** parts that recover from compromise carry a lower ceiling and push back more. Unlabelled load then shifts towards parts without scars (new hires).
 - **Record and state:** a part's output record changes only at compromise. Its state signal and its reserve change from the start of stress.
 - **Opacity hysteresis:** after pressure eases, recorded measures recover and unrecorded debt does not. Capacity in the parts carrying it keeps falling after load has fallen.
 
