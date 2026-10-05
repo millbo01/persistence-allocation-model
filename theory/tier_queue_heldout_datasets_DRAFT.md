@@ -157,3 +157,9 @@ No open repository holds a long fast followed in individual animals with repeate
   - **Hall et al. 2015** (metabolic ward crossover, 19 adults): group means only.
 
 **Proposal (for James):** add **CALERIE phase 2** to the held-out list as a sixth system (H6: chronic energy restriction and its aftermath, humans), unopened; Claude knows the trial only in outline and not its regain results. For the G15 surface check, use sources outside the held-out list: animal weight-cycling experiments and metabolic-ward weight-perturbation studies, with predictions committed first.
+
+### Decisions (James, 5 October 2026)
+
+- **H6 added: CALERIE phase 2** (chronic energy restriction in humans and its aftermath; NCT00427193). Held out and unopened; data by application, to be made by James when the test is set up.
+- **Weight cycling is not held out.** James: it is where anything that might shape the model further is likely to be, so it stays open for surface testing (G15), with predictions committed first. Sources: animal weight-cycling experiments and metabolic-ward weight-perturbation studies; MATADOR is already contaminated.
+- **Access requests for fasting (H2):** drafts prepared (tests/correspondence/); James sends them within hours if the searches have not found enough.
