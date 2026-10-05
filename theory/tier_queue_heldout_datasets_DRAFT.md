@@ -69,8 +69,21 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 
 | Search | System | Prompt | Status |
 |---|---|---|---|
-| TQ-DS1 | Fasting (H2) | tests/prompts/TQ-DS1.txt | Built 5 October 2026; to run |
-| TQ-DS2 | Blood loss (H1) | tests/prompts/TQ-DS2.txt | Built 5 October 2026. Held until TQ-DS1 returns and the template is checked (James: run sequentially; robustness over speed) |
+| TQ-DS1 | Fasting (H2) | tests/prompts/TQ-DS1.txt | Run 5 October 2026 (ChatGPT deep research; raw/2026-10-05_chatgpt_TQ-DS1.md). **Not exhaustive; superseded by TQ-DS1a to 1d** (see below) |
+| TQ-DS1a | Fasting: penguins and other birds | tests/prompts/TQ-DS1a.txt (template v2) | Built 5 October 2026; to run |
+| TQ-DS1b | Fasting: seals and other marine mammals | to build after TQ-DS1a returns | |
+| TQ-DS1c | Fasting: hibernators and laboratory rodents | | |
+| TQ-DS1d | Fasting: humans in prolonged fasts (Minnesota excluded) | | |
+| TQ-DS2 | Blood loss (H1) | tests/prompts/TQ-DS2.txt (template v1) | Held. To be rebuilt on template v2, and probably split by group, once TQ-DS1a confirms the template works |
 | TQ-DS3 | Kidney (H3) | | |
 | TQ-DS4 | Honeybees (H4) | | |
 | TQ-DS5 | Plants (H5) | | |
+
+### TQ-DS1 assessment (5 October 2026)
+
+- **No values or findings reported:** passed. One dataset title states a finding about oxidative stress, unrelated to the model's predictions.
+- **Exhaustiveness:** failed. About 5 to 10 hits screened per repository; queries were web-search style ("penguin fasting Dryad") rather than run in each repository's own search; rodent and human groups barely searched; no literature pass for data in supplements or for individual values printed in paper tables.
+- **"Not public" table:** unreliable. Several entries appear misattributed or invented (for example, research groups placed at the wrong institutions; a "manuscript in review"; guessed sample sizes), and none cites where an access statement appears. Treated as unverified and not used.
+- **One open dataset found:** northern elephant seals in the breeding fast (Dryad, CC0; 63 individuals, two time points each, oxidative-stress markers). Catalogued, not opened. Two time points and these variables cannot test F7, F4 or G3.
+
+**Template v2** (from TQ-DS1a on): no inferred entries (every row needs a cited source; "not stated" instead of estimates); a minimum depth (each repository's own search, a fixed query list, at least 50 results screened per query); a literature pass of at least 150 papers checking data statements, supplements and individual values printed in tables; a self-check; and one animal group per run, because breadth thinned depth (as in the earlier PN3 split).
