@@ -74,8 +74,8 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 | TQ-DS1a-L | Fasting, birds: literature enumeration only | tests/prompts/TQ-DS1a-L.txt | Run 5 October 2026 (Gemini deep research). Raw stored verbatim from Gemini's export (raw/2026-10-05_gemini_TQ-DS1a-L.md; SHA-256 begins 4a5da98f). The export adds a works-cited list of 36 web sources not in James's paste; all 36 titles were read: a few state findings (amino-acid oxidation under water restriction in sparrows; pre-migratory fattening involving more than fat), none bearing on F7, F4 or G3. Logged as minor contamination. See assessment |
 | TQ-DS1b | Fasting: seals and other marine mammals | tests/prompts/TQ-DS1b.txt (template v3) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS1b.md, SHA-256 begins 3871a047). See assessment |
 | TQ-DS1c | Fasting: hibernators, seasonal fasters and laboratory rodents | tests/prompts/TQ-DS1c.txt (template v3.1) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS1c.md, SHA-256 begins c807c4e1). Too thin; see assessment |
-| TQ-DS1c-R | Fasting: laboratory rodents only (narrowed rerun) | tests/prompts/TQ-DS1c-R.txt | Built 5 October 2026; to run on Gemini deep research. Hibernators and seasonal fasters to be rerun separately if needed |
-| TQ-DS1d | Fasting: humans in prolonged fasts (Minnesota excluded) | | |
+| TQ-DS1c-R | Fasting: laboratory rodents only (narrowed rerun) | tests/prompts/TQ-DS1c-R.txt | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS1c-R.md, SHA-256 begins f78271a4). See assessment. Hibernators and seasonal fasters to be rerun separately if needed |
+| TQ-DS1d | Controlled trials: human fasting, dieting, weight regain and weight cycling; animal weight cycling (Minnesota excluded; surveys and observational designs excluded, James) | tests/prompts/TQ-DS1d.txt (template v3.1) | Built 5 October 2026; to run on Gemini deep research |
 | TQ-DS2 | Blood loss (H1) | tests/prompts/TQ-DS2.txt (template v1) | Held. To be rebuilt on template v2, and probably split by group, once TQ-DS1a confirms the template works |
 | TQ-DS3 | Kidney (H3) | | |
 | TQ-DS4 | Honeybees (H4) | | |
@@ -131,3 +131,17 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 - **Depth:** failed. Three literature queries, 89 papers screened, one kept (polar bears, two captures). Rodents were excluded wholesale as terminal-sampling designs, but classic prolonged-fasting work in rats used daily body mass and metabolic-cage nitrogen in the same animals. Repeated-capture bear studies, ground squirrels, bats and hedgehogs are missing.
 - **Correct exclusions:** standard mouse phenotyping fasts last hours, not days (Mouse Phenome Database); metabolomics datasets come from terminal tissue.
 - **Next:** a narrowed rerun on laboratory rodents only (TQ-DS1c-R), with the non-destructive repeated measures that qualify spelled out, at least 15 queries and 300 papers. Rodents are where energy demand is varied experimentally (cold, exercise), which F7 needs.
+
+### TQ-DS1c-R assessment (5 October 2026)
+
+- **Depth:** much improved: 410 records screened, 14 kept, counts reconcile. But every row is abstract-only, so data availability is unknown for all 14.
+- **Identifiers:** at least two DOIs do not match their citations (Hillebrand 2005 and Atchley 2006 carry DOIs of 2003 and 1995 papers); the self-check claims all were verified.
+- **Contamination:** one works-cited title states a finding on priority ("Brain More Resistant to Energy Restriction Than Body"), known in outline from the blood-loss and fasting tests. Logged.
+- **Leads (not opened):** the CNRS Strasbourg rat fasting series (Cherel, Le Maho, Robin, Belkhou; daily body mass and nitrogen excretion through the three phases, with refeeding); lean against obese mice in total fasting (Cuendet et al. 1975; starting fat varied); the activity-based anorexia model (body mass and wheel running daily; ambient temperature varied in one study), which is restricted feeding, not a total fast.
+- **Repositories:** none qualifying; modern deposits use short fasts or terminal sampling.
+
+### Where H2 stands after six searches (5 October 2026)
+
+No open repository holds a long fast followed in individual animals with repeated measures and varied energy demand. The classic individual series (rats, king and emperor penguins, geese) sit with one group, CNRS Strasbourg (IPHC), and the grey seal buffer experiment with the Sea Mammal Research Unit. These are the targets if access requests are made (James's call).
+
+**Dieting and weight cycling (James, 5 October 2026):** catalogued first (TQ-DS1d), controlled designs only; surveys and observational data excluded even if supportive. Once the catalogue is in, the studies are split between a surface check of G15 and the held-out list, so the same studies are not used for both.
