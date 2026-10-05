@@ -170,3 +170,15 @@ With depletion $\delta(t)=\big[1-R(t)/R^0_{\max}\big]_+$ and a smooth step $S(x)
 $$\dot\epsilon=\frac{\epsilon_{\max}\,S(x)-\epsilon}{\tau_\epsilon},\qquad d_i^{\text{run}}=(1-\epsilon)\,d_i\quad(i\neq\text{top, control})$$
 
 with $\delta_0=0.5$, $\delta_1=0.9$, $\epsilon_{\max}=0.3$, $\tau_\epsilon=5$ steps (all illustrative). The economised demand $\epsilon\,d_i$ splits (v0.11): a share $\phi_i$ is deferred maintenance, $\dot D_i\mathrel{+}=\phi_i\,\epsilon\,d_i$, repaid from slack later; the rest, $(1-\phi_i)\,\epsilon\,d_i$, is shed across the boundary. It is not removed. Parts' value and the expected shortfall use $d_i$, not $d_i^{\text{run}}$.
+
+## 13. Additions in v0.13: anticipatory economising
+
+The driver of economising becomes the gap between the expected remaining shortfall $\hat D$ and the reserve:
+
+$$g=\frac{\hat D-R}{R^0_{\max}},\qquad x=\min\!\Big(1,\frac{[g-g_0]_+}{g_1-g_0}\Big),\quad g_0=-(1-\delta_0),\ g_1=-(1-\delta_1)$$
+
+so that with $\hat D=0$ it equals the v0.10 depletion rule. With $D_e$ the shortfall so far in the current episode, of length $\ell$, and $\bar\ell$ the learned typical length:
+
+$$\hat D=A(t)+\frac{D_e}{\ell}\,\big[\ell^\ast-\ell\big]_+,\qquad \ell^\ast=\begin{cases}\bar\ell & \ell<\bar\ell\\ 2\ell & \text{otherwise (beyond experience: as much again)}\end{cases}$$
+
+where $A(t)$ is a need known in advance for a predictable episode. $\bar\ell$ starts from a mapping prior (or none) and is updated at the end of each episode.

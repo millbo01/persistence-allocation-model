@@ -99,4 +99,8 @@ See TQ8 (theory/sim/outputs/2026-10-05_TQ8/README.md) for what these generate, t
 ## v0.10 additions (5 October 2026; computed mode only; `run(economise=False)` switches it off)
 
 - **Economising.** Depletion of the base reserve drives an S-curve target (zero below 50% depleted, full at 90%) for a cut of up to 30% in working parts' running demand (not the top's or control's); the cut moves towards its target with a 5-step time constant and eases as the reserve refills. The cut splits (v0.11) by each part's `econ_defer` (default 0.5): that share is added to the part's debt (`econ_debt` in the output), the rest is shed (`econ_shed`). Economising ends below 1e-4.
+
+## v0.13 additions (5 October 2026; computed mode only)
+
+- **Anticipatory economising.** The S-curve is driven by (expected remaining shortfall − reserve) ÷ base reserve, with thresholds set so that it equals the v0.10 rule when nothing is expected. Expected remaining shortfall = a known need (`run(anticipate=...)`, a number or a function of time) plus the episode's average shortfall rate × the expected remaining length: the learned typical episode length if the episode is still shorter than that, otherwise as long again as so far. The typical length starts from `run(episode_prior=...)` (default none) and is updated (half-weight) at the end of each episode.
 - Parts' value and the expected shortfall (and the episode deficit used for reserve memory) are computed from demand **before** economising.
