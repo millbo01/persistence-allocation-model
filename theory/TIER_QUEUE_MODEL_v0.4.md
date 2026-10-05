@@ -143,6 +143,11 @@ Do this before opening any outcome data.
 - **Four recovery outcomes** (growth, re-tuning, scar, loss), with their conditions. This includes the acute-chronic flip, from James (5 October 2026): resilience exists in too many places to leave out. Muscle growing after hard work is a healthy, coupled system adding capacity. The leaf cut is short-term adaptation from experience, like a vaccine.
 - **New generic predictions** G8 and G9.
 
+## Terms (James, 5 October 2026)
+
+- **Incomplete recovery:** a part does not return to its previous capacity (a scar, or a loss in fixed capital). This is what earlier notes called the "point of no return" for a part.
+- **Point of no return (system):** death, or the complete failure of an organ or of the system.
+
 ## 12. Open questions
 
 - How does priority combine vital, irreplaceable and redundant: as a product, or by rank?
