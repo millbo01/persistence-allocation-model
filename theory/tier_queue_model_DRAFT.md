@@ -128,9 +128,16 @@ Two candidate rules:
 
 ## 10. Questions for James
 
-1. **Does export pass tier by tier,** each part handing its excess to the one directly below, or can it go straight to the lowest-priority part anywhere in the tree? The body seems to do the second: blood loss cuts skin, gut and kidney at once, not in sequence.
-2. **Is recovery "repayment" or "rebuilding"?** Does the top pay back the debt it exported, so the lower part is made whole by the part that borrowed? Or does each part simply rebuild itself once load falls? The ledger works either way, but they predict different recovery times.
-3. **Does a part's priority ever change with depletion,** apart from role reassignment? For example, does a nearly exhausted reserve become protected (fat at the stage 3 threshold triggers the switch)?
+Answered 5 October 2026:
+
+1. **Tier by tier, or anywhere lower?** Anywhere lower, as in the body. The hierarchy is a tier list, and the path of least resistance governs where load lands. First-degree links buffer against harm (Section 3).
+2. **Repayment or rebuilding?** In opaque systems the debt is unknown, and what is unknown cannot be repaid (Section 8).
+3. **Does priority change with depletion?** Each part has an optimal, a stressed but coping, and a compromised state (Section 4a).
+
+Open:
+
+4. **Resistance.** Is the reading in Section 3 right: low resistance means distance from anyone with power who feels the receiver's state first-degree? Or is resistance something else, such as the receiver's ability to refuse?
+5. **Recovery of a compromised part.** Can a compromised renewable part return to optimal once its load lifts, or does compromise leave a lasting mark even on renewable parts (a lower ceiling, a shorter recovery window next time, like p53 desensitisation)?
 
 ## 11. Candidate predictions (for later; none frozen)
 
