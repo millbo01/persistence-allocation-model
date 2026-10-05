@@ -99,6 +99,12 @@ T ≈ usable buffer ÷ E
 
 This links to paper one. Receiver withholding is a tier holding back unresolved work, so the record reaching the top is the served work A, and the record is flat for the same reason. It also fits the K1b bee result already logged: stores held flat at the cap while about 70% of hive bees were lost, and the record (weight, stores) lagged by months.
 
+## 5a. The wide base and turnover (5 October 2026; simulation TQ2)
+
+**Sharing across the base.** The widest tier is many parallel units. If load is shared across them (a common pool), they reach compromise together. If it lands on whoever is nearest (fixed teams), they reach it in turn. This is the fibre-bundle result (Peirce 1926; Daniels 1945). In TQ2, sharing set the timing and synchrony of base failure. The steepness of the record's break was set mainly by how fast a compromised part loses capacity. A sharp break needs fast collapse inside parts (decompensation), not only shared load.
+
+**Turnover as an external buffer (James).** In an institution, compromised units leave, and the debt they carry leaves with them across the boundary. Fresh, unscarred units are brought in from outside, a "foreign" fix. The units are restored; the cause is not. If load is still being generated (in TQ2, because the top lost capacity permanently in the episode), fresh units are compromised in turn. The result is permanent churn, a revolving door, while the record reads normal. Turnover then becomes a channel for exporting load: burnt-out people carry it out. It is visible only in a different signal type: people withdrawing, not the work.
+
 ## 6. Control has a part too
 
 Routing load by priority is itself work, done by control parts: signalling, sensing, the vasomotor centre, the hypothalamus. Those parts have capacity, reserve and priority like any other.
