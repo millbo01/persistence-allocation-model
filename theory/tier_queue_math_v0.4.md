@@ -21,7 +21,9 @@ $$c_i^{\text{eff}} \;=\; \kappa_i\,c_i\,\big[1-\ell(E_i)\big]\,\big[(1-\omega_i)
 
 **(3) Exposure, felt against current capacity:**
 
-$$\frac{dE_i}{dt} \;=\; \frac{(1-\pi_i)\,\sigma(E_i)\,[L_i-1]_+ \;-\; \beta_i\,\psi\,[1-L_i]_+}{u}, \qquad L_i=\frac{\text{load carried by } i}{c_i^{\text{eff}}}$$
+$$\frac{dE_i}{dt} \;=\; \frac{(1-\pi_i)\,\sigma(E_i)\,[L_i-1]_+ \;-\; \beta_i\,\psi\,[1-L_i]_+}{u}, \qquad L_i=\frac{\text{demand carried by } i}{c_i^{\text{eff}}}$$
+
+(Terms, v0.6: **demand** is the work asked of a part; **load** is the excess beyond capacity. Demand carried by *i* is its own demand plus what was passed to it, less what it passed on.)
 
 - $u$: the exposure unit, so one step at 125% of current capacity adds 1 [EXPO_UNIT = 0.25];
 - $\pi_i$: re-tuning protection;
@@ -96,7 +98,7 @@ $$\frac{dE}{dt}=\frac{1}{u}\left(\frac{d}{c\,[1-\ell(E)]}-1\right)$$
 
 This increases with $E$, so strain accelerates as it accumulates. It is the same structure as James's earlier structural-load law, $\dot\Lambda=kS/F(\Lambda)$, with $F$ falling as $\Lambda$ rises: exposure plays the part of accumulated load, and $c\,[1-\ell(E)]$ plays the part of the capacity that bounds it. In this engine, $\ell$ is capped at 50%, so the runaway saturates at the floor instead of diverging.
 
-**C. When recovery is possible at all.** A part recovers only if its carried load falls below its current capacity:
+**C. When recovery is possible at all.** A part recovers only if the demand it carries falls below its current capacity (it does not need demand to stop):
 
 $$d_i(1-\delta_i)+m_i+x_i \;<\; \kappa_i\,c_i\,\big[1-\ell(E_i)\big]$$
 
@@ -113,5 +115,5 @@ Two consequences:
 ## 8. What the formalisation does not settle
 
 - **The functional forms** (the piecewise loss, a linear exposure rate, a fixed displacement room) are choices. Others would give the same qualitative behaviour.
-- **The priority rule** is now a formula (v0.5): see theory/priority_formula.md and Section 2a of TIER_QUEUE_MODEL_v0.5.md. The equations above hold with priority computed from marginal value.
+- **The priority rule** is now a formula (v0.5, with the remaining-horizon correction in v0.6): see theory/priority_formula.md and Section 2a of TIER_QUEUE_MODEL_v0.6.md. The equations above hold with priority computed from marginal value.
 - **No parameter has been estimated from data.** The held-out stress tests would do that.

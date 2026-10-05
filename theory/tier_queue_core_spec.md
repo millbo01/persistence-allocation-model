@@ -29,7 +29,7 @@
 
    Unlabelled load (the opaque regime) cannot be refused. Labelled load (the coupled regime) is refused by parts already slowing or compromised.
 3. **Control failure.** If a control part is compromised, the shortfall is spread across all other parts by capacity, protected parts included.
-4. **Exposure.** Overload is felt against current capacity (James, 5 October 2026): exposure builds with (carried load ÷ effective capacity − 1) ÷ 0.25. Carried load excludes what a part passed on. When load is under capacity, exposure falls at half that rate. Losses therefore compound.
+4. **Exposure.** Overload is felt against current capacity (James, 5 October 2026): exposure builds with (carried demand ÷ effective capacity − 1) ÷ 0.25. Carried demand is the part's own demand plus what was passed to it, excluding what it passed on. When carried demand is under capacity, exposure falls at half that rate. Losses therefore compound.
 5. **Coupled regime only:**
    - the top sheds demand, visibly, when lagged state signals show slowing below (the stage 3 switch, dropping the egg);
    - a coupled top drops work it cannot place, rather than carrying it as debt;
@@ -75,7 +75,7 @@ See TQ7 (theory/sim/outputs/2026-10-05_TQ7/README.md) for what these generate an
 
 No priority numbers are set by hand except the top, named because its output is the record. Parts carry `vital`, `rebuild` and, for an intake, `supply_input`.
 - **Value** each step: vital × b(L), where b rises from 0.05 (below 70% use) to 1 (full use). L is measured against current capacity. An intake with nothing to take in has no value.
-- **Spending order:** ascending value × (1 + rebuild ÷ 100). The parts are re-sorted every step.
+- **Spending order (v0.6):** ascending value × (1 + min(rebuild, T)), where T is the remaining horizon (default 100 steps; `run(horizon=...)` may be a function of time). The parts are re-sorted every step. (v0.5 used value × (1 + rebuild ÷ 100), which made fixed capital dearer as the horizon shortened.)
 - **Recovery:** slack is pooled across parts and allocated in descending value. The reserve competes on its own value, the expected shortfall (a 30-step running average of steps on which total demand exceeded total current capacity), and waits while a part of higher value is still under repair. The reserve's size is base × (1 + expected shortfall).
 - **Signal gain:** control sees value through each part's gain (default 1 coupled, 0 opaque; a part may carry its own). A sustained signal (load above capacity) loses gain with a time constant of 30 steps and recovers when strain ends.
 
