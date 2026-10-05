@@ -61,3 +61,12 @@ Exposure, ceiling and reserve level can start anywhere, so a run need not begin 
 - **Reserve release knee.** Below `knee` × max, release falls in proportion to level: a small store cannot release fast enough.
 
 TQ5 outputs are unchanged by these additions; they are off by default.
+
+## v0.4 additions (5 October 2026; on only with `run(..., adapt=True)`)
+
+- Growth after acute, coupled episodes (ceiling up, capped at 1.3).
+- Re-tuning protection against the same load (fades, time constant 100 steps).
+- Demand-cutting scars for parts flagged `cut_on_scar`.
+- Recovery funded in order: own slack first; then, after a chronic episode, the reserve is enlarged and refilled first; otherwise intake, then the other parts, then the reserve.
+
+See TQ7 (theory/sim/outputs/2026-10-05_TQ7/README.md) for what these generate and where the engine still departs from the written model.
