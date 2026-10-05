@@ -60,5 +60,5 @@ This is James's rule for theorising (name the place before looking), applied to 
 
 1. Write the refined core (a spec plus a clean script) and re-run a generic case. **Done 5 October 2026:** theory/tier_queue_core_spec.md, theory/sim/tq_core.py, TQ5 (baseline dependence).
 2. Blood loss and LBNP: gather open quantitative sources, then check N1 to N6. **Done 5 October 2026:** theory/natural_test_blood_loss.md (N1, N3, N4, N5 consistent; N2, N6 partly; heat stress shows the starting-state effect; two mismatches with proposed refinements: top shares an upstream supply; the break is an active threshold switch).
-3. Fasting, then kidney, then honeybees, each with predictions committed first.
+3. Fasting, then kidney, then honeybees, each with predictions committed first. **Fasting done 5 October 2026:** theory/natural_test_fasting.md (F2, F5 consistent; F1, F3 consistent but known; F6 consistent for starvation, opposite under restriction; F4, F7 untested; the knee came from the source's own hypothesis, declared).
 4. Stock-take against paper one.
