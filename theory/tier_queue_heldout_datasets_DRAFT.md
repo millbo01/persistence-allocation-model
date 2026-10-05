@@ -71,7 +71,7 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 |---|---|---|---|
 | TQ-DS1 | Fasting (H2) | tests/prompts/TQ-DS1.txt | Run 5 October 2026 (ChatGPT deep research; raw/2026-10-05_chatgpt_TQ-DS1.md). **Not exhaustive; superseded by TQ-DS1a to 1d** (see below) |
 | TQ-DS1a | Fasting: penguins and other birds | tests/prompts/TQ-DS1a.txt (template v2) | Run 5 October 2026 (ChatGPT deep research; raw/2026-10-05_chatgpt_TQ-DS1a.md). Literature pass not done; see assessment |
-| TQ-DS1a-L | Fasting, birds: literature enumeration only | tests/prompts/TQ-DS1a-L.txt | Run 5 October 2026 (Gemini deep research). Raw: pasted by James; export file requested for verbatim storage (raw/2026-10-05_gemini_TQ-DS1a-L.md, pending). See assessment |
+| TQ-DS1a-L | Fasting, birds: literature enumeration only | tests/prompts/TQ-DS1a-L.txt | Run 5 October 2026 (Gemini deep research). Raw stored verbatim from Gemini's export (raw/2026-10-05_gemini_TQ-DS1a-L.md; SHA-256 begins 4a5da98f). The export adds a works-cited list of 36 web sources not in James's paste; its page titles carry no findings bearing on F7, F4 or G3. See assessment |
 | TQ-DS1b | Fasting: seals and other marine mammals | tests/prompts/TQ-DS1b.txt (template v3) | Built 5 October 2026; to run on Gemini deep research |
 | TQ-DS1c | Fasting: hibernators and laboratory rodents | | |
 | TQ-DS1d | Fasting: humans in prolonged fasts (Minnesota excluded) | | |
