@@ -29,7 +29,7 @@
 
 **Checked (S6):** a previous hamstring strain is the strongest risk factor for re-injury (two to six times the risk). Scar tissue is visible from about 6 weeks after injury and persists in animal models. Under the same running load, previously injured muscles show greater peak strain in the tissue next to the scar. That is strain appearing at loads the muscle once carried without it: **ratio below 1 in scarred muscle. The named explanation holds**, at surface level (epidemiology plus imaging; no direct Felicity measurement).
 
-**Theorising, not checked:** why repeat loading during ordinary recovery adds no damage. One candidate within the model: the fibres most susceptible to damage were lost in the first bout, so the second bout meets no further capacity at stake at that load (the fuse rule within a part). This is one of the classic proposed mechanisms of the repeated bout effect; it is logged, not tested.
+**Why repeat loading during ordinary recovery adds no damage (James, 5 October 2026):** the repeat load does not exceed the no-strain ceiling, which the first bout raised to that load. The model already says this; no extra explanation is needed. What is open is how the ceiling rises within days while maximal force is still reduced (the same load damaged the muscle the first time, so the governing ceiling is not maximal force). Candidate mechanisms (loss of the most susceptible fibres, neural or connective-tissue adaptation) sit below the model's level and are logged, not tested.
 
 ## Outcome against the committed verdict rule
 
