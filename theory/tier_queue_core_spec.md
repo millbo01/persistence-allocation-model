@@ -70,3 +70,13 @@ TQ5 outputs are unchanged by these additions; they are off by default.
 - Recovery funded in order: own slack first; then, after a chronic episode, the reserve is enlarged and refilled first; otherwise intake, then the other parts, then the reserve.
 
 See TQ7 (theory/sim/outputs/2026-10-05_TQ7/README.md) for what these generate and where the engine still departs from the written model.
+
+## v0.5 additions (5 October 2026; on only with `run(..., priority="computed")`)
+
+No priority numbers are set by hand except the top, named because its output is the record. Parts carry `vital`, `rebuild` and, for an intake, `supply_input`.
+- **Value** each step: vital × b(L), where b rises from 0.05 (below 70% use) to 1 (full use). L is measured against current capacity. An intake with nothing to take in has no value.
+- **Spending order:** ascending value × (1 + rebuild ÷ 100). The parts are re-sorted every step.
+- **Recovery:** slack is pooled across parts and allocated in descending value. The reserve competes on its own value, the expected shortfall (a 30-step running average of steps on which total demand exceeded total current capacity), and waits while a part of higher value is still under repair. The reserve's size is base × (1 + expected shortfall).
+- **Signal gain:** control sees value through each part's gain (default 1 coupled, 0 opaque; a part may carry its own). A sustained signal (load above capacity) loses gain with a time constant of 30 steps and recovers when strain ends.
+
+See TQ8 (theory/sim/outputs/2026-10-05_TQ8/README.md) for what these generate, the fixes made during the build, and where the engine still departs from the written model.

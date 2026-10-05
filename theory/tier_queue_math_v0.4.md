@@ -113,6 +113,5 @@ Two consequences:
 ## 8. What the formalisation does not settle
 
 - **The functional forms** (the piecewise loss, a linear exposure rate, a fixed displacement room) are choices. Others would give the same qualitative behaviour.
-- **The priority rule** (how vital and irreplaceable a part is, and its redundancy) is used as an ordering, not yet as a formula.
-- **The candidate rule** that priority follows value to the current bottleneck is not yet in the equations.
+- **The priority rule** is now a formula (v0.5): see theory/priority_formula.md and Section 2a of TIER_QUEUE_MODEL_v0.5.md. The equations above hold with priority computed from marginal value.
 - **No parameter has been estimated from data.** The held-out stress tests would do that.
