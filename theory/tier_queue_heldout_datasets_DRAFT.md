@@ -76,7 +76,10 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 | TQ-DS1c | Fasting: hibernators, seasonal fasters and laboratory rodents | tests/prompts/TQ-DS1c.txt (template v3.1) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS1c.md, SHA-256 begins c807c4e1). Too thin; see assessment |
 | TQ-DS1c-R | Fasting: laboratory rodents only (narrowed rerun) | tests/prompts/TQ-DS1c-R.txt | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS1c-R.md, SHA-256 begins f78271a4). See assessment. Hibernators and seasonal fasters to be rerun separately if needed |
 | TQ-DS1d | Controlled trials: human fasting, dieting, weight regain and weight cycling; animal weight cycling (Minnesota excluded; surveys and observational designs excluded, James) | tests/prompts/TQ-DS1d.txt (template v3.1) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS1d.md, SHA-256 begins 7ff68c17). See assessment |
-| TQ-DS2 | Blood loss (H1) | tests/prompts/TQ-DS2.txt (template v1) | Held. To be rebuilt on template v2, and probably split by group, once TQ-DS1a confirms the template works |
+| TQ-DS2 | Blood loss (H1) | tests/prompts/TQ-DS2.txt (template v1) | Superseded by TQ-DS2a to 2c (one group per run; template v3.1). Not run |
+| TQ-DS2a | Blood loss: human LBNP and tilt to presyncope, including within-person repeats and changed reserve | tests/prompts/TQ-DS2a.txt (template v3.1) | Built 5 October 2026; to run on Gemini deep research |
+| TQ-DS2b | Blood loss: clinical monitoring datasets (surgery, trauma, childbirth) | to build after TQ-DS2a returns | |
+| TQ-DS2c | Blood loss: animal controlled haemorrhage | | |
 | TQ-DS3 | Kidney (H3) | | |
 | TQ-DS4 | Honeybees (H4) | | |
 | TQ-DS5 | Plants (H5) | | |
