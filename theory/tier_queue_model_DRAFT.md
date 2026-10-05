@@ -107,6 +107,8 @@ This links to paper one. Receiver withholding is a tier holding back unresolved 
 
 **The scar rule (TQ3).** When scarred units take less of the shared load, nothing changed about the churn, because the base was over capacity as a whole. Shifting load among parts that are all over their limit has no effect. The one effect was that resistance at the base sent strain back up: the top's record dipped further. Testing whether load moves onto newcomers needs a graded compromise rule and a base with room in total.
 
+**Calibrated to the vacancy debt method (TQ4).** With graded presenteeism losses and exit hazards rising with time overloaded, the revolving door did not appear. The base settled into chronic presenteeism instead: most staff present at reduced capacity, no exits, the record at 100%, and undone work leaving unrecorded. Whether it settles there or collapses into a revolving door turns on one question: does a worker in presenteeism feel overload against their baseline capacity or against what they can do now? (Open question for James.)
+
 ## 6. Control has a part too
 
 Routing load by priority is itself work, done by control parts: signalling, sensing, the vasomotor centre, the hypothalamus. Those parts have capacity, reserve and priority like any other.
