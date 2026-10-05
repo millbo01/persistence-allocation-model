@@ -53,3 +53,11 @@ Exposure, ceiling and reserve level can start anywhere, so a run need not begin 
 1. Read the system's starting stage from baseline state markers, before predicting anything.
 2. State predictions conditional on that stage.
 3. Population reference ranges are not optimal. Many study populations start stressed (James: a standard Western diet), so "normal" baselines may be the stressed stage.
+
+## Refinements after natural test 1 (James approved, 5 October 2026)
+
+- **A. Shared upstream supply.** A part can depend on an upstream part (`supply`, `supply_w`). Its capacity then follows that part's served share from the previous step, so a protected part is protected only partly when the supply itself falls. This comes from blood loss: brain blood flow fell with cardiac output while pressure was held.
+- **B. Active threshold switch in control (`Switch`).** When the buffer reaches a set depletion, control changes mode and sheds part of the top's demand until the buffer recovers. This comes from blood loss (sympathetic withdrawal at about 30% loss), and is intended to unify the fasting stage 3 switch and the abandoned egg.
+- **Reserve release knee.** Below `knee` × max, release falls in proportion to level: a small store cannot release fast enough.
+
+TQ5 outputs are unchanged by these additions; they are off by default.
