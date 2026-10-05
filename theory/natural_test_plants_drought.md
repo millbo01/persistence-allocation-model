@@ -56,6 +56,10 @@ In mature spruce, an earlier drought reduced physiological stress in a later one
 
 **Named place to check (theorising):** the earlier drought may have permanently cut leaf area. A scar that sheds demand means less transpiration load on the same xylem in the next drought. If so, this is the scar rule working as "more resistance" (shed demand), not a failure of G4. **To check against the paper:** leaf area or sapwood-to-leaf ratio before and after the first drought. If leaf area did not fall, the explanation is struck and the finding stands against G4.
 
+**Checked (5 October 2026), abstract only.** Hikino et al. 2026, Plant Biology 28(3): 637 to 648, doi 10.1111/plb.70039. The five-year experimental drought caused "a 60% reduction in spruce leaf area, which was still reduced by 30% 4 years after the drought release". Water use stayed lower, which left "higher soil water availability under spruce during the 2022 drought", with about twice the predawn water potential and sap flow of controls.
+
+**Outcome: the named explanation holds.** The scar cut demand (leaf area) for years, and lower demand on the same water supply eased the next drought. The finding is consistent with the model once scars are allowed to reduce demand as well as capacity. It is logged as a refinement (below), not counted against G4.
+
 ## What plants add
 
 - **A second rate-independent threshold.** Sheep blood loss and tree hydraulics both break at the same depletion whatever the speed. The buffer behaves as a stock in two kingdoms.
