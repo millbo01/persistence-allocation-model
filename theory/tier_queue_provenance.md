@@ -78,6 +78,10 @@ Named, not read; logged for the novelty stage. Any element adopted from this rev
 
 raw/2026-10-05_perplexity_review_tier-queue.md and raw/2026-10-05_perplexity_random-applications_bears-birds.md. **Built from them in v0.12:** the narrowed control rule (non-bypassable bottleneck); status labels and the fitted label; the engine-assumptions list; the central-claim formulation (combined with the record line and recovery half); structural capacity against deployed throughput (suppression, remodelling); task-relative value and the next-task horizon; reading state signals against the system's own phase reference. **James's own (5 October 2026):** chronic as a state, not a duration ("attrition comes to mind"). The anticipatory-economising candidate is Claude's derivation from the bear application, not adopted.
 
+### Perplexity heart-failure, coupling and reverse-mode exchange (5 October 2026; relayed by James)
+
+raw/2026-10-05_perplexity_heart-failure_brain-reserve_coupling.md and raw/2026-10-05_perplexity_reverse-mode_cardiometabolic.md. **Built from them in v0.14:** using the model in reverse and its visibility caution; co-movement of state signals before the break (G18); the price-clustered against dependency-clustered distinction (Claude's, from the same-tier clustering discussion); coupling as shared dependency (James's correction, refined by Perplexity); the evidence rule "not identified is not absent" (James's challenge, Perplexity's wording). **James's own:** network, not tree; the standing check's motivation (stay context-agnostic). **Withdrawn:** the cost of defence (James). Novelty to check later: rising cross-correlation as an early-warning signal is discussed in the critical-transitions literature (Scheffer and colleagues); not read.
+
 ## How to word this in any paper
 
 - **Elements with no outside source:** "Developed independently (dated record in the deposit). Later reading found convergence with [X], which [differs in or adds Y]."
