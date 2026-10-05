@@ -1,0 +1,59 @@
+# Held-out datasets for the tier-queue stress tests (draft for James, 5 October 2026)
+
+**Status:** draft list, for James to agree. **No dataset on this list has been opened**, and no landing page, data dictionary or results paper for these datasets was read to write it. Descriptions come from Claude's prior knowledge and may be wrong in detail. Every "to confirm" item is checked by a documentation run on another model, barred from reporting values (CLAUDE.md, phase 5), once James agrees the list.
+
+**Purpose.** Step 2 of the way forward (TIER_QUEUE_MODEL_v0.5.md, Section 8): keep the best datasets unopened for the final stress tests, once the model is consistent. The stress tests are phase 5, so the full rules apply: predictions from the model committed before data, pass/fail rules fixed, blind adjudication, and replication by a second model.
+
+## 1. What makes a dataset worth holding out
+
+A dataset is worth holding out if it has most of these:
+
+1. **Individual-level time series**, not only group means.
+2. **A held output** (rule R) **and at least one state signal** recorded in the same individuals, so "the record sees compromise, not stress" can be tested directly.
+3. **A known or measurable load or buffer**: the imposed load, its rate, or the size of the reserve.
+4. **It reaches the predictions not yet tested**, above all:
+   - **F7:** higher energy demand moves the fasting threshold to a higher fat level (the most informative untested prediction from the fasting test);
+   - **N5 (flatness):** a larger buffer gives a longer flat record and a sharper break;
+   - **G3:** the break comes at the same cumulative load, whatever the rate;
+   - **G10 and the shortfall check:** reserves grow less after one severe acute episode than after a long mild one with the same total load (TQ8);
+   - **P8:** isohydric and anisohydric plants as the coupled and opaque regimes (signal gain);
+   - **the demand-cut sink (TQ8, S4):** where signals are weak, a part that cuts its own demand becomes a sink for displaced load.
+5. **Not used in the surface tests**, and its published results not known in detail to Claude or James. Partial contamination is declared below.
+6. **Obtainable** by James (open, credentialed, or on request).
+
+## 2. Proposed core set (five, one per system already surface-tested)
+
+| No. | System | Dataset (to confirm) | Record (held output) | State signals | Load or buffer | Predictions it can reach | Access (to confirm) | Contamination |
+|---|---|---|---|---|---|---|---|---|
+| H1 | **Blood loss** | Individual lower-body negative pressure (LBNP) runs to presyncope, from the US Army Institute of Surgical Research group (Convertino, Rickards, Ryan and others) | Arterial pressure | Heart rate, stroke volume, compensatory reserve index, cerebral flow | Imposed central blood-volume loss at a known rate; tolerance per person (the buffer) | **N5 flatness**, **G3** (if protocols differ in rate), G1, G4, refinement A | Not known to be open. Likely by request or collaboration | **Partial:** group-level summaries from the same programme were read in the surface test (blood loss S2 to S4). Individual traces not seen |
+| H2 | **Fasting** | Individual body mass and phase records from long-fasting birds or seals: king or emperor penguins (Strasbourg, CNRS: Le Maho, Groscolas, Robin, Cherel), or northern elephant seals (Crocker, Costa) | Plasma glucose (F4); breeding or incubation kept up (the egg) | Specific daily mass loss, plasma urea and uric acid, β-hydroxybutyrate | Fat store at the start (buffer); energy demand varied by cold, huddling or activity | **F7**, **F4**, G3 (phase III at a set fat level), the switch | Unknown. Probably by request to the groups | **Partial:** the phase pattern is known from the fasting surface test (S1). Individual data not seen; F7 data not found then |
+| H3 | **Kidney** | MIMIC-IV (PhysioNet; Beth Israel Deaconess intensive care, about 2008 to 2019), or eICU-CRD, for episodes of acute kidney injury and recovery | Serum creatinine | Urine output; cystatin C where measured; electrolytes and acid-base | The acute injury (staged by creatinine and urine output); prior chronic kidney disease as a compromised start | **G6** (record recovers before state), recovery order, G4 (compromised start fails sooner), G7 | Credentialed: James completes PhysioNet credentialing and training and downloads. Claude never enters credentials | Low. Claude knows general AKI literature, not analyses of these episodes |
+| H4 | **Honeybees** | Hive-scale time series with weight and entrance traffic, for example the HOBOS hives (Würzburg; weight, temperature, humidity and bee flow, distributed as "Beehive Metrics"), and USDA ARS hive-scale studies (Meikle and colleagues) | Stores and brood held (hive weight once the season is controlled for) | Forager traffic, brood-nest temperature stability | Nectar dearths and winter (load); stores at the start (buffer) | **G3/G4** (failure at a set depletion; larger stores, longer silence), **the shortfall check** (do colonies store more after a dearth?), G1 | HOBOS-derived data believed open; USDA data possibly on Ag Data Commons | **Partial:** the bee model work (K1, K1b) and the honeybee surface test are known in shape. No hive-scale records seen |
+| H5 | **Plants under drought** | SAPFLUXNET (open global database of whole-plant sap flow with soil water and weather; Poyatos and colleagues, about 2021) | Transpiration and carbon gain kept up | Sap flow per plant, leaf water potential where recorded, soil water | Soil-water depletion (buffer), atmospheric demand (VPD) as load | **P8** (isohydric against anisohydric as coupled against opaque), **G3**, G1, the demand-cut sink (leaf shedding sites) | Believed open (Zenodo) | Low. Not used in the plant surface test, which read drought-legacy and xylem studies |
+
+## 3. Reserve list (held out too, unless James releases them)
+
+| No. | System | Dataset (to confirm) | Why kept | Why not core |
+|---|---|---|---|---|
+| R1 | Blood loss | VitalDB (open intraoperative vital signs from several thousand surgical patients, Seoul National University Hospital) | Open; blood loss, pressure, heart rate and the anaesthetist's interventions at high resolution | The record is defended by an outside loop (drugs, fluids), which confounds the buffer. Usable if H1 is unobtainable |
+| R2 | Plants | International Tree-Ring Data Bank (NOAA) | Recovery after acute against chronic drought (G10 in plants), demand-cut scars | Drought-legacy results (Anderegg and colleagues, 2015) are known in outline |
+| R3 | Kidney | Living kidney donor follow-up (SRTR or OPTN, United States) | Abrupt loss of half the nephrons: displaced load onto survivors (G5), fixed capital (G7) | Restricted access by application; long lead time |
+| R4 | Dairy cattle | Early-lactation records: milk yield, body condition, fertility | Possibly the cleanest natural tier queue: milk held, body reserve drawn, reproduction dropped. Higher-yielding cows test F7 by analogy | No specific open dataset identified yet |
+| R5 | Muscle | NASA Life Sciences Data Archive bed-rest studies | Disuse and recovery, record against capacity tests (rule R) | Access by request; small samples |
+| R6 | Kidney or general | UK Biobank | Creatinine, cystatin C, albuminuria, linked records, at scale | Application and fee |
+| R7 | Wild populations | Soay sheep, St Kilda | Winter crashes: break at a set depletion, buffer by body weight | Access by collaboration |
+
+## 4. Rules while the list is held
+
+1. **No opening.** Claude does not open any listed dataset, its files or its data dictionary before the test's rules are committed. Structure comes from published documentation gathered by another model barred from reporting values.
+2. **Quarantine on results too.** During the surface testing still to come, nobody reads papers that analyse a listed dataset. If one is met by accident, it is logged and the contamination is declared on that test.
+3. **Surface tests continue elsewhere.** The same systems can still be surface-tested from other sources, but those sources are named, so it is clear they are not the held-out data.
+4. **Predictions come from the model,** not from knowledge of the dataset (CLAUDE.md). Each stress test maps its system with Section 5 of the model before any data are seen.
+5. **Release.** James can release a dataset to surface testing at any time. A released dataset leaves the held-out list for good.
+
+## 5. Decisions for James
+
+1. **Agree the core set** (H1 to H5), or swap in reserves.
+2. **Access requests.** H1 and H2 probably need emails to the research groups. Should Claude draft them now? Asking early is cheap; the data stay unopened until each test's rules are committed.
+3. **Credentialing for H3.** If MIMIC-IV stays on the list, James needs PhysioNet credentialing. Claude cannot do this step.
+4. **Documentation runs.** Once the list is agreed, Claude builds one documentation prompt per dataset for another model, one at a time, barred from reporting values. These confirm what each dataset contains, its access route, licence and size.
