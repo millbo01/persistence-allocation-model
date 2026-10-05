@@ -25,3 +25,16 @@
 - F7 (whether energy demand moves the threshold).
 
 **Social system (honeybee).** The colony reproduces the institutional turnover dynamic naturally. Lost workers are replaced by unready recruits pulled forward; they fail sooner, the replacement speeds the decline, and division of labour breaks down at the end. The visible record stays intact throughout.
+
+## Plants in drought (natural test 5)
+
+| Feature | Finding |
+|---|---|
+| Record held flat | Canopy greenness: colour change lags hydraulic failure; healthy-looking trees carry 25 to 31% embolism |
+| State signals | Water potential, loss of conductivity, carbohydrate reserves |
+| Buffer as a stock | Yes: the same loss of conductivity at death whatever the drought's duration |
+| Break at a set depletion | About 80% loss of conductivity (50 to 88% by group) |
+| Compounding | Runaway embolism: rapid collapse, few trees seen mid-collapse |
+| Lower priority pays first | Leaves and fine roots act as hydraulic fuses |
+| Starting state | Drought legacies for 1 to 5 years; repeated droughts worse. **One finding against:** an earlier drought eased stress in a later one in spruce (explanation named, to check) |
+| Recovery | Needs new xylem; growth reduced for years |
