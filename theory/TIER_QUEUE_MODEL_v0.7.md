@@ -194,8 +194,8 @@ Do this before opening any outcome data.
 
 From a second review by another Claude chat, relayed by James. Elements adopted from it are recorded as built from it (theory/tier_queue_provenance.md).
 - **A. Units and episode length.** The spending cost is $v_i\,s_i\,\min(\tau+h_i,T)$. Building it into the engine exposed two pricing faults, both instances of B:
-  - **control** was priced by its own workload and, in long episodes, spent until routing failed. Control is now always at the bottleneck. **For James to confirm** (theory content, added during the build);
-  - **saturating damage**: long episodes spread load across every part until all failed together. The capacity-at-stake term $s_i$ makes a lost part the fuse. **For James to confirm** (theory content, added during the build).
+  - **control** was priced by its own workload and, in long episodes, spent until routing failed. Control is now always at the bottleneck. **Confirmed by James, 5 October 2026** (added during the build);
+  - **saturating damage**: long episodes spread load across every part until all failed together. The capacity-at-stake term $s_i$ makes a lost part the fuse. **Confirmed by James, 5 October 2026** (added during the build).
 - **B. When marginal-value spending is optimal**, and the three departures (saturation, cliffs, increasing returns). Semelparity needs a short horizon and increasing returns; the v0.6 text is corrected.
 - **C. Record dynamics** as a read-out, with the conditional prediction G12. Derived in the maths; the engine cannot show it.
 - **D. Two layers.** Predictions and evidence are tagged. The kidney test is layer 1 only; the order, recovery, fuse and re-tuning findings carry layer 2.

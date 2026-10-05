@@ -71,8 +71,8 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 |---|---|---|---|
 | TQ-DS1 | Fasting (H2) | tests/prompts/TQ-DS1.txt | Run 5 October 2026 (ChatGPT deep research; raw/2026-10-05_chatgpt_TQ-DS1.md). **Not exhaustive; superseded by TQ-DS1a to 1d** (see below) |
 | TQ-DS1a | Fasting: penguins and other birds | tests/prompts/TQ-DS1a.txt (template v2) | Run 5 October 2026 (ChatGPT deep research; raw/2026-10-05_chatgpt_TQ-DS1a.md). Literature pass not done; see assessment |
-| TQ-DS1a-L | Fasting, birds: literature enumeration only | tests/prompts/TQ-DS1a-L.txt | Built 5 October 2026; to run on Gemini deep research |
-| TQ-DS1b | Fasting: seals and other marine mammals | to build after TQ-DS1a returns | |
+| TQ-DS1a-L | Fasting, birds: literature enumeration only | tests/prompts/TQ-DS1a-L.txt | Run 5 October 2026 (Gemini deep research). Raw: pasted by James; export file requested for verbatim storage (raw/2026-10-05_gemini_TQ-DS1a-L.md, pending). See assessment |
+| TQ-DS1b | Fasting: seals and other marine mammals | tests/prompts/TQ-DS1b.txt (template v3) | Built 5 October 2026; to run on Gemini deep research |
 | TQ-DS1c | Fasting: hibernators and laboratory rodents | | |
 | TQ-DS1d | Fasting: humans in prolonged fasts (Minnesota excluded) | | |
 | TQ-DS2 | Blood loss (H1) | tests/prompts/TQ-DS2.txt (template v1) | Held. To be rebuilt on template v2, and probably split by group, once TQ-DS1a confirms the template works |
@@ -96,3 +96,17 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 - **Repository search:** thin but plausibly done ("first 50 screened"), without per-query counts. Nothing relevant found.
 - **The one dataset is not a fasting dataset:** single-capture morphometry and blood isotopes of Pygoscelis penguins (Palmer LTER; Gorman et al. 2014). One time point per bird; no fast. Not relevant to H2.
 - **Conclusion:** two ChatGPT runs have not established whether open bird fasting data are rare or the searches too shallow. Next: switch tool (Gemini deep research), and run the literature pass alone with a forced numbered table of at least 150 papers (TQ-DS1a-L), since classic fasting physiology often holds its individual data in papers and supplements rather than repositories.
+
+### TQ-DS1a-L assessment (5 October 2026)
+
+- **No values or findings reported:** passed in the table and text. Some paper titles state findings (for example on protein catabolism in long flights, and starvation mortality in African penguins); none bears directly on F7, F4 or G3. Logged as minor contamination.
+- **Depth:** much better than the ChatGPT runs. 174 rows, citation chaining described, full texts opened for about 40 papers.
+- **Quality:** weak. About 40% of rows are off topic (nest maintenance, species distributions, climate, a polar bear and a fish paper, a mouse microbiome paper). About 50 rows have no identifier ("Title not stated, Journal not stated, Identifier not stated"), against Rule 2. Several DOIs do not match their citations. The self-check claims full compliance, which is false. Most classic fasting-physiology papers (Cherel, Le Maho, Robin, Groscolas) were seen as abstracts only, so whether they print individual values is unknown. At least one central paper is missing (the refeeding-signal study in emperor penguins).
+- **Usable leads (structure only, not opened):**
+  - snow geese fasted in captivity with refeeding: individual body-mass series in a figure, 20 birds (Legagneux et al. 2011, Proc R Soc B, 10.1098/rspb.2011.1351);
+  - king penguins fasting while incubating: individual values in a figure, 8 birds (Guerin et al. 2010, J Exp Biol);
+  - brent geese at staging, with refeeding: individual values in a figure (Front Ecol Evol 2022, 10.3389/fevo.2022.749534);
+  - eiders: corticosterone and mass, deposited on Dryad (Am Nat 2012), two time points.
+- **Conclusion for birds:** three runs have found no open, individual-level dataset of a long bird fast with repeated measures and varied energy demand, which is what F7 needs. The best leads are figure-level individual data in a few papers (usable only by digitising) and the classic fasting groups' own records. This meets James's test for an access request **for birds**, but H2 can be met by any fasting system, so the seal, rodent and human searches run first. The CNRS Strasbourg fasting group and the snow goose authors are the first contacts if needed.
+
+**Template v3** (from TQ-DS1b on): only papers whose subjects were measured at least twice during a fast (off-topic papers counted, not listed); no row without a verifiable identifier; full text opened for every paper on the core list before its data label is given, or the row marked "data label unknown (abstract only)"; repository search kept, with per-query counts; Gemini deep research, which went deeper than ChatGPT.
