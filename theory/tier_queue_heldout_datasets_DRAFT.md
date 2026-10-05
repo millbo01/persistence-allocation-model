@@ -70,7 +70,7 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 | Search | System | Prompt | Status |
 |---|---|---|---|
 | TQ-DS1 | Fasting (H2) | tests/prompts/TQ-DS1.txt | Built 5 October 2026; to run |
-| TQ-DS2 | Blood loss (H1) | tests/prompts/TQ-DS2.txt | Built 5 October 2026; to run. James may run it alongside TQ-DS1, waiving the one-run-at-a-time rule for this pair (risk noted: a template flaw found in TQ-DS1 would be shared) |
+| TQ-DS2 | Blood loss (H1) | tests/prompts/TQ-DS2.txt | Built 5 October 2026. Held until TQ-DS1 returns and the template is checked (James: run sequentially; robustness over speed) |
 | TQ-DS3 | Kidney (H3) | | |
 | TQ-DS4 | Honeybees (H4) | | |
 | TQ-DS5 | Plants (H5) | | |
