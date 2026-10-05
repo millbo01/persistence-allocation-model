@@ -75,7 +75,7 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 | TQ-DS1b | Fasting: seals and other marine mammals | tests/prompts/TQ-DS1b.txt (template v3) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS1b.md, SHA-256 begins 3871a047). See assessment |
 | TQ-DS1c | Fasting: hibernators, seasonal fasters and laboratory rodents | tests/prompts/TQ-DS1c.txt (template v3.1) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS1c.md, SHA-256 begins c807c4e1). Too thin; see assessment |
 | TQ-DS1c-R | Fasting: laboratory rodents only (narrowed rerun) | tests/prompts/TQ-DS1c-R.txt | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS1c-R.md, SHA-256 begins f78271a4). See assessment. Hibernators and seasonal fasters to be rerun separately if needed |
-| TQ-DS1d | Controlled trials: human fasting, dieting, weight regain and weight cycling; animal weight cycling (Minnesota excluded; surveys and observational designs excluded, James) | tests/prompts/TQ-DS1d.txt (template v3.1) | Built 5 October 2026; to run on Gemini deep research |
+| TQ-DS1d | Controlled trials: human fasting, dieting, weight regain and weight cycling; animal weight cycling (Minnesota excluded; surveys and observational designs excluded, James) | tests/prompts/TQ-DS1d.txt (template v3.1) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS1d.md, SHA-256 begins 7ff68c17). See assessment |
 | TQ-DS2 | Blood loss (H1) | tests/prompts/TQ-DS2.txt (template v1) | Held. To be rebuilt on template v2, and probably split by group, once TQ-DS1a confirms the template works |
 | TQ-DS3 | Kidney (H3) | | |
 | TQ-DS4 | Honeybees (H4) | | |
@@ -145,3 +145,15 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 No open repository holds a long fast followed in individual animals with repeated measures and varied energy demand. The classic individual series (rats, king and emperor penguins, geese) sit with one group, CNRS Strasbourg (IPHC), and the grey seal buffer experiment with the Sea Mammal Research Unit. These are the targets if access requests are made (James's call).
 
 **Dieting and weight cycling (James, 5 October 2026):** catalogued first (TQ-DS1d), controlled designs only; surveys and observational data excluded even if supportive. Once the catalogue is in, the studies are split between a surface check of G15 and the held-out list, so the same studies are not used for both.
+
+### TQ-DS1d assessment (5 October 2026)
+
+- **No values reported in the text.** Several titles state findings. One bears on G15: the MATADOR trial (intermittent against continuous energy restriction), whose title states a result on weight-loss efficiency and whose name states its aim (minimising adaptive thermogenesis and obesity rebound). Logged as contamination for any weight-cycling test; MATADOR is not a candidate for holding out.
+- **Coverage:** 8 controlled trials, all human; no human trial of repeated loss-and-regain cycles and no animal weight-cycling experiment was kept (animal studies were excluded as terminal designs, although the template allowed repeated body mass in the same animals). Classic metabolic-ward studies of weight perturbation are missing.
+- **One label is wrong:** CALERIE phase 2 is listed as "deposited"; its data are released by application through the CALERIE portal (calerie.duke.edu), which James would have to make.
+- **Leads (not opened):**
+  - **CALERIE phase 2** (NCT00427193): two-year randomised trial of 25% calorie restriction against ad libitum, 220 adults, body composition, resting and total energy expenditure, hormones, at baseline, 12 and 24 months. A follow-up after the restriction ended is believed to exist (to confirm). This is a controlled human case of **chronic** restriction, and with a follow-up it would test G10 (reserve recovered first and overshooting after chronic scarcity) and G15;
+  - **FS2** (Ebbeling et al. 2018, BMJ; NCT02068885): weight-loss maintenance after loss, total energy expenditure by doubly labelled water, 164 adults; no data statement;
+  - **Hall et al. 2015** (metabolic ward crossover, 19 adults): group means only.
+
+**Proposal (for James):** add **CALERIE phase 2** to the held-out list as a sixth system (H6: chronic energy restriction and its aftermath, humans), unopened; Claude knows the trial only in outline and not its regain results. For the G15 surface check, use sources outside the held-out list: animal weight-cycling experiments and metabolic-ward weight-perturbation studies, with predictions committed first.
