@@ -43,3 +43,5 @@ Both rules fit growth-restricted infants (chronic scarcity and dependency). They
 - the next demand shapes what is built once recovery is complete, or when there was no deprivation.
 
 **Logged as found:** James's Rule D was named before the test and did not hold as the main driver in these cases. Per James's standing rule, it is recorded as struck in that role; its narrower role (building for a known next demand) remains open.
+
+**Update (James, 5 October 2026).** James asked for Rule D to be dropped as a rule. It was an after-the-fact attempt to explain a result, not a claim. What it pointed at, a not-yet-found rule for the "next demand", is carried into v0.3 as an open candidate: priority follows value to the current bottleneck.
