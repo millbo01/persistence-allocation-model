@@ -74,6 +74,10 @@ Named, not read; logged for the novelty stage. Any element adopted from this rev
 
 **Contamination check:** the review mentions the US Army compensatory reserve measurement, from the same programme as held-out candidate H1. Nothing beyond what the blood-loss surface test already read (S2) was reported. No other held-out candidate is touched.
 
+### Perplexity review and exploratory applications (5 October 2026; relayed by James)
+
+raw/2026-10-05_perplexity_review_tier-queue.md and raw/2026-10-05_perplexity_random-applications_bears-birds.md. **Built from them in v0.12:** the narrowed control rule (non-bypassable bottleneck); status labels and the fitted label; the engine-assumptions list; the central-claim formulation (combined with the record line and recovery half); structural capacity against deployed throughput (suppression, remodelling); task-relative value and the next-task horizon; reading state signals against the system's own phase reference. **James's own (5 October 2026):** chronic as a state, not a duration ("attrition comes to mind"). The anticipatory-economising candidate is Claude's derivation from the bear application, not adopted.
+
 ## How to word this in any paper
 
 - **Elements with no outside source:** "Developed independently (dated record in the deposit). Later reading found convergence with [X], which [differs in or adds Y]."
