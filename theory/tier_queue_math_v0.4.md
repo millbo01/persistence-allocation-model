@@ -169,4 +169,4 @@ With depletion $\delta(t)=\big[1-R(t)/R^0_{\max}\big]_+$ and a smooth step $S(x)
 
 $$\dot\epsilon=\frac{\epsilon_{\max}\,S(x)-\epsilon}{\tau_\epsilon},\qquad d_i^{\text{run}}=(1-\epsilon)\,d_i\quad(i\neq\text{top, control})$$
 
-with $\delta_0=0.5$, $\delta_1=0.9$, $\epsilon_{\max}=0.3$, $\tau_\epsilon=5$ steps (all illustrative). The economised demand $\epsilon\,d_i$ is booked in the ledger as shed (boundary) or deferred (debt); it is not removed. Parts' value and the expected shortfall use $d_i$, not $d_i^{\text{run}}$.
+with $\delta_0=0.5$, $\delta_1=0.9$, $\epsilon_{\max}=0.3$, $\tau_\epsilon=5$ steps (all illustrative). The economised demand $\epsilon\,d_i$ splits (v0.11): a share $\phi_i$ is deferred maintenance, $\dot D_i\mathrel{+}=\phi_i\,\epsilon\,d_i$, repaid from slack later; the rest, $(1-\phi_i)\,\epsilon\,d_i$, is shed across the boundary. It is not removed. Parts' value and the expected shortfall use $d_i$, not $d_i^{\text{run}}$.
