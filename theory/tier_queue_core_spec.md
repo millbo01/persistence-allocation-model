@@ -104,3 +104,13 @@ See TQ8 (theory/sim/outputs/2026-10-05_TQ8/README.md) for what these generate, t
 
 - **Anticipatory economising.** The S-curve is driven by (expected remaining shortfall − reserve) ÷ base reserve, with thresholds set so that it equals the v0.10 rule when nothing is expected. Expected remaining shortfall = a known need (`run(anticipate=...)`, a number or a function of time) plus the episode's average shortfall rate × the expected remaining length: the learned typical episode length if the episode is still shorter than that, otherwise as long again as so far. The typical length starts from `run(episode_prior=...)` (default none) and is updated (half-weight) at the end of each episode.
 - Parts' value and the expected shortfall (and the episode deficit used for reserve memory) are computed from demand **before** economising.
+
+## v0.15 additions (5 October 2026; engine work D; all opt-in, defaults off; TQ5 to TQ8 unchanged)
+
+- **Network loops** (`run(loops=[(src, dst, share), ...])`). Each step, before value and economising are computed, `share` × the source part's excess load last step (its carried demand, imports and displaced load above its current capacity) moves from the source's demand to the destination's, which may be higher in priority. The amount moved is capped at the source's own demand. Moved load is reported as `loop_in`.
+- **Local reserves** (`Part(local_max=, local_release=)`). A part's own stock. It starts full, is drawn first when the part is short (up to `local_release` a step, before the shared reserve) and is refilled from the part's own slack after its debt is repaid. Reported as `local`.
+- **Record dynamics** (`run(knocks=f(t))`). Each step a knock adds to a deficit in the held output. The reserve restores it from the release left after routing that step (below the knee, release falls with the reserve). Reported as `rec_deficit`. The record value itself is unchanged (it reports the top's own shortfall), so a held-output record that includes knocks is the record minus `rec_deficit` ÷ the top's demand.
+- **Capacity insult** (`Part(cap_mult=f(t))`). Multiplies a part's current capacity; normal capacity, against which value is measured, is unchanged.
+- **Known issues** (TQ9):
+  - a part's served share, which dependants' capacity follows, is measured against economised demand, so economised work does not reach dependants;
+  - a part has no failure end-state (exposure is unbounded), so load spiralling below the top cannot break the record.

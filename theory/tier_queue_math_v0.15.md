@@ -86,7 +86,7 @@ $$S_i=\big[d_i^{\text{run}}(1-\delta_i)+m_i-(c_i^{\text{eff}}-x_i)\big]_+$$
 
 **Control failure:** if a non-bypassable control part has $E\ge E_c$, steps 2 and 3 ignore priority and spread the shortfall by capacity.
 
-**Network.** In the model, parts are linked by shared input, stressor, reserve or repair (edges), and a part's response can land as demand on another, so displaced load can travel back along a loop. **The engine has supply edges ($\omega_i$) but no such loops yet.**
+**Network.** In the model, parts are linked by shared input, stressor, reserve or repair (edges), and a part's response can land as demand on another, so displaced load can travel back along a loop. **The engine has supply edges ($\omega_i$) and loops** (TQ9): each step a share $\lambda_{ij}$ of part $i$'s excess last step, $x_i=\max(0,\,A_i-c_i^{\text{eff}})$, moves from $i$'s demand to $j$'s: $d_i\leftarrow d_i-\min(\lambda_{ij}x_i,\,d_i)$, $d_j\leftarrow d_j+\min(\lambda_{ij}x_i,\,d_i)$. A part may also hold a local stock $R_i$, drawn first (up to $\rho_i$ a step) and refilled from its own slack after debt.
 
 ## 5. The reserve
 
@@ -133,13 +133,13 @@ An episode ends after a calm spell [5 steps] with no load, exposure or debt. Wit
 ## 9. Read-outs
 
 - **Record:** $y(t)=\dfrac{\text{demand served at the top}}{\text{raw top demand}}$, a held output.
-- **Record dynamics (G12):** a knock $k$ is restored at $\rho(R)$, so $t_{\text{rec}}\approx k/\rho(R)$, which equals $k/\rho_0$ above the knee and $k\,k_RR_{\max}/(\rho_0R)$ below it: recovery time grows as $1/R$ without bound as the reserve empties (critical slowing down; rising autocorrelation and variance at a steady mean). With full release until a switch, $t_{\text{rec}}$ is constant and the break gives no warning. **Derived, not simulated** (the engine's record has no restoring dynamics).
+- **Record dynamics (G12):** a knock $k$ is restored at $\rho(R)$, so $t_{\text{rec}}\approx k/\rho(R)$, which equals $k/\rho_0$ above the knee and $k\,k_RR_{\max}/(\rho_0R)$ below it: recovery time grows as $1/R$ without bound as the reserve empties (critical slowing down; rising autocorrelation and variance at a steady mean). With full release until a switch, $t_{\text{rec}}$ is constant and the break gives no warning. **Derived; simulation result (TQ9).** In the engine the deficit $K$ follows $K_{t+1}=K_t+k_t-\min(K_t+k_t,\,\rho(R)-\text{draw}_t)$, restored from the release left after routing; with a knee, deficit, autocorrelation and recovery time rose before the break in 20 of 20 seeds, and stayed flat with full release until a switch.
 - **State signals:** $E_i$, $c_i^{\text{eff}}/c_i$, $D_i$, $R/R_{\max}$, $\epsilon$, judged against the system's own phase reference.
 - **Co-movement (G18):** if parts *i* and *j* both load from a shared input carrying $\Lambda(t)$, write their state signals as $Z_i=a_i\Lambda+\varepsilon_i$ and $Z_j=a_j\Lambda+\varepsilon_j$, with independent part-level noise. Then
 
 $$\operatorname{corr}(Z_i,Z_j)=\frac{a_ia_j\operatorname{Var}\Lambda}{\sqrt{(a_i^2\operatorname{Var}\Lambda+\sigma_i^2)(a_j^2\operatorname{Var}\Lambda+\sigma_j^2)}}$$
 
-which rises towards 1 as the shared load comes to dominate the parts' own variation, before either crosses a threshold. Parts clustered only by price have no common $\Lambda$ and no such rise. **Derived, not simulated** (no loops in the engine).
+which rises towards 1 as the shared load comes to dominate the parts' own variation, before either crosses a threshold. Parts clustered only by price have no common $\Lambda$ and no such rise. **Derived; simulation result (TQ9)** for parts sharing a supply edge: correlation of step changes in $L$ rose once the shared input ran short, before either part strained, and rose more as the parts' own variation fell (0.21, 0.40, 0.63 at own-noise sd 2, 1, 0.5); none with separate inputs.
 - **Felicity read-out:** with $D_{\text{on}}$ the demand at which strain first appears when load is raised, $D_{\text{on}}\ge D^\ast$ protected or grown; $\kappa c\le D_{\text{on}}<D^\ast$ protection fading; $D_{\text{on}}<\kappa c$ scarred.
 
 ## 10. Results that follow
@@ -160,4 +160,4 @@ While the reserve carries the gap $G$ left after spare capacity and displacement
 
 - **The functional forms** (piecewise loss, linear exposure, fixed displacement room, the S-curve, exponential fading) are choices.
 - **Fitted values:** the shortfall definition, the reserve's cap and memory, the economising settings, the first-time expectation ("as much again"), the deferred share, and all rates and thresholds. No parameter has been estimated from data; the held-out stress tests would do that.
-- **Not yet in the engine:** loops in which one part's response adds demand to another; more than one reserve; restoring dynamics in the record; an explicit objective (so increasing returns and semelparity are not represented).
+- **Not yet in the engine:** more than one shared reserve; a failure end-state for a part (exposure is unbounded, so a spiral below the top cannot break the record); dependants following a part's normal rather than economised demand; an explicit objective (so increasing returns and semelparity are not represented). Loops, local stocks and record dynamics were added in TQ9.

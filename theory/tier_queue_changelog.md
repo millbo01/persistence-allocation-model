@@ -2,6 +2,17 @@
 
 The history of the canonical model (theory/TIER_QUEUE_MODEL_v*.md), moved out of the model document at v0.15 so that the document states the model as it stands. Earlier versions remain in the repository.
 
+## v0.15 engine update: TQ9 (engine work D, James approved, 5 October 2026)
+
+- **Engine (opt-in; TQ5 to TQ8 unchanged):** network loops, local stocks per part, record dynamics (knocks restored from remaining release) and capacity insults (theory/tier_queue_core_spec.md; theory/sim/outputs/2026-10-05_TQ9/README.md). Predictions committed first (theory/sim/tq9_predictions.md).
+- **Results:**
+  - G12 reproduced (mechanism check).
+  - G18 reproduced for shared dependency.
+  - The spiral partly reproduced: loop worse and kidney relief helps where it engaged (2 of 20 cells: large fall, little slack). The record never broke. Heart relief made it worse when the heart's signal was filtered.
+  - MR reproduced by construction.
+- **Model document, status only (no new elements):** G12 and G18 status, engine limitations, two open questions (relieving a part control cannot see; economised work and dependants).
+- **Maths:** loops and local stocks written; G12 and G18 marked as simulation results.
+
 ## Changes in v0.15 (James approved, 5 October 2026)
 
 - **Consolidation, no new content.** The model document now states the model as it stands. Version tags were removed from the body; this changelog holds the history; answered or withdrawn open questions moved here (below).
