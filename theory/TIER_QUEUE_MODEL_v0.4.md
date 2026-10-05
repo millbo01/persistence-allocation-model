@@ -72,6 +72,7 @@ Losses compound, because overload is felt against what the part can do now, not 
 - **The record:** the output the system routinely watches, which is the top's served demand. It is flat through stress and moves at compromise, or at the switch.
 - **State signals:** each part's strain, debt, capacity and reserve level. They move from the start of stress. In opaque systems they are filtered, mistranslated or lost.
 - **The ledger:** demand = work done + reserves drawn + debt + load leaving the boundary. Nothing leaves the ledger except through work done or the boundary.
+- **Reading a compensating part's output** (insulin, brain-sparing blood flow): it rises while the part copes and falls when it is compromised. A fall is therefore ambiguous: it can mean the load has eased, or that the compensator is failing. Check the load at its source (insulin resistance; placental resistance) before reading a fall as improvement. This follows from the rules; it is not a separate claim.
 
 ## 5. Mapping a system: how to identify the parts and assign labels
 
@@ -106,7 +107,6 @@ Do this before opening any outcome data.
 | G8 | Acute load, signalled and recovered from with slack, leaves growth or re-tuning. Chronic load, or recovery without slack, leaves scars. The same load can do either, depending on duration and recovery |
 | G9 | A system re-tuned to a past threat does better against that threat again, and may do worse if conditions change (the cost of being mistuned) |
 | G10 | After acute deprivation, working tissue and intake recover before reserves. After chronic scarcity, reserves recover first and overshoot |
-| G11 (candidate) | A compensation's own measure rises while it holds the record, then falls at the break. A falling compensation measure can look like improvement |
 
 ## 7. Evidence so far, and its weight
 
@@ -128,7 +128,7 @@ Do this before opening any outcome data.
 ## 9. Changes in v0.4
 
 - **Rule R for the record** (natural_test_record_rule.md): only a held output behaves as a flat record. This resolved the muscle mismatch, where performance had been measured with capacity tests. It sorted five paired cases without a break: submaximal force against EMG and maximal force; hearing thresholds against synapse counts; visual field against nerve-fibre thickness; glucose against insulin; T4 against TSH. All five were known in outline.
-- **Candidate G11:** the compensation measure rises, then falls (insulin; cerebral velocity).
+- **G11 withdrawn (James, 5 October 2026).** It adds no mechanism. A compensating part carries load passed to it, so its output rises while it copes and falls when it is compromised. That already follows from the existing rules. It is kept only as a reading note in Section 4.
 
 ## 10. Changes in v0.3
 

@@ -43,3 +43,5 @@ Each case pairs a held output with a direct or capacity measure in the same syst
 **Added to the model in v0.4:**
 - Mapping step 3: the record must be a held output, below capacity and kept up by buffers or a defending loop. Capacity tests and direct measures on the working units are state signals.
 - Candidate generic prediction G11: a compensation's own measure rises while it holds the record, then falls at the break (insulin; cerebral blood velocity in growth restriction). A falling compensation measure can look like improvement.
+
+**Update (James, 5 October 2026).** G11 was withdrawn as a generic prediction because it adds no mechanism. The pancreas compensates for load generated elsewhere (insulin resistance), its output rises while it copes and falls when it is exhausted. That is the existing cascade. It is kept only as a reading note in v0.4, Section 4: a falling compensation measure is ambiguous until the load at its source is checked.
