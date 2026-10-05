@@ -80,7 +80,8 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 | TQ-DS2a | Blood loss: human LBNP and tilt to presyncope, including within-person repeats and changed reserve | tests/prompts/TQ-DS2a.txt (template v3.1) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS2a.md, SHA-256 begins 81efa1c7). **Findings leaked in a background essay; G12 contamination declared.** See assessment |
 | TQ-DS2b | Blood loss: clinical monitoring datasets (surgery, trauma, childbirth) | tests/prompts/TQ-DS2b.txt (template v3.2: no introduction or background allowed) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS2b.md, SHA-256 begins 38373bd8). Template held. See assessment |
 | TQ-DS2c | Blood loss: animal controlled haemorrhage | tests/prompts/TQ-DS2c.txt (template v3.2) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS2c.md, SHA-256 begins 542ee5d3). Nothing usable; blood-loss searches closed |
-| TQ-DS3a | Kidney: humans (AKI and recovery, CKD over time, living donors, hospital databases) | tests/prompts/TQ-DS3a.txt (template v3.2) | Built 5 October 2026; to run on Gemini deep research |
+| TQ-DS3a | Kidney: humans (AKI and recovery, CKD over time, living donors, hospital databases) | tests/prompts/TQ-DS3a.txt (template v3.2) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS3a.md, SHA-256 begins ce134b7a). Template held; no living-donor rows; see assessment |
+| TQ-DS3a-D | Kidney: living donors before and after donation; renal functional reserve tested more than once (narrowed rerun) | tests/prompts/TQ-DS3a-D.txt (template v3.2, identifier rule tightened) | Built 5 October 2026; to run on Gemini deep research |
 | TQ-DS3b | Kidney: animal nephron-loss models | to build after TQ-DS3a returns, if needed | |
 | TQ-DS3 | Kidney (H3) | | |
 | TQ-DS4 | Honeybees (H4) | | |
@@ -195,3 +196,36 @@ No open repository holds a long fast followed in individual animals with repeate
 
 - **Thin and weak:** 750 records screened, 4 kept (all abstract-only), plus 3 Figshare entries with every field "not stated" (probably figure files). Several rows do not qualify (a computational fluid-dynamics model; resuscitation trials), though the self-check claims all do. Titles state findings on resuscitation (survival, balloon occlusion time, liver inflammation); irrelevant to the model's predictions; logged as minor contamination. The classic rate-of-haemorrhage studies (such as the sheep work read in the blood-loss surface test) were not found.
 - **Conclusion:** the animal line adds nothing usable. **Blood-loss searches closed;** H1 (VitalDB, INSPIRE, MIMIC-III waveforms) is the blood-loss stress-test set, and G3's rate question is to be addressed within it.
+
+### TQ-DS3a assessment (5 October 2026)
+
+- **Template v3.2 held:**
+  - no background essay; the output starts with the table;
+  - no values or findings in the table or logs;
+  - counts reconcile (14 rows; repository log 3 + 3 + 2 + 1 + 5; literature log 320 screened = 270 non-qualifying + 36 cross-sectional + 14).
+- **Reading hazard:** footnote markers are fused onto the participant counts (for example "39392" is 3,939 with note 2; "24111" is 241 with note 11; "936113" is 9,361 with note 13). Counts are to be read with that in mind and confirmed in a documentation run.
+- **Row faults:**
+  1. **ALLHAT (row 5).** The identifier is a JAMA citation, not the protocol's own identifier. It is a hypertension trial with serum creatinine only, so it is marginal under Rule 3.
+  2. **SPRINT (row 4)** is also a hypertension trial (with a kidney subgroup). Its listed time points look wrong.
+  3. **AASK (row 2):** the spacing is cited to the ALLHAT protocol, so it is unreliable.
+  4. **ICU databases (rows 7 to 9):** the time points come from machine-learning papers that describe their own processing windows, not the databases' recording schedules.
+  5. **AmsterdamUMCdb:** listed under PhysioNet; its access route is to confirm.
+  6. **ClinicalTrials.gov (rows 10 to 14):** all abstract-only, with no data-sharing statement checked. Two rows are titled by an outcome measure rather than the study's title.
+- **Gaps:**
+  - **no living-donor row** (reserve R3; the cleanest natural case of losing half the working parts at a known date);
+  - no row with renal functional reserve testing (the creatinine-blind range);
+  - HiRID was not searched, though found in TQ-DS2b;
+  - ASSESS-AKI was queried but not kept, with no reason given.
+- **Contamination (titles in the works-cited list):**
+  - **Cardiorenal.** One title states that reduced cardiac index is not the dominant driver of a renal outcome in heart failure. This bears on the heart-kidney supply edge in the spiral, so any cardiorenal test must declare it.
+  - **Other titles,** which state general findings: risk of CKD progression after AKI; blood-pressure control and end-stage risk; APOL1 progression; anaemia and cardiovascular risk. Minor; logged.
+- **What the search does give H3:**
+  - **AKI episodes in credentialed ICU databases** (MIMIC-IV, eICU, AmsterdamUMCdb; HiRID from TQ-DS2b). These record serum creatinine (record) and urine output (state signal) repeatedly. Cystatin C is rarely measured, and follow-up ends at discharge, so recovery beyond the stay is not captured.
+  - **CKD cohorts by application** (NIDDK, BioLINCC, Vivli):
+    - CRIC has creatinine, cystatin C and measured GFR (iothalamate) at annual visits.
+    - AASK has repeated measured GFR alongside creatinine.
+    - CRISP has kidney volume (a structural state signal) with measured GFR.
+
+    Record against capacity over years is in reach. The cohorts need an institutional application, and whether James can apply independently is unknown.
+  - **CRISP contamination (Claude's prior knowledge):** in outline, kidney volume in polycystic kidney disease rises for years while GFR holds. Any test on CRISP must declare that this pattern is known.
+- **Next:** TQ-DS3a-D, a narrowed rerun on living donors and repeated renal functional reserve testing, before H3 is chosen. Animal nephron-loss models (TQ-DS3b) only if needed after that.
