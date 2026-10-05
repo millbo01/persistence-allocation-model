@@ -152,3 +152,13 @@ with the graded protection $\pi_i$ also set by the peak overload, $\pi_i\mathrel
 **The Felicity read-out.** With $D_{\text{on}}$ the demand at which strain first appears when load is raised:
 
 $$F=\frac{D_{\text{on}}}{D^\ast}\qquad\begin{cases}D_{\text{on}}\ge D^\ast & \text{protected or grown}\\ \kappa c\le D_{\text{on}}<D^\ast & \text{protection fading}\\ D_{\text{on}}<\kappa c & \text{scarred}\end{cases}$$
+
+## 11. Additions in v0.9: reserve memory and the system's clock
+
+Let $D_e=\sum_{t\in e}\big[\sum_i d_i(t)-\sum_i c_i^{\text{eff}}(t)\big]_+$ be the total shortfall of episode $e$. At the end of each episode the reserve's remembered excess is updated, and it fades between episodes:
+
+$$X_R\leftarrow\max\!\big(X_R,\;D_e-R^0_{\max}\big),\qquad \dot X_R=-X_R/\tau_m$$
+
+The reserve's size is $R_{\max}=\max\!\big(R^0_{\max}(1+\gamma\,\rho_s),\;R^0_{\max}+\min(X_R,\,R^0_{\max})\big)$, where $\rho_s$ is the expected shortfall (frequency) and $\gamma$ its gain. The reserve's place in the recovery order is still set by $\rho_s$ alone: **frequency sets the order, depth sets the size.**
+
+**Durations** ($\tau_m$, the expected-shortfall memory, "brief", "lasting") are stated in units of the system's own clock, fixed before checking: refill time, rebuild time, decision cycles or generations.

@@ -91,3 +91,7 @@ See TQ8 (theory/sim/outputs/2026-10-05_TQ8/README.md) for what these generate, t
 
 - **Peak-referenced re-tuning.** Each part records the peak demand it carries in an episode. At the end of a recovered episode it keeps a protected excess (peak minus normal capacity); strain builds only above max(current capacity, normal capacity + protected excess). The excess fades with the re-tuning memory (100 steps); a scar resets it. The graded protection (`protect`) is also set from the peak overload, not peak exposure.
 - Fixed mode keeps the v0.4 form exactly (checked: TQ5 and TQ7 unchanged).
+
+## v0.9 additions (5 October 2026; computed mode only)
+
+- **Reserve memory.** Each shortfall episode's total deficit (total demand above total capacity, summed over the episode) is recorded at its end; the excess of the worst over the base reserve is remembered and fades with the re-tuning memory (100 steps). Reserve size = max(base × (1 + expected shortfall), base + remembered excess), capped at twice base. The reserve's place in the recovery order still follows expected shortfall (frequency).

@@ -70,6 +70,8 @@ Named, not read; logged for the novelty stage. Any element adopted from this rev
 
 **Adopted in v0.7 (built from this review):** $\tau$ in the spending cost; the optimality condition and its departures (saturation, cliffs, increasing returns; semelparity needs increasing returns); record dynamics as a read-out (G12); tagging by layer; the G9 rule to follow individuals; windup as a rival explanation (open). The fuse term ($s_i$) and the control rule were added by Claude during the build, as consequences of the optimality condition, and confirmed by James (5 October 2026). Held, not adopted at v0.7: the Felicity ratio, two boundaries. **The Felicity read-out was adopted in v0.8** after the muscle check (natural test 11); built from this review (Kaiser and Felicity effects).
 
+**Third review (5 October 2026; raw/2026-10-05_claude-chat_review3_astro-econ.md):** tested v0.7 against astrophysics and economics. Adopted in v0.9: the reserve's memory of the worst episode (from its R13, reworked as peak-referencing with fading) and James's system's-clock rule (James contested "only briefly"). Held: R11 (synchrony), R14 (horizon against budget). Logged only: physical-constant communities, spacecraft, fiscal labelling, monetary policy.
+
 **Contamination check:** the review mentions the US Army compensatory reserve measurement, from the same programme as held-out candidate H1. Nothing beyond what the blood-loss surface test already read (S2) was reported. No other held-out candidate is touched.
 
 ## How to word this in any paper
