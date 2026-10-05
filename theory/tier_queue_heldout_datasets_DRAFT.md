@@ -72,8 +72,8 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 | TQ-DS1 | Fasting (H2) | tests/prompts/TQ-DS1.txt | Run 5 October 2026 (ChatGPT deep research; raw/2026-10-05_chatgpt_TQ-DS1.md). **Not exhaustive; superseded by TQ-DS1a to 1d** (see below) |
 | TQ-DS1a | Fasting: penguins and other birds | tests/prompts/TQ-DS1a.txt (template v2) | Run 5 October 2026 (ChatGPT deep research; raw/2026-10-05_chatgpt_TQ-DS1a.md). Literature pass not done; see assessment |
 | TQ-DS1a-L | Fasting, birds: literature enumeration only | tests/prompts/TQ-DS1a-L.txt | Run 5 October 2026 (Gemini deep research). Raw stored verbatim from Gemini's export (raw/2026-10-05_gemini_TQ-DS1a-L.md; SHA-256 begins 4a5da98f). The export adds a works-cited list of 36 web sources not in James's paste; all 36 titles were read: a few state findings (amino-acid oxidation under water restriction in sparrows; pre-migratory fattening involving more than fat), none bearing on F7, F4 or G3. Logged as minor contamination. See assessment |
-| TQ-DS1b | Fasting: seals and other marine mammals | tests/prompts/TQ-DS1b.txt (template v3) | Built 5 October 2026; to run on Gemini deep research |
-| TQ-DS1c | Fasting: hibernators and laboratory rodents | | |
+| TQ-DS1b | Fasting: seals and other marine mammals | tests/prompts/TQ-DS1b.txt (template v3) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS1b.md, SHA-256 begins 3871a047). See assessment |
+| TQ-DS1c | Fasting: hibernators, seasonal fasters and laboratory rodents | tests/prompts/TQ-DS1c.txt (template v3.1) | Built 5 October 2026; to run on Gemini deep research |
 | TQ-DS1d | Fasting: humans in prolonged fasts (Minnesota excluded) | | |
 | TQ-DS2 | Blood loss (H1) | tests/prompts/TQ-DS2.txt (template v1) | Held. To be rebuilt on template v2, and probably split by group, once TQ-DS1a confirms the template works |
 | TQ-DS3 | Kidney (H3) | | |
@@ -110,3 +110,16 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 - **Conclusion for birds:** three runs have found no open, individual-level dataset of a long bird fast with repeated measures and varied energy demand, which is what F7 needs. The best leads are figure-level individual data in a few papers (usable only by digitising) and the classic fasting groups' own records. This meets James's test for an access request **for birds**, but H2 can be met by any fasting system, so the seal, rodent and human searches run first. The CNRS Strasbourg fasting group and the snow goose authors are the first contacts if needed.
 
 **Template v3** (from TQ-DS1b on): only papers whose subjects were measured at least twice during a fast (off-topic papers counted, not listed); no row without a verifiable identifier; full text opened for every paper on the core list before its data label is given, or the row marked "data label unknown (abstract only)"; repository search kept, with per-query counts; Gemini deep research, which went deeper than ChatGPT.
+
+### TQ-DS1b assessment (5 October 2026)
+
+- **No values or findings reported:** passed. Some works-cited titles state findings (insulin signalling and Glut4 in fasting seals; amino-acid isotopes in fasting); tangential to F7, F4 and G3. Logged as minor contamination.
+- **Relevance filter (template v3) worked:** 9 rows, nearly all genuine repeated-measures fasts; per-repository counts logged.
+- **Inconsistency:** 612 papers screened and 592 discarded implies 20 qualifying, but 9 are listed; the self-check misses it. Template v3.1 adds a rule that counts must reconcile.
+- **Structural finding:** most seal fasting studies compare separate early-fast and late-fast animals rather than following individuals.
+- **Leads (structure only, not opened):**
+  - grey seal pups, post-weaning fast: individual values in figures, 30 pups, body mass, body fat, fast duration and age at departure (Physiol Biochem Zool 2008, 10.1086/528777);
+  - grey seal pups with starting mass and fat varied by supplementary feeding (Pomeroy, Fedak and colleagues 2007, J Exp Biol, 10.1242/jeb.009381): a manipulated buffer, relevant to G4; abstract only;
+  - harp seal pups, fasting and refeeding, 20 pups (Worthy and Lavigne 1983);
+  - Steller sea lion pups, captive fasts with urea, ketones and refeeding (Rea, Rosen and Trites 2000).
+- **Conclusion for seals:** no open individual-level dataset with energy demand varied, as F7 needs. The grey seal supplementary-feeding experiment (Sea Mammal Research Unit) is the strongest design for G4 and would need a request. Birds and seals both now meet James's test for an access request; hibernators, rodents and humans are searched first.
