@@ -95,3 +95,8 @@ See TQ8 (theory/sim/outputs/2026-10-05_TQ8/README.md) for what these generate, t
 ## v0.9 additions (5 October 2026; computed mode only)
 
 - **Reserve memory.** Each shortfall episode's total deficit (total demand above total capacity, summed over the episode) is recorded at its end; the excess of the worst over the base reserve is remembered and fades with the re-tuning memory (100 steps). Reserve size = max(base × (1 + expected shortfall), base + remembered excess), capped at twice base. The reserve's place in the recovery order still follows expected shortfall (frequency).
+
+## v0.10 additions (5 October 2026; computed mode only; `run(economise=False)` switches it off)
+
+- **Economising.** Depletion of the base reserve drives an S-curve target (zero below 50% depleted, full at 90%) for a cut of up to 30% in working parts' running demand (not the top's or control's); the cut moves towards its target with a 5-step time constant and eases as the reserve refills. The cut is booked per step as `econ_shed` in the output.
+- Parts' value and the expected shortfall (and the episode deficit used for reserve memory) are computed from demand **before** economising.

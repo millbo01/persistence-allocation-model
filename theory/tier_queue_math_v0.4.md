@@ -162,3 +162,11 @@ $$X_R\leftarrow\max\!\big(X_R,\;D_e-R^0_{\max}\big),\qquad \dot X_R=-X_R/\tau_m$
 The reserve's size is $R_{\max}=\max\!\big(R^0_{\max}(1+\gamma\,\rho_s),\;R^0_{\max}+\min(X_R,\,R^0_{\max})\big)$, where $\rho_s$ is the expected shortfall (frequency) and $\gamma$ its gain. The reserve's place in the recovery order is still set by $\rho_s$ alone: **frequency sets the order, depth sets the size.**
 
 **Durations** ($\tau_m$, the expected-shortfall memory, "brief", "lasting") are stated in units of the system's own clock, fixed before checking: refill time, rebuild time, decision cycles or generations.
+
+## 12. Additions in v0.10: economising
+
+With depletion $\delta(t)=\big[1-R(t)/R^0_{\max}\big]_+$ and a smooth step $S(x)=x^2(3-2x)$ on $x=\min\!\big(1,[\delta-\delta_0]_+/(\delta_1-\delta_0)\big)$:
+
+$$\dot\epsilon=\frac{\epsilon_{\max}\,S(x)-\epsilon}{\tau_\epsilon},\qquad d_i^{\text{run}}=(1-\epsilon)\,d_i\quad(i\neq\text{top, control})$$
+
+with $\delta_0=0.5$, $\delta_1=0.9$, $\epsilon_{\max}=0.3$, $\tau_\epsilon=5$ steps (all illustrative). The economised demand $\epsilon\,d_i$ is booked in the ledger as shed (boundary) or deferred (debt); it is not removed. Parts' value and the expected shortfall use $d_i$, not $d_i^{\text{run}}$.
