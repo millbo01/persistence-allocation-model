@@ -1,6 +1,6 @@
 # Held-out datasets for the tier-queue stress tests (draft for James, 5 October 2026)
 
-**Status:** draft list, for James to agree. **No dataset on this list has been opened**, and no landing page, data dictionary or results paper for these datasets was read to write it. Descriptions come from Claude's prior knowledge and may be wrong in detail. Every "to confirm" item is checked by a documentation run on another model, barred from reporting values (CLAUDE.md, phase 5), once James agrees the list.
+**Status:** core set H1 to H5 agreed by James (5 October 2026). The datasets named in it are first candidates, not final: see Section 6. **No dataset on this list has been opened**, and no landing page, data dictionary or results paper for these datasets was read to write it. Descriptions come from Claude's prior knowledge and may be wrong in detail. Every "to confirm" item is checked by a documentation run on another model, barred from reporting values (CLAUDE.md, phase 5), once James agrees the list.
 
 **Purpose.** Step 2 of the way forward (TIER_QUEUE_MODEL_v0.5.md, Section 8): keep the best datasets unopened for the final stress tests, once the model is consistent. The stress tests are phase 5, so the full rules apply: predictions from the model committed before data, pass/fail rules fixed, blind adjudication, and replication by a second model.
 
@@ -57,3 +57,20 @@ A dataset is worth holding out if it has most of these:
 2. **Access requests.** H1 and H2 probably need emails to the research groups. Should Claude draft them now? Asking early is cheap; the data stay unopened until each test's rules are committed.
 3. **Credentialing for H3.** If MIMIC-IV stays on the list, James needs PhysioNet credentialing. Claude cannot do this step.
 4. **Documentation runs.** Once the list is agreed, Claude builds one documentation prompt per dataset for another model, one at a time, barred from reporting values. These confirm what each dataset contains, its access route, licence and size.
+
+## 6. Discovery searches before any access request (James, 5 October 2026)
+
+The candidates above were drafted from Claude's memory, with no search. James: the available datasets have not been exhausted, so no conclusion should be drawn from a first pass. Before any email or access request:
+
+1. **One discovery search per system**, run by another model, one at a time, with a fully assembled prompt. The model reports structural metadata only (contents, variable names, number of individuals, access route, licence), never values or findings, and logs every repository and query searched so exhaustiveness can be judged.
+2. **Order:** fasting (H2) first, then blood loss (H1), kidney (H3), honeybees (H4), plants (H5).
+3. **Raw returns** are stored verbatim in raw/ before any commentary.
+4. **Then choose:** the best openly available individual-level dataset for each system goes to the held-out list. Emails or credentialing are used only where the search finds no open dataset that can test the system's key predictions.
+
+| Search | System | Prompt | Status |
+|---|---|---|---|
+| TQ-DS1 | Fasting (H2) | tests/prompts/TQ-DS1.txt | Built 5 October 2026; to run |
+| TQ-DS2 | Blood loss (H1) | to build after TQ-DS1 returns | |
+| TQ-DS3 | Kidney (H3) | | |
+| TQ-DS4 | Honeybees (H4) | | |
+| TQ-DS5 | Plants (H5) | | |
