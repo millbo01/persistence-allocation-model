@@ -45,6 +45,13 @@ These were found after the elements they match were committed:
 
 They are logged in the natural test files with the date each prediction was committed. Contamination is declared there: several were known to Claude in outline before the prediction.
 
+## Raised after the build, not yet read (5 October 2026)
+
+Named by another Claude chat reviewing v0.5 (relayed by James, 5 October 2026), after v0.5 was committed (53b240f). Logged for the novelty stage; not read and not acted on now (novelty deferred until after the stress tests).
+- **Kleinrock's conservation law for priority queues (1965).** In a work-conserving queue, priority cannot reduce total weighted waiting time across classes; it only moves delay between them. A candidate formal anchor for the principle, in queueing theory. To check at the novelty stage how far it carries: it conserves weighted delay in a single queue, not load across a nested hierarchy with damage and recovery.
+- **Dynamic energy budget theory (Kooijman) and the Add-my-Pet collection.** Organism-level mass and energy balance, reserves, maintenance priority and starvation rules. The closest formal theory at the organism level to check against; Add-my-Pet may also be an independent source of parameters (reserve capacity, maintenance rates).
+- Penguin fasting thresholds and ischaemic preconditioning were also named. Both were already in the natural tests (fasting; re-tuning), so they are not new.
+
 ## How to word this in any paper
 
 - **Elements with no outside source:** "Developed independently (dated record in the deposit). Later reading found convergence with [X], which [differs in or adds Y]."
