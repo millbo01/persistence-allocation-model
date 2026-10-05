@@ -1,5 +1,7 @@
 # The tier-queue model in mathematical form (v0.4, 5 October 2026)
 
+**Superseded by theory/tier_queue_math_v0.15.md** (consolidated, 5 October 2026). Kept as history, including the legacy fixed-priority engine and the additions made between v0.7 and v0.13.
+
 **Status:** theorising (phase 3). This writes the canonical model (TIER_QUEUE_MODEL_v0.4.md) and its engine (theory/sim/tq_core.py) as equations. The symbols match the code's constants, given in brackets. It is a candidate formalisation: the functional forms are choices, and only the qualitative behaviour has been checked against natural systems.
 
 ## 1. The core in three equations
