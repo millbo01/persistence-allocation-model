@@ -36,7 +36,13 @@ and has a shortfall e_i = d_i + m_i − A_i. The shortfall goes three ways:
 
 So e_i = r_i + x_i + δ_i, with Ṙ_i = −r_i (plus repayment) and Ḋ_i = δ_i (minus repayment), where D_i is the part's debt of undone work.
 
-**Where export goes.** It goes to the lowest-priority part that still has reserve or spare capacity. In a body that means the part that is cheapest to spend. Whether export must pass tier by tier, or can jump to any low-priority part, is open (question 1 in Section 10).
+**Where export goes: the path of least resistance (James, 5 October 2026).** The hierarchy is a tier list, not a pipe: load is not passed hand to hand down the reporting line. It can land on any lower-tier part, as in the body, where blood loss cuts skin, gut and kidney at once. Which part takes it is set like flow in a hydraulic network. Each candidate receiver k offers a resistance Ω_k, and the export splits in inverse proportion:
+
+x_{i→k} = x_i · (1/Ω_k) / Σ_j (1/Ω_j)
+
+over the receivers that still have reserve or spare capacity.
+
+**What sets resistance (reading of James's point, to confirm).** First-degree links resist load. People are invested in, and care for, their own team and direct reports, so the parts nearest someone with power are buffered against harm. Resistance is therefore high where the receiver's state is felt first-degree by someone who can push back, and low where the receiver is distant, has no voice, or sits outside the boundary. Load flows to the parts whose strain is felt least. This is the prior thread's "value to the centre, load to the weakest-feedback boundary", given a mechanism. In the body, the equivalent of resistance is priority enforced by control: the vessels to the brain and heart barely respond to the signals that cut flow elsewhere.
 
 **Why harm happens below.** Imported load arrives as demand on the receiver (m_k). It first uses the receiver's reserve, then displaces the receiver's own work, which becomes the receiver's debt D_k. This is James's point: load does harm by displacing the receiving part's own work, not by being "foreign".
 
@@ -47,6 +53,22 @@ Summed over all parts and the boundary, in any currency that obeys a balance law
 total demand = work served + reserves drawn + debt accumulated + load exported across the system boundary.
 
 This is the flow identity of the prior thread (generated = resolved + exported + backlog increase + abandoned or suppressed), with reserves and debt made explicit, and it is the C1 form of P1. Nothing leaves the ledger except through work done or the boundary. "Abandoned" work is debt sitting somewhere.
+
+## 4a. Three states of a part (James, 5 October 2026)
+
+Each part is in one of three states:
+
+| State | Condition | Output | What the record shows |
+|---|---|---|---|
+| **Optimal** | Demand within capacity, reserve full, no debt | Normal | Normal |
+| **Stressed but coping** | Demand above capacity, covered by drawing reserve, exporting or using spare capacity; any debt still inside the recovery window τ | Maintained | Normal |
+| **Compromised** | Reserve gone and debt older than τ, so capacity is eroding | Falls | A change, at last |
+
+For a permanent part (g = 0), compromise is the point of no return (Section 7). For a renewable part it is reversible, in principle, once load lifts.
+
+**The record sees compromise, not stress.** A part's output, and so the record produced through it, stays normal through the whole stressed state. The only evidence of stress lies in the part's state signal and its falling reserve, which is where P4 places the warning. The stressed state is the buffer; its length is the silence before the break.
+
+Priors: Selye's alarm, resistance and exhaustion (resistance corresponds to stressed but coping, exhaustion to compromised), and Miller's range of stability. The fasting stages also line up: stage 2 is coping on fat with protein spared, and stage 3 is the switch as the reserve reaches its threshold.
 
 ## 5. Why the top looks steady, then breaks (the hockey stick)
 
@@ -87,6 +109,11 @@ When demand at the top falls below capacity, the slack repays debt and refills r
 
 Time to full recovery is set by the slowest term: debt divided by renewal rate in each part. Recovery is complete only when no part carries debt and reserves are full. Capacity lost in permanent parts never returns.
 
+**Unknown debt cannot be repaid (James, 5 October 2026).** The order above assumes the debt is known. In the body it is, because each part signals its own state (hunger, hormones, the gut repairing itself in stage 3). In the systems this work cares about, shrouded in opacity, the debt below is unknown, so it cannot be repaid. Two consequences:
+
+- **What is recorded recovers; what is not, stays.** When pressure eases, the measures the record holds come back. Unrecorded debt (exhaustion, deferred maintenance, eroded skills) remains, keeps wearing down capacity after load has fallen, and can carry a renewable part into compromise and a permanent one past the point of no return. The system returns to a lower baseline. That is hysteresis produced by opacity.
+- **Self-rebuilding needs local slack.** A renewable part can rebuild itself without anyone above knowing, but only if its own load actually falls. If capacity above was set from the flat record, the load on the part does not fall, and it gets no slack to rebuild in.
+
 ## 9. Signals and the record
 
 Each part produces two things the top can see:
@@ -112,6 +139,9 @@ Two candidate rules:
 - **Order up:** recovery starts at the intake, and full recovery time is dominated by reserves and by any debt on low-renewal parts.
 - **Signal shape:** for the same total, sustained warnings lose weight relative to pulsed ones.
 - **Past control failure:** the depletion order breaks, and fixed capital is hit while buffers remain.
+- **Where load lands:** load lands in proportion to inverse resistance, so it lands most on the parts least felt first-degree by anyone with power.
+- **Record and state:** a part's output record changes only at compromise. Its state signal and its reserve change from the start of stress.
+- **Opacity hysteresis:** after pressure eases, recorded measures recover and unrecorded debt does not. Capacity in the parts carrying it keeps falling after load has fallen.
 
 ## 12. What this does not yet have
 
