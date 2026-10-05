@@ -38,3 +38,13 @@
 | Lower priority pays first | Leaves and fine roots act as hydraulic fuses |
 | Starting state | Drought legacies for 1 to 5 years; repeated droughts worse. **One finding against:** an earlier drought eased stress in a later one in spruce (explanation named, to check) |
 | Recovery | Needs new xylem; growth reduced for years |
+
+## Fetal growth restriction, testing v0.2 (natural test 6)
+
+| Feature | Finding |
+|---|---|
+| Acute-chronic flip | Repeated acute hypoxaemia with recovery between episodes left heart, pressure, reflexes and growth unchanged (kidney weight reduced). Chronic hypoxia produced lasting change (hypertension) |
+| Chronic signals lose gain | The chronically hypoxic fetus has blunted reflexes to a new acute hypoxia, read as re-tuning to a cheaper strategy |
+| Loss of fixed capital | Permanent nephron deficit |
+| Recovery order depends on the type of past load | After chronic scarcity, fat recovers first (re-tuning); after acute starvation, protein recovers first (reserves last). Candidate rule for v0.3, formed after the evidence |
+| Starting state | An already-strained fetus tolerates labour worse |
