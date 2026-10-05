@@ -79,7 +79,9 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 | TQ-DS2 | Blood loss (H1) | tests/prompts/TQ-DS2.txt (template v1) | Superseded by TQ-DS2a to 2c (one group per run; template v3.1). Not run |
 | TQ-DS2a | Blood loss: human LBNP and tilt to presyncope, including within-person repeats and changed reserve | tests/prompts/TQ-DS2a.txt (template v3.1) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS2a.md, SHA-256 begins 81efa1c7). **Findings leaked in a background essay; G12 contamination declared.** See assessment |
 | TQ-DS2b | Blood loss: clinical monitoring datasets (surgery, trauma, childbirth) | tests/prompts/TQ-DS2b.txt (template v3.2: no introduction or background allowed) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS2b.md, SHA-256 begins 38373bd8). Template held. See assessment |
-| TQ-DS2c | Blood loss: animal controlled haemorrhage | tests/prompts/TQ-DS2c.txt (template v3.2) | Built 5 October 2026; to run on Gemini deep research |
+| TQ-DS2c | Blood loss: animal controlled haemorrhage | tests/prompts/TQ-DS2c.txt (template v3.2) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS2c.md, SHA-256 begins 542ee5d3). Nothing usable; blood-loss searches closed |
+| TQ-DS3a | Kidney: humans (AKI and recovery, CKD over time, living donors, hospital databases) | tests/prompts/TQ-DS3a.txt (template v3.2) | Built 5 October 2026; to run on Gemini deep research |
+| TQ-DS3b | Kidney: animal nephron-loss models | to build after TQ-DS3a returns, if needed | |
 | TQ-DS3 | Kidney (H3) | | |
 | TQ-DS4 | Honeybees (H4) | | |
 | TQ-DS5 | Plants (H5) | | |
@@ -188,3 +190,8 @@ No open repository holds a long fast followed in individual animals with repeate
 ### Decision (James, 5 October 2026)
 
 - **H1 approved:** VitalDB (main; open), INSPIRE (estimated blood loss and transfusion), and the MIMIC-III Waveform Database Matched Subset (bleeding outside theatre). Held out and unopened. Before any test: the mapping of the anaesthetist as an outside defending loop, and a rule for selecting bleeding episodes, both fixed before data are opened. PhysioNet credentialing and acceptance of VitalDB's terms are James's steps, when the test is set up. TQ-DS2c (animal controlled haemorrhage) running.
+
+### TQ-DS2c assessment (5 October 2026)
+
+- **Thin and weak:** 750 records screened, 4 kept (all abstract-only), plus 3 Figshare entries with every field "not stated" (probably figure files). Several rows do not qualify (a computational fluid-dynamics model; resuscitation trials), though the self-check claims all do. Titles state findings on resuscitation (survival, balloon occlusion time, liver inflammation); irrelevant to the model's predictions; logged as minor contamination. The classic rate-of-haemorrhage studies (such as the sheep work read in the blood-loss surface test) were not found.
+- **Conclusion:** the animal line adds nothing usable. **Blood-loss searches closed;** H1 (VitalDB, INSPIRE, MIMIC-III waveforms) is the blood-loss stress-test set, and G3's rate question is to be addressed within it.
