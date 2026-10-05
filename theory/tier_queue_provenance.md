@@ -52,6 +52,24 @@ Named by another Claude chat reviewing v0.5 (relayed by James, 5 October 2026), 
 - **Dynamic energy budget theory (Kooijman) and the Add-my-Pet collection.** Organism-level mass and energy balance, reserves, maintenance priority and starvation rules. The closest formal theory at the organism level to check against; Add-my-Pet may also be an independent source of parameters (reserve capacity, maintenance rates).
 - Penguin fasting thresholds and ischaemic preconditioning were also named. Both were already in the natural tests (fasting; re-tuning), so they are not new.
 
+### Second review, 5 October 2026 (another Claude chat, relayed by James after v0.6, 7b71d7b)
+
+Named, not read; logged for the novelty stage. Any element adopted from this review is recorded as **built from it**, not as independent.
+- Precedents for downhill routing: Selye; McEwen (allostatic load); Cook ("how complex systems fail": running in degraded mode); Peters (the selfish brain).
+- The record rule as actuator saturation (control engineering); integral windup as a rival explanation of overshoot after long deficits.
+- The horizon term as convergent with Kirkwood (disposable soma) and Williams (terminal investment); Schaffer and Schaffer (agave: convex returns to reproductive effort).
+- Optimal allocation: water-filling and KKT conditions (greedy marginal-value ordering is optimal only under concave, separable objectives).
+- Quantum error correction: threshold theorem, Google 2024 below-threshold result, Terhal (decoder backlog), leakage.
+- Firms: Dechow and Sloan 1991 (CEO horizon and R&D); savings and loans "gambling for resurrection".
+- Cognitive reserve: Stern; Hall et al. 2007; Scarmeas et al. 2006; hippocampal hyperactivation in mild cognitive impairment.
+- Critical slowing down: Scheffer et al. 2009; compensatory reserve measurement (US Army); Severson et al. 2019 (battery life before capacity degradation).
+- Materials and ground: Kaiser and Felicity effects (acoustic emission); aquifer compaction below the historic low.
+- Science and mathematics as institutions: Serra-Garcia and Gneezy 2021; formal verification (Voevodsky).
+- Coral re-tuning and its cost; Hughes et al. 2019 (population filtering mimics re-tuning).
+- Two layers: finite-stock feedback without goals (stellar main sequence; carbonate-silicate thermostat) against selection or design.
+
+**Contamination check:** the review mentions the US Army compensatory reserve measurement, from the same programme as held-out candidate H1. Nothing beyond what the blood-loss surface test already read (S2) was reported. No other held-out candidate is touched.
+
 ## How to word this in any paper
 
 - **Elements with no outside source:** "Developed independently (dated record in the deposit). Later reading found convergence with [X], which [differs in or adds Y]."
