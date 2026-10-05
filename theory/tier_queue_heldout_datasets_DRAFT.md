@@ -162,4 +162,4 @@ No open repository holds a long fast followed in individual animals with repeate
 
 - **H6 added: CALERIE phase 2** (chronic energy restriction in humans and its aftermath; NCT00427193). Held out and unopened; data by application, to be made by James when the test is set up.
 - **Weight cycling is not held out.** James: it is where anything that might shape the model further is likely to be, so it stays open for surface testing (G15), with predictions committed first. Sources: animal weight-cycling experiments and metabolic-ward weight-perturbation studies; MATADOR is already contaminated.
-- **Access requests for fasting (H2):** drafts prepared (tests/correspondence/); James sends them within hours if the searches have not found enough.
+- **Access requests for fasting (H2):** drafts prepared (tests/correspondence/), then **parked (James, 5 October 2026)**: the framing misdescribed the work as a fasting model. Not to be sent as written. The data search continues first: H1, H3, H4 and H5 have not been searched yet, and figure-level individual data exist for fasting (snow geese, grey seals, king penguins) for predictions that do not need varied energy demand.
