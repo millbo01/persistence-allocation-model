@@ -48,3 +48,22 @@
 | Loss of fixed capital | Permanent nephron deficit |
 | Recovery order depends on the type of past load | After chronic scarcity, fat recovers first (re-tuning); after acute starvation, protein recovers first (reserves last). Candidate rule for v0.3, formed after the evidence |
 | Starting state | An already-strained fetus tolerates labour worse |
+
+## Evidence by layer (v0.7, 5 October 2026)
+
+**Layer 1:** holds for any negative-feedback loop with a finite stock, with no goal (the flat record, break at a set depletion, stock behaviour, larger buffer and stressed start, compounding, permanent loss). **Layer 2:** needs selection or design (priority order, switches that shed a commitment, recovery order, fuses, growth against scar, re-tuning). Confirming layer 1 says nothing about layer 2.
+
+| Test | Layer 1 findings | Layer 2 findings |
+|---|---|---|
+| Blood loss | Pressure flat; break at about 30% loss; same loss at the break across rates (sheep); heat stress shortens tolerance | Skin, gut and muscle cut before kidney; brain only partly protected; sympathetic withdrawal as a switch |
+| Fasting | Threshold at a fat share; initial fat sets phase II | Fat, then gut and liver, then muscle; phase III switch and egg desertion; the gut spent first and rebuilt first |
+| Kidney | Creatinine flat to about half the nephrons; compounding hyperfiltration; low nephron start; creatinine recovers while reserve does not | None |
+| Honeybees | Stores and brood intact while adults vanish; terminal decline | Maintenance and guarding cut, brood care held; brood eaten when protein is short; precocious foraging (role reassignment) |
+| Plants | Greenness flat; same conductivity loss at death; runaway embolism; drought legacies | Leaves and fine roots as fuses; spruce leaf-area cut (re-tuning by scar) |
+| Fetal growth restriction | A strained fetus tolerates labour worse | Brain sparing; acute-chronic flip; chronic signals lose gain; recovery order |
+| Recovery order | | Acute: working tissue first, reserves last; chronic: reserves first and overshoot |
+| Muscle | | Growth after acute coupled load; scar after injury |
+| Record rule | Held outputs flat; capacity tests and direct measures move | |
+| Re-tuning | | Unpredictable supply gives larger reserves (starlings); preconditioning dose window and fading; primed plants; the cost of reserves |
+
+**Following individuals (G9 test rule, v0.7).** Starlings, preconditioning, primed plants, fetal sheep and muscle: individuals followed. Human food insecurity: population-level, cross-sectional. Spruce: the plots probably followed the same trees; survivor filtering is not ruled out from the abstract (to check).

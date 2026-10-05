@@ -115,5 +115,24 @@ Two consequences:
 ## 8. What the formalisation does not settle
 
 - **The functional forms** (the piecewise loss, a linear exposure rate, a fixed displacement room) are choices. Others would give the same qualitative behaviour.
-- **The priority rule** is now a formula (v0.5, with the remaining-horizon correction in v0.6): see theory/priority_formula.md and Section 2a of TIER_QUEUE_MODEL_v0.6.md. The equations above hold with priority computed from marginal value.
+- **The priority rule** is now a formula (v0.5, with the remaining-horizon correction in v0.6): see theory/priority_formula.md and Section 2a of TIER_QUEUE_MODEL_v0.7.md; the v0.7 form is in Section 9 below. The equations above hold with priority computed from marginal value.
 - **No parameter has been estimated from data.** The held-out stress tests would do that.
+
+## 9. Additions in v0.7
+
+**Spending cost.**
+
+$$p_i \;=\; v_i\,s_i\,\min(\tau+h_i,\;T),\qquad s_i \;=\; 1-\frac{\ell(E_i)}{\lambda_{\max}}$$
+
+- $\tau$: the rest of the episode (time units), estimated in the engine as the episode's length so far (at least one step);
+- $h_i$: rebuild time; $T$: remaining horizon;
+- $s_i$: the share of capacity still at stake, 1 when healthy and 0 at the floor;
+- for a control part, $v_i=\text{vital}_i$ (always at the bottleneck).
+
+Spending in ascending $p_i$ is the optimal policy only for a concave, separable objective (the water-filling or KKT solution). $s_i$ handles saturating damage (the fuse) and the control rule handles a cliff-shaped loss. Increasing returns to an output (semelparity) are not yet represented.
+
+**Record dynamics (G12).** Let a knock of size $k$ leave a deficit that the reserve restores at its release rate, with the knee from Section 3:
+
+$$\rho(R)=\rho_0\min\!\Big(1,\frac{R}{\kappa R_{\max}}\Big)\quad\Rightarrow\quad t_{\text{rec}}\approx\frac{k}{\rho(R)}=\begin{cases}k/\rho_0 & R\ge\kappa R_{\max}\\[4pt] \dfrac{k\,\kappa R_{\max}}{\rho_0\,R} & R<\kappa R_{\max}\end{cases}$$
+
+Below the knee, recovery time grows as $1/R$ and has no upper bound as $R\to0$. This is critical slowing down: the record's mean stays at its setpoint while its recovery from each knock slows, so its lag-one autocorrelation and variance rise before the break. With no knee ($\kappa=0$) and a threshold switch, $t_{\text{rec}}$ is constant until the switch, and the record gives no warning. The engine's record is recalculated each step without restoring dynamics, so it cannot show this; the derivation stands on the release function alone.

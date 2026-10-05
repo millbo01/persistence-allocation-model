@@ -80,3 +80,9 @@ No priority numbers are set by hand except the top, named because its output is 
 - **Signal gain:** control sees value through each part's gain (default 1 coupled, 0 opaque; a part may carry its own). A sustained signal (load above capacity) loses gain with a time constant of 30 steps and recovers when strain ends.
 
 See TQ8 (theory/sim/outputs/2026-10-05_TQ8/README.md) for what these generate, the fixes made during the build, and where the engine still departs from the written model.
+
+## v0.7 additions (5 October 2026; computed mode only)
+
+- **Spending order:** ascending value × capacity still at stake × min(episode length so far + rebuild, T). Capacity still at stake is 1 − loss(E) ÷ 0.5: a part at its floor costs nothing more to load and becomes the fuse. Episode length counts consecutive steps on which total demand exceeded total capacity (at least 1). `run(episode_tau=False)` holds it at 1, for ablation only.
+- **Control parts** are valued at their full vital weight (always at the bottleneck).
+- The record has no restoring dynamics, so record dynamics (G12) are derived in the maths, not simulated.

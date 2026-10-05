@@ -68,6 +68,8 @@ Named, not read; logged for the novelty stage. Any element adopted from this rev
 - Coral re-tuning and its cost; Hughes et al. 2019 (population filtering mimics re-tuning).
 - Two layers: finite-stock feedback without goals (stellar main sequence; carbonate-silicate thermostat) against selection or design.
 
+**Adopted in v0.7 (built from this review):** $\tau$ in the spending cost; the optimality condition and its departures (saturation, cliffs, increasing returns; semelparity needs increasing returns); record dynamics as a read-out (G12); tagging by layer; the G9 rule to follow individuals; windup as a rival explanation (open). The fuse term ($s_i$) and the control rule were added by Claude during the build, as consequences of the optimality condition. Held, not adopted: the Felicity ratio, two boundaries.
+
 **Contamination check:** the review mentions the US Army compensatory reserve measurement, from the same programme as held-out candidate H1. Nothing beyond what the blood-loss surface test already read (S2) was reported. No other held-out candidate is touched.
 
 ## How to word this in any paper
