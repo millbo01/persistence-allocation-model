@@ -1,12 +1,14 @@
-# The Persistence Allocation Model, v0.18 (DRAFT for James, 6 October 2026)
+# The Persistence Allocation Model, v0.18 (canonical state, 6 October 2026)
 
-**Applied (James approved revision 2, 6 October 2026):** the canonical text is theory/PERSISTENCE_ALLOCATION_MODEL_v0.18.md. This draft is kept as the record of what was approved.
+**Status:** working model (phase 3). **The vocabulary is frozen** (James approved v0.18, 6 October 2026). The probing phase is over. No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
 
-**Status:** draft for James's approval. Phase 3.
-- **What it adds:** the changes James approved on 6 October 2026, from the GPT theory chat (theory/PAM_proposals_from_GPT_chat.md: F1 to F4, A1 to A3, A6, B, and the reduced C as an extension layer).
-- **On approval:** it becomes canonical and **the vocabulary is frozen again.** No new mechanism then enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
-- **Revision 2 (6 October 2026):** six corrections from GPT's review of the draft (raw/2026-10-06_chatgpt_v018-draft-review.md), changes 12 to 17 below. Claude agreed with all six. Change 13 corrects an error in revision 1 (the load identity counted one deficit twice).
-- **Unchanged:** v0.17 (theory/TIER_QUEUE_MODEL_v0.17.md) remains canonical until approval. The H1 VitalDB test was frozen under v0.17 and is unaffected.
+**The single reference** for the model as it stands.
+- **History:** theory/tier_queue_changelog.md.
+- **Decisions behind v0.18:** theory/PAM_proposals_from_GPT_chat.md, with the source chat in raw/.
+- **The draft as approved:** theory/PERSISTENCE_ALLOCATION_MODEL_v0.18_DRAFT.md (revision 2), kept as the record.
+- **Sections marked "as v0.17"** refer to theory/TIER_QUEUE_MODEL_v0.17.md, which is kept unchanged.
+- **The reference implementation:** theory/sim/tq_units.py (frozen; a reduced form under v0.18, Section 11).
+- **Not yet updated for v0.18:** the maths (theory/tier_queue_math_v0.16.md) and the diagram. They are due at paper time.
 
 ## Changes from v0.17
 
@@ -302,7 +304,7 @@ Do this before opening any outcome data.
 
 ## 13. Way forward
 
-1. **Approve v0.18** and freeze the vocabulary again. End the probing phase.
+1. **v0.18 approved** (6 October 2026); the vocabulary frozen again; the probing phase ended.
 2. **H1:** blind adjudication (prompt ready), then the result into Section 11.
 3. **Design the test of fixed against dynamic priority** (Section 4, item 2) and a test of G25 with access fixed in advance.
 4. **The model paper, then a preprint.** Before writing:

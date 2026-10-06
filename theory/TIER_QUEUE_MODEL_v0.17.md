@@ -1,5 +1,7 @@
 # The Persistence Allocation Model, v0.17 (canonical state, 6 October 2026)
 
+**Superseded by v0.18** (theory/PERSISTENCE_ALLOCATION_MODEL_v0.18.md, James approved 6 October 2026). Kept unchanged: v0.18 refers to some of its sections, and the H1 VitalDB test was frozen under it.
+
 **Name (James, 6 October 2026):** the model is now called **the Persistence Allocation Model**. It was formerly the tier-queue model. File names, engine names (tq_*, TQ runs) and frozen documents keep the old name, so references stay valid.
 
 **Status:** working model (phase 3). **The vocabulary is frozen** (James approved, 6 October 2026). No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).

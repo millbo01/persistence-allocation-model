@@ -6,6 +6,41 @@ The history of the canonical model (theory/TIER_QUEUE_MODEL_v*.md), moved out of
 
 The model is now called **the Persistence Allocation Model** (formerly the tier-queue model). The name changes from now on. File names, engine names (tq_*, TQ runs) and frozen documents, including the H1 VitalDB pre-registration, keep the old name.
 
+## Changes in v0.18 (James approved, 6 October 2026)
+
+**The vocabulary is frozen again, and the probing phase is over.**
+- **Sources:** James's GPT theory chat (raw/2026-10-06_chatgpt_PAM-theory-chat.txt and _part2.md) and GPT's review of the draft (raw/2026-10-06_chatgpt_v018-draft-review.md).
+- **The decisions,** with Claude's assessment: theory/PAM_proposals_from_GPT_chat.md.
+- **Main change:** the governor regulates access, and the allocation is the resulting flow. Rank is the order in which parts lose access under scarcity, per resource, fixed from documented properties of access.
+- **Also new:**
+  - load defined, with separate resource and state ledgers;
+  - severance as pathway capacity at zero;
+  - part death as severance of the route back;
+  - a scope section;
+  - nested systems as a proposed extension layer.
+
+| No. | Change | Source |
+|---|---|---|
+| 1 | **The governor regulates access; the allocation is the resulting flow.** It releases stores, opens and closes intake, sets the capacity of pathways and gates, and switches units. Its signals are broadcast, and each pathway responds by rules encoded locally. Explicit allocation (a budget line) is one way of setting access. The central claim is reworded accordingly | F1 (James's cooling-loop question; GPT) |
+| 2 | **Rank is the order in which parts lose adequate access when a shared resource is scarce.** It is a coarse-grained property of the network (topology, pathway capacity, gating, autoregulation), not a list held by the governor. It answers one question only: who absorbs the shortfall first. **It is fixed at mapping from documented properties of access,** never read off the observed order of sacrifice | F1, F2 |
+| 3 | **A valid test of dynamic priority** needs two recipients competing for the same scarce resource at the same time, with their order of sacrifice reversing between conditions. A part receiving more in one condition and less in another (skin in heat and in haemorrhage) is not a test | F2 (James's correction) |
+| 4 | **Severance is a pathway's capacity at zero.** A pathway's capacity is the sum of its routes. Losing some routes lowers capacity and moves flow onto the rest, which can saturate and fail in turn (a cascade). No partial-severance state | F3 (James; GPT) |
+| 5 | **Load defined.** Load is resource redirection: the shortfall, per resource, between a reference allocation fixed at mapping and what a part actually receives. **Load flow** (the deficit moving) is kept separate from **load residue** (the state change left by absorbing it). The ledger becomes an identity | A1 (James's definition; GPT's formalisation) |
+| 6 | **Governor and parts written formally.** The governor sets access from sensed state; each part's next state depends only on its state and what reaches it. A signal produced inside a part belongs to the governor function | A2, A3 |
+| 7 | **Part death.** Collapse is not death. A part dies only when its route back (template, repair source, reconnection) is severed. "Parts do not die" becomes: parts die only by severance of their route back; the system dies by exhaustion or by severance of a non-bypassable link | A6 (James: "severance is the precondition to part death") |
+| 8 | **Scope (new Section 2).** Persistence is a viability constraint, not something maximised. Terminal reproductive programmes are out of scope. The model is not a theory of action selection. No boundary may be redrawn after a counterexample | B1 to B4 |
+| 9 | **Pregnancy resolved:** the placenta is a temporary part of the mother's system; the fetus is a separate system downstream. No bargaining between governors | F4 (James) |
+| 10 | **Extension layer, proposed (Section 15): nested systems.** A component is a nested system when it has its own loop regulating its own access. People in institutions are systems attached to roles. Capture is an embedded system changing the signals or gates that set its own access. Used only with a mapping guard | Reduced C |
+| 11 | **New predictions:** G24 (cascade along saturated substitutes); G25 (order of sacrifice predicted from documented access) | From F1, F3 |
+| 12 | **Revision 2. Shortfall from either side.** The central claim says "when the resources available fall short of what the reference state requires", in place of "when supply falls short". Scarcity can come from falling supply or rising requirement (work, repair, pregnancy, infection) | GPT review, point 1 |
+| 13 | **Revision 2. Two ledgers, not one.** The **resource ledger** accounts for the gap between reference requirement and supply: store draw + unmet reference allocations (the local loads) + boundary terms. The **state ledger** records what the unmet allocations leave behind (residue). Residue is a consequence of load, not a further destination for it; revision 1 added it to the same sum and so counted the deficit twice | GPT review, point 2 |
+| 14 | **Revision 2. Rank is per resource.** Each resource r has its own order of sacrifice πᵣ. Where the orders coincide, a single "rank" is shorthand | GPT review, point 3 |
+| 15 | **Revision 2. The governor does not switch units.** It sets access; units switch when the resulting flow crosses their local thresholds (units change only through supply). If direct state signals are ever needed, the part's state function would take the governor's signal as an input: that would be a new mechanism, under the standing check | GPT review, point 4 |
+| 16 | **Revision 2. Damage enters from outside.** Trauma, toxins and pathogens enter as an exogenous loss of units or of pathway capacity; the model handles the resource consequences. No damage mechanism is added | GPT review (damage) |
+| 17 | **Revision 2. "In a system that regulates its own persistence"** replaces "In a goal-directed system", which implied agency the model no longer assumes | GPT review (wording) |
+
+**Not yet updated for v0.18:** the maths, the diagram, and the frozen engine (a reduced form under v0.18).
+
 ## Changes in v0.17 (James approved, 6 October 2026)
 
 **A simplification:** the vocabulary is frozen at this version. The central claim was reworded (Claude's rewording, approved by James). Decisions with James's wording are in theory/v0.17_pending.md. The engine work behind them is TQ10 to TQ13b (theory/sim/outputs/).
