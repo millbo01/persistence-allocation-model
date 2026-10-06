@@ -124,7 +124,11 @@ $$p_i=v_i\,s_i\,\min(\tau+h_i,\;T),\qquad s_i=1-\lambda^{-1}\big(1-c_i^{\text{ef
 4. **A maxed part backs load up.** A part whose throughput is maxed ($c_i^{\text{eff}}<d_i^{\text{run}}$) cannot use more supply. A share $\lambda_{ij}$ of its unprocessed excess backs up along its dependency as demand on the part that feeds it: $d_j\leftarrow d_j+\lambda_{ij}[d_i^{\text{run}}-c_i^{\text{eff}}]_+$. This is the loop in TQ9.
 5. **What is left** stays at the part as load (its container leaks), or crosses the boundary.
 
-**Reserves and throughput.** A reserve supplies resources. It lifts a part's work only up to its current capacity: it cannot make a part do more than it can.
+**Reserves and throughput** (James, 6 October 2026). A reserve supplies resources.
+- Within its ceiling $c_i^{	ext{eff}}$, a part's work tracks its demand whenever supply, including the reserve, covers it: $w_i=\min(d_i^{	ext{run}},c_i^{	ext{eff}},u_i)$.
+- "Sustained capacity" is not a separate limit. It is the throughput that ongoing supply supports without the reserve. A reserve lifts work above that, never above the ceiling.
+- Where the binding limit is removing a by-product (a processor's heat), the removal rate plays the part of supply and the heat sink the part of a reserve.
+- There is no throughput target: demand is whatever the governor needs to hold its level, so work changes continuously.
 
 **Room is finite: exhaustion.** Taking stops at $u_j=0$. When the reserve is empty and every lower-priority part's supply has been taken, there is nowhere left. Load then falls on the top (the record breaks), and the part whose condition and template run out first is the one priority spent (the fuse).
 
@@ -227,5 +231,5 @@ which speeds up as $H$ falls: deterioration accelerates as it accumulates, until
 
 - **Functional forms:** the container's leak and refill, the template threshold and its loss, the S-curve, exponential fading. All are choices. The template law in particular is a placeholder for what the scan supports qualitatively.
 - **Fitted values carried over:** the shortfall definition, the reserve's cap and memory, the economising settings, the first-time expectation ("as much again"), and all rates and thresholds. No parameter has been estimated from data. The deferred share is withdrawn.
-- **Reserves and throughput:** whether a reserve can lift a part above its sustained capacity for a time (a processor's turbo boost draws on thermal headroom) is open. Here it cannot.
+- **Reserves and throughput:** settled (James, 6 October 2026; Section 4).
 - **Not yet in the engine:** everything marked **new**; several shared reserves; an explicit objective (so increasing returns and semelparity are not represented).
