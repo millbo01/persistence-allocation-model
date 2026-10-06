@@ -31,7 +31,11 @@
 - **Reporting gaps:** cases dropped for having no control pair, and the 15% count when the low-loss group is already short, were not reported.
 - **A different G1 definition** in GPT's script: the window ends at the first sustained fall of any kind, rather than the first qualifying one.
 
-## Open: the stable-approach reading (for James)
+## Decided (James, 6 October 2026): option 1, keep the frozen run
+
+The frozen run stands as the result of record. The dependency is stated with it: the test is runnable only under the frozen reading of missing bins in the stable approach (implementation note 5). Under GPT's stricter reading it is not runnable.
+
+## The stable-approach reading (as put to James)
 
 **The text supports both readings.**
 - **Read literally,** "every bin at or above 65" can mean GPT's reading.
