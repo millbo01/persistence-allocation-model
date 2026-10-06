@@ -1,0 +1,824 @@
+H1-VDB-R1: audit and re-implementation of a pre-registered analysis (VitalDB, G12)
+
+You are checking the code for a pre-registered analysis of an open surgical database (VitalDB). The analysis has already been run once on the real data. You will NOT see the data or the results, and you must not guess them. Your job is to check that the code does what the frozen pre-registration says, and to write your own version of the computation so the two can be compared on the same files.
+
+FORMAT RULE: no introduction, background or essay. Start directly with Part A.
+
+INPUTS (embedded below, in full)
+1. The frozen pre-registration (Markdown).
+2. The analysis code that was run (Python 3.12, numpy, pandas, scipy).
+3. The data layout the code reads (structure only, no values):
+   - DIR/cases.csv: one row per case. Columns used: caseid, sex (M or F), weight (kg), ane_type (categories: General, Sedationalgesia, Spinal), opstart and opend (seconds from case start), intraop_ebl (mL), intraop_phe (mcg), intraop_eph (mg), intraop_epi (mcg). The bolus fields are integers with no blanks.
+   - DIR/labs.csv: caseid, dt (seconds from case start), name (haemoglobin is "hb"), result.
+   - DIR/trks.csv: caseid, tname (for example "Solar8000/ART_MBP"), tid.
+   - DIR/tracks/<tid>.csv.gz: two columns, Time (seconds from case start) and the value, one row per recorded sample; rows are absent when the device was disconnected. Solar8000 numerics are recorded every 2 seconds; Orchestra infusion rates every 1 second.
+
+PART A: AUDIT
+Go through the pre-registration Sections 2 to 7 rule by rule, and the IMPLEMENTATION_NOTES list in the code. For each rule, say whether the code implements it as written. Then list:
+  a. Every discrepancy between the code and the pre-registration, with the code line or function, the rule, and whether it could change P1, P2, P3 or the verdict (yes / no / unclear, with one sentence why).
+  b. Every bug (wrong indexing, off-by-one in windows or bins, wrong sign, wrong test direction, wrong statistic, cases silently dropped, NaN handling that changes results).
+  c. Every place where the pre-registration is ambiguous and the code chose a reading, with the reading chosen and the alternative.
+If you find nothing under a heading, write "none found".
+
+PART B: YOUR OWN IMPLEMENTATION
+Write one standalone Python 3.12 script, h1_vdb_g12_check.py, using only numpy, pandas and scipy, that:
+  - takes --data DIR and --out DIR;
+  - implements Sections 2 to 5 of the pre-registration (cohort selection, the count step with its step-down and fallback order, the artefact rule, gap filling, 10-second bins, the break definition, windows, AR1 and SD, control pairs, case scores D, tests P1, P2, P3 and the verdict table) and the G1 check in Section 6;
+  - follows the code's IMPLEMENTATION_NOTES where the pre-registration is silent, unless you flagged a note as wrong in Part A (then follow the pre-registration and say so in a comment);
+  - is written your own way: do not copy the functions of the code above;
+  - writes check.json with: the count table (cohort, threshold, eligible, high qualifying, low qualifying), the cohort and threshold used, n_high, n_low, P1 (n, median, one-sided p, two-sided p), P2 (n_high, n_low, medians, p), P3 (n, median, p), the verdict, the list of high-loss and low-loss caseids used with each case's break onset and D for AR1, and the G1 check.
+Put the whole script in one code block.
+
+PART C: SELF-CHECK
+  - no introduction written;
+  - no guess at the data or the results anywhere;
+  - every rule in Sections 2 to 7 covered in Part A;
+  - the script in Part B runs without the code above.
+
+==================== INPUT 1: FROZEN PRE-REGISTRATION ====================
+# H1 VitalDB, test of G12: pre-registration (FROZEN 6 October 2026)
+
+Drafted by Claude, 6 October 2026. **Status: frozen 6 October 2026. James confirmed the whole document, including the changed contrast and the four choices marked in Section 11 as easier to pass. No VitalDB data had been opened and VitalDB's terms had not been accepted when this was committed.** Any later change is a new, separately logged experiment.
+
+**Sources:**
+- Model: theory/TIER_QUEUE_MODEL_v0.17.md (vocabulary frozen).
+- Setting map and mapping: tests/H1 VitalDB G12 - setting map and mapping (draft).md.
+- Structure only, with no values: raw/2026-10-06_gemini_H1-VDB-S1.md (SHA begins 27383b4d), assessed in theory/tier_queue_heldout_datasets_DRAFT.md.
+- Every field and track named below is taken from that documentation.
+
+**James's decision (6 October 2026): release profile A.**
+- Compensation for blood loss draws on a store that tapers as it empties, and may end in a switch.
+- **G12 therefore predicts a warning** before falls in pressure during substantial blood loss.
+- **A null result counts as a failure of G12 as mapped for this system.** It may not be explained away afterwards as "it was a switch".
+
+## 1. Hypotheses
+
+| Code | Role | Statement |
+|---|---|---|
+| **P1** | Primary (G12) | Before a fall in pressure in a high-loss case, the lag-one autocorrelation of mean arterial pressure rises more than it does across matched control windows from the same case |
+| **P2** | Primary (G12, specificity) | That excess rise is larger in high-loss cases than in low-loss cases (falls with no depleted store) |
+| P3 | Secondary | The same as P1, for the standard deviation of mean arterial pressure |
+| G1 | Check (low weight) | In high-loss cases, pressure stays near its baseline until the first fall while the blood's haemoglobin falls |
+| G18 | Exploratory (not scored) | The correlation between heart rate and mean arterial pressure changes before the fall |
+
+**Change from the setting-map draft, made before data:**
+- The draft's contrast was falls soon after anaesthesia starts.
+- **That cannot be used.** The measures need 31 minutes of stable, recorded pressure before each fall. Falls soon after induction have no such history: the arterial line may not yet be in, and the early window would fall before anaesthesia.
+- **The contrast is now falls in low-loss cases** in the second half of surgery, with the same window geometry. In those falls no store is being depleted by bleeding (causes include anaesthetic depth, drugs and position), so the model predicts a weaker warning or none.
+
+## 2. Cases
+
+**Included cases must meet all of the following:**
+1. ane_type indicates general anaesthesia.
+2. Solar8000/ART_MBP, ART_SBP and ART_DBP are present.
+3. intraop_ebl, weight and sex are recorded.
+4. **No bolus vasopressors:** intraop_phe = 0, intraop_eph = 0 and intraop_epi = 0. Every vasopressor given is then visible in time, through the Orchestra infusion tracks.
+5. Surgery lasted at least 90 minutes (opend − opstart).
+
+**Groups, by estimated blood loss as a share of estimated blood volume (EBV):**
+- **EBV** = 70 mL/kg for men and 65 mL/kg for women, multiplied by weight. These are conventional textbook values.
+- **High loss:** intraop_ebl ≥ 20% of EBV. 20% is the lower end of the reported onset of the second phase (Section 2, item 5, of the setting map). It also sits inside ATLS haemorrhage class II (15 to 30%).
+- **Low loss:** intraop_ebl ≤ 5% of EBV.
+- Cases between the two are not used.
+
+**Minimum numbers, and one fixed step-down:**
+- **Required:** at least 20 cases per group, each with a qualifying fall (Section 3) and at least one control pair (Section 4).
+- **The count comes first.** A counting script runs before any measure is computed, and outputs counts only.
+- **If the high-loss group has fewer than 20,** its threshold steps down once, to 15% of EBV (the lower bound of ATLS class II).
+- **If it is still short,** or the low-loss group is short, **the test is declared not runnable.** That is reported as such, with no further relaxation.
+- **Fallback, lower weight, only if the primary is not runnable:** the bolus exclusion is dropped, and windows containing a rise in pressure of more than 15 mmHg within 60 seconds (the signature of a bolus) are excluded. A result from this cohort is labelled "fallback" and carries half weight in the verdict.
+
+## 3. The record and the break
+
+**Pressure signal:**
+- Solar8000/ART_MBP numerics, every 2 seconds.
+- The 500 Hz waveform is not used in the primary analysis.
+
+**Artefact rule.** A 2-second sample is invalid if any of these holds:
+- mean pressure < 20 or > 200 mmHg;
+- systolic > 300 mmHg;
+- systolic − diastolic < 10 mmHg (a damped line, a flush, or blood sampling).
+
+**Gaps:**
+- Missing rows (numeric tracks drop disconnections) and invalid samples are treated alike.
+- Gaps of 10 seconds or less are filled by linear interpolation.
+- A window with more than 10% of its time invalid or missing is unusable.
+
+**Resampling:** the signal is averaged into 10-second bins, giving 60 points per 10-minute window.
+
+**The break: a fall in pressure.**
+- **Definition:** onset t0 is the first time the 10-second series stays below 65 mmHg for at least 60 seconds (6 consecutive bins). 65 mmHg is the conventional definition of intraoperative hypotension.
+- **Qualifying breaks must meet all of the following:**
+  - t0 lies in the second half of surgery: after (opstart + opend) / 2, and before opend. This is chosen because bleeding accumulates, so later falls are more likely to follow loss.
+  - The 31 minutes before t0 (the approach) lie after opstart, with every 10-second bin at or above 65 mmHg.
+  - Both measurement windows (Section 4) are usable.
+- **Only the first qualifying break per case is used.**
+
+## 4. Measures and windows
+
+**Windows, relative to the break onset t0:**
+- **Late window L:** from t0 − 11 min to t0 − 1 min. The last minute is dropped to keep the fall itself out.
+- **Early window E:** from t0 − 31 min to t0 − 21 min.
+
+**Within each window:**
+1. Remove the window's own straight-line fit (linear detrending).
+2. **AR1:** the lag-one autocorrelation of the residuals.
+3. **SD:** the standard deviation of the residuals.
+4. Recovery time, −10 s / ln(AR1), is reported. It is a transform of AR1, so it is not a separate test.
+
+**Change for a break:** ΔAR1 = AR1(L) − AR1(E), and ΔlnSD = ln SD(L) − ln SD(E).
+
+**Control pairs (the same case, the same geometry):**
+- **Pseudo-onsets t\*** lie on a 5-minute grid in the second half of surgery.
+- **No break near t\*:** no 10-second bin below 65 mmHg from t\* − 31 min to t\* + 30 min.
+- **The same validity rules apply.**
+- **Per case,** the control change is the median over its control pairs.
+
+**Case score:** D = Δ(break) − median Δ(control). Cases with no control pair are dropped, and their number is reported.
+
+## 5. Tests and verdict
+
+**Tests,** all one-sided with α = 0.05:
+- **P1:** a Wilcoxon signed-rank test that D_AR1 > 0 in high-loss cases.
+- **P2:** a Mann-Whitney test that D_AR1(high) > D_AR1(low).
+- **P3:** a Wilcoxon signed-rank test that D_lnSD > 0 in high-loss cases (secondary).
+- **No correction is applied.** The primary verdict rests on P1 and P2 for AR1 only, decided in advance.
+
+**Verdict for G12 in this system:**
+
+| Result | Verdict |
+|---|---|
+| P1 passes (p < 0.05, median D_AR1 > 0) **and** P2 passes | **Supported** |
+| P1 passes, P2 fails | **Narrowed.** A warning is present but not specific to depletion, so the model's account of why is not supported |
+| P1 fails (p ≥ 0.05 or median D_AR1 ≤ 0) | **Fails.** Logged as a failure of G12 as mapped, under the standing check |
+| Median D_AR1 < 0 with two-sided p < 0.05 | **Contradicted:** the record became less sluggish before the fall |
+
+- P3 is reported alongside the verdict but does not change it.
+- **A fallback cohort** result (Section 2) is reported with its label, at half weight.
+
+**Sensitivity analyses** (reported, not part of the verdict):
+1. Breaks with any change in a vasoactive infusion rate (Orchestra PHEN, NEPI, EPI, VASO, DOPA, DOBU) between t0 − 31 min and t0 are excluded.
+2. Gap filling is set to 0 seconds (no interpolation).
+3. The break is sustained for 5 minutes instead of 1.
+4. High-loss cases at 15% of EBV, if the primary used 20%.
+5. The late window ends at t0 − 3 min instead of t0 − 1 min (guards against the start of the fall leaking into L; see Section 11, item 8).
+
+**Known bias, stated in advance:** bleeding is recorded only as a case total.
+- Some falls in high-loss cases will come **before** most of the bleeding.
+- This dilutes the effect towards the null.
+- It is **accepted, not corrected,** and a null still counts as a failure.
+
+## 6. G1 check (low weight)
+
+**What is computed,** for high-loss cases:
+- **Baseline pressure:** the median valid mean pressure from opstart to opstart + 10 min.
+- **Pressure at each intraoperative haemoglobin sample:** for every lab_data hb sample with dt between opstart and the first break (or opend if there is no break), the median mean pressure in the 5 minutes before that sample.
+
+**Consistent with G1** if, in more than half of cases with at least two such samples, both hold:
+- pressure stays within ±20% of baseline at every sample (a conventional intraoperative tolerance);
+- the last haemoglobin is lower than the first.
+
+**Weight:** the anaesthetist defends pressure, which makes the check close to trivial. It is reported as consistent or not, at low weight.
+
+## 7. G18, exploratory (not scored)
+
+**Measure:** in high-loss breaks, the Pearson correlation between detrended mean pressure and detrended Solar8000/HR (10-second bins) in L against E, compared with the control pairs.
+
+**Also reported:** stroke volume (Vigileo/SV or EV1000/SV) where present.
+
+**Status:** descriptive only, with no pass rule.
+
+## 8. Contamination (declared)
+
+1. **TQ-DS2a:** the essay described dynamics before fainting in laboratory tests in general terms.
+2. **Commercial hypotension-prediction indices:** Claude knows in outline that falls in pressure during surgery can be predicted minutes ahead from the arterial waveform. That makes some warning before falls plausible on prior knowledge. **P2 (specificity to blood loss) is the part that prior knowledge does not supply.**
+3. **The two-phase physiology of bleeding** (reviews PMC1918009, PMC2739247), which was used to choose profile A.
+
+**Weight:** P1 alone is weak evidence for the model. The verdict "supported" needs P2.
+
+## 9. Procedure and order
+
+**Before any data is opened:**
+1. **James confirms** this pre-registration.
+2. It is frozen and committed, and its SHA is recorded in CONTROL.md.
+3. **Claude writes the analysis code** (tests/scripts/h1_vdb_g12.py). It is tested only on synthetic series, built with the TQ engine and with plain noise models (one with rising AR1 before a fall, one without). It is committed, with its SHA, **before** data is opened.
+
+**Opening the data:**
+4. **James accepts VitalDB's registration agreement** (CC BY-NC-SA 4.0).
+5. Data is downloaded through the documented VitalDB route (Python library or web download) into data/ (git-ignored). Source URL and checksums go in data/README.md.
+
+**Running:**
+6. The **counting script** runs first and outputs counts only (Section 2).
+7. The full analysis runs once, unchanged. Outputs go to tests/results/H1-VDB/ (README.md and summary.json).
+8. **Any deviation** (a bug, a missing field, a changed field name) is logged as a deviation with the reason, never silently fixed. A bug fix that changes the verdict is reported with both results.
+
+**After the run:**
+9. **Blind adjudication by GPT.** The adjudicator receives this pre-registration and summary.json, with the hypothesis labels intact but no commentary from Claude. It applies Section 5's verdict table, and its verdict is recorded verbatim.
+10. **Computation replicated by a second model** from the same files and this pre-registration (standing rule). Any difference is logged and resolved before the verdict is reported.
+11. **Replication.** The same frozen rules are applied to an independent dataset, documented in its own run (INSPIRE or the MIMIC-III matched waveforms). Field mappings may change; thresholds, windows and the verdict table may not.
+
+## 10. What a result would mean
+
+- **Supported:** in one held-out physiological system, the model's conditional prediction holds. A warning appears where a tapering store is being drawn down, and is weaker where it is not.
+- **Narrowed or failed:** recorded in the model's Section 10 under the standing check. The release-profile mapping for blood loss under anaesthesia is then the first candidate for revision. **No new mechanism is added.**
+
+## 11. Decision log (methodology choices, with the direction each pushes)
+
+Logged under the delegation rule. Choices that make the model easier to pass are marked; James confirms them with the rest.
+
+| No. | Choice | Direction |
+|---|---|---|
+| 1 | Release profile A; a null counts as failure (James) | Harder to pass |
+| 2 | Contrast moved to low-loss falls (window geometry) | Harder: low-loss falls may include volume loss from other causes (fasting, urine), making them more like high-loss falls and P2 harder to pass |
+| 3 | High loss at 20% of EBV | Neutral: purer group, fewer cases |
+| 4 | One step-down to 15% if short | Harder: dilutes the group, but makes the test runnable |
+| 5 | Bolus fallback cohort | **Easier to run**, at half weight |
+| 6 | Falls only in the second half of surgery | **Favours the model** (falls more likely to follow loss); applied to both groups alike |
+| 7 | Stable approach (no bin below 65 mmHg for 31 minutes) | Neutral: excludes falls preceded by earlier dips |
+| 8 | Linear detrending within windows | **Favours P1:** a curving start of the fall left in L raises AR1. Not corrected in P1; P2 controls for it (low-loss falls carry the same artefact), which is why "supported" needs P2. Sensitivity 5 also checks it |
+| 9 | One-sided tests; no multiplicity correction | **Favours the model;** limited by fixing a single primary measure (AR1) and requiring both P1 and P2 |
+| 10 | Bleeding timing unknown; bias accepted | Harder to pass |
+| 11 | First qualifying break per case only | Neutral: avoids dependent breaks |
+
+==================== INPUT 2: ANALYSIS CODE (tests/scripts/h1_vdb_g12.py) ====================
+"""H1 VitalDB, test of G12: analysis code.
+
+Implements the frozen pre-registration: tests/H1 VitalDB G12 - pre-registration.md (frozen 6 October 2026,
+SHA-256 begins 371caf3c). Written before any VitalDB data was opened; tested only on synthetic series
+(tests/scripts/h1_vdb_g12_synthetic.py).
+
+Usage (in order; the count must run before the analysis):
+    python h1_vdb_g12.py count   [--data DIR] [--out DIR]
+    python h1_vdb_g12.py analyse [--data DIR] [--out DIR]
+
+Data layout (written by h1_vdb_download.py, or by the synthetic builder):
+    DIR/cases.csv     one row per case; the documented clinical fields (caseid, sex, weight, ane_type,
+                      opstart, opend, intraop_ebl, intraop_phe, intraop_eph, intraop_epi)
+    DIR/labs.csv      caseid, dt, name, result
+    DIR/trks.csv      caseid, tname, tid
+    DIR/tracks/<tid>.csv.gz   two columns: time (s from casestart), value
+
+Implementation details not fixed by the pre-registration, fixed here before data (each logged in
+summary.json under implementation_notes):
+"""
+import argparse
+import gzip
+import hashlib
+import json
+import os
+import sys
+
+import numpy as np
+import pandas as pd
+from scipy import stats
+
+IMPLEMENTATION_NOTES = [
+    "Each 2-second numeric sample is placed on a 2-s grid from opstart (nearest grid point within 1 s; "
+    "several samples at one point are averaged).",
+    "A mean-pressure sample is valid only if systolic and diastolic are present at the same grid point and "
+    "the artefact rule passes (MAP 20 to 200, SBP <= 300, SBP - DBP >= 10). Conservative: a MAP without "
+    "SBP and DBP cannot be checked and is invalid.",
+    "Gap filling: runs of up to 5 consecutive missing grid points (10 s) with valid points on both sides "
+    "are linearly interpolated.",
+    "Window usability (more than 10% invalid or missing) is measured on the 2-s grid after gap filling.",
+    "10-second bins are the mean of the valid grid points in the bin; a bin with none is missing. A "
+    "missing bin breaks a run below 65 mmHg, and is not counted as below 65 in the stable-approach rule.",
+    "Inside a usable window, missing 10-s bins are linearly interpolated (ends: nearest value) before "
+    "detrending.",
+    "AR1 is the Pearson correlation of the detrended residuals with themselves lagged by one bin; SD uses "
+    "ddof = 1.",
+    "Control pseudo-onsets: t* = midpoint of surgery + k x 300 s, with t* - 31 min >= opstart and "
+    "t* + 30 min <= opend.",
+    "Missing intraop_phe, intraop_eph or intraop_epi is not taken as zero: the case is excluded from the "
+    "primary cohort (it may enter the fallback cohort).",
+    "ane_type is matched case-insensitively on the word 'general'.",
+    "Fallback bolus signature: within either measurement window, any 10-s bin more than 15 mmHg above the "
+    "minimum of the six bins before it (within the window).",
+    "Infusion sensitivity: a change is any difference between successive recorded rates of PHEN, NEPI, "
+    "EPI, VASO, DOPA or DOBU from the last sample before t0 - 31 min to t0.",
+    "G1 baseline: median of valid (unfilled) mean pressure from opstart to opstart + 10 min. Pressure at "
+    "an hb sample: median of valid mean pressure in the 5 min before it.",
+    "G18: Pearson correlation of detrended MAP and detrended HR (Solar8000/HR valid 20 to 250) in each "
+    "window; the same with stroke volume (Vigileo/SV or EV1000/SV, valid 5 to 250) where present.",
+]
+
+GRID = 2.0
+BIN = 10.0
+PTS_PER_BIN = int(BIN / GRID)
+HYPO = 65.0
+APPROACH = 31 * 60
+CONTROL_AFTER = 30 * 60
+WIN = 10 * 60
+EARLY_START, EARLY_END = 31 * 60, 21 * 60
+MIN_CASES = 20
+EBV_ML_PER_KG = {"M": 70.0, "F": 65.0}
+INFUSION_DRUGS = ("PHEN", "NEPI", "EPI", "VASO", "DOPA", "DOBU")
+TRACKS = dict(mbp="Solar8000/ART_MBP", sbp="Solar8000/ART_SBP", dbp="Solar8000/ART_DBP",
+              hr="Solar8000/HR", sv1="Vigileo/SV", sv2="EV1000/SV")
+
+PRIMARY = dict(gapfill_pts=5, sustain_bins=6, late_end=60, fallback=False)
+
+
+# ---------------------------------------------------------------- loading
+class Data:
+    def __init__(self, root):
+        self.root = root
+        self.cases = pd.read_csv(os.path.join(root, "cases.csv"))
+        self.labs = pd.read_csv(os.path.join(root, "labs.csv"))
+        for f in ("caseid", "dt", "result"):
+            self.labs[f] = pd.to_numeric(self.labs[f], errors="coerce")
+        self.trks = pd.read_csv(os.path.join(root, "trks.csv"))
+        self._tid = {(int(r.caseid), r.tname): r.tid for r in self.trks.itertuples()}
+
+    def has(self, caseid, tname):
+        return (int(caseid), tname) in self._tid
+
+    def track(self, caseid, tname):
+        tid = self._tid.get((int(caseid), tname))
+        if tid is None:
+            return None
+        path = os.path.join(self.root, "tracks", f"{tid}.csv.gz")
+        if not os.path.exists(path):
+            return None
+        df = pd.read_csv(path, compression="gzip")
+        df = df.iloc[:, :2]
+        df.columns = ["t", "v"]
+        df = df.dropna()
+        return df["t"].to_numpy(float), df["v"].to_numpy(float)
+
+
+# ---------------------------------------------------------------- signal handling
+def to_grid(t, v, t_start, n):
+    """Place samples on the 2-s grid; NaN where none."""
+    out = np.full(n, np.nan)
+    if t is None or len(t) == 0:
+        return out
+    idx = np.rint((t - t_start) / GRID).astype(np.int64)
+    ok = (idx >= 0) & (idx < n) & (np.abs(t - (t_start + idx * GRID)) <= GRID / 2 + 1e-9)
+    if not ok.any():
+        return out
+    s = pd.Series(v[ok]).groupby(idx[ok]).mean()
+    out[s.index.to_numpy()] = s.to_numpy()
+    return out
+
+
+def gap_fill(x, max_pts):
+    """Linearly interpolate runs of NaN of length <= max_pts that have valid values on both sides."""
+    x = x.copy()
+    if max_pts <= 0:
+        return x
+    isn = np.isnan(x)
+    n = len(x)
+    i = 0
+    while i < n:
+        if isn[i]:
+            j = i
+            while j < n and isn[j]:
+                j += 1
+            if i > 0 and j < n and (j - i) <= max_pts:
+                x[i:j] = np.interp(np.arange(i, j), [i - 1, j], [x[i - 1], x[j]])
+            i = j
+        else:
+            i += 1
+    return x
+
+
+def clean_map(mbp, sbp, dbp):
+    ok = (~np.isnan(mbp) & ~np.isnan(sbp) & ~np.isnan(dbp)
+          & (mbp >= 20) & (mbp <= 200) & (sbp <= 300) & ((sbp - dbp) >= 10))
+    return np.where(ok, mbp, np.nan)
+
+
+def clean_range(x, lo, hi):
+    return np.where(~np.isnan(x) & (x >= lo) & (x <= hi), x, np.nan)
+
+
+def bins(x):
+    nb = len(x) // PTS_PER_BIN
+    b = x[:nb * PTS_PER_BIN].reshape(nb, PTS_PER_BIN)
+    with np.errstate(all="ignore"):
+        cnt = (~np.isnan(b)).sum(1)
+        m = np.where(cnt > 0, np.nansum(b, 1) / np.maximum(cnt, 1), np.nan)
+    return m
+
+
+class Case:
+    """One case's signals on a common clock from opstart."""
+
+    def __init__(self, row, data, gapfill_pts):
+        self.id = int(row.caseid)
+        self.opstart = float(row.opstart)
+        self.opend = float(row.opend)
+        self.mid = (self.opstart + self.opend) / 2
+        n = int((self.opend - self.opstart) // GRID) + 1
+        self.n = n
+        g = {k: to_grid(*(data.track(self.id, tn) or (None, None)), self.opstart, n)
+             for k, tn in TRACKS.items()}
+        raw = clean_map(g["mbp"], g["sbp"], g["dbp"])
+        self.map_raw = raw
+        self.map = gap_fill(raw, gapfill_pts)
+        self.map_bins = bins(self.map)
+        hr = gap_fill(clean_range(g["hr"], 20, 250), gapfill_pts)
+        self.hr = hr
+        self.hr_bins = bins(hr)
+        sv = g["sv1"] if np.isfinite(g["sv1"]).any() else g["sv2"]
+        sv = gap_fill(clean_range(sv, 5, 250), gapfill_pts)
+        self.sv = sv
+        self.sv_bins = bins(sv)
+        self.data = data
+
+    # times in seconds from casestart
+    def bin_index(self, t):
+        return int(round((t - self.opstart) / BIN))
+
+    def grid_slice(self, a, b):
+        return slice(int(round((a - self.opstart) / GRID)), int(round((b - self.opstart) / GRID)))
+
+    def window(self, a, b, which="map"):
+        """10-s bins for [a, b), or None if unusable (more than 10% of the 2-s grid missing)."""
+        if a < self.opstart or b > self.opend:
+            return None
+        grid = getattr(self, which)[self.grid_slice(a, b)]
+        if len(grid) == 0 or np.isnan(grid).mean() > 0.10:
+            return None
+        bb = getattr(self, which + "_bins")[self.bin_index(a):self.bin_index(b)]
+        if len(bb) != int(round((b - a) / BIN)):
+            return None
+        if np.isnan(bb).any():
+            idx = np.arange(len(bb))
+            ok = ~np.isnan(bb)
+            if ok.sum() < 3:
+                return None
+            bb = np.interp(idx, idx[ok], bb[ok])
+        return bb
+
+
+def detrend(x):
+    i = np.arange(len(x))
+    p = np.polyfit(i, x, 1)
+    return x - np.polyval(p, i)
+
+
+def ar1(x):
+    r = detrend(x)
+    a, b = r[:-1], r[1:]
+    if a.std() < 1e-12 or b.std() < 1e-12:
+        return np.nan
+    return float(np.corrcoef(a, b)[0, 1])
+
+
+def sd(x):
+    s = float(np.std(detrend(x), ddof=1))
+    return s if s > 1e-12 else np.nan
+
+
+def xcorr(x, y):
+    a, b = detrend(x), detrend(y)
+    if a.std() < 1e-12 or b.std() < 1e-12:
+        return np.nan
+    return float(np.corrcoef(a, b)[0, 1])
+
+
+def bolus_signature(x):
+    for i in range(1, len(x)):
+        if x[i] - x[max(0, i - 6):i].min() > 15.0:
+            return True
+    return False
+
+
+def pair_windows(case, t, late_end, which="map"):
+    L = case.window(t - (WIN + late_end), t - late_end, which)
+    E = case.window(t - EARLY_START, t - EARLY_END, which)
+    return E, L
+
+
+def pair_measures(E, L):
+    m = dict(ar1_E=ar1(E), ar1_L=ar1(L), sd_E=sd(E), sd_L=sd(L))
+    m["d_ar1"] = m["ar1_L"] - m["ar1_E"]
+    m["d_lnsd"] = (np.log(m["sd_L"]) - np.log(m["sd_E"])) if (m["sd_E"] > 0 and m["sd_L"] > 0) else np.nan
+    for k in ("E", "L"):
+        a = m["ar1_" + k]
+        m["rec_" + k] = float(-BIN / np.log(a)) if (a is not None and 0 < a < 1) else np.nan
+    return m
+
+
+def stable(case, a, b):
+    bb = case.map_bins[max(0, case.bin_index(a)):case.bin_index(b)]
+    bb = bb[~np.isnan(bb)]
+    return len(bb) > 0 and bool((bb >= HYPO).all())
+
+
+def candidate_breaks(case, sustain_bins):
+    """Onsets (s from casestart) of runs of >= sustain_bins consecutive bins below 65 mmHg."""
+    below = ~np.isnan(case.map_bins) & (case.map_bins < HYPO)
+    out, i, n = [], 0, len(below)
+    while i < n:
+        if below[i]:
+            j = i
+            while j < n and below[j]:
+                j += 1
+            if j - i >= sustain_bins:
+                out.append(case.opstart + i * BIN)
+            i = j
+        else:
+            i += 1
+    return out
+
+
+def first_qualifying_break(case, p):
+    for t0 in candidate_breaks(case, p["sustain_bins"]):
+        if not (case.mid < t0 < case.opend):
+            continue
+        if t0 - APPROACH < case.opstart:
+            continue
+        if not stable(case, t0 - APPROACH, t0):
+            continue
+        E, L = pair_windows(case, t0, p["late_end"])
+        if E is None or L is None:
+            continue
+        if p["fallback"] and (bolus_signature(E) or bolus_signature(L)):
+            continue
+        return t0, E, L
+    return None
+
+
+def control_pairs(case, p):
+    out = []
+    k = 0
+    while True:
+        ts = case.mid + k * 300.0
+        k += 1
+        if ts + CONTROL_AFTER > case.opend:
+            break
+        if ts - APPROACH < case.opstart:
+            continue
+        if not stable(case, ts - APPROACH, ts + CONTROL_AFTER):
+            continue
+        E, L = pair_windows(case, ts, p["late_end"])
+        if E is None or L is None:
+            continue
+        if p["fallback"] and (bolus_signature(E) or bolus_signature(L)):
+            continue
+        out.append((ts, E, L))
+    return out
+
+
+def infusion_changed(data, caseid, t0):
+    for d in INFUSION_DRUGS:
+        tr = data.track(caseid, f"Orchestra/{d}_RATE")
+        if tr is None:
+            continue
+        t, v = tr
+        a = t0 - APPROACH
+        before = np.where(t < a)[0]
+        sel = (t >= a) & (t <= t0)
+        vals = list(v[sel])
+        if len(before):
+            vals = [v[before[-1]]] + vals
+        if len(vals) >= 2 and np.any(np.diff(np.array(vals)) != 0):
+            return True
+    return False
+
+
+# ---------------------------------------------------------------- cohort
+def ebv_share(row):
+    k = EBV_ML_PER_KG.get(str(row.sex).strip().upper()[:1])
+    if k is None or not np.isfinite(row.weight) or row.weight <= 0 or not np.isfinite(row.intraop_ebl):
+        return np.nan
+    return row.intraop_ebl / (k * row.weight)
+
+
+def eligible_cases(data, fallback):
+    c = data.cases.copy()
+    for f in ("weight", "intraop_ebl", "opstart", "opend", "intraop_phe", "intraop_eph", "intraop_epi"):
+        c[f] = pd.to_numeric(c[f], errors="coerce")
+    keep = c["ane_type"].astype(str).str.lower().str.contains("general")
+    keep &= c.apply(lambda r: all(data.has(r.caseid, TRACKS[k]) for k in ("mbp", "sbp", "dbp")), axis=1)
+    keep &= c["intraop_ebl"].notna() & c["weight"].notna() & c["sex"].notna()
+    keep &= (c["opend"] - c["opstart"]) >= 90 * 60
+    if not fallback:
+        for f in ("intraop_phe", "intraop_eph", "intraop_epi"):
+            keep &= c[f].notna() & (c[f] == 0)
+    c = c[keep].copy()
+    c["ebv_share"] = c.apply(ebv_share, axis=1)
+    return c[c["ebv_share"].notna()]
+
+
+def process(data, cases, p):
+    """Per case: first qualifying break and control pairs. Returns dict caseid -> result (or None)."""
+    out = {}
+    for row in cases.itertuples():
+        case = Case(row, data, p["gapfill_pts"])
+        br = first_qualifying_break(case, p)
+        ctl = control_pairs(case, p)
+        out[int(row.caseid)] = dict(case=case, ebv_share=float(row.ebv_share), brk=br, ctl=ctl)
+    return out
+
+
+def qualifies(r):
+    return r["brk"] is not None and len(r["ctl"]) > 0
+
+
+def group_ids(res, hi_thr):
+    hi = [cid for cid, r in res.items() if r["ebv_share"] >= hi_thr and qualifies(r)]
+    lo = [cid for cid, r in res.items() if r["ebv_share"] <= 0.05 and qualifies(r)]
+    return hi, lo
+
+
+def decide_cohort(data):
+    """The count step: decide threshold and cohort from counts only (Section 2)."""
+    log = []
+    for fallback in (False, True):
+        cases = eligible_cases(data, fallback)
+        p = dict(PRIMARY, fallback=fallback)
+        res = process(data, cases[(cases.ebv_share >= 0.15) | (cases.ebv_share <= 0.05)], p)
+        for thr in (0.20, 0.15):
+            hi, lo = group_ids(res, thr)
+            log.append(dict(cohort="fallback" if fallback else "primary", high_threshold=thr,
+                            eligible_cases=int(len(cases)), high_qualifying=len(hi), low_qualifying=len(lo)))
+            if len(lo) < MIN_CASES:
+                break
+            if len(hi) >= MIN_CASES:
+                return dict(runnable=True, cohort="fallback" if fallback else "primary",
+                            high_threshold=thr, counts=log)
+    return dict(runnable=False, counts=log)
+
+
+# ---------------------------------------------------------------- scores and tests
+def case_scores(r, measure="d_ar1"):
+    _, E, L = r["brk"]
+    b = pair_measures(E, L)[measure]
+    c = np.nanmedian([pair_measures(E2, L2)[measure] for _, E2, L2 in r["ctl"]])
+    return float(b - c), float(b), float(c)
+
+
+def wilcoxon_greater(x):
+    x = np.asarray([v for v in x if np.isfinite(v)])
+    if len(x) < 2 or np.all(x == 0):
+        return dict(n=int(len(x)), median=float(np.median(x)) if len(x) else None, p=None)
+    return dict(n=int(len(x)), median=float(np.median(x)),
+                p=float(stats.wilcoxon(x, alternative="greater").pvalue),
+                p_two_sided=float(stats.wilcoxon(x).pvalue))
+
+
+def mwu_greater(a, b):
+    a = [v for v in a if np.isfinite(v)]
+    b = [v for v in b if np.isfinite(v)]
+    if len(a) < 2 or len(b) < 2:
+        return dict(n_high=len(a), n_low=len(b), p=None)
+    return dict(n_high=len(a), n_low=len(b), median_high=float(np.median(a)), median_low=float(np.median(b)),
+                p=float(stats.mannwhitneyu(a, b, alternative="greater").pvalue))
+
+
+def verdict(P1, P2):
+    if P1.get("p") is None:
+        return "not computable"
+    if P1["median"] < 0 and P1.get("p_two_sided") is not None and P1["p_two_sided"] < 0.05:
+        return "Contradicted"
+    p1 = P1["p"] < 0.05 and P1["median"] > 0
+    if not p1:
+        return "Fails"
+    p2 = P2.get("p") is not None and P2["p"] < 0.05
+    return "Supported" if p2 else "Narrowed"
+
+
+def run_tests(res, hi, lo):
+    dh = [case_scores(res[c])[0] for c in hi]
+    dl = [case_scores(res[c])[0] for c in lo]
+    sh = [case_scores(res[c], "d_lnsd")[0] for c in hi]
+    P1 = wilcoxon_greater(dh)
+    P2 = mwu_greater(dh, dl)
+    P3 = wilcoxon_greater(sh)
+    return dict(P1=P1, P2=P2, P3=P3, verdict=verdict(P1, P2))
+
+
+def g1_check(data, res, ids):
+    labs = data.labs
+    labs = labs[labs["name"].astype(str).str.lower() == "hb"]
+    rows = []
+    for cid in ids:
+        r = res[cid]
+        case = r["case"]
+        base = case.map_raw[case.grid_slice(case.opstart, case.opstart + 600)]
+        base = base[~np.isnan(base)]
+        if len(base) == 0:
+            continue
+        b = float(np.median(base))
+        tend = r["brk"][0] if r["brk"] else case.opend
+        hb = labs[(labs.caseid == cid) & (labs.dt > case.opstart) & (labs.dt < tend)].sort_values("dt")
+        pts = []
+        for h in hb.itertuples():
+            m = case.map_raw[case.grid_slice(max(case.opstart, h.dt - 300), h.dt)]
+            m = m[~np.isnan(m)]
+            if len(m) and np.isfinite(h.result):
+                pts.append((float(np.median(m)), float(h.result)))
+        if len(pts) < 2:
+            continue
+        within = all(abs(m / b - 1) <= 0.20 for m, _ in pts)
+        fell = pts[-1][1] < pts[0][1]
+        rows.append(within and fell)
+    frac = float(np.mean(rows)) if rows else None
+    return dict(cases_with_two_hb=len(rows), share_consistent=frac,
+                consistent=(frac is not None and frac > 0.5))
+
+
+def g18(res, ids, late_end, which):
+    d = []
+    for cid in ids:
+        r = res[cid]
+        case = r["case"]
+
+        def dc(t, E, L):
+            Eo, Lo = pair_windows(case, t, late_end, which)
+            if Eo is None or Lo is None:
+                return np.nan
+            return xcorr(L, Lo) - xcorr(E, Eo)
+        t0, E, L = r["brk"]
+        b = dc(t0, E, L)
+        c = np.nanmedian([dc(t, E2, L2) for t, E2, L2 in r["ctl"]] or [np.nan])
+        if np.isfinite(b) and np.isfinite(c):
+            d.append(b - c)
+    return dict(n=len(d), median_excess_change_in_correlation=float(np.median(d)) if d else None)
+
+
+def sha(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        h.update(f.read())
+    return h.hexdigest()
+
+
+# ---------------------------------------------------------------- commands
+def cmd_count(data_dir, out):
+    data = Data(data_dir)
+    dec = decide_cohort(data)
+    os.makedirs(out, exist_ok=True)
+    with open(os.path.join(out, "counts.json"), "w") as f:
+        json.dump(dict(code_sha256=sha(__file__), **dec), f, indent=2)
+    print(json.dumps(dec, indent=2))
+    return dec
+
+
+def analyse(data, dec, extra=None):
+    fb = dec["cohort"] == "fallback"
+    thr = dec["high_threshold"]
+    p = dict(PRIMARY, fallback=fb, **(extra or {}))
+    cases = eligible_cases(data, fb)
+    res = process(data, cases[(cases.ebv_share >= min(thr, 0.15)) | (cases.ebv_share <= 0.05)], p)
+    hi, lo = group_ids(res, thr)
+    return res, hi, lo, p
+
+
+def cmd_analyse(data_dir, out):
+    cpath = os.path.join(out, "counts.json")
+    if not os.path.exists(cpath):
+        sys.exit("counts.json not found: run the count step first (pre-registration Section 2).")
+    dec = json.load(open(cpath))
+    data = Data(data_dir)
+    summary = dict(prereg="tests/H1 VitalDB G12 - pre-registration.md", prereg_sha256_begins="371caf3c",
+                   code_sha256=sha(__file__), implementation_notes=IMPLEMENTATION_NOTES, counts=dec)
+    if not dec["runnable"]:
+        summary["verdict"] = "not runnable"
+    else:
+        res, hi, lo, p = analyse(data, dec)
+        main = run_tests(res, hi, lo)
+        summary["primary"] = dict(cohort=dec["cohort"], weight=0.5 if dec["cohort"] == "fallback" else 1.0,
+                                  high_threshold=dec["high_threshold"], n_high=len(hi), n_low=len(lo), **main)
+        summary["verdict"] = main["verdict"]
+        summary["recovery_time_s_median"] = dict(
+            E=float(np.nanmedian([pair_measures(res[c]["brk"][1], res[c]["brk"][2])["rec_E"] for c in hi])),
+            L=float(np.nanmedian([pair_measures(res[c]["brk"][1], res[c]["brk"][2])["rec_L"] for c in hi])))
+        sens = {}
+        # 1: exclude breaks with an infusion-rate change in the approach
+        hi1 = [c for c in hi if not infusion_changed(data, c, res[c]["brk"][0])]
+        lo1 = [c for c in lo if not infusion_changed(data, c, res[c]["brk"][0])]
+        sens["1_no_infusion_change"] = dict(n_high=len(hi1), n_low=len(lo1), **run_tests(res, hi1, lo1))
+        for key, extra in (("2_no_gap_fill", dict(gapfill_pts=0)), ("3_sustained_5_min", dict(sustain_bins=30)),
+                           ("5_late_window_ends_3_min", dict(late_end=180))):
+            r2, h2, l2, _ = analyse(data, dec, extra)
+            sens[key] = dict(n_high=len(h2), n_low=len(l2), **run_tests(r2, h2, l2))
+        if dec["high_threshold"] == 0.20:
+            h4, l4 = group_ids(res, 0.15)
+            sens["4_high_at_15pct"] = dict(n_high=len(h4), n_low=len(l4), **run_tests(res, h4, l4))
+        summary["sensitivity"] = sens
+        all_hi = [c for c, r in res.items() if r["ebv_share"] >= dec["high_threshold"]]
+        summary["G1_check"] = g1_check(data, res, all_hi)
+        summary["G18_exploratory"] = dict(map_hr=g18(res, hi, p["late_end"], "hr"),
+                                          map_sv=g18(res, hi, p["late_end"], "sv"))
+    os.makedirs(out, exist_ok=True)
+    with open(os.path.join(out, "summary.json"), "w") as f:
+        json.dump(summary, f, indent=2, default=float)
+    print(json.dumps({k: summary[k] for k in ("verdict",)}, indent=2))
+    return summary
+
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("cmd", choices=("count", "analyse"))
+    here = os.path.dirname(os.path.abspath(__file__))
+    ap.add_argument("--data", default=os.path.join(here, "..", "..", "data", "vitaldb"))
+    ap.add_argument("--out", default=os.path.join(here, "..", "results", "H1-VDB"))
+    a = ap.parse_args()
+    (cmd_count if a.cmd == "count" else cmd_analyse)(a.data, a.out)
+
+==================== END OF INPUTS ====================
