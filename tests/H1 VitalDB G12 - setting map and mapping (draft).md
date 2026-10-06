@@ -17,7 +17,7 @@
 | **The record (held output)** | Mean arterial pressure, watched and defended by the anaesthetist and by the patient's own reflexes |
 | **Do the model's conditions hold?** | Yes. There is a governor (reflexes plus anaesthetist) holding a level (arterial pressure). There are finite parts (heart, vessel beds, organs), stores (blood in the veins and gut that can be shifted into circulation), and a load (blood loss) |
 | **Confounds the setting produces** | (1) **The anaesthetist's boluses** of vasopressor are recorded only as case totals, not timed. Handled by selection (Section 3). (2) Infusions are timed (1 second) and fluids are case totals: both act on the record. (3) **Surgical events are not marked;** only case, anaesthesia and surgery start and end exist, with times from the electronic record rounded to 5 minutes. (4) **Arterial blood sampling** puts known artefacts into the pressure trace. (5) **Anaesthetic depth** and drugs lower pressure by themselves (vasodilation), independent of blood loss. (6) Cases differ in surgery type, position and patient |
-| **Contrast setting** (where the model predicts a weaker effect) | **Falls in pressure soon after anaesthesia starts** (within a fixed window of the anaesthesia start marker), in cases with little blood loss. These falls come from drug-induced vasodilation acting at once, a switch with no store being depleted. So the model predicts no warning before them |
+| **Contrast setting** (where the model predicts a weaker effect). **Superseded in the pre-registration, before data:** falls soon after induction lack the 31 minutes of recorded history the measures need, so the contrast is falls in low-loss cases instead | **Falls in pressure soon after anaesthesia starts** (within a fixed window of the anaesthesia start marker), in cases with little blood loss. These falls come from drug-induced vasodilation acting at once, a switch with no store being depleted. So the model predicts no warning before them |
 | **Contamination declared** | (1) The TQ-DS2a essay described dynamics before fainting in laboratory tests in general terms (a short volatile window; loss of a slow rhythm; micro-variation in the pulse waveform). (2) Claude knows in outline that falls in pressure during surgery can be predicted minutes ahead from features of the arterial waveform (commercial prediction indices). (3) Claude knows the two-phase physiology of blood loss (Section 2, item 5). **All three bear on G12; the result's weight is reduced accordingly** |
 
 ## 2. Mapping under v0.17 (Section 7 of the model)
@@ -57,6 +57,8 @@
    - Pressure numerics every 2 seconds; the waveform at 500 Hz.
    - Windows are judged in minutes.
 
+> **Decided (James, 6 October 2026): A.** Carried into tests/H1 VitalDB G12 - pre-registration.md.
+>
 > **Decision for James: the release profile to commit for falls during substantial blood loss.** This bears on how refutable the test is.
 >
 > - **A (recommended): taper, then possibly a switch.**
