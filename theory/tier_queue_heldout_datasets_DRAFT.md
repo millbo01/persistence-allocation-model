@@ -268,3 +268,39 @@ No open repository holds a long fast followed in individual animals with repeate
   7. blind adjudication;
   8. replication by a second model.
 - **No VitalDB file is opened before step 4 is committed.**
+
+### H1-VDB-S1 assessment (6 October 2026)
+
+**Stored:** raw/2026-10-06_gemini_H1-VDB-S1.md, SHA-256 begins 27383b4d.
+
+**Format held.**
+- The output starts at item 1, with no essay and no physiological values. Case counts only.
+- **Minor breach of the "no studies" rule:** the works-cited list includes the title of one study that used VitalDB (a latent-class analysis), a narrative review of open datasets, and a software tool. No findings are given. Logged.
+
+**What the structure allows, and does not:**
+1. **Bleeding is recorded only as a total per case** (intraop_ebl), not over time.
+   - So **G3** (the break at the same cumulative loss whatever the rate) **cannot be tested in VitalDB.**
+   - Time-stamped haemoglobin and lactate (lab_data, time dt) are sparse proxies.
+   - The rapid-infusion device (FMS, time-stamped volumes) appears in only 15 cases.
+2. **The outside defending loop is only partly visible in time.**
+   - Vasopressor and other **boluses are totals per case** (intraop_phe, intraop_eph, intraop_epi and others), not time-stamped.
+   - Fluids and blood products are totals too, except FMS.
+   - Infusions (Orchestra: phenylephrine, norepinephrine, epinephrine, vasopressin and others) are time-stamped at 1 second.
+   - **A selection rule can reduce the confound:** keep only cases with no bolus vasopressor (intraop_phe = intraop_eph = intraop_epi = 0), so every vasopressor given is visible in time.
+3. **The record and state signals are well covered.**
+   - Arterial pressure waveform (SNUADC/ART, 500 Hz) in 3,645 cases, with numerics every 2 seconds.
+   - Heart rate, oxygen saturation, plethysmography.
+   - Stroke volume, cardiac output and stroke volume variation (Vigileo in 348 cases, EV1000 in 599).
+   - Depth of anaesthesia (BIS in 5,566).
+   - Only six time markers per case: case, anaesthesia and surgery start and end, with EMR times rounded to 5 minutes.
+4. **What remains testable:**
+   - **G12** (record dynamics before the break: recovery from small knocks slows, with rising autocorrelation and variance before a fall in pressure);
+   - **G1** (pressure held while state signals move, a layer 1 check, made near-trivial while an anaesthetist defends pressure);
+   - possibly **G18** (co-movement of heart rate and stroke volume before a fall).
+5. **Contamination for G12:**
+   - **Already declared:** the TQ-DS2a essay on the dynamics before fainting.
+   - **New:** Claude knows in outline that falls in intraoperative pressure can be predicted minutes ahead from features of the arterial waveform (commercial hypotension-prediction indices). Any G12 test here must declare it.
+
+**Conclusion for H1.**
+- VitalDB can carry a pre-registered test of G12, with G1 as a check, on cases with an arterial line, substantial estimated blood loss, and no bolus vasopressors.
+- It cannot test G3. G3 needs time-stamped bleeding or transfusion; the MIMIC-III matched waveforms (transfusions time-stamped in the clinical database) and INSPIRE are the candidates, each needing its own documentation run.
