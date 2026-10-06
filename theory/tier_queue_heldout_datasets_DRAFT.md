@@ -81,7 +81,7 @@ The candidates above were drafted from Claude's memory, with no search. James: t
 | TQ-DS2b | Blood loss: clinical monitoring datasets (surgery, trauma, childbirth) | tests/prompts/TQ-DS2b.txt (template v3.2: no introduction or background allowed) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS2b.md, SHA-256 begins 38373bd8). Template held. See assessment |
 | TQ-DS2c | Blood loss: animal controlled haemorrhage | tests/prompts/TQ-DS2c.txt (template v3.2) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS2c.md, SHA-256 begins 542ee5d3). Nothing usable; blood-loss searches closed |
 | TQ-DS3a | Kidney: humans (AKI and recovery, CKD over time, living donors, hospital databases) | tests/prompts/TQ-DS3a.txt (template v3.2) | Run 5 October 2026 (Gemini; raw/2026-10-05_gemini_TQ-DS3a.md, SHA-256 begins ce134b7a). Template held; no living-donor rows; see assessment |
-| TQ-DS3a-D | Kidney: living donors before and after donation; renal functional reserve tested more than once (narrowed rerun) | tests/prompts/TQ-DS3a-D.txt (template v3.2, identifier rule tightened) | Built 5 October 2026; to run on Gemini deep research |
+| TQ-DS3a-D | Kidney: living donors before and after donation; renal functional reserve tested more than once (narrowed rerun) | tests/prompts/TQ-DS3a-D.txt (template v3.2, identifier rule tightened) | Run 6 October 2026 (Gemini; raw/2026-10-06_gemini_TQ-DS3a-D.md, SHA-256 begins 56e306b6). Background essay returned and leaked findings; see assessment |
 | TQ-DS3b | Kidney: animal nephron-loss models | to build after TQ-DS3a returns, if needed | |
 | TQ-DS3 | Kidney (H3) | | |
 | TQ-DS4 | Honeybees (H4) | | |
@@ -229,3 +229,28 @@ No open repository holds a long fast followed in individual animals with repeate
     Record against capacity over years is in reach. The cohorts need an institutional application, and whether James can apply independently is unknown.
   - **CRISP contamination (Claude's prior knowledge):** in outline, kidney volume in polycystic kidney disease rises for years while GFR holds. Any test on CRISP must declare that this pattern is known.
 - **Next:** TQ-DS3a-D, a narrowed rerun on living donors and repeated renal functional reserve testing, before H3 is chosen. Animal nephron-loss models (TQ-DS3b) only if needed after that.
+
+### TQ-DS3a-D assessment (6 October 2026)
+
+- **Format rule failed.** The report opens with a long background essay, despite template v3.2. Counts reconcile (11 rows).
+- **Findings leaked in the essay** (contamination declared):
+  1. **Donors and the heart.** Loss of kidney mass is described as triggering systemic adaptations, with reduced GFR as an independent influence on arterial remodelling (the CRIB-Donor study's direction of result). Any test of donor coupling to the cardiovascular system must declare this.
+  2. **Reserve after cardiac surgery.** The essay describes the obliteration and recovery of reserve after surgery. Any test of reserve recovery must declare this.
+  3. **The creatinine-blind range.** The essay describes silent loss of nephron mass ahead of any rise in serum creatinine. The pattern was already known in outline from the kidney surface test; minor, logged.
+- **Row faults:**
+  - **Rows 1 to 4** (SRTR, the Living Donor Collective, ANZLKD, Scandiatransplant) give names, not accessions. Their access routes are confirmed by repository pages (application; SRTR charges a fee).
+  - **Row 7** (Husain-Syed 2018) tested reserve once, before surgery. It is not repeated reserve testing; it qualifies only as reserve before an event.
+  - **Row 11** (NCT01769924) is described vaguely.
+- **The useful find: ImmPort SDY291 (RELIVE-06).**
+  - **Content:** living donors with **measured GFR (iothalamate and iohexol)** before donation, early after and late after, plus blood pressure, weight and family history.
+  - **Access:** deposited, credentialed (ImmPort).
+  - **Why it matters:** it is the clean natural experiment for losing half the working units at a known date, with measured capacity rather than the creatinine record alone.
+- **Others:** the registries (SRTR SAFs and the Living Donor Collective, ANZLKD, Scandiatransplant) are available by application and record creatinine and eGFR over long horizons. RELIVE (Ibrahim 2009) and CRIB-Donor are abstract-only.
+
+**Proposal for H3 (for James):**
+- **MIMIC-IV:** episodes of acute injury, with the creatinine record and urine output as a state signal (credentialed).
+- **ImmPort SDY291:** donors, with measured capacity before and after losing half the units (credentialed).
+- Between them they reach G5 (survivors carrying extra load), G6 (record before state) and the creatinine-blind range, with measured GFR against creatinine.
+- **Reserve options by application:** CRIC, AASK, CRISP (measured GFR, kidney volume) and the SRTR Living Donor Collective.
+- **James's steps:** PhysioNet and ImmPort credentialing, when a test is set up.
+- **Contamination:** as declared above, and in TQ-DS3a.
