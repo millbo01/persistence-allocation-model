@@ -1,0 +1,34 @@
+{
+  "code_sha256": "9fbe80d7909388fc481210b3488658622ecd9b01cc2b8be0c1af64fd678c0c03",
+  "runnable": false,
+  "counts": [
+    {
+      "cohort": "primary",
+      "high_threshold": 0.2,
+      "eligible_cases": 39,
+      "high_qualifying": 12,
+      "low_qualifying": 25
+    },
+    {
+      "cohort": "primary",
+      "high_threshold": 0.15,
+      "eligible_cases": 39,
+      "high_qualifying": 12,
+      "low_qualifying": 25
+    },
+    {
+      "cohort": "fallback",
+      "high_threshold": 0.2,
+      "eligible_cases": 40,
+      "high_qualifying": 12,
+      "low_qualifying": 25
+    },
+    {
+      "cohort": "fallback",
+      "high_threshold": 0.15,
+      "eligible_cases": 40,
+      "high_qualifying": 12,
+      "low_qualifying": 25
+    }
+  ]
+}

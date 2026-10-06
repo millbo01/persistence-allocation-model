@@ -1,0 +1,205 @@
+{
+  "prereg": "tests/H1 VitalDB G12 - pre-registration.md",
+  "prereg_sha256_begins": "371caf3c",
+  "code_sha256": "9fbe80d7909388fc481210b3488658622ecd9b01cc2b8be0c1af64fd678c0c03",
+  "implementation_notes": [
+    "Each 2-second numeric sample is placed on a 2-s grid from opstart (nearest grid point within 1 s; several samples at one point are averaged).",
+    "A mean-pressure sample is valid only if systolic and diastolic are present at the same grid point and the artefact rule passes (MAP 20 to 200, SBP <= 300, SBP - DBP >= 10). Conservative: a MAP without SBP and DBP cannot be checked and is invalid.",
+    "Gap filling: runs of up to 5 consecutive missing grid points (10 s) with valid points on both sides are linearly interpolated.",
+    "Window usability (more than 10% invalid or missing) is measured on the 2-s grid after gap filling.",
+    "10-second bins are the mean of the valid grid points in the bin; a bin with none is missing. A missing bin breaks a run below 65 mmHg, and is not counted as below 65 in the stable-approach rule.",
+    "Inside a usable window, missing 10-s bins are linearly interpolated (ends: nearest value) before detrending.",
+    "AR1 is the Pearson correlation of the detrended residuals with themselves lagged by one bin; SD uses ddof = 1.",
+    "Control pseudo-onsets: t* = midpoint of surgery + k x 300 s, with t* - 31 min >= opstart and t* + 30 min <= opend.",
+    "Missing intraop_phe, intraop_eph or intraop_epi is not taken as zero: the case is excluded from the primary cohort (it may enter the fallback cohort).",
+    "ane_type is matched case-insensitively on the word 'general'.",
+    "Fallback bolus signature: within either measurement window, any 10-s bin more than 15 mmHg above the minimum of the six bins before it (within the window).",
+    "Infusion sensitivity: a change is any difference between successive recorded rates of PHEN, NEPI, EPI, VASO, DOPA or DOBU from the last sample before t0 - 31 min to t0.",
+    "G1 baseline: median of valid (unfilled) mean pressure from opstart to opstart + 10 min. Pressure at an hb sample: median of valid mean pressure in the 5 min before it.",
+    "G18: Pearson correlation of detrended MAP and detrended HR (Solar8000/HR valid 20 to 250) in each window; the same with stroke volume (Vigileo/SV or EV1000/SV, valid 5 to 250) where present."
+  ],
+  "counts": {
+    "code_sha256": "9fbe80d7909388fc481210b3488658622ecd9b01cc2b8be0c1af64fd678c0c03",
+    "runnable": true,
+    "cohort": "primary",
+    "high_threshold": 0.2,
+    "counts": [
+      {
+        "cohort": "primary",
+        "high_threshold": 0.2,
+        "eligible_cases": 52,
+        "high_qualifying": 25,
+        "low_qualifying": 25
+      }
+    ]
+  },
+  "primary": {
+    "cohort": "primary",
+    "weight": 1.0,
+    "high_threshold": 0.2,
+    "n_high": 25,
+    "n_low": 25,
+    "P1": {
+      "n": 25,
+      "median": 0.8558339708031188,
+      "p": 2.9802322387695312e-08,
+      "p_two_sided": 5.960464477539063e-08
+    },
+    "P2": {
+      "n_high": 25,
+      "n_low": 25,
+      "median_high": 0.8558339708031188,
+      "median_low": -0.06922372070823024,
+      "p": 7.078281124247769e-10
+    },
+    "P3": {
+      "n": 25,
+      "median": 2.497066329101521,
+      "p": 2.9802322387695312e-08,
+      "p_two_sided": 5.960464477539063e-08
+    },
+    "verdict": "Supported"
+  },
+  "verdict": "Supported",
+  "recovery_time_s_median": {
+    "E": 3.6490675459089448,
+    "L": 85.57529580541659
+  },
+  "sensitivity": {
+    "1_no_infusion_change": {
+      "n_high": 22,
+      "n_low": 25,
+      "P1": {
+        "n": 22,
+        "median": 0.8519401675747773,
+        "p": 2.384185791015625e-07,
+        "p_two_sided": 4.76837158203125e-07
+      },
+      "P2": {
+        "n_high": 22,
+        "n_low": 25,
+        "median_high": 0.8519401675747773,
+        "median_low": -0.06922372070823024,
+        "p": 2.423235714135039e-09
+      },
+      "P3": {
+        "n": 22,
+        "median": 2.476015676327158,
+        "p": 2.384185791015625e-07,
+        "p_two_sided": 4.76837158203125e-07
+      },
+      "verdict": "Supported"
+    },
+    "2_no_gap_fill": {
+      "n_high": 25,
+      "n_low": 25,
+      "P1": {
+        "n": 25,
+        "median": 0.8698865931015536,
+        "p": 2.9802322387695312e-08,
+        "p_two_sided": 5.960464477539063e-08
+      },
+      "P2": {
+        "n_high": 25,
+        "n_low": 25,
+        "median_high": 0.8698865931015536,
+        "median_low": -0.08659597075923603,
+        "p": 7.078281124247769e-10
+      },
+      "P3": {
+        "n": 25,
+        "median": 2.493243792060573,
+        "p": 2.9802322387695312e-08,
+        "p_two_sided": 5.960464477539063e-08
+      },
+      "verdict": "Supported"
+    },
+    "3_sustained_5_min": {
+      "n_high": 25,
+      "n_low": 25,
+      "P1": {
+        "n": 25,
+        "median": 0.8558339708031188,
+        "p": 2.9802322387695312e-08,
+        "p_two_sided": 5.960464477539063e-08
+      },
+      "P2": {
+        "n_high": 25,
+        "n_low": 25,
+        "median_high": 0.8558339708031188,
+        "median_low": -0.06922372070823024,
+        "p": 7.078281124247769e-10
+      },
+      "P3": {
+        "n": 25,
+        "median": 2.497066329101521,
+        "p": 2.9802322387695312e-08,
+        "p_two_sided": 5.960464477539063e-08
+      },
+      "verdict": "Supported"
+    },
+    "5_late_window_ends_3_min": {
+      "n_high": 25,
+      "n_low": 25,
+      "P1": {
+        "n": 25,
+        "median": 0.8948857937651409,
+        "p": 2.9802322387695312e-08,
+        "p_two_sided": 5.960464477539063e-08
+      },
+      "P2": {
+        "n_high": 25,
+        "n_low": 25,
+        "median_high": 0.8948857937651409,
+        "median_low": -0.05771033077109261,
+        "p": 7.078281124247769e-10
+      },
+      "P3": {
+        "n": 25,
+        "median": 2.452559668721566,
+        "p": 2.9802322387695312e-08,
+        "p_two_sided": 5.960464477539063e-08
+      },
+      "verdict": "Supported"
+    },
+    "4_high_at_15pct": {
+      "n_high": 25,
+      "n_low": 25,
+      "P1": {
+        "n": 25,
+        "median": 0.8558339708031188,
+        "p": 2.9802322387695312e-08,
+        "p_two_sided": 5.960464477539063e-08
+      },
+      "P2": {
+        "n_high": 25,
+        "n_low": 25,
+        "median_high": 0.8558339708031188,
+        "median_low": -0.06922372070823024,
+        "p": 7.078281124247769e-10
+      },
+      "P3": {
+        "n": 25,
+        "median": 2.497066329101521,
+        "p": 2.9802322387695312e-08,
+        "p_two_sided": 5.960464477539063e-08
+      },
+      "verdict": "Supported"
+    }
+  },
+  "G1_check": {
+    "cases_with_two_hb": 26,
+    "share_consistent": 1.0,
+    "consistent": true
+  },
+  "G18_exploratory": {
+    "map_hr": {
+      "n": 25,
+      "median_excess_change_in_correlation": -0.7168672589438516
+    },
+    "map_sv": {
+      "n": 0,
+      "median_excess_change_in_correlation": null
+    }
+  }
+}
