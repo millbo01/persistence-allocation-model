@@ -3,6 +3,7 @@
 **Status:** draft for James's approval. Phase 3.
 - **What it adds:** the changes James approved on 6 October 2026, from the GPT theory chat (theory/PAM_proposals_from_GPT_chat.md: F1 to F4, A1 to A3, A6, B, and the reduced C as an extension layer).
 - **On approval:** it becomes canonical and **the vocabulary is frozen again.** No new mechanism then enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
+- **Revision 2 (6 October 2026):** six corrections from GPT's review of the draft (raw/2026-10-06_chatgpt_v018-draft-review.md), changes 12 to 17 below. Claude agreed with all six. Change 13 corrects an error in revision 1 (the load identity counted one deficit twice).
 - **Unchanged:** v0.17 (theory/TIER_QUEUE_MODEL_v0.17.md) remains canonical until approval. The H1 VitalDB test was frozen under v0.17 and is unaffected.
 
 ## Changes from v0.17
@@ -20,12 +21,18 @@
 | 9 | **Pregnancy resolved:** the placenta is a temporary part of the mother's system; the fetus is a separate system downstream. No bargaining between governors | F4 (James) |
 | 10 | **Extension layer, proposed (Section 15): nested systems.** A component is a nested system when it has its own loop regulating its own access. People in institutions are systems attached to roles. Capture is an embedded system changing the signals or gates that set its own access. Used only with a mapping guard | Reduced C |
 | 11 | **New predictions:** G24 (cascade along saturated substitutes); G25 (order of sacrifice predicted from documented access) | From F1, F3 |
+| 12 | **Revision 2. Shortfall from either side.** The central claim says "when the resources available fall short of what the reference state requires", in place of "when supply falls short". Scarcity can come from falling supply or rising requirement (work, repair, pregnancy, infection) | GPT review, point 1 |
+| 13 | **Revision 2. Two ledgers, not one.** The **resource ledger** accounts for the gap between reference requirement and supply: store draw + unmet reference allocations (the local loads) + boundary terms. The **state ledger** records what the unmet allocations leave behind (residue). Residue is a consequence of load, not a further destination for it; revision 1 added it to the same sum and so counted the deficit twice | GPT review, point 2 |
+| 14 | **Revision 2. Rank is per resource.** Each resource r has its own order of sacrifice πᵣ. Where the orders coincide, a single "rank" is shorthand | GPT review, point 3 |
+| 15 | **Revision 2. The governor does not switch units.** It sets access; units switch when the resulting flow crosses their local thresholds (units change only through supply). If direct state signals are ever needed, the part's state function would take the governor's signal as an input: that would be a new mechanism, under the standing check | GPT review, point 4 |
+| 16 | **Revision 2. Damage enters from outside.** Trauma, toxins and pathogens enter as an exogenous loss of units or of pathway capacity; the model handles the resource consequences. No damage mechanism is added | GPT review (damage) |
+| 17 | **Revision 2. "In a system that regulates its own persistence"** replaces "In a goal-directed system", which implied agency the model no longer assumes | GPT review (wording) |
 
 ## 1. The principle
 
-**Central claim** (v0.18. It is v0.17's approved wording with three changes James approved: the governor regulates access (F1), part death (A6), and access in place of allocation where the mechanism is described):
+**Central claim** (v0.18. It is v0.17's approved wording with these changes: the governor regulates access (F1), part death (A6), access in place of allocation where the mechanism is described, and, in revision 2, shortfall from either side and "a system that regulates its own persistence"):
 
-> In a goal-directed system, a governor holds the levels its persistence depends on by regulating access to finite shared resources among parts that have no demand of their own; the allocation among parts is the resulting flow. Each part works to the limit of the scarcest resource that reaches it. When supply falls short, the governor draws its stores, and lower-ranked parts lose access first and switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: it ends in switched-off or lost units, drawn stores, or across the boundary. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Repair is its own network, governed like any part: under a sustained shortfall it loses access and lost units wait. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. A part dies only when its route back is cut; the system dies when load reaches the top or a non-bypassable link is cut.
+> In a system that regulates its own persistence, a governor holds the levels its persistence depends on by regulating access to finite shared resources among parts that have no demand of their own; the allocation among parts is the resulting flow. Each part works to the limit of the scarcest resource that reaches it. When the resources available fall short of what the reference state requires, whether supply falls or requirement rises, the governor draws its stores, and lower-ranked parts lose access first and switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: it ends in switched-off or lost units, drawn stores, or across the boundary. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Repair is its own network, governed like any part: under a sustained shortfall it loses access and lost units wait. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. A part dies only when its route back is cut; the system dies when load reaches the top or a non-bypassable link is cut.
 
 ## 2. Scope
 
@@ -52,8 +59,9 @@
   - releasing, filling and spilling stores;
   - opening and closing intake;
   - setting the capacity of pathways and gates (vascular tone; connection; transporters);
-  - switching units on and off;
-  - mobilising repair.
+  - mobilising repair (giving the repair network access).
+
+  **It does not switch units directly.** Units switch off or come back when the flow that reaches them crosses their local thresholds (Section 5: units change only through supply).
 
   **The realised allocation is the resulting flow,** set by the network and the state of the parts. **Explicit allocation** (a budget line, a rota) is one way of setting access; it is not excluded.
 - **How it acts:** largely by broadcast. A signal reaches many parts and pathways, and each responds by rules encoded locally: its receptors, local metabolites, its own autoregulation. The same sympathetic signal constricts gut and kidney beds strongly, while the brain's autoregulation and the heart's local metabolic control hold their own flow.
@@ -101,6 +109,8 @@
 - **Spill.** A resource not needed is spilled once its stores are full. A resource that cannot be spilled (iron) is held by limiting intake.
 - **A store is not a part:** it does no work.
 
+**Damage.** Trauma, toxins and pathogens enter from outside as a loss of units or of pathway capacity. The model then handles the resource consequences (repair, load, access). It contains no damage mechanism.
+
 ## 4. What the governor does
 
 1. **The order of access** (each resource, each step). In the engine, the network's outcome is written as an order of claims:
@@ -113,7 +123,8 @@
    - **The repair network's own capacity** reaches the parts it serves in their rank order.
    - **When supply falls short,** stores are drawn (each up to its release rate), then lower-ranked parts lose access first.
 2. **Rank.**
-   - **What it is:** the order in which parts lose adequate access when a shared resource is scarce. It is a coarse-grained property of the network: topology, pathway capacity, gating, autoregulation, redundancy. **The engine's fixed ranks stand for that order.**
+   - **Per resource:** each resource r has its own order of sacrifice, πᵣ. There is no reason the order for oxygen must match the order for protein, iron, staff time or money. **Where the orders coincide, a single "rank" is shorthand,** and the mapping says so.
+   - **What it is:** for each resource, the order in which parts lose adequate access when it is scarce. It is a coarse-grained property of the network: topology, pathway capacity, gating, autoregulation, redundancy. **The engine's fixed ranks stand for that order.**
    - **What it answers:** who absorbs the shortfall first. It does not set how much each part receives in normal running, which the governor varies all the time.
    - **How it is fixed:** at mapping, from documented properties of access. **Examples:**
      - how strongly each vascular bed constricts under sympathetic drive;
@@ -150,7 +161,15 @@
 - **Load flow and load residue.**
   - **Load flow** is the deficit moving through the system.
   - **Load residue** is the state change left by absorbing it: units switched off, lost or scarred, and stores drawn.
-- **The identity, per resource:** shortfall = store draw + state reduction (residue) + transfer across the boundary + unresolved. The unresolved part passes on through the dependencies until it reaches the top.
+- **Two ledgers, kept apart.**
+  - **The resource ledger** (per resource, in units of that resource). The gap between the reference requirement and supply equals:
+    - store draw;
+    - plus the unmet reference allocations (the sum of the local loads ℓᵢᵣ);
+    - plus boundary terms (resource drawn in from outside the boundary, or requirement exported across it).
+
+    **Every unit of gap is accounted for:** carried by a store, met from outside, exported, or left unmet at a named part.
+  - **The state ledger** (in units of state). What each unmet allocation leaves behind: units switched off, lost or scarred, and the work not done. **Residue is a consequence of load, not a further destination for it.** It is never added to the resource ledger.
+  - **Load passing on:** where a part's unmet allocation reduces its output, parts depending on that output lose capacity. That is load moving through a dependency, counted at the receiving part.
 - **A shortfall can come from supply falling or requirement rising.**
 
 **Movement and failure.**
@@ -173,7 +192,8 @@
 
 **Unchanged from v0.17, Section 6,** with one change: **the ledger is now an identity.** Per resource:
 - supply in plus stores drawn = work done + maintenance and renewal + reactivation and rebuilding + stores refilled + spill;
-- and against the reference allocation, shortfall = store draw + residue + boundary transfer + unresolved (Section 6).
+- against the reference allocation, the resource ledger: gap = store draw + unmet reference allocations + boundary terms;
+- separately, the state ledger: the residue each unmet allocation leaves (Section 6).
 
 ## 8. Mapping a system
 
@@ -190,7 +210,7 @@ Do this before opening any outcome data.
    - What does the governor act through: stores, intake, gates, pathway capacity, explicit budgets?
 4. **Parts.** For each part:
    - its units and capacity;
-   - **its rank, fixed from documented properties of access** (Section 4, item 2);
+   - **its rank for each resource, fixed from documented properties of access** (Section 4, item 2), or one shared rank if the orders are documented to coincide;
    - its rebuild time, template limit and route back (fixed capital: none);
    - its requirements per unit of work, basal maintenance and renewal;
    - **its reference allocation** (for load);
@@ -253,7 +273,7 @@ Do this before opening any outcome data.
 - **The release profile** (a knee, or full release until a switch). H1 bears on it once adjudicated.
 - **The repair network:** resident and mobile kept apart, or one workforce?
 - **What starts anticipatory economising;** how the expected shortfall is learned; what sets a template limit.
-- **Harmful inputs.**
+- **Harmful inputs:** entered for now as exogenous loss of units or pathway capacity (Section 3, Damage). A mechanism is added only if a pre-committed test fails without one.
 - **Governors as modes,** and whether rarity sets which wins.
 - **The carried v0.16 mechanisms:** which predictions need them?
 
@@ -292,7 +312,7 @@ Do this before opening any outcome data.
 
 - **Governor:** the function that holds the levels persistence depends on, by regulating access to resources. Allocation is the resulting flow.
 - **Access:** what a part can draw, set by the network, its gates and the governor's signals.
-- **Rank:** the order in which parts lose adequate access when a shared resource is scarce; fixed at mapping from documented properties of access.
+- **Rank (πᵣ):** for each resource, the order in which parts lose adequate access when it is scarce; fixed at mapping from documented properties of access. A single "rank" is shorthand where the orders coincide.
 - **Part:** a working part (including intake and control), made of units; it has no demand of its own.
 - **Repair network:** the repair workforce (resident and mobile), a set of parts whose work is renewing and rebuilding other parts' units; governed like any part.
 - **Unit states:** active, switched off, lost, scarred.
@@ -300,8 +320,9 @@ Do this before opening any outcome data.
 - **Store:** a stock of one resource, drawn and refilled in order with others of its kind; it does no work.
 - **Carrier:** the network that moves resources (blood, lines, supply chains); a resource only where its own stock is short.
 - **Load:** resource redirection; the shortfall, per resource, between a part's reference allocation and what reaches it.
+- **Damage:** an exogenous loss of units or of pathway capacity.
 - **Load flow:** the deficit moving through the system.
-- **Load residue:** the state change left by absorbing it.
+- **Load residue:** the state change left by absorbing it; recorded in the state ledger, never added to the resource ledger.
 - **Pathway capacity:** the sum of a pathway's routes.
 - **Severance:** pathway capacity at zero.
 - **Switched off, lost, scar, economising, chronic:** as v0.17.
