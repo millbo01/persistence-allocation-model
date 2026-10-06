@@ -2,6 +2,17 @@
 
 The history of the canonical model (theory/TIER_QUEUE_MODEL_v*.md), moved out of the model document at v0.15 so that the document states the model as it stands. Earlier versions remain in the repository.
 
+## v0.16 engine: TQ10 (James approved the build, 6 October 2026)
+
+- **New module:** theory/sim/tq16.py (v0.16 rules); tq_core.py untouched, and TQ5 to TQ9 identical.
+- **Process:** predictions, build notes and scenario parameters were committed before any run. One implementation bug (load ratio) was fixed after the first run and logged.
+- **Results:**
+  - reproduced: throughput tracking, the flat record and order of loss, rate-independence, exhaustion, severance, weak templates and fixed capital, and G12 and G18 (weaker);
+  - partly reproduced: economising (timing), deterioration (large doses run away), scar (through permanent overload, not a patch), economising preventing deterioration, and the spiral;
+  - not reproduced: recovery order (G10).
+- **Main finding:** deterioration is all-or-nothing as built. Options to James: unmet-share deprivation, protective slowing, patch under load.
+- **Model document:** status entries only.
+
 ## Changes in v0.16 (James approved, 6 October 2026)
 
 **Clarification after approval (James, 6 October 2026):**

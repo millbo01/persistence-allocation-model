@@ -114,3 +114,19 @@ See TQ8 (theory/sim/outputs/2026-10-05_TQ8/README.md) for what these generate, t
 - **Known issues** (TQ9):
   - a part's served share, which dependants' capacity follows, is measured against economised demand, so economised work does not reach dependants;
   - a part has no failure end-state (exposure is unbounded), so load spiralling below the top cannot break the record.
+
+## v0.16 engine (theory/sim/tq16.py, 6 October 2026; separate module, tq_core.py unchanged)
+
+`run16(parts, reserve, steps, supply, ...)` implements TIER_QUEUE_MODEL_v0.16.md and theory/tier_queue_math_v0.16.md. Build choices are in theory/sim/tq10_build_notes.md.
+
+- **Supply.** Incoming supply plus the reserve's release is shared out by descending price, each part up to its need (the lesser of running demand and current capacity). The reserve covers only what incoming supply cannot; the lowest-priced parts lose supply first.
+- **Work and load.** Work = min(running demand, capacity, supply); load = running demand - work.
+- **Condition.** It falls by 0.05 x (load ratio - 1) per step, with the excess capped at 5. The load ratio is demand over capacity when fully served, and over supply when supply binds.
+- **Template.** It is lost once the dose passes its threshold (20 robust, 4 weak, 0 fixed capital), or when condition reaches 0.
+- **Refill.** Supply left over refills parts whose leak has stopped, in descending value, with the reserve competing at the expected shortfall.
+- **Economising.** It lowers demand and deployed capacity together, down to the floor (0.4 of normal demand); no debt.
+- **Severance:** `cuts=[(t, part)]`.
+- **Loops:** as in v0.15.
+- **Episodes:** a patch (scar) for renewable parts that lost template; a kept loss for fixed capital; protection and growth as in v0.15.
+
+**Not built:** protective slowing, several shared reserves, local stocks, coupled shedding. Known issue (TQ10): deterioration is all-or-nothing (options with James).
