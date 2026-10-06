@@ -125,7 +125,7 @@ $$p_i=v_i\,s_i\,\min(\tau+h_i,\;T),\qquad s_i=1-\lambda^{-1}\big(1-c_i^{\text{ef
 5. **What is left** stays at the part as load (its container leaks), or crosses the boundary.
 
 **Reserves and throughput** (James, 6 October 2026). A reserve supplies resources.
-- Within its ceiling $c_i^{	ext{eff}}$, a part's work tracks its demand whenever supply, including the reserve, covers it: $w_i=\min(d_i^{	ext{run}},c_i^{	ext{eff}},u_i)$.
+- Within its ceiling $c_i^{\text{eff}}$, a part's work tracks its demand whenever supply, including the reserve, covers it: $w_i=\min(d_i^{\text{run}},c_i^{\text{eff}},u_i)$.
 - "Sustained capacity" is not a separate limit. It is the throughput that ongoing supply supports without the reserve. A reserve lifts work above that, never above the ceiling.
 - Where the binding limit is removing a by-product (a processor's heat), the removal rate plays the part of supply and the heat sink the part of a reserve.
 - There is no throughput target: demand is whatever the governor needs to hold its level, so work changes continuously.

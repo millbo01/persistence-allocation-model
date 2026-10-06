@@ -4,6 +4,11 @@ The history of the canonical model (theory/TIER_QUEUE_MODEL_v*.md), moved out of
 
 ## Changes in v0.16 (James approved, 6 October 2026)
 
+**Clarification after approval (James, 6 October 2026):**
+- Within its ceiling, a part's throughput tracks demand whenever supply, reserves included, covers it. There is no separate sustained-capacity limit and no throughput target.
+- Demand is whatever the governor needs to hold its level.
+- Applied in Section 2 (structural and deployed capacity) and in the maths (Section 4); the open question on reserves and throughput is closed.
+
 From discussion of the TQ9 results, with James's decisions recorded in theory/v0.16_pending.md. Supporting checks: theory/framing_crosscheck.md (engineered and natural systems) and theory/deterioration_threshold_scan.md (deterioration against scarring). Neither carries evidential weight.
 
 1. **Two routes to outright failure** (James).
