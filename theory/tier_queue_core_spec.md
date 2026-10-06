@@ -129,4 +129,6 @@ See TQ8 (theory/sim/outputs/2026-10-05_TQ8/README.md) for what these generate, t
 - **Loops:** as in v0.15.
 - **Episodes:** a patch (scar) for renewable parts that lost template; a kept loss for fixed capital; protection and growth as in v0.15.
 
-**Not built:** protective slowing, several shared reserves, local stocks, coupled shedding. Known issue (TQ10): deterioration is all-or-nothing (options with James).
+- **Protective slowing** (TQ10b; `slowing=True`, to be used for v0.16 runs; off by default only to reproduce TQ10). A part below condition 0.9 lowers its running demand to what it can do (capacity, or supply if supply binds), never below its demand floor. The excess is shed, and unprocessed excess still backs up loops. Slowing ends at condition 0.99, after the patch for a part that lost its template.
+
+**Not built:** several shared reserves, local stocks, coupled shedding.

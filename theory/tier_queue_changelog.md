@@ -2,6 +2,13 @@
 
 The history of the canonical model (theory/TIER_QUEUE_MODEL_v*.md), moved out of the model document at v0.15 so that the document states the model as it stands. Earlier versions remain in the repository.
 
+## v0.16 engine: TQ10b, protective slowing (James chose option B, 6 October 2026)
+
+- **Rule:** a part below condition 0.9 lowers its demand to what it can do, never below its demand floor, until it is back at 0.99. Predictions were committed first, and TQ10's outputs are unchanged with slowing off.
+- **Fixes:** two implementation errors, fixed and logged: the floor was ignored at first, and slowing was released at once for a part that had lost its template.
+- **Results:** the trap is gone; deterioration is graded; G10 is reproduced in the diagnostic (parts first after acute, reserve first after chronic); exhaustion and severance hold; G12, G18 and the spiral are qualitatively unchanged; overuse scars are small.
+- **Question for James:** can control override protective slowing?
+
 ## v0.16 engine: TQ10 (James approved the build, 6 October 2026)
 
 - **New module:** theory/sim/tq16.py (v0.16 rules); tq_core.py untouched, and TQ5 to TQ9 identical.
