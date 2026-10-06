@@ -1,0 +1,59 @@
+{
+  "counts": [
+    {
+      "cohort": "primary",
+      "threshold": 0.2,
+      "eligible": 755,
+      "high_qualifying": 0,
+      "low_qualifying": 11
+    },
+    {
+      "cohort": "primary",
+      "threshold": 0.15,
+      "eligible": 755,
+      "high_qualifying": 0,
+      "low_qualifying": 11
+    },
+    {
+      "cohort": "fallback",
+      "threshold": 0.2,
+      "eligible": 2324,
+      "high_qualifying": 11,
+      "low_qualifying": 31
+    },
+    {
+      "cohort": "fallback",
+      "threshold": 0.15,
+      "eligible": 2324,
+      "high_qualifying": 15,
+      "low_qualifying": 31
+    }
+  ],
+  "runnable": false,
+  "cohort": null,
+  "threshold": null,
+  "n_high": 0,
+  "n_low": 0,
+  "P1": {
+    "n": 0,
+    "median": null,
+    "one_sided_p": null,
+    "two_sided_p": null
+  },
+  "P2": {
+    "n_high": 0,
+    "n_low": 0,
+    "median_high": null,
+    "median_low": null,
+    "p": null
+  },
+  "P3": {
+    "n": 0,
+    "median": null,
+    "p": null
+  },
+  "verdict": "not runnable",
+  "high_loss_cases": [],
+  "low_loss_cases": [],
+  "G1": null
+}
