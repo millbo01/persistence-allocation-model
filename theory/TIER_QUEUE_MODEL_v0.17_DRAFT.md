@@ -22,8 +22,9 @@
 | 5 | **Three outcomes, kept apart.** Switched off: comes back quickly, not harm. Lost: rebuilt over the rebuild time, delayed recovery, not harm. **Scar:** damage to the template, the only real harm | James |
 | 6 | **Harm comes only when supply falls faster than a part can scale down.** Otherwise units are switched off in an orderly way: consolidation, like switching servers off | James; TQ13 |
 | 7 | **Template damage:** disorderly loss in an episode past a limit set for each part when mapping | James (option 1) |
-| 8 | **Inside a part,** basal maintenance is paid first. Renewal keeps a fixed share of the rest, and is cut first when supply falls below basal plus that share. Work never stops for repair | James; TQ12b |
-| 9 | **Repair is local and governed by supply:** the part repairs itself from what reaches it, and the governor decides what reaches it | Scan; James |
+| 8 | **A part keeps only its basal maintenance and its work.** Basal maintenance is paid first; work never stops for repair | James; TQ12b |
+| 9 | **Repair is a network, represented like everything else** (James). The repair workforce is a set of parts whose work is renewing and rebuilding other parts' units. It has its own resources and stores, the governor allocates to it by rank, and its capacity is shared across parts. It is local where resident cells do it and mobile where it is dispatched from a central source. Under a sustained shortfall the governor ranks repair down; under an acute threat it pre-positions it. No new element: parts, resources, ranks and the shared-repair coupling route already exist | James; repair scan addendum (Kiecolt-Glaser 1995; Marucha 1998; Dhabhar; macrophage reviews) |
+| 9a | **Every part's basal maintenance comes before any support work.** A part cannot die, so no allocation may starve a part's existence to fund another's work | James (TQ13b question (a)) |
 | 10 | **Parts do not die; the system dies,** when load reaches the top (the exhaustion cascade) or a non-bypassable link is cut (severance) | James |
 | 11 | **The intake rule.** What is upstream of X is maintained at all costs. The intake's maintenance is support at all times; its work only while it has something to take in | James; TQ11b, TQ13 |
 | 12 | **Economising** is the governor's anticipation: an even cut, made early, that preserves the stores. It is not what prevents damage (the allocation order already does that) | James; TQ11 |
@@ -31,6 +32,7 @@
 | 14 | **Carried from v0.16 but not needed by any engine result so far:** computed marginal value, the horizon, signal gain, labelled refusal, peak protection, growth, reserve memory. They are kept, flagged, each with its own untested prediction (Section 9) | TQ11 parsimony check |
 | 15 | **Open questions are tiered:** model-threatening, refining, niche | Perplexity check |
 | 16 | **Section 1 is unchanged** (James's wording); a proposed rewording follows it | |
+| 17 | **Superseded at model level:** the repair-share rule inside the part (TQ12b) and the per-part rebuild time. Renewal and rebuilding are now the repair network's work. The frozen engine still uses the in-part rule (Section 10) | James |
 
 ## 1. The principle
 
@@ -40,7 +42,7 @@
 
 > **Proposed rewording for v0.17** (for James to choose, reword or reject):
 >
-> In a goal-directed system, a governor holds the levels its persistence depends on by allocating finite resources among parts that have no demand of their own: each part works to the limit of the scarcest resource it is given. When supply falls short, the governor draws its stores and then takes resources from lower-ranked parts, which switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: it ends in switched-off or lost units, drawn stores, or across the boundary. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. Parts do not die; the system dies, when load reaches the top or a non-bypassable link is cut.
+> In a goal-directed system, a governor holds the levels its persistence depends on by allocating finite resources among parts that have no demand of their own: each part works to the limit of the scarcest resource it is given. When supply falls short, the governor draws its stores and then takes resources from lower-ranked parts, which switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: it ends in switched-off or lost units, drawn stores, or across the boundary. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Repair is its own network, allocated by the governor like any part: under a sustained shortfall it is ranked down and lost units wait. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. Parts do not die; the system dies, when load reaches the top or a non-bypassable link is cut.
 
 ## 2. The components
 
@@ -61,6 +63,15 @@
 - **The intake** brings resources in. What is upstream of X is maintained at all costs: its maintenance is support at all times, its work only while it has something to take in.
 - **Non-bypassable links** (central control, transporters, links in series) break the system when cut.
 
+**The repair network.**
+- **What it is:** the repair workforce, a set of working parts whose work is renewing other parts' active units and rebuilding their lost units.
+- **Where it works:** it is **resident** where local cells do the work (tissue-resident cells, local stem cells), and **mobile** where it is supplied from a central source and dispatched to damage (cells made in the bone marrow).
+- **What it needs:** its own resources (protein, vitamin C, zinc) and stores (marrow reserves). One missing resource stops it everywhere (scurvy).
+- **How it is governed:** by the same governor as everything else. Its capacity is shared, so the parts it serves are coupled through it.
+- **Under stress:**
+  - **sustained shortfall:** the governor ranks repair down, so healing slows even where the damaged part's own supply is ample;
+  - **acute threat:** the governor pre-positions repair at likely sites of damage.
+
 **Resources and stores.**
 - **Several resources.** Work, maintenance and renewal each need their own set of resources, in fixed ratio.
 - **Stores.** Each resource has one or more stores, drawn in order and refilled in order. Each has its own release rate, which can taper as it empties (the knee).
@@ -71,10 +82,11 @@
 
 1. **Allocation order** (each resource, each step):
    1. the top's full need;
-   2. support parts' full allocation (parts the top depends on, and the intake's maintenance);
-   3. every other part's basal maintenance, by rank;
-   4. every other part's allocation for work and renewal, by rank;
-   5. **from surplus only:** reactivating and rebuilding parts by rank, against refilling the stores at their value (the expected shortfall).
+   2. **every part's basal maintenance,** by rank. A part cannot die, so existence comes before anyone's work;
+   3. support parts' allocation for work (parts the top depends on; the intake while it has something to take in);
+   4. every other part's allocation for work, by rank, **with the repair network ranked among them;**
+   5. **from surplus only:** reactivation and rebuilding (the repair network's backlog), against refilling the stores at their value (the expected shortfall).
+   - **The repair network allocates its own capacity** among the parts it serves, by their rank: whose units are renewed, and whose lost units are rebuilt, first.
 
    **When supply falls short,** the governor draws its stores (each up to its release rate), then lower-ranked parts lose supply first. That is "resources taken from lower-priority parts".
 2. **Rank, and the open question about priority.**
@@ -89,16 +101,16 @@
 ## 4. What a part does with what it receives
 
 1. **Basal maintenance first.** Basal maintenance keeps the part's units in existence: active and switched-off units both need it.
-2. **Then work and renewal.** Renewal keeps a fixed share of what is left. When supply falls below basal plus that share, renewal's share is cut faster than work's: the repair buffer is cut first. Work never stops for repair.
+2. **Then work.** A part does its work with what it receives. It does not repair itself: renewal of its units, and rebuilding of its lost units, are the repair network's work, supplied to it by that network. Work never stops for repair.
 3. **Work** = min(active capacity, the work allocation of each required resource ÷ its requirement). What it cannot use goes back to the governor.
 4. **Units change only through supply:**
 
    | What is short | What happens | Kind |
    |---|---|---|
-   | Renewal | Units that cannot be renewed are switched off, up to the part's switch-off rate. The rest fail and are lost | Switched off: orderly. Lost: disorderly |
+   | Renewal (the repair network does not reach these units) | Units that cannot be renewed are switched off, up to the part's switch-off rate. The rest fail and are lost | Switched off: orderly. Lost: disorderly |
    | Basal maintenance | Units that cannot be kept in existence are lost | Lost |
    | Work (more units active than the supported work needs) | Units are switched off: consolidation | Switched off |
-   | Nothing (supply returns) | Switched-off units are reactivated quickly, at a cost; lost units are rebuilt over the rebuild time, unless scarred | Coming back |
+   | Nothing (supply returns) | Switched-off units are reactivated quickly, at a cost; lost units are rebuilt by the repair network, in its order of priority and at its capacity, unless scarred | Coming back |
 5. **Scar.** If units lost in disorder in one episode exceed the part's template limit, the excess is scarred and never returns. Fixed capital has no rebuild, so any loss is kept.
 
 ## 5. How load moves, and how systems fail
@@ -117,7 +129,7 @@
 
 - **The record:** the top's work ÷ X. It is flat while load is absorbed below, and moves when nothing more can be taken.
 - **Record dynamics** (G12): with a store whose release tapers, recovery from small knocks slows before the break.
-- **State signals:** active, switched-off and lost units per part; store levels.
+- **State signals:** active, switched-off and lost units per part; store levels; **the repair backlog** (lost units waiting for the repair network).
 - **Co-movement** (G18): parts sharing a loaded dependency move together before the break.
 - **The three outcomes,** told apart by what comes back and how fast:
 
@@ -145,7 +157,8 @@ Do this before opening any outcome data.
    - whether it is the intake.
 
    Fix these from independent sources. Anything chosen with the expected outcome in mind is declared fitted.
-5. **Links.** Dependencies (supply edges), loops, and non-bypassable links (severance points).
+5. **The repair network.** Its parts (resident and mobile), their capacity and source, their resources and reserves, and their rank.
+6. **Links.** Dependencies (supply edges), loops, non-bypassable links (severance points), and which parts share the repair network.
 6. **The clock.** Fix the unit in which durations are judged.
 7. **Predictions.** Write the generic predictions (Section 9) for this system before looking at outcomes.
 
@@ -184,6 +197,7 @@ Unchanged from v0.16, Section 7.
 | G19 | **Three outcomes** (switched off, lost, scar) are distinguishable by what comes back and how fast | 1 | Simulation result (TQ13 O4); untested |
 | G20 | **Exhaustion and severance.** No part loses units while there is somewhere else to take resources from. The top goes last. Failure with willing receivers intact means a non-bypassable link was cut | 1 | Simulation result (TQ13 O2, TQ11 M4); untested |
 | G21 | **The law of the minimum.** A part's work falls in proportion to its scarcest resource while other resources are ample; their unused share is returned and spilled | 1 | Simulation result (TQ12, TQ13); known (Liebig) |
+| G23 | **Repair is a shared, governed network.** (a) Under a sustained shortfall, repair slows across the system, even where the damaged part's own supply is ample. (b) Simultaneous damage to several parts competes for one repair workforce, so each heals more slowly than alone, in order of rank. (c) An acute threat moves repair capacity to likely sites of damage before it occurs | 2 | Compatible: (a) stress slows wound healing (Kiecolt-Glaser 1995; Marucha 1998); (c) acute stress redistributes immune cells (Dhabhar). (b) untested. Not in the frozen engine |
 | G22 | **The intake coasts.** With nothing to take in, the intake switches its units off on minimal maintenance and is back first at refeeding, whatever its rank | 2 | Simulation result (TQ13); compatible: python gut, migrating birds |
 
 ## 10. Status, evidence and working rules
@@ -196,9 +210,11 @@ Unchanged from v0.16, Section 7.
   - **No held-out data test yet.** Weights are as stated in v0.16, Section 9.
 - **The reference implementation:** theory/sim/tq_units.py (frozen).
 - **Its constants are engine-level and illustrative,** not universal levels (James): switch-off and reactivation rates, failure rate, reactivation and rebuild costs, the default template limit.
-- **Open engine questions from TQ13b** (Tier 2):
-  - (a) should every part's basal maintenance come before support parts' work?
-  - (b) should units starved of basal maintenance be lost at a rate rather than at once?
+- **Where the frozen engine departs from v0.17:**
+  - **Claim order:** support work comes before other parts' basal maintenance (James has since decided basal comes first).
+  - **Repair:** done inside each part by the repair-share rule, with a per-part rebuild time. There is no repair network.
+  - **Consequence:** results that depend on either (the refeeding loss in TQ13b) are engine artefacts under v0.17. If the paper needs a demonstration, a small engine check of the repair network and the claim order comes first.
+- **Open from TQ13b:** (b) whether units starved of basal maintenance are lost at a rate. Probably moot now that basal maintenance is paid first.
 - **Status labels, the fitted list, the evidence rule** ("not identified is not absent") and **the standing check:** as v0.16.
 - **The standing check is strengthened (Perplexity):** before adding any rule, attempt a complete mapping with the existing parts, resources, stores, ranks, links, boundary, objective and clock. Add a mechanism only after a confirmed qualitative failure in a pre-committed test.
 
@@ -213,7 +229,8 @@ Unchanged from v0.16, Section 7.
 - **Sensitivity to framing.** Does the model fail when the boundary or objective is changed?
 
 **Tier 2: refining a surviving model.**
-- the TQ13b engine questions (a) and (b);
+- question (b) from TQ13b (basal starvation at a rate), probably moot;
+- the repair network: does it need resident and mobile repair kept apart, or is one shared workforce with local priority enough?
 - what sets a store's release profile (a knee or a full release until a switch);
 - what starts anticipatory economising;
 - how the expected shortfall is learned;
@@ -242,6 +259,7 @@ Unchanged from v0.16, Section 7.
 ## 13. Terms
 
 - **Governor:** the separate system that holds the levels persistence depends on, by allocation only.
+- **Repair network:** the repair workforce (resident and mobile), a set of parts whose work is renewing and rebuilding other parts' units; allocated by the governor like any part.
 - **Part:** a working part (including intake and control), made of units; it has no demand.
 - **Unit states:** active, switched off, lost, scarred.
 - **Store:** a stock of one resource, drawn and refilled in order with others of its kind; it does no work.
