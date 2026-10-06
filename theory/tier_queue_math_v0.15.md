@@ -1,5 +1,7 @@
 # The tier-queue model in mathematical form (v0.15, 5 October 2026)
 
+**Engine reference.** The canonical model is now v0.16, whose maths is in theory/tier_queue_math_v0.16.md. This file stays the description of the engine as it runs (v0.15 rules) until the engine is updated, and of every simulation result to date.
+
 **Status:** theorising (phase 3). This writes the canonical model (TIER_QUEUE_MODEL_v0.15.md) and its engine's computed mode (theory/sim/tq_core.py, `priority="computed"`, `adapt=True`) as one set of equations, in the order the engine applies them each step. Engine constants are given in brackets. The functional forms are choices; only the qualitative behaviour has been checked against natural systems, and every parameter is illustrative. The legacy fixed-priority engine (v0.4: fixed ranks, a 20-step chronic flag, a fixed recovery order) is written up in theory/tier_queue_math_v0.4.md, kept as history.
 
 ## 0. Symbols
