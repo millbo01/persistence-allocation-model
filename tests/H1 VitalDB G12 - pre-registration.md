@@ -1,6 +1,6 @@
-# H1 VitalDB, test of G12: pre-registration (DRAFT for James, 6 October 2026)
+# H1 VitalDB, test of G12: pre-registration (FROZEN 6 October 2026)
 
-Drafted by Claude, 6 October 2026. **Status: draft. Not frozen until James confirms. No VitalDB data has been opened, and VitalDB's terms have not been accepted.** After freezing, any change is a new, separately logged experiment.
+Drafted by Claude, 6 October 2026. **Status: frozen 6 October 2026. James confirmed the whole document, including the changed contrast and the four choices marked in Section 11 as easier to pass. No VitalDB data had been opened and VitalDB's terms had not been accepted when this was committed.** Any later change is a new, separately logged experiment.
 
 **Sources:**
 - Model: theory/TIER_QUEUE_MODEL_v0.17.md (vocabulary frozen).
