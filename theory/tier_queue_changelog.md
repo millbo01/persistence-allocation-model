@@ -2,6 +2,33 @@
 
 The history of the canonical model (theory/TIER_QUEUE_MODEL_v*.md), moved out of the model document at v0.15 so that the document states the model as it stands. Earlier versions remain in the repository.
 
+## Changes in v0.17 (James approved, 6 October 2026)
+
+**A simplification:** the vocabulary is frozen at this version. The central claim was reworded (Claude's rewording, approved by James). Decisions with James's wording are in theory/v0.17_pending.md. The engine work behind them is TQ10 to TQ13b (theory/sim/outputs/).
+
+| No. | Change | Source |
+|---|---|---|
+| 1 | **The governor is a separate, parallel system, and it only allocates.** It holds the levels persistence depends on ("maintain X, Y, Z") by sharing out resources. It sets no work targets. It is a function, not always an organ | James; repair and allocation scan |
+| 2 | **Parts have no demand.** A part works to the limit of the resources it is given, set by the scarcest one it needs (law of the minimum). "Demand" is the name for reallocating resources to hold the governor's levels | James |
+| 3 | **Several resources, each with its stores** (more than one per resource allowed: a fast store and a slow one), released, refilled and spilled by the governor. Some resources cannot be spilled and are held by controlling intake | James; scan; TQ12, TQ13b |
+| 4 | **A part's only state is its units:** active, switched off, or lost; some lost units scarred. Condition, dose and the consolidation floor are removed | James; TQ13 |
+| 5 | **Three outcomes, kept apart.** Switched off: comes back quickly, not harm. Lost: rebuilt over the rebuild time, delayed recovery, not harm. **Scar:** damage to the template, the only real harm | James |
+| 6 | **Harm comes only when supply falls faster than a part can scale down.** Otherwise units are switched off in an orderly way: consolidation, like switching servers off | James; TQ13 |
+| 7 | **Template damage:** disorderly loss in an episode past a limit set for each part when mapping | James (option 1) |
+| 8 | **A part keeps only its basal maintenance and its work.** Basal maintenance is paid first; work never stops for repair | James; TQ12b |
+| 9 | **Repair is a network, represented like everything else** (James). The repair workforce is a set of parts whose work is renewing and rebuilding other parts' units. It has its own resources and stores, the governor allocates to it by rank, and its capacity is shared across parts. It is local where resident cells do it and mobile where it is dispatched from a central source. Under a sustained shortfall the governor ranks repair down; under an acute threat it pre-positions it. No new element: parts, resources, ranks and the shared-repair coupling route already exist | James; repair scan addendum (Kiecolt-Glaser 1995; Marucha 1998; Dhabhar; macrophage reviews) |
+| 9a | **Every part's basal maintenance comes before any support work.** A part cannot die, so no allocation may starve a part's existence to fund another's work | James (TQ13b question (a)) |
+| 10 | **Parts do not die; the system dies,** when load reaches the top (the exhaustion cascade) or a non-bypassable link is cut (severance) | James |
+| 11 | **The intake rule.** What is upstream of X is maintained at all costs. The intake's maintenance is support at all times; its work only while it has something to take in | James; TQ11b, TQ13 |
+| 12 | **Economising** is the governor's anticipation: an even cut, made early, that preserves the stores. It is not what prevents damage (the allocation order already does that) | James; TQ11 |
+| 13 | **Protective slowing** is the governor's choice, not a part's | James |
+| 14 | **Carried from v0.16 but not needed by any engine result so far:** computed marginal value, the horizon, signal gain, labelled refusal, peak protection, growth, reserve memory. They are kept, flagged, each with its own untested prediction (Section 9) | TQ11 parsimony check |
+| 15 | **Open questions are tiered:** model-threatening, refining, niche | Perplexity check |
+| 16 | **Section 1 is unchanged** (James's wording); a proposed rewording follows it | |
+| 17 | **Superseded at model level:** the repair-share rule inside the part (TQ12b) and the per-part rebuild time. Renewal and rebuilding are now the repair network's work. The frozen engine still uses the in-part rule (Section 10) | James |
+
+**Not yet updated for v0.17:** the maths, the diagram, and the frozen engine (claim order and in-part repair; see the model's Section 10).
+
 ## v0.16 engine: TQ10b, protective slowing (James chose option B, 6 October 2026)
 
 - **Rule:** a part below condition 0.9 lowers its demand to what it can do, never below its demand floor, until it is back at 0.99. Predictions were committed first, and TQ10's outputs are unchanged with slowing off.

@@ -1,49 +1,13 @@
-# The tier-queue model, v0.17 (DRAFT for James, 6 October 2026)
+# The tier-queue model, v0.17 (canonical state, 6 October 2026)
 
-**Applied (James approved, 6 October 2026, with the proposed Section 1 rewording):** canonical text in theory/TIER_QUEUE_MODEL_v0.17.md. This draft is kept as the record of what was approved.
+**Status:** working model (phase 3). **The vocabulary is frozen** (James approved, 6 October 2026). No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
 
-**Status:** working model (phase 3).
-
-**Draft, not yet canonical.** theory/TIER_QUEUE_MODEL_v0.16.md remains the reference until James approves this version.
-
-**What v0.17 is.**
-- **Simplification, not expansion.** v0.17 removes things: parts lose their demand and their condition, and the governor becomes a separate allocator. Every decision is recorded with James's wording in theory/v0.17_pending.md.
-- **The reference implementation** is theory/sim/tq_units.py (frozen after TQ13b).
-- **The v0.16 maths and engines** are kept for the results they produced.
-
-**After approval, the vocabulary is frozen.** No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
-
-## Changes from v0.16
-
-| No. | Change | Source |
-|---|---|---|
-| 1 | **The governor is a separate, parallel system, and it only allocates.** It holds the levels persistence depends on ("maintain X, Y, Z") by sharing out resources. It sets no work targets. It is a function, not always an organ | James; repair and allocation scan |
-| 2 | **Parts have no demand.** A part works to the limit of the resources it is given, set by the scarcest one it needs (law of the minimum). "Demand" is the name for reallocating resources to hold the governor's levels | James |
-| 3 | **Several resources, each with its stores** (more than one per resource allowed: a fast store and a slow one), released, refilled and spilled by the governor. Some resources cannot be spilled and are held by controlling intake | James; scan; TQ12, TQ13b |
-| 4 | **A part's only state is its units:** active, switched off, or lost; some lost units scarred. Condition, dose and the consolidation floor are removed | James; TQ13 |
-| 5 | **Three outcomes, kept apart.** Switched off: comes back quickly, not harm. Lost: rebuilt over the rebuild time, delayed recovery, not harm. **Scar:** damage to the template, the only real harm | James |
-| 6 | **Harm comes only when supply falls faster than a part can scale down.** Otherwise units are switched off in an orderly way: consolidation, like switching servers off | James; TQ13 |
-| 7 | **Template damage:** disorderly loss in an episode past a limit set for each part when mapping | James (option 1) |
-| 8 | **A part keeps only its basal maintenance and its work.** Basal maintenance is paid first; work never stops for repair | James; TQ12b |
-| 9 | **Repair is a network, represented like everything else** (James). The repair workforce is a set of parts whose work is renewing and rebuilding other parts' units. It has its own resources and stores, the governor allocates to it by rank, and its capacity is shared across parts. It is local where resident cells do it and mobile where it is dispatched from a central source. Under a sustained shortfall the governor ranks repair down; under an acute threat it pre-positions it. No new element: parts, resources, ranks and the shared-repair coupling route already exist | James; repair scan addendum (Kiecolt-Glaser 1995; Marucha 1998; Dhabhar; macrophage reviews) |
-| 9a | **Every part's basal maintenance comes before any support work.** A part cannot die, so no allocation may starve a part's existence to fund another's work | James (TQ13b question (a)) |
-| 10 | **Parts do not die; the system dies,** when load reaches the top (the exhaustion cascade) or a non-bypassable link is cut (severance) | James |
-| 11 | **The intake rule.** What is upstream of X is maintained at all costs. The intake's maintenance is support at all times; its work only while it has something to take in | James; TQ11b, TQ13 |
-| 12 | **Economising** is the governor's anticipation: an even cut, made early, that preserves the stores. It is not what prevents damage (the allocation order already does that) | James; TQ11 |
-| 13 | **Protective slowing** is the governor's choice, not a part's | James |
-| 14 | **Carried from v0.16 but not needed by any engine result so far:** computed marginal value, the horizon, signal gain, labelled refusal, peak protection, growth, reserve memory. They are kept, flagged, each with its own untested prediction (Section 9) | TQ11 parsimony check |
-| 15 | **Open questions are tiered:** model-threatening, refining, niche | Perplexity check |
-| 16 | **Section 1 is unchanged** (James's wording); a proposed rewording follows it | |
-| 17 | **Superseded at model level:** the repair-share rule inside the part (TQ12b) and the per-part rebuild time. Renewal and rebuilding are now the repair network's work. The frozen engine still uses the in-part rule (Section 10) | James |
+This is the single reference for the model as it stands. History is in theory/tier_queue_changelog.md, and the decisions behind v0.17 are in theory/v0.17_pending.md, with James's wording. The reference implementation is theory/sim/tq_units.py (frozen; Section 10 lists where it departs from this version). The maths (theory/tier_queue_math_v0.16.md) and the diagram (theory/figures/tier_queue_diagram_v016.png) describe v0.16 and are not yet updated for v0.17.
 
 ## 1. The principle
 
-**Central claim** (v0.16, unchanged; James's wording):
+**Central claim** (v0.17; Claude's rewording, approved by James, 6 October 2026; a plainer version for abstracts and short pieces is still to come, with this statement kept as the reference):
 
-> In a goal-directed system with finite-capacity parts and limited reserves, load is routed according to each part's current marginal value to the persistence of the level being protected, judged against the next task that persistence depends on. The system holds its routine output steady by drawing reserves, taking resources from lower-value or expendable parts, which absorb the load, lowering demand and capacity where it can, or exporting it. So the record sees compromise, not stress: it moves only when the buffers, sacrificial parts and routing capacity can no longer absorb the demand. Recovery runs the other way. It begins once demand falls back within current capacity and supply flows again, rebuilds the intake and the capacity the next task needs first, and refills reserves according to how scarce the system has learned its world to be. Load without enough slack to restore what the next task needs makes the system chronic: that state, not the passage of time, permits deterioration, and deterioration becomes a scar only when it destroys what rebuilds a part.
-
-> **Proposed rewording for v0.17** (for James to choose, reword or reject):
->
 > In a goal-directed system, a governor holds the levels its persistence depends on by allocating finite resources among parts that have no demand of their own: each part works to the limit of the scarcest resource it is given. When supply falls short, the governor draws its stores and then takes resources from lower-ranked parts, which switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: it ends in switched-off or lost units, drawn stores, or across the boundary. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Repair is its own network, allocated by the governor like any part: under a sustained shortfall it is ranked down and lost units wait. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. Parts do not die; the system dies, when load reaches the top or a non-bypassable link is cut.
 
 ## 2. The components
@@ -253,7 +217,7 @@ Unchanged from v0.16, Section 7.
 
 ## 12. Way forward (agreed 6 October 2026)
 
-1. **Approve v0.17** (with or without the proposed Section 1 rewording) and freeze the vocabulary.
+1. **v0.17 approved** (6 October 2026) and the vocabulary frozen.
 2. **One pre-registered held-out test:** VitalDB first (blood loss; G1, G3, G12), the anaesthetist mapped as an outside defending loop.
 3. **Design the fixed-against-dynamic priority test.**
 4. **The model paper, then a preprint.** Before writing, read DEB theory and the nearest work (cascade control, perceptual control theory, allostasis, resilience engineering) to state what is new.
