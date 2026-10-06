@@ -254,3 +254,17 @@ No open repository holds a long fast followed in individual animals with repeate
 - **Reserve options by application:** CRIC, AASK, CRISP (measured GFR, kidney volume) and the SRTR Living Donor Collective.
 - **James's steps:** PhysioNet and ImmPort credentialing, when a test is set up.
 - **Contamination:** as declared above, and in TQ-DS3a.
+
+### H1 stress test: VitalDB (started 6 October 2026)
+
+- **Model version:** v0.17 (frozen vocabulary).
+- **Step 1, documentation.** tests/prompts/H1-VDB-S1.txt, built for James to run on Gemini deep research. It asks for structure only: no values, and no studies that used VitalDB, to avoid contamination.
+- **Steps to follow, one at a time:**
+  2. the setting map;
+  3. the mapping under the v0.17 model, Section 7: the record (arterial pressure), the governor and its levels, stores, and the anaesthetist as an outside defending loop;
+  4. pre-registration: predictions G1, G3 and G12; a rule for selecting bleeding episodes; pass and fail rules; analysis steps; contamination declared, including the blood-loss essay in TQ-DS2a;
+  5. James accepts VitalDB's data-use terms;
+  6. analysis;
+  7. blind adjudication;
+  8. replication by a second model.
+- **No VitalDB file is opened before step 4 is committed.**

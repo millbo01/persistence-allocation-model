@@ -1,0 +1,65 @@
+H1-VDB-S1: documentation of the VitalDB database (structure only; no data values)
+
+You are gathering published documentation about VitalDB, an open database of vital signs recorded during surgery at Seoul National University Hospital. It is needed to design an analysis that will be fixed before anyone opens the data.
+
+FORMAT RULE: DO NOT WRITE AN INTRODUCTION, BACKGROUND OR ESSAY
+- Your output starts directly with item 1 below. After the numbered items come only the source list and the self-check.
+- Do not explain physiology, anaesthesia, haemorrhage, blood pressure behaviour or what any variable tends to show.
+
+STRICT RULE 1: STRUCTURE ONLY, NO DATA VALUES
+- Report only what is recorded, what each item is called, how it is defined, its units, its sampling rate or recording frequency, how it is time-stamped, and how many cases or records contain it.
+- Do NOT report any measured values, ranges, means, medians, distributions, thresholds, frequencies of events, outcome rates or results of any kind. Counts of cases containing a given track or field are allowed; nothing else numerical about patients is.
+- If a document shows example values, sample waveforms, summary statistics or figures of data, do not repeat or describe them.
+- Do NOT report the findings, conclusions or titles of any study that used VitalDB. Do not list such studies at all.
+
+STRICT RULE 2: NOTHING INFERRED, NOTHING UNVERIFIED
+- Work only from documents you open now (the VitalDB website and its documentation pages, its data dictionary or parameter list, its open-dataset and API pages, its licence or data-use terms, and the data descriptor paper: Lee HC and colleagues, Scientific Data, 2022). If you cannot open a document, say so.
+- For every answer, give the document and section it comes from. If something is not stated, write "not stated". Do not estimate or guess.
+
+QUESTIONS
+
+1. ACCESS AND TERMS
+   a. How the data are obtained: web download, API, Python or other library, file formats, and whether registration is needed.
+   b. The licence and data-use terms, word for word if short: permitted use, required citation, restrictions on redistribution, any agreement to accept.
+   c. The current version or release date of the open dataset, and the number of cases it contains.
+
+2. CASE-LEVEL (CLINICAL) INFORMATION
+   a. The full list of case-level fields, with exact names, definitions and units: demographics, body size, surgery type and department, emergency status, physical status class, anaesthesia type, case and anaesthesia start and end times, preoperative laboratory results, and outcome fields.
+   b. Whether the case-level information includes intraoperative totals for: estimated blood loss; crystalloid, colloid and blood product volumes (by type); urine output. Give the exact field names and units, and whether each is a single total per case or time-stamped.
+
+3. TIME-SERIES TRACKS
+   a. The full list of recording devices and their track names, as given in the parameter list or data dictionary. For each track, give its unit, sampling rate or recording interval, and whether it is a waveform or a numeric.
+   b. Specifically, for each of the following, give the exact track names, units and sampling or recording rates, and the number of cases containing the track:
+      - invasive arterial pressure (waveform, and systolic, diastolic and mean numerics);
+      - non-invasive blood pressure;
+      - heart rate, and the electrocardiogram;
+      - stroke volume, cardiac output, stroke volume variation and pulse pressure variation, from any device;
+      - peripheral oxygen saturation, and any plethysmography-derived indices;
+      - cerebral or tissue oximetry;
+      - depth-of-anaesthesia indices;
+      - body temperature;
+      - end-tidal gases and ventilator settings.
+   c. How tracks are time-aligned within a case: the time origin, the time resolution, and how gaps or device disconnections appear.
+
+4. INTERVENTIONS AND EVENTS (WHAT THE ANAESTHETIST DID, AND WHEN)
+   a. Drug infusions: which drugs are recorded from infusion pumps (exact names), and whether rates, concentrations and cumulative volumes are recorded, with their recording interval.
+   b. Bolus drugs, especially vasopressors and inotropes (for example phenylephrine, ephedrine, norepinephrine): are boluses recorded, with doses and times? Give exact field or track names.
+   c. Fluids and blood products given during surgery: are volumes time-stamped, or only totals? Exact names.
+   d. Bleeding: is blood loss recorded at any time point during surgery (suction or swab measurements, cell-saver), or only as a total? Exact names.
+   e. Any event or annotation records (surgical incision, start of bypass, position changes, clamping), with their names and how they are time-stamped.
+
+5. INTRAOPERATIVE LABORATORY RESULTS
+   Which laboratory or blood gas results taken during surgery are recorded (for example haemoglobin, haematocrit, lactate, base excess), with exact names, units, and how each is time-stamped.
+
+6. KNOWN LIMITATIONS
+   Documented data-quality notes: artefacts, missing devices, cases excluded from the open set, changes of device or software over the collection period, and known errors in any field. Report the notes, not any figures.
+
+OUTPUT
+- A numbered list answering 1 to 6 (with their lettered parts), each answer with its document and section.
+- Then a list of every document you opened, with links.
+- Then a self-check, item by item:
+  - no introduction or background written;
+  - no data values, distributions, thresholds or findings reported anywhere;
+  - no study using VitalDB listed;
+  - every answer sourced or marked "not stated".
+  If any check fails, fix the output before finishing.
