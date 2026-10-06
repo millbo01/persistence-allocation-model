@@ -41,7 +41,14 @@ def main():
         open(path, "wb").write(b)
         log.append((f"{name}.csv", len(pd.read_csv(io.BytesIO(b))), hashlib.sha256(b).hexdigest()))
     trks = pd.read_csv(os.path.join(OUT, "trks.csv"))
-    need = trks[trks.tname.isin(TRACKS)]
+    # Only cases the analysis can use: the fallback cohort's eligibility (a superset of the primary's),
+    # in either loss group. Other cases' tracks are never read by the analysis, so this has no effect on results.
+    sys.path.insert(0, HERE)
+    import h1_vdb_g12 as A
+    el = A.eligible_cases(A.Data(OUT), fallback=True)
+    ids = set(el[(el.ebv_share >= 0.15) | (el.ebv_share <= 0.05)].caseid.astype(int))
+    need = trks[trks.tname.isin(TRACKS) & trks.caseid.astype(int).isin(ids)]
+    print(f"cases to fetch: {len(ids)}; track files: {len(need)}", file=sys.stderr)
     for i, r in enumerate(need.itertuples()):
         path = os.path.join(OUT, "tracks", f"{r.tid}.csv.gz")
         if os.path.exists(path):
