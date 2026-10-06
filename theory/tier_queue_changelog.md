@@ -25,7 +25,7 @@ From discussion of the TQ9 results, with James's decisions recorded in theory/v0
 7. **G8 restated:** the chronic state permits deterioration; the dose decides whether it scars.
 8. **Contrast case:** road traffic, as load mechanics without a system-level objective.
 9. **Central claim and "In parts" revised** on Claude's recommendation (James deferred): resources taken rather than load passed; deterioration rather than debt; the scar sentence tied to template loss; working parts distinguished from reserves.
-10. **Not yet updated:** the engine (Section 10 lists the departures) and the diagram.
+10. **Maths and diagram updated** (theory/tier_queue_math_v0.16.md, the model's target form, with theory/tier_queue_math_v0.15.md kept as the engine's description; theory/figures/tier_queue_diagram_v016.svg and .png). "Every repayment depends on it" (the intake) became "every refill". **Not yet updated:** the engine (Section 10 lists the departures).
 
 ## v0.15 engine update: TQ9 (engine work D, James approved, 5 October 2026)
 

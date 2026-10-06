@@ -2,9 +2,9 @@
 
 **Status:** working model (phase 3).
 
-This is the single reference for the model as it stands. History is in theory/tier_queue_changelog.md, and the decisions behind v0.16 are in theory/v0.16_pending.md. The maths is in theory/tier_queue_math_v0.16.md; the engine is theory/sim/tq_core.py, specified in theory/tier_queue_core_spec.md. **The engine has not yet been updated to v0.16** (Section 10 lists where it departs). Changes go into new versions, with what changed and why recorded in the changelog.
+This is the single reference for the model as it stands. History is in theory/tier_queue_changelog.md, and the decisions behind v0.16 are in theory/v0.16_pending.md. The maths is in theory/tier_queue_math_v0.16.md (the model's target form; theory/tier_queue_math_v0.15.md still describes the engine), and the diagram is theory/figures/tier_queue_diagram_v016.png; the engine is theory/sim/tq_core.py, specified in theory/tier_queue_core_spec.md. **The engine has not yet been updated to v0.16** (Section 10 lists where it departs). Changes go into new versions, with what changed and why recorded in the changelog.
 
-![Tier-queue model](figures/tier_queue_diagram_v015.png)
+![Tier-queue model](figures/tier_queue_diagram_v016.png)
 
 ## 1. The principle
 
@@ -26,7 +26,7 @@ The system's components are **working parts** (including intakes and control par
 | Kind | What it is | Examples |
 |---|---|---|
 | **Working part** | Does a job with a limited capacity | Brain, heart, nephron, nurse bee, front-line staff |
-| **Intake** | A working part whose job brings resource in. Every repayment depends on it | Gut, leaves, roots, foragers, a referral or recruitment function |
+| **Intake** | A working part whose job brings resource in. Every refill depends on it | Gut, leaves, roots, foragers, a referral or recruitment function |
 | **Control part** | A working part whose job is routing. It holds the threshold switch. Priced as a cliff only when it is a necessary, non-bypassable routing bottleneck; distributed, redundant or bypassable control is priced like any other part | Vasomotor centre, hypothalamus, an institution's management (non-bypassable); a honeybee colony's task allocation (distributed) |
 | **Reserve** | A stock that is drawn on and refilled. It runs full, drawing or empty, and is not itself damaged | Fat, iron stores, venous blood volume, honey stores, budget reserves |
 
