@@ -1,0 +1,191 @@
+{
+  "prereg": "tests/H1 VitalDB G12 - pre-registration.md",
+  "prereg_sha256_begins": "371caf3c",
+  "code_sha256": "9fbe80d7909388fc481210b3488658622ecd9b01cc2b8be0c1af64fd678c0c03",
+  "implementation_notes": [
+    "Each 2-second numeric sample is placed on a 2-s grid from opstart (nearest grid point within 1 s; several samples at one point are averaged).",
+    "A mean-pressure sample is valid only if systolic and diastolic are present at the same grid point and the artefact rule passes (MAP 20 to 200, SBP <= 300, SBP - DBP >= 10). Conservative: a MAP without SBP and DBP cannot be checked and is invalid.",
+    "Gap filling: runs of up to 5 consecutive missing grid points (10 s) with valid points on both sides are linearly interpolated.",
+    "Window usability (more than 10% invalid or missing) is measured on the 2-s grid after gap filling.",
+    "10-second bins are the mean of the valid grid points in the bin; a bin with none is missing. A missing bin breaks a run below 65 mmHg, and is not counted as below 65 in the stable-approach rule.",
+    "Inside a usable window, missing 10-s bins are linearly interpolated (ends: nearest value) before detrending.",
+    "AR1 is the Pearson correlation of the detrended residuals with themselves lagged by one bin; SD uses ddof = 1.",
+    "Control pseudo-onsets: t* = midpoint of surgery + k x 300 s, with t* - 31 min >= opstart and t* + 30 min <= opend.",
+    "Missing intraop_phe, intraop_eph or intraop_epi is not taken as zero: the case is excluded from the primary cohort (it may enter the fallback cohort).",
+    "ane_type is matched case-insensitively on the word 'general'.",
+    "Fallback bolus signature: within either measurement window, any 10-s bin more than 15 mmHg above the minimum of the six bins before it (within the window).",
+    "Infusion sensitivity: a change is any difference between successive recorded rates of PHEN, NEPI, EPI, VASO, DOPA or DOBU from the last sample before t0 - 31 min to t0.",
+    "G1 baseline: median of valid (unfilled) mean pressure from opstart to opstart + 10 min. Pressure at an hb sample: median of valid mean pressure in the 5 min before it.",
+    "G18: Pearson correlation of detrended MAP and detrended HR (Solar8000/HR valid 20 to 250) in each window; the same with stroke volume (Vigileo/SV or EV1000/SV, valid 5 to 250) where present."
+  ],
+  "counts": {
+    "code_sha256": "9fbe80d7909388fc481210b3488658622ecd9b01cc2b8be0c1af64fd678c0c03",
+    "runnable": true,
+    "cohort": "fallback",
+    "high_threshold": 0.15,
+    "counts": [
+      {
+        "cohort": "primary",
+        "high_threshold": 0.2,
+        "eligible_cases": 755,
+        "high_qualifying": 0,
+        "low_qualifying": 16
+      },
+      {
+        "cohort": "fallback",
+        "high_threshold": 0.2,
+        "eligible_cases": 2324,
+        "high_qualifying": 19,
+        "low_qualifying": 42
+      },
+      {
+        "cohort": "fallback",
+        "high_threshold": 0.15,
+        "eligible_cases": 2324,
+        "high_qualifying": 25,
+        "low_qualifying": 42
+      }
+    ]
+  },
+  "primary": {
+    "cohort": "fallback",
+    "weight": 0.5,
+    "high_threshold": 0.15,
+    "n_high": 25,
+    "n_low": 42,
+    "P1": {
+      "n": 25,
+      "median": -0.07176436389683849,
+      "p": 0.4789225161075592,
+      "p_two_sided": 0.9578450322151184
+    },
+    "P2": {
+      "n_high": 25,
+      "n_low": 42,
+      "median_high": -0.07176436389683849,
+      "median_low": 0.06516700991554827,
+      "p": 0.7797539315435319
+    },
+    "P3": {
+      "n": 25,
+      "median": 0.08078768288327082,
+      "p": 0.253851979970932,
+      "p_two_sided": 0.507703959941864
+    },
+    "verdict": "Fails"
+  },
+  "verdict": "Fails",
+  "recovery_time_s_median": {
+    "E": 44.51322586216972,
+    "L": 44.26589977014502
+  },
+  "sensitivity": {
+    "1_no_infusion_change": {
+      "n_high": 24,
+      "n_low": 42,
+      "P1": {
+        "n": 24,
+        "median": -0.060092195589561664,
+        "p": 0.42766785621643066,
+        "p_two_sided": 0.8553357124328613
+      },
+      "P2": {
+        "n_high": 24,
+        "n_low": 42,
+        "median_high": -0.060092195589561664,
+        "median_low": 0.06516700991554827,
+        "p": 0.7279102530145163
+      },
+      "P3": {
+        "n": 24,
+        "median": 0.09019999483467246,
+        "p": 0.2111707329750061,
+        "p_two_sided": 0.4223414659500122
+      },
+      "verdict": "Fails"
+    },
+    "2_no_gap_fill": {
+      "n_high": 22,
+      "n_low": 39,
+      "P1": {
+        "n": 22,
+        "median": -0.04812137967211905,
+        "p": 0.46198296546936035,
+        "p_two_sided": 0.9239659309387207
+      },
+      "P2": {
+        "n_high": 22,
+        "n_low": 39,
+        "median_high": -0.04812137967211905,
+        "median_low": 0.01898641188883904,
+        "p": 0.7713977249361708
+      },
+      "P3": {
+        "n": 22,
+        "median": -0.032186562348537166,
+        "p": 0.7060365676879883,
+        "p_two_sided": 0.6101517677307129
+      },
+      "verdict": "Fails"
+    },
+    "3_sustained_5_min": {
+      "n_high": 1,
+      "n_low": 9,
+      "P1": {
+        "n": 1,
+        "median": -0.15673844640987172,
+        "p": null
+      },
+      "P2": {
+        "n_high": 1,
+        "n_low": 9,
+        "p": null
+      },
+      "P3": {
+        "n": 1,
+        "median": -0.8780807554729329,
+        "p": null
+      },
+      "verdict": "not computable"
+    },
+    "5_late_window_ends_3_min": {
+      "n_high": 22,
+      "n_low": 40,
+      "P1": {
+        "n": 22,
+        "median": -0.03861194841891735,
+        "p": 0.3995168209075928,
+        "p_two_sided": 0.7990336418151855
+      },
+      "P2": {
+        "n_high": 22,
+        "n_low": 40,
+        "median_high": -0.03861194841891735,
+        "median_low": 0.057120169659015285,
+        "p": 0.6784739834843453
+      },
+      "P3": {
+        "n": 22,
+        "median": 0.11412661038618374,
+        "p": 0.3163642883300781,
+        "p_two_sided": 0.6327285766601562
+      },
+      "verdict": "Fails"
+    }
+  },
+  "G1_check": {
+    "cases_with_two_hb": 75,
+    "share_consistent": 0.10666666666666667,
+    "consistent": false
+  },
+  "G18_exploratory": {
+    "map_hr": {
+      "n": 25,
+      "median_excess_change_in_correlation": 0.1257895274523482
+    },
+    "map_sv": {
+      "n": 12,
+      "median_excess_change_in_correlation": -0.0017637196358421814
+    }
+  }
+}
