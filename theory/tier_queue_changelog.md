@@ -2,6 +2,10 @@
 
 The history of the canonical model (theory/TIER_QUEUE_MODEL_v*.md), moved out of the model document at v0.15 so that the document states the model as it stands. Earlier versions remain in the repository.
 
+## Renamed (James, 6 October 2026)
+
+The model is now called **the Persistence Allocation Model** (formerly the tier-queue model). The name changes from now on. File names, engine names (tq_*, TQ runs) and frozen documents, including the H1 VitalDB pre-registration, keep the old name.
+
 ## Changes in v0.17 (James approved, 6 October 2026)
 
 **A simplification:** the vocabulary is frozen at this version. The central claim was reworded (Claude's rewording, approved by James). Decisions with James's wording are in theory/v0.17_pending.md. The engine work behind them is TQ10 to TQ13b (theory/sim/outputs/).

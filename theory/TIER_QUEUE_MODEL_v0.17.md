@@ -1,4 +1,6 @@
-# The tier-queue model, v0.17 (canonical state, 6 October 2026)
+# The Persistence Allocation Model, v0.17 (canonical state, 6 October 2026)
+
+**Name (James, 6 October 2026):** the model is now called **the Persistence Allocation Model**. It was formerly the tier-queue model. File names, engine names (tq_*, TQ runs) and frozen documents keep the old name, so references stay valid.
 
 **Status:** working model (phase 3). **The vocabulary is frozen** (James approved, 6 October 2026). No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
 
