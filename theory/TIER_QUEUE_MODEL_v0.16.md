@@ -1,65 +1,27 @@
-# The tier-queue model, v0.16 (DRAFT for James, 6 October 2026)
+# The tier-queue model, v0.16 (canonical state, 6 October 2026)
 
-**Applied (James approved, 6 October 2026):** canonical text in theory/TIER_QUEUE_MODEL_v0.16.md, with Section 1 reworded as recommended and "part" defined as a working part. This draft is kept as the record of what was approved.
+**Status:** working model (phase 3).
 
-**Status:** working model (phase 3). **Draft, not yet canonical:** theory/TIER_QUEUE_MODEL_v0.15.md remains the reference until James approves this version.
-
-This is the single reference for the model as it stands. The maths is in theory/tier_queue_math_v0.15.md and the engine is theory/sim/tq_core.py, specified in theory/tier_queue_core_spec.md. **Neither has yet been updated to v0.16.** History is in theory/tier_queue_changelog.md.
-
-## Changes in this draft
-
-The decisions are recorded in theory/v0.16_pending.md, with James's wording.
-
-| No. | Change | Where |
-|---|---|---|
-| 1 | **Two routes to outright failure:** exhaustion (no part fails while there is somewhere for its load to go) and severance (a non-bypassable link is cut). Non-bypassable control is one case of a non-bypassable link | Sections 3, 4 (item 5), 6, 8 (G20), 12 |
-| 2 | **Work is local; load is displaced.** Load arises in two ways: throughput maxed, or supply diverted. Displacement is resources taken from lower-priority parts, and load backing up along a dependency. Spare capacity and displacement merge into one routing step | Sections 4 (item 1), 10, 12 |
-| 3 | **Duplicates are one part:** units that share resources and balance load. Series links are separate parts linked by dependency | Sections 2, 6 |
-| 4 | **Repair is the container refilling.** There is no separate repair pool: returning supply reaches parts in priority order, and each part refills once its own leak has stopped | Sections 3, 4 (item 7) |
-| 5 | **Economising is the switch's action:** control lowering a part's demand and capacity together, reversibly, down to its demand floor. **Deferral is dropped from economising,** reversing the v0.11 split into shed and debt | Sections 2, 4 (item 4), 8 (G16), 10, 12 |
-| 6 | **Deterioration and scars.** Deterioration comes only from load beyond the maximum, and is reversible once the leak stops. A scar comes only from loss of the template (what rebuilds the part); a patch then keeps the part intact without function. Three kinds of capacity loss are distinguished | Sections 2, 4 (items 7, 8), 5, 8 (G7, G19), 12; theory/deterioration_threshold_scan.md |
-| 7 | **G8 restated:** the chronic state permits deterioration, which scars only if the dose destroys the template | Section 8 |
-| 8 | **Contrast case:** systems with load mechanics but no system-level objective (road traffic) | Section 8 |
-| 9 | **Section 1 is unchanged.** Its wording is James's. Options to bring it into line with items 1 to 7 follow the claim, for James to choose or reword | Section 1 |
-
-Not yet changed: the diagram (shows the shed and debt ledger), the maths, the engine. These follow approval.
+This is the single reference for the model as it stands. History is in theory/tier_queue_changelog.md, and the decisions behind v0.16 are in theory/v0.16_pending.md. The maths is in theory/tier_queue_math_v0.16.md; the engine is theory/sim/tq_core.py, specified in theory/tier_queue_core_spec.md. **The engine has not yet been updated to v0.16** (Section 10 lists where it departs). Changes go into new versions, with what changed and why recorded in the changelog.
 
 ![Tier-queue model](figures/tier_queue_diagram_v015.png)
 
 ## 1. The principle
 
-**Central claim** (confirmed by James, 5 October 2026; a plainer version for abstracts and short pieces is to come, with this statement kept as the reference):
+**Central claim** (confirmed by James, 5 October 2026; revised for v0.16 on Claude's recommendation, James deferring, 6 October 2026; a plainer version for abstracts and short pieces is to come, with this statement kept as the reference):
 
-> In a goal-directed system with finite-capacity parts and limited reserves, load is routed according to each part's current marginal value to the persistence of the level being protected, judged against the next task that persistence depends on. The system holds its routine output steady by drawing reserves, passing load to lower-value or expendable parts, reducing or reshaping their work, deferring it as debt, or exporting it. So the record sees compromise, not stress: it moves only when the buffers, sacrificial parts and routing capacity can no longer absorb the demand. Recovery runs the other way. It begins once demand falls below current capacity, rebuilds the intake and the capacity the next task needs first, and refills reserves according to how scarce the system has learned its world to be. Attrition becomes a scar only when there is not enough slack to restore what the next task needs: that state, not the passage of time, is what makes load chronic.
+> In a goal-directed system with finite-capacity parts and limited reserves, load is routed according to each part's current marginal value to the persistence of the level being protected, judged against the next task that persistence depends on. The system holds its routine output steady by drawing reserves, taking resources from lower-value or expendable parts, which absorb the load, lowering demand and capacity where it can, or exporting it. So the record sees compromise, not stress: it moves only when the buffers, sacrificial parts and routing capacity can no longer absorb the demand. Recovery runs the other way. It begins once demand falls back within current capacity and supply flows again, rebuilds the intake and the capacity the next task needs first, and refills reserves according to how scarce the system has learned its world to be. Load without enough slack to restore what the next task needs makes the system chronic: that state, not the passage of time, permits deterioration, and deterioration becomes a scar only when it destroys what rebuilds a part.
 
-**In parts.** A goal-directed system is a network of parts. Priority, which is dynamic, sets the routing; it needs no strict hierarchy, and dependencies can form loops. Each part does work and has a limited capacity. When demand exceeds what a part can do, the excess is not removed: it is drawn from a reserve, passed to parts of lower priority, deferred as debt, or sent out across the boundary.
-- Load therefore runs downhill, from protected parts to expendable ones.
+**In parts.** A goal-directed system is a network of working parts and reserves. Priority, which is dynamic, sets the routing; it needs no strict hierarchy, and dependencies can form loops. Each working part does work only it can do, and has a limited capacity; a reserve is a stock and does no work. Work never moves between parts; load does. When demand exceeds what a working part can do, or its supply is diverted, the excess is not removed: it is drawn from a reserve, taken as resources from working parts of lower priority, which absorb it as load, held at the part as deterioration, or sent out across the boundary.
+- Load therefore runs downhill, from protected parts to expendable ones, and can back up along a dependency to the part that started it.
 - The protected part's output, which is what the system records, stays normal while the parts below absorb the excess. It changes only when they can absorb no more. **The record sees compromise, not stress.**
-- Recovery runs the other way, starting with the intake. It begins once demand falls below what a part can currently do, so no new excess is generated; it does not need demand to stop. Debt nobody knows about is never repaid (a prediction about unobserved state, not a universal law).
+- Recovery runs the other way, starting with the intake. It begins once demand falls back within what a part can currently do and supply flows again, so no new excess is generated; it does not need demand to stop. Deterioration nobody knows about is never addressed (a prediction about unobserved state, not a universal law).
 - Priority is not a fixed rank. It is each part's current value to the system's persistence, which changes with the part's state and the situation.
-- What a system becomes after an episode depends on its state, not its length. Load that is signalled and recovered from with slack (the acute state) can leave a part stronger, or leave the system re-tuned to that threat. Load without enough slack to restore what the next task needs (the chronic state) leaves scars, and parts that cannot be rebuilt keep their losses.
-
-> **Options for James** (Section 1 is James's wording; nothing here is applied).
->
-> **Central claim, second sentence.**
-> - Now: "...by drawing reserves, passing load to lower-value or expendable parts, reducing or reshaping their work, deferring it as debt, or exporting it."
-> - Option: "...by drawing reserves, taking resources from lower-value or expendable parts, which absorb the load, lowering demand and capacity where it can, or exporting it."
->
-> **Central claim, last sentence.**
-> - Now: "Attrition becomes a scar only when there is not enough slack to restore what the next task needs: that state, not the passage of time, is what makes load chronic."
-> - Option: "Load without enough slack to restore what the next task needs makes the system chronic: that state, not the passage of time, permits deterioration, and deterioration becomes a scar only when it destroys what rebuilds a part."
->
-> **In parts, third and fourth sentences.**
-> - Now: "Each part does work and has a limited capacity. When demand exceeds what a part can do, the excess is not removed: it is drawn from a reserve, passed to parts of lower priority, deferred as debt, or sent out across the boundary."
-> - Option: "Each part does work only it can do, and has a limited capacity. Work never moves between parts; load does. When demand exceeds what a part can do, or its supply is diverted, the excess is not removed: it is drawn from a reserve, taken as resources from parts of lower priority, which absorb it as load, held at the part as deterioration, or sent out across the boundary."
->
-> **In parts, fourth bullet ("Debt nobody knows about...").**
-> - Option: "Deterioration nobody knows about is never addressed."
->
-> **In parts, last bullet, last sentence.**
-> - Option: "Load without enough slack to restore what the next task needs (the chronic state) permits deterioration; it leaves a scar where it destroys what rebuilds a part, and parts that cannot be rebuilt keep their losses."
+- What a system becomes after an episode depends on its state, not its length. Load that is signalled and recovered from with slack (the acute state) can leave a part stronger, or leave the system re-tuned to that threat. Load without enough slack to restore what the next task needs (the chronic state) permits deterioration; it leaves a scar where it destroys what rebuilds a part, and parts that cannot be rebuilt keep their losses.
 
 ## 2. The parts
+
+The system's components are **working parts** (including intakes and control parts) and **reserves**. In this document "part" means a working part; a reserve is always named as one.
 
 | Kind | What it is | Examples |
 |---|---|---|
@@ -304,7 +266,7 @@ G11 was withdrawn and is not reused; internal numbers keep the gap, and any publ
 - **Simulations TQ1 to TQ9** (illustrative parameters).
   - TQ8 (theory/sim/outputs/2026-10-05_TQ8/README.md) shows computed priority reproducing the earlier results without hand-set ranks, and checks each later element.
   - TQ9 (theory/sim/outputs/2026-10-05_TQ9/README.md) adds loops, local stocks and record dynamics.
-  - Both ran under v0.15 rules.
+  - Both ran under v0.15 rules (Section 10).
 - **Surface checks in natural systems.**
   - Systems checked: blood loss, fasting, kidney, honeybees, plants under drought, fetal growth restriction, recovery order, muscle injury against disuse, the record rule, re-tuning (natural tests 1 to 10), the Felicity read-out in muscle (test 11) and weight cycling (test 12) (theory/natural_test_*.md; theory/natural_tests_patterns.md).
   - All broadly consistent; each mismatch led to a refinement.
@@ -373,6 +335,7 @@ The heart-failure spiral is partly reproduced (TQ9): where slack is small and th
 
 ## 12. Terms
 
+- **Part:** a working part, including intakes and control parts. A reserve is not a part: it is a stock and does no work.
 - **Demand:** the work asked of a part.
 - **Work:** what only that part can do. Work never moves between parts.
 - **Load:** demand beyond what a part's capacity or supply allows. It arises when throughput is maxed or supply is diverted. It is held at the part as deterioration, absorbed by other parts (resources taken from them, or backing up a dependency), or exported. Load is not work.

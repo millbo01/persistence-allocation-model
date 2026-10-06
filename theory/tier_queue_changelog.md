@@ -2,6 +2,31 @@
 
 The history of the canonical model (theory/TIER_QUEUE_MODEL_v*.md), moved out of the model document at v0.15 so that the document states the model as it stands. Earlier versions remain in the repository.
 
+## Changes in v0.16 (James approved, 6 October 2026)
+
+From discussion of the TQ9 results, with James's decisions recorded in theory/v0.16_pending.md. Supporting checks: theory/framing_crosscheck.md (engineered and natural systems) and theory/deterioration_threshold_scan.md (deterioration against scarring). Neither carries evidential weight.
+
+1. **Two routes to outright failure** (James).
+   - **Exhaustion:** no part fails while there is somewhere for its load to go.
+   - **Severance:** a non-bypassable link is cut, with receivers intact.
+   - The control cliff is generalised to non-bypassable links (central control, transporters, series links). G20 added.
+2. **Work is local; load is displaced** (James).
+   - Load arises in two ways: throughput maxed, or supply diverted. A priority change is a condition, not a cause.
+   - Routing becomes resources taken from lower-priority parts (first their slack, then beyond it as load), plus load backing up a dependency. Spare capacity and displacement merge into one step.
+   - The "landing forms" proposed by Claude were dropped (James), as was any distinction between a part doing another's work and resources being redirected.
+3. **What counts as one part** (James). Duplicates that share resources and balance load are one part. Series links are separate parts linked by dependency. "Part" means a working part; a reserve is not a part (Section 1 and Terms).
+4. **Repair is the container refilling** (James). There is no separate repair pool: returning supply reaches parts in priority order, and each part refills once its own leak stops. The recovery formula is reread as the order of resupply.
+5. **Economising is the switch's action** (Claude's recommendation, James agreed). Control lowers demand and capacity together, reversibly, down to each part's demand floor. **Deferral is withdrawn from economising:** the v0.11 shed and debt split is reversed (James), and the fitted deferred share (0.5) is withdrawn. G16 reworded.
+6. **Deterioration and scars** (scan; James).
+   - Deterioration comes only from load beyond capacity, and is reversible while the template survives.
+   - A scar is template loss, or repair that stalls, followed by a patch that keeps integrity without function.
+   - New part properties: template and demand floor.
+   - "Compromised" is redefined. G7 reworded; G19 (three kinds of capacity loss) added.
+7. **G8 restated:** the chronic state permits deterioration; the dose decides whether it scars.
+8. **Contrast case:** road traffic, as load mechanics without a system-level objective.
+9. **Central claim and "In parts" revised** on Claude's recommendation (James deferred): resources taken rather than load passed; deterioration rather than debt; the scar sentence tied to template loss; working parts distinguished from reserves.
+10. **Not yet updated:** the engine (Section 10 lists the departures) and the diagram.
+
 ## v0.15 engine update: TQ9 (engine work D, James approved, 5 October 2026)
 
 - **Engine (opt-in; TQ5 to TQ8 unchanged):** network loops, local stocks per part, record dynamics (knocks restored from remaining release) and capacity insults (theory/tier_queue_core_spec.md; theory/sim/outputs/2026-10-05_TQ9/README.md). Predictions committed first (theory/sim/tq9_predictions.md).
