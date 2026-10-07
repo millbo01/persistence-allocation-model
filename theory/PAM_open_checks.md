@@ -23,7 +23,12 @@ Three checks were set before the paper claims any of them:
   - a DEB review for plants (*Conservation Physiology* 10, coac061, 2022), which might hold root-shoot priority under stress;
   - an insect growth model that splits maintenance into a "non-negotiable" and a "negotiable" part, with negotiable maintenance cut under food restriction (PMC10556006). **This is close to PAM's split between basal upkeep and renewal,** and is to be read.
 
-**Limit:** web searches are not a systematic review. If the paper is to say "no DEB model orders organs by access", that sentence needs a proper search: a database search with stated terms, run by Claude or by a sourcing model with a prompt. **Proposal for James below.**
+**Systematic search 1 (7 October 2026; protocol theory/PAM_check1_search_protocol.md; results theory/search_check1/README.md):**
+- PubMed and OpenAlex: 139 records screened, **0 included**; 4 function-priority models (all DEB-family) and 2 empirical records noted.
+- **Sensitivity failed a known-item check:** Göbel et al. (2010) was not retrieved, and plant source-sink allocation models (organs with sink priority drawing on a phloem flow) fell outside the terms.
+- **The null cannot be used in the paper.** A second search, with a known-item set and strands for plant source-sink models and organ competition for energy, is proposed.
+
+**Limit (earlier):** web searches are not a systematic review. If the paper is to say "no DEB model orders organs by access", that sentence needs a proper search: a database search with stated terms, run by Claude or by a sourcing model with a prompt. **Proposal for James below.**
 
 ## Check 3 (begun): the nearest neighbours turned out to be two programmes outside DEB
 

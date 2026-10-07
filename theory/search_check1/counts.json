@@ -1,0 +1,24 @@
+{
+  "PubMed_A": 9,
+  "OpenAlex_A": 12,
+  "PubMed_B": 12,
+  "OpenAlex_B": 117,
+  "retrieved_total": 150,
+  "after_dedup": 139,
+  "after_dedup_by_strand": {
+    "A": 18,
+    "B": 121
+  },
+  "no_abstract": 15,
+  "screened": 139,
+  "decisions": {
+    "E": 2,
+    "F": 4,
+    "X1": 32,
+    "X2": 13,
+    "X3": 4,
+    "X4": 26,
+    "X5": 58
+  },
+  "included": 0
+}

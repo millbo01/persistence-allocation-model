@@ -1,0 +1,140 @@
+rec,strand,source,year,title,has_abstract,decision,note
+R0001,A,OpenAlex+PubMed,2020,Life cycle bioenergetics of the gray seal (Halichoerus grypus) in the Baltic Sea: Population response to environmental stress.,yes,X2,"DEB-IBM, one structure plus reserve (blubber as store)"
+R0002,A,PubMed,2017,"A Dynamic Energy Budget (DEB) model to describe Laternula elliptica (King, 1832) seasonal feeding and metabolism.",yes,X2,"DEB parameter estimation, one structure"
+R0003,A,OpenAlex+PubMed,2015,"Parameter Estimations of Dynamic Energy Budget (DEB) Model over the Life History of a Key Antarctic Species: The Antarctic Sea Star Odontaster validus Koehler, 1906.",yes,X2,"DEB parameter estimation, one structure"
+R0004,A,PubMed,2015,Increasing metabolic rate despite declining body weight in an adult parasitoid wasp.,yes,X1,empirical respirometry
+R0005,A,PubMed,2014,Body size-mediated starvation resistance in an insect predator.,yes,X2,"DEB reserve dynamics under starvation, one structure"
+R0006,A,PubMed,2013,DEBkiss or the quest for the simplest generic model of animal life history.,yes,F,DEBkiss: kappa-type split between functions
+R0007,A,PubMed,2010,Dynamic energy budget approaches for modelling organismal ageing.,yes,X2,review of DEB ageing models
+R0008,A,PubMed,2004,"Resource allocation, hyperphagia and compensatory growth.",yes,F,allocation control between structure and reserve in recovery (Bull Math Biol 2004)
+R0009,A,OpenAlex+PubMed,2000,Survival and production in variable resource environments.,yes,F,"kappa rule, soma against reproduction under food fluctuation"
+R0010,A,OpenAlex,2001,Dynamic energy budgets of the oyster Crassostrea gigas,yes,X2,"DEB thesis, core and storage only"
+R0011,A,OpenAlex,2009,Applying Dynamic Energy Budget (DEB) theory to simulate growth and bio-energetics of blue mussels under low seston conditions,no,X2,DEB for mussels (title only; no abstract)
+R0012,A,OpenAlex,2020,Modeling the Growth of Sugar Kelp (Saccharina latissima) in Aquaculture Systems using Dynamic Energy Budget Theory,yes,X2,"kelp DEB, two reserves, one structure"
+R0013,A,OpenAlex,2019,GROWTH OF SACCHARINA LATISSIMA IN AQUACULTURE SYSTEMS MODELED USING DYNAMIC ENERGY BUDGET THEORY,yes,X2,"kelp DEB, two reserves, one structure"
+R0014,A,OpenAlex,2026,Dynamic energy budget modelling of anuran life-history with account for individual variability in developmental rates,yes,X2,"anuran DEB, extra reserve compartment, one structure"
+R0015,A,OpenAlex,2025,Effect of ecosystem stressors on biogeochemical processes and bivalve-mediated bioremediation approaches for estuary resilience,no,X1,no abstract; ecosystem review by title
+R0016,A,OpenAlex,2022,"Timescale separation and models of symbiosis: state space reduction, multiple attractors and initialization",yes,X4,timescale separation in symbiosis models; not shortage order
+R0017,A,OpenAlex,2011,Developmental energetics and gas exchange in amphibians and lungfish.,yes,F,thesis: DEB partition switches towards maturation at hatching
+R0018,A,OpenAlex,2023,Modeling food dependent symbiosis in Exaiptasia pallida,yes,X5,"NEAR MISS: host and symbiont share nitrogen; symbiont extracts host tissue under shortage (two organisms, not organs; relevant to capture, probe P2)"
+R0019,B,PubMed,2024,A microscopic oxygen transport model for ultra-high dose rate radiotherapy in vivo: The impact of physiological conditions on FLASH effect.,yes,X4,
+R0020,B,PubMed,2024,A Multistep Tumor Growth Model of High-Grade Serous Ovarian Carcinoma Identifies Hypoxia-Associated Signatures.,yes,X4,
+R0021,B,PubMed,2022,3D computational model of oxygen depletion kinetics in brain vasculature during FLASH RT and its implications for in vivo oximetry experiments.,yes,X4,
+R0022,B,PubMed,2022,Can the lack of fibrillar form of alpha-synuclein in Lewy bodies be explained by its catalytic activity?,yes,X4,
+R0023,B,PubMed,2021,A Computer Modeling Study of Water Radiolysis at High Dose Rates. Relevance to FLASH Radiotherapy.,yes,X5,
+R0024,B,PubMed,2019,Evaluating WHO-Recommended Interventions for Preterm Birth: A Mathematical Model of the Potential Reduction of Preterm Mortality in Sub-Saharan Africa.,yes,X5,
+R0025,B,PubMed,2018,The dynamic side of the Warburg effect: glycolytic intermediate storage as buffer for fluctuating glucose and O 2 supply in tumor cells.,yes,X2,
+R0026,B,PubMed,2013,Coevolution of solid stress and interstitial fluid pressure in tumors during progression: implications for vascular collapse.,yes,X4,
+R0027,B,PubMed,2013,Dynamical modelling of haematopoiesis: an integrated view over the system in homeostasis and under perturbation.,yes,X4,"haematopoiesis dynamics after haemorrhage; lineages, not supply priority"
+R0028,B,PubMed,2011,A mathematical model of diffusional shunting of oxygen from arteries to veins in the kidney.,yes,X2,
+R0029,B,OpenAlex+PubMed,2006,The role of initial trauma in the host's response to injury and hemorrhage: insights from a correlation of mathematical simulations and hepatic transcriptomic analysis.,yes,X4,inflammation and damage model after trauma and haemorrhage; not supply priority
+R0030,B,OpenAlex+PubMed,2004,Pharmacokinetic model of R-roscovitine and its metabolite in healthy male subjects.,yes,X3,
+R0031,B,OpenAlex,1967,Comparative Effects of Caloric Restriction and Total Starvation on Body Composition in Obesity,yes,E,"empirical fat against lean loss, caloric restriction against starvation (1967)"
+R0032,B,OpenAlex,2002,"Proteins, cells, organs: hierarchical structuring in modeling biological systems",yes,X4,
+R0033,B,OpenAlex,2019,The invasion of de-differentiating cancer cells into hierarchical tissues,yes,X4,
+R0034,B,OpenAlex,2022,Constrained optimization of divisional load in hierarchically organized tissues during homeostasis,yes,X4,
+R0035,B,OpenAlex,2021,Constrained optimisation of divisional load in hierarchically-organised tissues during homeostasis,yes,X4,
+R0036,B,OpenAlex,2026,"PREreview of ""Towards pharmacokinetic profile predictions for monoclonal antibodies using sequence based machine learning derived parameters and compartmental modeling""",yes,X3,
+R0037,B,OpenAlex,2019,Unraveling the Vascular Fate of Deformable Circulating Tumor Cells Via a Hierarchical Computational Model,no,X4,
+R0038,B,OpenAlex,2017,A mathematical model of antibody-dependent cellular cytotoxicity (ADCC),yes,X4,
+R0039,B,OpenAlex,2018,Preface of the special issue on mathematical and computational modeling in biomechanics,yes,X5,
+R0040,B,OpenAlex,2012,A Strategy for Development of Realistic Mathematical Models of Whole-Body Metabolism,yes,X4,NEAR MISS: hierarchical whole-body metabolism framework (organs sum to whole; fed-fasted transitions); no priority rule in abstract
+R0041,B,OpenAlex,2022,Mathematical modelling identifies conditions for maintaining and escaping feedback control in the intestinal epithelium,yes,X4,
+R0042,B,OpenAlex,2023,Optimal conditions and parameters verification of fish fillets muscle tissue biotransformation by bacterial starter cultures,yes,X5,
+R0043,B,OpenAlex,2026,Mechanistic mathematical modeling of abscopal effect reveals mechanisms of off-target tumor response,yes,X3,
+R0044,B,OpenAlex,2025,Asymptotic analysis of mathematical model describing a new treatment of breast cancer using AZD9496 and palbociclib,yes,X4,
+R0045,B,OpenAlex,2025,A Scoping Review on Mathematical Modelling Techniques Used in Non-communicable Disease (NCD) Research,yes,X1,
+R0046,B,OpenAlex,2002,Determining optimum edible films for kiwifruits using an analytical hierarchy process,no,X5,
+R0047,B,OpenAlex,2022,"Hierarchical Biomechanics: Concepts, Bone as Prominent Example, and Perspectives Beyond",yes,X5,
+R0048,B,OpenAlex,2026,BrainIAc: A Multi-Scale Adaptive Dynamical Systems Framework for Computational Neuroscience (v2.2),yes,X5,
+R0049,B,OpenAlex,2023,Mapping the blood vasculature in an intact human kidney using hierarchical phase-contrast tomography,yes,X1,
+R0050,B,OpenAlex,2010,Multi-scale hierarchical generation of PET parametric maps: Application and testing on [11C]DPN study,no,X5,
+R0051,B,OpenAlex,2013,GPU-Based Algorithm for Fast Computation of Cartilage Contact Patterns During Simulations of Movement,yes,X5,
+R0052,B,OpenAlex,2026,From LLM Inference Limits to the Physical Fast Network of Natural Intelligence: A Falsifiable Hypothesis and Research Program,yes,X5,
+R0053,B,OpenAlex,2012,Fast Routes to New Therapies: What Do Epilepsy and Inflammatory Bowel Disease Have in Common?,no,X1,
+R0054,B,OpenAlex,1998,Finite element modeling in surgery simulation,yes,X5,
+R0055,B,OpenAlex,2023,A stochastic model of blood flow to calculate blood dose during radiotherapy,yes,X4,
+R0056,B,OpenAlex,2011,Seasonal variations of belowground carbon transfer assessed by in situ 13 CO 2 pulse labelling of trees,yes,X4,empirical belowground carbon allocation by season; not shortage order
+R0057,B,OpenAlex,2004,Functional genomics in chickens: development of integrated‐systems microarrays for transcriptional profiling and discovery of regulatory pathways,yes,X1,
+R0058,B,OpenAlex,2013,"Polarity, cell division, and out-of-equilibrium dynamics control the growth of epithelial structures",yes,X4,
+R0059,B,OpenAlex,1965,Changes in Body Composition During Weight Reduction in Obesity,yes,E,empirical body composition change in fasting against ketogenic diet (1965)
+R0060,B,OpenAlex,2025,Multiscale wrinkling dynamics in epithelial shells,yes,X5,
+R0061,B,OpenAlex,2004,Functional genomics in chickens: development of integrated-systems microarrays for transcriptional profiling and discovery of regulatory pathways: Conference Reviews,yes,X1,
+R0062,B,OpenAlex,2019,"New Horizons for Laser Ablation: Nanomedicine, Thermometry, and Hyperthermal Treatment Planning Tools",no,X5,
+R0063,B,OpenAlex,2010,A Region Growing Method for Medical Images Segmentation,yes,X5,
+R0064,B,OpenAlex,2017,Characterization and modeling of metabolic stress responses in cellular aging,yes,X2,
+R0065,B,OpenAlex,2026,Kinetic analysis of CSF–brain tracer exchange in the pig brain under different anesthetic regimes,yes,X3,
+R0066,B,OpenAlex,2021,"A semantics, energy-based approach to automate biomodel composition",yes,X5,
+R0067,B,OpenAlex,2016,Multi-Platform Molecular Data Integration and Disease Outcome Analysis,yes,X5,
+R0068,B,OpenAlex,2018,In vivo imaging evaluation of a novel 18F-labeled SV2A PET tracer in nonhuman primates,yes,X5,
+R0069,B,OpenAlex,2013,Identification of ELF3 as an early transcriptional regulator of human urothelium,no,X1,
+R0070,B,OpenAlex,2019,Introduction to the invited issue on phloem function and dysfunction,yes,X1,LEAD: editorial on phloem transport; plant source-sink allocation models (Munch; transport-resistance) not covered by the search terms
+R0071,B,OpenAlex,2025,A kinetics-based model of hematopoiesis reveals extrinsic regulation of skewed lineage output from stem cells,yes,X4,
+R0072,B,OpenAlex,2013,Evaluation for liver transplantation in adults: 2013 practice guideline by the American Association for the Study of Liver Diseases and the American Society of Transplantation,yes,X5,
+R0073,B,OpenAlex,2014,Universality of Power Law Coding for Principal Neurons,yes,X5,
+R0074,B,OpenAlex,2026,Simulating is not always understanding: When model complexity obscures biology,yes,X5,
+R0075,B,OpenAlex,2017,Autophagy and protein turnover responses to exercise-nutrient interactions in human skeletal muscle,yes,X1,
+R0076,B,OpenAlex,2023,Predictive coding with spiking neurons and feedforward gist signalling,yes,X5,
+R0077,B,OpenAlex,2017,UKA Component Fatigue Test Development Using DOE and FEA,no,X5,
+R0078,B,OpenAlex,2013,Commentary: Luke and Cooper are wrong: physical activity has a crucial role in weight management and determinants of obesity,yes,X1,
+R0079,B,OpenAlex,2026,A Coupled Multi-Scale Adaptive-State Framework for Radiobiology,yes,X5,
+R0080,B,OpenAlex,2008,Interdisciplinary Team To Tackle Fertility Issues in Cancer Survivors,yes,X5,
+R0081,B,OpenAlex,2026,Reviewer #1 (Public review): Investments in photoreceptors compete with investments in optics to determine eye design,yes,X4,"NEAR MISS: optics against photoreceptors compete for limited resources (design optimisation, not shortage dynamics); duplicates R0082-R0085 (peer review records)"
+R0082,B,OpenAlex,2025,Author Response: Investments in photoreceptors compete with investments in optics to determine eye design,yes,X4,
+R0083,B,OpenAlex,2025,Reviewer #3 (Public review): Investments in photoreceptors compete with investments in optics to determine eye design,yes,X4,
+R0084,B,OpenAlex,2026,Reviewer #2 (Public review): Investments in photoreceptors compete with investments in optics to determine eye design,yes,X4,
+R0085,B,OpenAlex,2024,eLife Assessment: Investments in photoreceptors compete with investments in optics to determine eye design,yes,X4,
+R0086,B,OpenAlex,2026,"Editorial: Advancing musculoskeletal health: bridging basic and clinical research on biomechanical properties of joints, ligaments, tendons, and associated structures",yes,X5,
+R0087,B,OpenAlex,2023,Flux measurements of the tricarboxylic acid cycle in the tumors of mice,yes,X1,
+R0088,B,OpenAlex,2012,Multiscale structure and mechanics of collagen,yes,X5,
+R0089,B,OpenAlex,2013,Mathematical Methods in Biomedical Imaging,yes,X5,
+R0090,B,OpenAlex,2003,Researchers Suggest That Universal 'Law' Governs Tumor Growth,yes,X5,
+R0091,B,OpenAlex,2020,Computational neuroscience: a frontier of the 21st century,yes,X1,
+R0092,B,OpenAlex,2017,Gap junctional communication between β‐ and δ‐cells: another player for suppression of glucagon release,yes,X1,
+R0093,B,OpenAlex,1998,MINIMAL CRITERIA FOR PLACEMENT OF ADULTS ON THE LIVER TRANSPLANT WAITING LIST,yes,X5,
+R0094,B,OpenAlex,2026,"🤖 AI, DIGITAL TWINS & COMPUTATIONAL LONGEVITY AT THE LIMIT Artificial Intelligence, Personal Digital Twins, Causal Simulation, Single-Cell Models, Virtual Trials, and the Future of Computational Healthspan Engineering",yes,X5,
+R0095,B,OpenAlex,1995,Alteplase,no,X1,
+R0096,B,OpenAlex,2012,Mathematical Methods for Images and Surfaces 2011,yes,X5,
+R0097,B,OpenAlex,2026,Focus issue editorial: ecophysiology,yes,X1,
+R0098,B,OpenAlex,2022,Proceedings to the 59th Annual Conference of the Particle Therapy Cooperative Group (PTCOG59 2021 Online),yes,X1,
+R0099,B,OpenAlex,2026,Editorial: Biomechanics and mechanotransduction in cardiovascular calcification,yes,X1,
+R0100,B,OpenAlex,2007,Editorial: Towards a global dengue research agenda,yes,X5,
+R0101,B,OpenAlex,2025,Reconsidering evidence-based oncology: The need for clinical judgment and contextualized care,yes,X5,
+R0102,B,OpenAlex,2011,Special issue on applied neurodynamics: from neural dynamics to neural engineering,yes,X5,
+R0103,B,OpenAlex,2023,Plant cell polarity: The many facets of sidedness,yes,X1,
+R0104,B,OpenAlex,2018,Oscillations Travel Around the Human Brain,yes,X1,
+R0105,B,OpenAlex,2026,Metal‐Organic Framework Membranes as Biointerfaces for Compartmentalized Soft‐Matter Protocells,yes,X5,
+R0106,B,OpenAlex,2018,A Systems Medicine approach to multimorbidity. Towards personalised care for patients with Chronic Obstructive Pulmonary Disease,yes,X5,
+R0107,B,OpenAlex,2023,Sex Makes a Difference in Aging: Biology and Beyond,yes,X1,
+R0108,B,OpenAlex,2010,Stimuli‐Sensitive Polymers,yes,X5,
+R0109,B,OpenAlex,2012,Synthetic biology,yes,X1,
+R0110,B,OpenAlex,2017,Nitrogen nutrition in plants: rapid progress and new challenges,yes,X1,LEAD: special issue on plant nitrogen allocation to organs; plant allocation models not covered by the search terms
+R0111,B,OpenAlex,2011,Dengue: a potential transfusion‐transmitted disease,yes,X5,
+R0112,B,OpenAlex,2006,La ordenación piramidal del cerebro y el enjambre de la conciencia. Segunda parte,yes,X5,
+R0113,B,OpenAlex,2014,Evolution evolves: physiology returns to centre stage,yes,X1,
+R0114,B,OpenAlex,1997,Educational Simulation Models in the Biomedical Sciences,yes,X5,
+R0115,B,OpenAlex,2004,New Tuberculosis Vaccines May Have Serious Public Health Impact,yes,X5,
+R0116,B,OpenAlex,2015,"Computational Account of Emotion, an Oxymoron?",yes,X5,
+R0117,B,OpenAlex,2010,Advancing systems medicine and therapeutics through biosimulation,yes,X1,
+R0118,B,OpenAlex,2018,Big Data Research in Chronic Kidney Disease,yes,X5,
+R0119,B,OpenAlex,2023,Vascular Surgery,yes,X5,
+R0120,B,OpenAlex,2009,Who will take up the gauntlet?,no,X1,
+R0121,B,OpenAlex,2025,"Emergence of Individuality Beyond Nature and Nurture: The Role of Learning, Experience, and Agency",yes,X5,
+R0122,B,OpenAlex,2001,Theories for social epidemiology in the 21st century: an ecosocial perspective,yes,X5,
+R0123,B,OpenAlex,2011,Pharmacogenomics and management of cardiovascular disease,yes,X5,
+R0124,B,OpenAlex,2019,The Role of IACUCs in Responsible Animal Research,yes,X5,
+R0125,B,OpenAlex,2026,Editorial: Enhancing cancer therapy: integrating plant-derived bioactives with chemotherapy through traditional knowledge and modern advances,yes,X5,
+R0126,B,OpenAlex,2010,Making sense of multisensory integration,yes,X1,
+R0127,B,OpenAlex,2025,Editorial: The transformative potential of the arts market,yes,X5,
+R0128,B,OpenAlex,2017,Error and Root Cause Analysis,no,X1,
+R0129,B,OpenAlex,1999,The Effects of Residual Neuromuscular Blockade and Volatile Anesthetics on the Control of Ventilation,yes,X1,
+R0130,B,OpenAlex,2001,Neuroscience from different angles,no,X1,
+R0131,B,OpenAlex,2020,"Bacteriophages: Emerging Applications in Medicine, Food, and Biotechnology",yes,X5,
+R0132,B,OpenAlex,2009,On the origin of systems,no,X1,
+R0133,B,OpenAlex,2021,Abstracts,yes,X5,
+R0134,B,OpenAlex,2013,Communing with the Ancestors,yes,X5,
+R0135,B,OpenAlex,2025,Turning the Tide Against Carbapenem-resistant Acinetobacter baumannii : Advancing Care With Sulbactam–Durlobactam,yes,X5,
+R0136,B,OpenAlex,2020,ACNP 59th Annual Meeting: Keyword Index,no,X1,
+R0137,B,OpenAlex,2026,Learning Abstractions: A Conversation with Yann LeCun,yes,X5,
+R0138,B,OpenAlex,2018,Challenges and Opportunities in Dose Finding in Oncology and Immuno‐oncology,yes,X5,
+R0139,B,OpenAlex,2018,Academy of Neurologic Physical Therapy 2019 Combined Sections Meeting Poster Presentations: Titles and Authors,yes,X5,
