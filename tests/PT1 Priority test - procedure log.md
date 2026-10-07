@@ -127,3 +127,10 @@
 - **That is 1.0% of PT1 rows. Not material,** so no code-history deviation is proposed; the rows drop out as the frozen code handles missing values.
 
 **Next:** step 7, the single analysis run (tests/scripts/pt1_councils.py, unchanged; SHA-256 begins 995abfc5).
+
+## Step 7, attempt 1: the run stopped with an error before any result (7 October 2026)
+
+- **Command:** `python tests/scripts/pt1_councils.py --data data/pt1/tidy --out tests/results/PT1` (code unchanged, SHA-256 begins 995abfc5).
+- **What happened:** the script stopped in G25-C, when it reshaped the Core Spending Power table: "Index contains duplicate entries, cannot reshape" (tests/results/PT1/run.log). **Nothing was printed before the error and no summary file was written. No result has been seen.**
+- **Cause:** the Core Spending Power "input" sheet gives one ONS code, E31000040, to two bodies: Greater Manchester Fire and the Greater Manchester Combined Authority (which took over fire functions in 2017). Neither is a single-tier council or in the panel (all 121 panel councils have E06, E08 or E09 codes). Checked by code and name only, numbers masked.
+- **Proposed D-5 (awaiting James):** the parser keeps only E06, E08 and E09 codes in the Core Spending Power table (tests/scripts/pt1_parse.py, build_csp). The analysis code stays unchanged. No council in scope is affected. **Direction: neutral.** After the fix, data/pt1/tidy/csp.csv is rebuilt and its checksum replaced in the manifest, coverage of the 121 councils is checked, and the run is repeated once. Because attempt 1 produced no result, the repeat is not a choice among results.
