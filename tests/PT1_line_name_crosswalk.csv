@@ -1,0 +1,22 @@
+form,data_name,classification_line,classification_name,reason
+RO2,Structural maintenance - other LA roads,32,Structural maintenance – other local authority roads,same line; 'LA' abbreviated
+RO2,"Environmental, safety and routine maintenance - other LA roads",44,"Environmental, safety and routine maintenance – other local authority roads",same line; 'LA' abbreviated
+RO2,Support to operators - other,75,Support to operators - Other public transport services,same line; shortened name
+RO3,Children's social care: Sure start children's centres/flying start and early years,10,Children’s social care – Sure start children’s centres and early years,same line; 2014-15 to 2016-17 name
+RO4,"Other nightly paid, privately managed accommodation",80,"Nightly paid, privately managed accommodation, self-contained",temporary accommodation by type; window-year line for the 2025-26 line (2020-21 recoding)
+RO4,Private managed accommodation leased by the authority,81,Private sector accommodation leased by authority or by a registered provider,two window-year lines combined into the 2025-26 line (2020-21 recoding); summed
+RO4,Private managed accommodation leased by RSLs,81,Private sector accommodation leased by authority or by a registered provider,two window-year lines combined into the 2025-26 line (2020-21 recoding); summed
+RO4,Hostels (non-HRA support),82,"Hostels (including reception centres, emergency units and refuges)",same accommodation type
+RO4,Bed/breakfast accommodation,83,Bed and breakfast hotels (including shared annexes),same accommodation type
+RO4,Accommodation within the authority's own stock (non-HRA),84,Local authority or housing association (LA/HA) stock,two window-year lines combined into the 2025-26 LA/HA stock line; summed
+RO4,Accommodation within RSL stock,84,Local authority or housing association (LA/HA) stock,two window-year lines combined into the 2025-26 LA/HA stock line; summed
+RO4,Directly with a private sector landlord,85,Any other type of temporary accommodation (including private landlord and not known),two window-year lines combined into the 2025-26 'any other type (including private landlord)' line; summed
+RO4,Other temporary accommodation,85,Any other type of temporary accommodation (including private landlord and not known),two window-year lines combined into the 2025-26 'any other type (including private landlord)' line; summed
+RO4,Homelessness: Administration,87,"Homelessness Services: Administration, Prevention, Relief & Main Duty","two window-year lines combined into the 2025-26 'administration, prevention, relief and main duty' line; summed"
+RO4,Homelessness: Prevention,87,"Homelessness Services: Administration, Prevention, Relief & Main Duty","two window-year lines combined into the 2025-26 'administration, prevention, relief and main duty' line; summed"
+RO4,Homelessness: Support,88,Homelessness Services: Specialist Services and Support,window-year support line for the 2025-26 'specialist services and support' line
+RO4,Other council property (Non-HRA),60,Other council property,same line; '(Non-HRA)' qualifier
+RO5,Library service,150,Library services,same line; singular
+RO5,"Sports and recreation facilities, including golf courses",129,Sports and leisure facilities (including golf courses),same line; earlier name
+RO5,Open spaces,131,"Parks and open spaces (including play areas), community parks and open spaces",same line; earlier name (2014-15 to 2018-19)
+RO5,Parks & Open Spaces (including play areas),131,"Parks and open spaces (including play areas), community parks and open spaces",same line; 2019-20 name (allotments reported separately from 2019-20; that line is excluded by the all-years rule)

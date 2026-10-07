@@ -44,3 +44,52 @@
 4. **Funding:** Core Spending Power from the 2019-20 final settlement tables, which give 2015-16 to 2019-20 on a comparable basis.
 
 **Next:** step 5, the structure-only inspection (sheet names, header rows and labels; no values), then the parser, with its settings logged here before the counting step.
+
+## Step 5: structure inspection and parser settings (7 October 2026; logged before the counting step)
+
+**Inspection** (no values printed):
+- **Scripts:** tests/scripts/pt1_structure.py (text cells only, numbers masked) and tests/scripts/pt1_parse.py --structure.
+- **Outputs:** data/pt1/structure/ (git-ignored).
+
+**What the inspection found:**
+- **RO files:**
+  - one data sheet per form and year (2014-15: three sheets per form);
+  - a header row whose first cell is "E-code" (row 9 or 12 in 2014-15, row 4 in 2017-18, row 6 otherwise);
+  - line names in the nearest row above the header that holds names (group banners in "***" skipped);
+  - one block of columns per line, with net current expenditure in the column headed "Net Current Expenditure" (in 2014-15, on the third sheet);
+  - council rows identified by an E-code in column 0;
+  - an ONS code column and a Class column.
+- **Class codes:** L, MD, UA, SD, SC, O. "L" (London) is mapped to LB.
+- **Mid-year estimates (MYEB2, 2019 geography):** one row per council, single year of age (0 to 90, 90 = 90 and over) and sex, with population_2001 to population_2019.
+- **Projections:**
+  - 2012, 2014 and 2016 editions: persons CSVs, single year of age plus "90 and over" and "All ages", with year columns;
+  - interim 2011-based: an xls sheet "Population - persons", header row "Code, Area, Age group", years 2011 to 2021.
+- **Core Spending Power:** sheet "input" in the 2019-20 summary workbook, with ons_code and csp_2015 to csp_2019 in £ millions.
+
+**Parser settings (implementation notes, fixed now):**
+1. **Net current expenditure** is the column headed "Net Current Expenditure" in each line's block. Non-numeric cells become missing.
+2. **Population groups** are summed from single years of age, both sexes: all ages, 0 to 17, 65 and over, 18 and over. "90 and over" is age 90; the "All ages" rows are not used. The same applies to projections (persons).
+3. **CPI** is the mean of the 12 monthly D7BT values from April to March for each financial year.
+4. **Core Spending Power** is converted from £ millions to £ thousands (×1000). The analysis uses ratios, so units do not affect results.
+
+**Deviations from the pre-registration (name matching, Section 3).** These are of the kind the pre-registration anticipates ("a changed name"), and were decided from names only, before any values.
+
+- **D-1. Name crosswalk.** 21 data names in the window years differ from the 2025-26 guidance names that the classification uses. They are mapped by tests/PT1_line_name_crosswalk.csv, with a reason for each.
+  - **The differences:** abbreviations ("other LA roads"); singular and plural ("Library service"); earlier names ("Open spaces", "Sports and recreation facilities"); and the RO4 temporary accommodation and homelessness lines, which are finer in the window than in 2025-26.
+  - **Without the crosswalk,** the frozen exact-name rule would drop core lines (libraries, parks, sports facilities, most temporary accommodation and homelessness) for a purely editorial reason.
+  - **Direction: neutral.** Names only, no values.
+- **D-2. Many-to-one lines summed.** Where the crosswalk maps several window-year lines to one 2025-26 line, they are summed into that line for each council and year (missing only if every component is missing). Examples: leased by the authority + leased by registered social landlords → line 81; homelessness administration + prevention → line 87.
+  - **This follows the official 2020-21 recoding,** which combined these lines (PT1-S1).
+  - **Without it,** the duplicate-name rule would drop them.
+  - **Direction: neutral.**
+- **D-3. A labelling error in the source** (RO5, 2019-20). Two adjacent blocks are both labelled "Sports development and community recreation". In every other year, the second position is "Sports and recreation facilities, including golf courses". The second block is relabelled by position.
+  - **Without the fix,** the duplicate-name rule would drop both sports lines in every council.
+  - **Direction: neutral.**
+- **D-4 (a limitation, no intervention).** From 2019-20, "Allotments" is reported separately from "Parks & Open Spaces". Both open-spaces names map to line 131. The 2019-only allotments line drops out under the all-years rule. If allotments sat inside "Open spaces" before 2019-20, line 131 has a small definitional fall in 2019-20. **Not corrected; reported.**
+
+**Known risk, to be checked by count in step 6:**
+- **The cause:** the projections of 2011 and 2012 use the council codes of their time. A council whose code changed before 2014 (stable within the spending window) may lack early projections under its later code.
+- **Consequence:** its 2014-15 to 2016-17 projected growth is then missing, and those rows drop out of PT1.
+- **What happens next:** the counting step reports the number. **If it is material, a documented code-history mapping is a candidate deviation for James to decide** before the run.
+
+**Next:** step 6, build the tidy files and run the counting step (counts only, no outcome values).
