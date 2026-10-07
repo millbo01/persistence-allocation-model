@@ -81,7 +81,7 @@
 25. Exercise always ends with a reserve: 35 to 60% of muscle recruited.
 26. Motor units recruited and de-recruited.
 27. Exercise is stopped "before there is a catastrophic failure of homeostasis": an active switch before passive failure.
-28. **Two co-equal governors** (brain and immune system), each able to take control and inhibit the other. A challenge to PAM's one governor (for James).
+28. Two co-equal regulators (brain and immune system), each able to take control and inhibit the other. **Absorbed (James, 7 October 2026):** in PAM these are two modes of one governor function, selected by signals (v0.18 Section 4, item 4); the conflict cases are evidence for the open question of which mode wins (Section 12).
 29. Insulin dependence decides which organs gain from insulin resistance.
 30. A non-negotiable floor (about 8,500 kJ a day) and a negotiable remainder (the CAEN); stores last 19 to 43 days.
 31. Energy arithmetic of the reallocation (kJ a day), not a conserved account of unmet demand.

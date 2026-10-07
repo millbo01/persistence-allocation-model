@@ -192,7 +192,8 @@ The check 1 searches found two research programmes closer to PAM's governor than
 - **Access by insulin dependence** is the Selfish Brain's gate, extended to the immune system: order set by a documented transport property.
 - **Repair as a claimant that can take priority** (trauma, infection) is PAM's repair competing for access, in words.
 - **The acute against chronic split** matches PAM's acute-chronic flip; the store sets how long a costly mode can run, which is PAM's store-limited mode duration.
-- **A real difference: two governors.** PAM has one governor. Straub has two co-equal regulators that can each take control and block the other. Either PAM treats the immune system as a mode of the one governor (immune mode), or it must allow a second regulator. **This is a theory question for James,** logged as found, not resolved here.
+- **Two governors: absorbed (James, 7 October 2026).** Straub's two co-equal regulators are two **modes** of one governor function, not two governors. In v0.18 the governor is a function, not an organ (Section 14), and "a signal produced inside a part belongs to the governor function" (Section 1, item 6), so cytokines and stress hormones are both governance signals. "Taking control" is a signal selecting a mode (Section 4, item 4): inflammation selects an immune/repair setting, threat a fight-or-flight setting; insulin resistance is the gate each opens. No new mechanism. The rank stays fixed; what changes is the mode (so a change of allocation here is not a rank reversal).
+- **Kept as evidence for an open question:** Straub's chronic cases (inflammation silencing the brain-led setting; chronic stress suppressing the immune setting) bear on v0.18 Section 12, "Governors as modes, and whether rarity sets which wins". A possible later prediction about mode precedence, not a mechanism.
 - **What PAM adds:** a formal model; many parts and a full order; resources other than energy; the ledger as a conserved account; viability; units.
 
 ### N6. Hochachka: a unifying theory of hypoxia tolerance (1996; abstract only)
@@ -278,7 +279,7 @@ That is a smaller and more defensible claim than "the governor and order of loss
 **Update after N3 to N10 and check 2 (Claude's, for James):**
 - **(a) Order from access:** precedents now in glucose (Selfish Brain), carbon (plant transport-resistance), micronutrients (Ames triage, several levels) and blood flow (haemodynamic models, check 2), with a measured cell-level order (Buttgereit and Brand). In most of them the order **emerges** from access properties rather than being fixed beforehand from them. PAM's distinct step is fixing the rank from documented access **before** outcomes and applying the same rule to any resource and system.
 - **(b) Repair cut first:** stated in words by EMAL, Ames (DNA repair), Hochachka (translational arrest) and Straub (the immune/repair system as a claimant); measured by Buttgereit and Brand (macromolecule synthesis most sensitive). PAM's remaining contribution is the formal repair network (rank among repair recipients, G23 b, the template and scars).
-- **(c) The governor:** in words in Sterling, Noakes and Straub; formal in the Selfish Brain and the haemodynamic models. **Straub's two co-equal governors** are a real challenge to PAM's one governor (James's call). Noakes's governor stopping work before passive failure, with a reserve always kept, supports the threshold-switch refinement from natural test 1.
+- **(c) The governor:** in words in Sterling, Noakes and Straub; formal in the Selfish Brain and the haemodynamic models. Straub's two co-equal governors are absorbed as two modes of one governor function (James, 7 October 2026). Noakes's governor stopping work before passive failure, with a reserve always kept, supports the threshold-switch refinement from natural test 1.
 - **(d) The ledger:** still not found as a conserved account of where unmet demand lands. Sterling's hypertension sequence (each blocked route moves the load to the next) and Straub's kJ arithmetic are the nearest statements. **Still the strongest candidate,** with viability, units and scars.
 
 ## James's position (7 October 2026)
@@ -297,7 +298,6 @@ Reframe accepted as the working basis, with his reasons:
 - **Check 1:** OpenAlex strand D (after the daily reset); five CHECK full texts; why held-out H1 was missed.
 - **Check 2:** done at search level (above). Read in full, if the paper leans on them: Sadid et al. 2026 and Bergauer et al. 2026 (calibrated order of bed resistances); Peters and Boyd 1968 (organ weights in starvation).
 - **Check 3:**
-  - **For James:** Straub's two co-equal governors (N5) against PAM's one governor;
   - Peters and Langemann (2009), the brain's supply chain (open access, to read);
   - the second Selfish Brain review in full;
   - the insect "negotiable maintenance" model;
