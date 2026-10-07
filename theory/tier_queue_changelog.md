@@ -6,6 +6,18 @@ The history of the canonical model (theory/TIER_QUEUE_MODEL_v*.md), moved out of
 
 The model is now called **the Persistence Allocation Model** (formerly the tier-queue model). The name changes from now on. File names, engine names (tq_*, TQ runs) and frozen documents, including the H1 VitalDB pre-registration, keep the old name.
 
+## v0.18 corrected: access-limited load and "chronic" (James approved, 7 October 2026)
+
+From James's full-day GPT chat (raw/2026-10-07_chatgpt_full-day-chat.txt; theory/PAM_proposals_7Oct_access-limited-load.md). No mechanism added; the text now matches $\ell=[q^0-a]_+$ with $a$ depending on the governor's settings.
+1. **Central claim:** "when the resources available fall short…, whether supply falls or requirement rises" becomes "when what reaches a part falls short of what the reference state requires, whether supply falls, requirement rises **or access is restricted**".
+2. **Three origins of load** (supply, requirement, access) in Section 6. **The guard:** an access restriction counts only for a mode and gate documented independently and named at mapping (new mapping step 8).
+3. **Governors as modes** given a concrete form: a setting that opens one class of work and closes another (build against consolidate).
+4. **Chronic redefined:** restoration persistently fails to keep pace with deterioration, whatever the origin. It is stated with the backlog equation. Time becomes an allocation dimension.
+
+**Approved for v0.19, not yet in the text:**
+- **Economising is a magnitude.** Throttling, switching off and loss are mapped realisations, with consolidation the default (noted in the maths, Section 5).
+- **Switched off defined:** the unit keeps its route back, receives maintenance only, and does little work. Cellular quiescence is an instance.
+
 ## v0.18 amended (James approved, 7 October 2026)
 
 From the derived results (theory/PAM_results_v0.18.md) and the maths items 2 and 3 (theory/PAM_recovery_value_and_viability.md):

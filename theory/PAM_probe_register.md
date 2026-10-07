@@ -6,6 +6,22 @@
 - The outcomes were known before the mapping, so none counts as support (v0.18, Section 11).
 - They are logged because they shaped the model, or because they point to tests.
 
+**Two biases, stated (James, 7 October 2026):**
+1. **The same model picks the case, maps it, predicts and searches.** Real tests need isolated models in sequence.
+2. **Cases are chosen because they look promising.**
+
+**Probes carry no evidential weight.** They serve only to debug the ontology and to check that the model lands near respectable explanations.
+
+**The bias ledger** (adopted 7 October 2026). Before looking anything up, score the interpretive freedom of each mapping choice from 1 (forced) to 5 (open):
+- boundary;
+- part classification;
+- resource;
+- rank;
+- reference state;
+- prediction.
+
+Mark coin-flip choices as ambiguous before the search; they cannot be resolved afterwards in the model's favour.
+
 **What James wants from them** (7 October 2026): *convergence with current scientific thinking, not new discoveries.* "I want to validate the model, not discover new scientific findings."
 
 | No. | Case | What the model said | Existing science it met | What it changed or pointed to | Source |
@@ -16,7 +32,7 @@
 | P4 | Power grid | Governance sets connections and capacity; physics sets the flow | Underfrequency load shedding; cascading failure | **The governor regulates access** (F1); severance and cascades (F3, G24) | same |
 | P5 | Skin circulation in heat and haemorrhage | Not a rank test: the skin is dumb, and flow is moved | Thermoregulatory and haemorrhagic vasomotor control | **What a valid dynamic-priority test needs** (F2) | same, part 2 |
 | P6 | Mammalian hibernation: periodic arousals | Torpor cuts access, renewal included, so residue builds while the record holds. Arousal is the governor restoring access before the first renewal bottleneck reaches its viability limit. With several such debts, the binding one is the minimum (the law of the minimum) | **The hourglass hypothesis:** an imbalance accumulates in torpor to a threshold, and is restored in arousal (a two-process model reproduces the cycles) | **Convergence.** A discriminating experiment follows: slow the deterioration of the limiting process, and bouts lengthen until the next bottleneck binds. **Mapping note:** torpor is not economising in the maths (which cuts work access only). It is a governor setting that also cuts renewal access, which needs no new mechanism ($g$ depends on sensed state) | raw/2026-10-07_chatgpt_PAM-probes-hibernation-ants.md |
-| P7 | Inactive workers in ant colonies | Inactive workers are switched-off units. Loss or a rise in requirement recruits them before the function fails, through local thresholds with no central switch | **The reserve-labour hypothesis** (*Temnothorax*: removing active workers recruits inactive ones; task-specific reserve pools). Contested: some experiments fail to recruit, and stochastic task dynamics can produce inactivity | **Convergence, with the contest kept.** The model claims only that, *if* inactive units are recoverable capacity, a large enough loss recruits them before the function fails. **Derived response order** (results R14): spare throughput in active units, then reactivation, then loss of output | same |
+| P7 | Inactive workers in ant colonies (ledger after the fact: part classification about 50/50) | Inactive workers are switched-off units. Loss or a rise in requirement recruits them before the function fails, through local thresholds with no central switch | **The reserve-labour hypothesis** (*Temnothorax*: removing active workers recruits inactive ones; task-specific reserve pools). Contested: some experiments fail to recruit, and stochastic task dynamics can produce inactivity | **Convergence, with the contest kept.** The model claims only that, *if* inactive units are recoverable capacity, a large enough loss recruits them before the function fails. **Derived response order** (results R14): spare throughput in active units, then reactivation, then loss of output | same |
 
 **Unverified leads from P6 and P7** (to check before citing): the hourglass and two-process hibernation models; the *Temnothorax rugatulus* removal experiments (2017) and the later dynamic task-allocation study; the "lazy workers" response-threshold model.
 
@@ -28,3 +44,12 @@
 3. **If requirement rises faster than reactivation, or exceeds total capacity:** output falls, and load passes on.
 
 This is the order the ant probe pointed to, and it follows from the existing rules. **It is a candidate prediction** (a recruitment sequence) for any system where active, switched-off and lost units can be counted.
+
+## Further probes (7 October 2026)
+
+| No. | Case | What the model said | Existing science it met | What it showed | Ledger |
+|---|---|---|---|---|---|
+| P8 | Drought in woody plants | Peripheral capacity is given up before the protected core | **The hydraulic vulnerability segmentation hypothesis** (leaves fail before stems; stem, then petiole, then leaflet in compound-leaved trees; treated as a drought strategy across 130 species) | **A negative result as well:** a 2025 study of 12 Australian species found segmentation absent or reversed, and reviews say it is not universal. **Lesson:** the prediction was too permissive (closing stomata, turgor loss, shedding and segmentation would all "fit"). A test must fix in advance which threshold comes first, in which tissue | Prediction freedom high |
+| P9 | Dehnel's phenomenon in shrews | Reversible economising to lower the cost of upkeep ("when income cannot rise, make the system cheaper to keep alive") | Winter shrinkage of the body and organs, the brain included, with spring regrowth. Measurements show lower absolute energy use. The brain shrinks by cell shrinkage with neuron numbers stable. The change is seasonal and anticipatory | **Convergence** on reversible economising and on scaling down while keeping the route back. **The ranking of tissues was not predicted,** so it is not scored | Boundary 1, resource 2, part 1, **rank 5**, reference 2 to 3, prediction 2 |
+
+**Unverified leads from P8 and P9:** the 2025 Australian segmentation study; the 130-species study (2024); the shrew metabolic measurements; the 2025 brain cell-shrinkage report.

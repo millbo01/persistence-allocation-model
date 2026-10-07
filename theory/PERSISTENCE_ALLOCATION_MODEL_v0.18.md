@@ -1,6 +1,6 @@
 # The Persistence Allocation Model, v0.18 (canonical state, 6 October 2026)
 
-**Status:** working model (phase 3). **The vocabulary is frozen** (James approved v0.18, 6 October 2026). **Corrected 7 October 2026** (James approved): three consistency fixes and one open question logged, no change of content; a second correction from the maths (exported load is residue, not a resource term; resources are drawn from a flow); and a third from the literature map (the stores' value renamed; bundles of activity under joint scarcity; pathway capacity as maximum flow; a complementarity check in mapping); and an amendment (7 October 2026: recovery by marginal value; collapse and death by viability; G3, G12 and G20 sharpened; the partial-refill prediction). See the changelog. The probing phase is over. No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
+**Status:** working model (phase 3). **The vocabulary is frozen** (James approved v0.18, 6 October 2026). **Corrected 7 October 2026** (James approved): three consistency fixes and one open question logged, no change of content; a second correction from the maths (exported load is residue, not a resource term; resources are drawn from a flow); and a third from the literature map (the stores' value renamed; bundles of activity under joint scarcity; pathway capacity as maximum flow; a complementarity check in mapping); and an amendment (7 October 2026: recovery by marginal value; collapse and death by viability; G3, G12 and G20 sharpened; the partial-refill prediction); and a correction for access-limited load and "chronic" (7 October 2026). See the changelog. The probing phase is over. No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
 
 **The single reference** for the model as it stands.
 - **History:** theory/tier_queue_changelog.md.
@@ -36,7 +36,7 @@
 
 **Central claim** (v0.18. It is v0.17's approved wording with these changes: the governor regulates access (F1), part death (A6), access in place of allocation where the mechanism is described, and, in revision 2, shortfall from either side and "a system that regulates its own persistence"):
 
-> In a system that regulates its own persistence, a governor holds the levels its persistence depends on by regulating access to finite shared resources among parts that have no demand of their own; the allocation among parts is the resulting flow. Each part works to the limit of the scarcest resource that reaches it. When the resources available fall short of what the reference state requires, whether supply falls or requirement rises, the governor draws its stores, and lower-ranked parts lose access first and switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: the resource gap is met from stores, met from outside the boundary, or left unmet at a named part, and unmet load leaves its residue in switched-off, lost or scarred units, or in work not done, which may land across the boundary. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Repair is its own network, governed like any part: under a sustained shortfall it loses access and lost units wait. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. A part dies only when its route back is cut; the system collapses when load reaches the top or a non-bypassable link is cut, and dies only when no route back remains.
+> In a system that regulates its own persistence, a governor holds the levels its persistence depends on by regulating access to finite shared resources among parts that have no demand of their own; the allocation among parts is the resulting flow. Each part works to the limit of the scarcest resource that reaches it. When what reaches a part falls short of what the reference state requires, whether supply falls, requirement rises or access is restricted, the governor draws its stores, and lower-ranked parts lose access first and switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: the resource gap is met from stores, met from outside the boundary, or left unmet at a named part, and unmet load leaves its residue in switched-off, lost or scarred units, or in work not done, which may land across the boundary. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Repair is its own network, governed like any part: under a sustained shortfall it loses access and lost units wait. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. A part dies only when its route back is cut; the system collapses when load reaches the top or a non-bypassable link is cut, and dies only when no route back remains.
 
 ## 2. Scope
 
@@ -143,7 +143,7 @@
      - A part receiving more in one condition and less in another is not such a test.
      - Under item 1, a reversal could also come from local autoregulation, so the test is designed with the network in view.
 3. **Economising.** When the shortfall still expected outruns the stores, access is cut early and evenly. Units switch off in an orderly way and the stores are preserved. With a known need (a predictable season), it starts at onset.
-4. **The switch,** and governors as modes (open; Section 12): signals from outside may select a different governor that overrides the routine one.
+4. **The switch,** and governors as modes (open; Section 12): signals from outside may select a different governor that overrides the routine one. **A mode is a setting of the governor that opens one class of work and closes another** (for example, a build or production setting and a consolidate or maintenance setting). That is the source of access-limited load (Section 6).
 
 ## 5. What a part does with what reaches it
 
@@ -175,7 +175,15 @@
     **Every unit of gap is accounted for:** carried by a store, met from outside, or left unmet at a named part. **Exported load is not a resource term:** a commitment the system sheds shows as unmet load at the part whose work was shed, and the work not done, landing on another system, is residue (the state ledger). The reference allocation is never redefined to make an export disappear.
   - **The state ledger** (in units of state). What each unmet allocation leaves behind: units switched off, lost or scarred, and the work not done. **Residue is a consequence of load, not a further destination for it.** It is never added to the resource ledger.
   - **Load passing on:** where a part's unmet allocation reduces its output, parts depending on that output lose capacity. That is load moving through a dependency, counted at the receiving part.
-- **A shortfall can come from supply falling or requirement rising.**
+- **Three origins of load** (all within $\ell_{ir}=[q^0_{ir}-a_{ir}]_+$, with $a_{ir}$ depending on the governor's settings):
+  - **supply-limited:** the flow falls;
+  - **requirement-limited:** the reference requirement rises;
+  - **access-limited:** the governor's current setting restricts a part's access while resources are sufficient. For example, a growth or production setting holds a maintenance or recycling process shut, as growth signalling (mTORC1) suppresses autophagy even when nutrients are present. **An opportunity cost imposed by control architecture** (James).
+  - **Guard:** an access restriction counts only if the setting (the mode) and the process it gates are **documented independently and named at mapping** (Section 8). It is never inferred from the shortfall it would explain.
+- **Chronic** is a state in which a required restorative process persistently fails to keep pace with the deterioration it must clear, whatever the origin of the load (supply, requirement or access). For a maintenance class $M$ with backlog $B_M$:
+$$B_M(t+1)=B_M(t)+\ell_M(t)-R_M(t),$$
+  where $R_M$ is the clearing achieved. It is chronic when the expected load exceeds the expected clearing over the period that matters, so the backlog grows.
+  - **Time is therefore an allocation dimension:** with resources held equal, a backlog grows with the share of time spent in settings that gate its process shut.
 
 **Movement and failure.**
 - **Load is relocated, never removed.** The resource gap is met from stores, met from outside the boundary, or left unmet at a named part. Unmet load leaves its residue in switched-off, lost or scarred units, or in work not done, which may land across the boundary on another system (the state ledger).
@@ -246,8 +254,9 @@ Do this before opening any outcome data.
    - Non-bypassable links (severance points).
    - Which parts share the repair network.
 7. **Nested systems** (only if the extension in Section 15 is used): list every component treated as a nested system, with the evidence for its own access loop, and its interfaces. **A component not listed here stays a part.**
-8. **The clock.** Fix the unit in which durations are judged.
-9. **Predictions.** Write the generic predictions (Section 10) for this system before looking at outcomes.
+8. **Modes and gates** (only if access-limited load is claimed): name each governor setting and the process it gates, with independent documentation of the gate. A gate not named here cannot be invoked to explain a shortfall later.
+9. **The clock.** Fix the unit in which durations are judged.
+10. **Predictions.** Write the generic predictions (Section 10) for this system before looking at outcomes.
 
 ## 9. Using the model in reverse
 
@@ -352,7 +361,9 @@ Do this before opening any outcome data.
 - **Load residue:** the state change left by absorbing it; recorded in the state ledger, never added to the resource ledger.
 - **Pathway capacity:** the maximum flow from a resource's source to a part (the sum of the routes in the parallel case).
 - **Severance:** pathway capacity at zero.
-- **Switched off, lost, scar, economising, chronic:** as v0.17.
+- **Switched off, lost, scar, economising:** as v0.17.
+- **Chronic:** a state in which a required restorative process persistently fails to keep pace with the deterioration it must clear, whatever the origin of the load.
+- **Access-limited load:** load at a part caused by the governor's setting restricting its access while resources are sufficient; counted only for a gate named at mapping.
 - **Exhaustion and severance:** the two routes to system collapse.
 - **Viable set:** the states in which the record and the levels it depends on hold; fixed at mapping.
 - **Collapse:** outside the viable set with a route back (inside the capture basin).

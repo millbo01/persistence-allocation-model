@@ -43,8 +43,9 @@
 5. **Repair network:** not mapped (not tested).
 6. **Links:** none mapped between service lines (not tested).
 7. **Nested systems:** none listed. The extension layer is not used.
-8. **The clock:** financial years.
-9. **Predictions:** Section 3.
+8. **Modes and gates** (added to the model 7 October 2026): **none claimed.** PT1 does not invoke access-limited load. Any shortfall in a service line is read as supply-limited or requirement-limited.
+9. **The clock:** financial years.
+10. **Predictions:** Section 3.
 
 **The expected future value (H-dynamic's variable).**
 - **What it is:** the **projected growth** of each line's client group over the next five years, from the ONS subnational population projection **published before that year's budget was set.** The rule: the latest edition published before 1 February of the year in which the budget takes effect.
