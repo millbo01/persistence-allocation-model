@@ -4,9 +4,13 @@
 **Code:** tests/scripts/h1_vdb_g12.py (SHA-256 9fbe80d7, unchanged since its commit before the data were opened).
 **Data:** data/README.md (VitalDB, downloaded 6 October 2026 after James accepted the registration agreement).
 
-**Status:**
-- **This is the computed result, run once.**
-- **It is not yet replicated or adjudicated.** Next are computation replication by a second model, then blind GPT adjudication. Claude does not adjudicate.
+**Status: FINAL (7 October 2026).**
+- **Computation replicated** by a second model (tests/results/H1-VDB-R1/README.md).
+- **Adjudicated blind by GPT** (raw/2026-10-07_chatgpt_H1-VDB-ADJ1.md), accepted as given: **VERDICT: Fails; WEIGHT: fallback cohort, half weight (0.5), high-loss threshold 15% EBV.**
+- **Material qualifications** recorded by the adjudicator, which must accompany the verdict:
+  - (a) the test is runnable only under the pre-data reading that a missing 10-second bin does not fail the stable approach; under the stricter reading it is not runnable;
+  - (b) the pre-registration does not state that the 20% to 15% step-down applies inside the fallback cohort; the pre-data code applies it.
+- **The adjudicator found no misclassification or rules error.** None of the adjudication rules G1 to G6 changes the verdict.
 
 ## Count step (counts.json)
 

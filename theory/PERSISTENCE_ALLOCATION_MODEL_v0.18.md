@@ -247,7 +247,7 @@ Do this before opening any outcome data.
 | No. | Prediction | Layer | Status |
 |---|---|---|---|
 | G2 (note) | Lower-ranked parts lose access first, in ascending rank | 2 | As v0.17; "supply" read as "access" |
-| G12 (note) | With a tapering store, recovery from small knocks slows before the break; with full release until a switch, no warning | 1 | **H1 VitalDB run 6 October 2026** (blood loss under anaesthesia, release profile committed as taper): computed verdict Fails, fallback cohort at half weight. The result depends on the reading of missing data; adjudication pending |
+| G12 (note) | With a tapering store, recovery from small knocks slows before the break; with full release until a switch, no warning | 1 | **Fails in its first held-out test** (H1 VitalDB, blood loss under anaesthesia, release profile committed as taper; adjudicated 7 October 2026). Weight: fallback cohort, half. Qualifications: runnable only under the pre-data reading of missing bins; step-down inside the fallback cohort not stated in the pre-registration. tests/results/H1-VDB/README.md |
 | G24 | **Cascade along substitutes.** Losing some routes of a pathway moves their flow onto the rest; where those saturate, they fail in turn, so failure spreads along the substitutes, not by rank | 1 | Derived (F3); known in power systems; untested as a model prediction |
 | G25 | **Order of sacrifice from access.** Under scarcity, the order in which parts lose adequate supply is predicted by properties of access documented beforehand (constriction under sympathetic drive, autoregulation, redundancy; discretionary budgets) | 2 | Derived (F1); compatible: splanchnic and renal vasoconstriction protecting heart and brain in haemorrhage; untested with access fixed in advance |
 
@@ -259,7 +259,9 @@ Do this before opening any outcome data.
 - **First held-out test:** H1 VitalDB (G12).
   - **Run, and the computation replicated by a second model.**
   - **Computed verdict:** Fails, fallback cohort at half weight. It depends on the reading of missing bins in the stable approach (tests/results/H1-VDB-R1/README.md).
-  - **Adjudication** is pending.
+  - **Adjudicated blind by GPT (7 October 2026): Fails, at half weight,** with two stated qualifications (raw/2026-10-07_chatgpt_H1-VDB-ADJ1.md).
+  - **Under the standing check:** G12 as mapped for blood loss under anaesthesia has failed once. The first candidate for revision is that mapping (the release profile: taper or switch), not a new mechanism. One failure at half weight does not remove G12. The release-profile question (Tier 2) is now live.
+  - **The G1 check in H1 was also not consistent** (10.7% of 75 cases, against more than half), at low weight. The anaesthetist defends pressure, and the check was not decomposed.
 - **The frozen engine is a reduced form under v0.18.** It writes access as an explicit order of claims. Fixed ranks stand for the network's order of sacrifice. Its other departures from v0.17 (claim order; repair inside each part) stand.
 - **The theory-building probes** of 6 October 2026 (salmon, cancer, pregnancy, the power grid, skin circulation) shaped v0.18. **They are not tests:** GPT knew the outcomes, and none counts as support.
 
@@ -274,7 +276,7 @@ Do this before opening any outcome data.
 - **Sensitivity to framing.**
 
 **Tier 2: refining a surviving model.**
-- **The release profile** (a knee, or full release until a switch). H1 bears on it once adjudicated.
+- **The release profile** (a knee, or full release until a switch). **Live after H1:** the taper reading failed for blood loss under anaesthesia.
 - **The repair network:** resident and mobile kept apart, or one workforce?
 - **What starts anticipatory economising;** how the expected shortfall is learned; what sets a template limit.
 - **Harmful inputs:** entered for now as exogenous loss of units or pathway capacity (Section 3, Damage). A mechanism is added only if a pre-committed test fails without one.
