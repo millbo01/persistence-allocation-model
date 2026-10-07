@@ -1,0 +1,1172 @@
+PT1-R1: audit and re-implementation of a pre-registered analysis (English council spending, PT1 and G25)
+
+You are checking the code for a pre-registered analysis of English local-authority spending (revenue outturn, 2014-15 to 2019-20). The analysis has already been run once on the real data. You will NOT see the data or the results, and you must not guess them. Your job is to check that the code does what the frozen pre-registration says, and to write your own version of the computation so the two can be compared on the same files.
+
+FORMAT RULE: no introduction, background or essay. Start directly with Part A.
+
+INPUTS (embedded below, in full unless stated)
+1. The frozen pre-registration (Markdown).
+2. The analysis code that was run (Python 3.12, numpy, pandas, scipy): pt1_councils.py.
+3. The parser that built the tidy files from the downloaded government files: pt1_parse.py. It was written after the pre-registration was frozen, from a structure-only inspection; its settings and deviations D-1 to D-5 are in Input 5.
+4. The line-name crosswalk (deviation D-1), in full, and the statutory classification with its text columns (main_activity, duties, source) removed. The real classification file has those extra columns; the analysis uses only form, line, line_name, cls and candidates.
+5. The procedure-log entries for the parser settings and deviations D-1 to D-5 (counts and results are not included).
+6. The tidy-file layout the analysis reads (structure only, no values):
+   - DIR/spend.csv: ons_code, la_type (UA, MD, LB, or other codes such as SD, SC, O), year (financial year start, 2014 to 2019), form (RO2 to RO6), line_name (after the crosswalk), nce_thousands (net current expenditure, GBP thousands, cash; may be blank), data_name (the name as printed in the source, or several joined by " + " where D-2 summed lines). One row per council, year, form and line.
+   - DIR/pop.csv: ons_code, year (mid-year, 2010 to 2019), population, group (all, 0_17, 65plus, 18plus). Mid-year estimates, 2019 geography.
+   - DIR/proj.csv: ons_code, edition (2011i, 2012, 2014, 2016), year, group, population. Subnational population projections, persons.
+   - DIR/csp.csv: ons_code, year (2015 to 2019), csp_thousands (Core Spending Power, cash). Single-tier council codes only (D-5). Some codes outside the panel have zero values.
+   - DIR/cpi.csv: year (financial year start), cpi (April to March average of the monthly index).
+   - CLS: the classification CSV (columns as in Input 4, plus three text columns).
+
+PART A: AUDIT
+A1. Go through the pre-registration Sections 1 to 7 rule by rule, and the IMPLEMENTATION_NOTES list in pt1_councils.py. For each rule, say whether the code implements it as written. Then list:
+  a. Every discrepancy between the code and the pre-registration, with the code line or function, the rule, and whether it could change the PT1, G25 or G25-C verdict (yes / no / unclear, with one sentence why).
+  b. Every bug or fragile step (for example silent row loss, wrong merges, a wrong degrees-of-freedom count, fixed effects not fully absorbed, wrong clustering, sign errors), with the same three-way rating.
+  c. Every place where the pre-registration is ambiguous and the code chose a reading, with the reading chosen and the alternative.
+A2. Check the parser against its logged settings and deviations D-1 to D-5 (Input 5). List any place where the parser does not do what the log says, or could silently mis-assign a line, a council, a year or a population group, with the same three-way rating.
+If you find nothing under a heading, write "none found".
+
+PART B: YOUR OWN IMPLEMENTATION
+Write one standalone Python 3.12 script, pt1_check.py, using only numpy, pandas and scipy, that:
+  - takes --data DIR, --cls CLS and --out DIR;
+  - starts from the tidy files (do not re-parse the government files);
+  - implements Sections 3 to 7 of the pre-registration: the council, line, series and client-group rules; the measures; the PT1 model with line and council-year fixed effects and council-clustered standard errors; PT1-S if and only if PT1 finds an effect; G25; G25-C; SS; the verdict table; and all eight sensitivity analyses;
+  - follows the code's IMPLEMENTATION_NOTES where the pre-registration is silent, unless you flagged a note as wrong in Part A (then follow the pre-registration and say so in a comment);
+  - is written your own way: do not copy the functions of the code above (you may use a different but equivalent method of absorbing the fixed effects, and you must say which);
+  - writes check.json with: the counts at each step (councils kept, lines matched in all years, series total and dropped by each rule, series kept by class, rows usable for PT1 and for G25); for PT1 the coefficient, standard error, one- and two-sided p, 95% interval, N, number of councils and lines, and the verdict; for G25 delta_A, delta_B, their p values, the p value for A minus B, N and the verdict; for G25-C the interaction, standard error, p and verdict; SS; and the same fields for each sensitivity analysis.
+Put the whole script in one code block.
+
+PART C: SELF-CHECK
+  - no introduction written;
+  - no guess at the data or the results anywhere;
+  - every rule in Sections 1 to 7 covered in Part A;
+  - the script in Part B runs without the code above.
+
+==================== INPUT 1: FROZEN PRE-REGISTRATION ====================
+# PT1, fixed against dynamic priority (with G25): pre-registration (FROZEN 7 October 2026)
+
+Drafted by Claude, 7 October 2026. **Status: frozen 7 October 2026 (James confirmed). No spending, population or funding data for this test had been opened when this was committed.** Any later change is a new, separately logged experiment.
+
+**Sources:**
+- **Model:** theory/PERSISTENCE_ALLOCATION_MODEL_v0.18.md, as corrected on 7 October 2026 (access-limited load; "chronic").
+- **Setting map and mapping:** tests/PT1 Priority test - setting map and mapping (draft).md. James decided D1 to D6, all as recommended, on 7 October 2026.
+- **Design note:** tests/PT1 Priority test - design note (draft).md (H-fixed against H-dynamic; the rescue routes R1 to R3).
+- **Structure only:** raw/2026-10-07_gemini_PT1-S1.md and _PT1-S2.md.
+- **The statutory classification:** tests/PT1_statutory_classification.csv (176 lines; SHA-256 begins faf45875). Built blind by GPT under a fixed rule (raw/2026-10-07_chatgpt_PT1-C1b.md, _C1c.md).
+
+## 1. Questions and hypotheses
+
+| Code | Role | Statement |
+|---|---|---|
+| **PT1** | Primary (Tier 1) | Within a council and year, a service line's **projected client-group growth** (published before the budget) predicts how well its real spending per head of client group is protected, once the line, the council-year and realised client-group growth are held constant. **H-fixed:** no effect. **H-dynamic:** a positive effect |
+| PT1-S | Secondary (runs only if PT1 finds an effect) | **Graded or stepped:** is the effect linear in projected growth, or a single threshold? |
+| **G25** | Primary, **half weight** (contamination) | Statutory class predicts the order of sacrifice: within council-years, A lines are protected more than B, and B more than C |
+| G25-C | Secondary, half weight | **Scarcity reveals the order:** the gap between A and C is larger where the council's real funding fell more |
+| SS | Descriptive, not scored | **Strict or shared:** did C lines absorb whole cuts before A lines lost anything? |
+
+**Rescue routes declared now** (design note, Section 1). Under H-fixed, an apparent reversal is allowed only through:
+- **R1, a role change:** none declared. No service line is mapped as support for the top or as the intake.
+- **R2, local autoregulation:** none declared.
+- **R3, a governor mode:** **none declared,** consistent with mapping step 8 (no modes or gates claimed).
+
+**So any PT1 effect counts against H-fixed for this system,** whatever its shape. PT1-S says only which alternative fits better.
+
+**Interpretation, stated in advance.** Councils are governed by people (nested systems) who plan ahead. A positive PT1 result would show anticipation entering this governor. That earns dynamic priority **for institutions of this kind,** not for biology.
+
+## 2. Data (fixed now; downloaded only after freezing)
+
+| Item | Source | Use |
+|---|---|---|
+| Spending by service line | MHCLG Revenue Outturn, individual local authority data, **final outturn**, 2014-15 to 2019-20 (RO2, RO3, RO4, RO5; RO6 in a sensitivity analysis) | **Net current expenditure** per line, council and year |
+| Prices | ONS consumer prices index (CPI), annual average for each financial year (April to March), from the published monthly index | Real terms, 2014-15 prices |
+| Current population | ONS mid-year population estimates by single year of age and local authority, mid-2014 to mid-2019 (mid-year t for financial year t to t+1) | Client-group populations; realised growth |
+| Projected population | ONS subnational population projections, **the latest edition published before 1 February of the calendar year in which the financial year begins** | Projected five-year growth of each client group |
+| Funding | MHCLG Core Spending Power per council, 2015-16 to 2019-20 (final settlement tables) | Scarcity, for G25-C |
+
+**Which projection applies to which budget** (by publication date; dates from PT1-S2, plus one to confirm):
+- 2014-15 budget (set before February 2014): **2011-based interim** (published autumn 2012).
+- 2015-16 and 2016-17: **2012-based** (publication date not stated in the documentation; **to confirm from the ONS release page** before data is opened, as documentation).
+- 2017-18 and 2018-19: **2014-based** (published May 2016).
+- 2019-20: **2016-based** (published 24 May 2018).
+
+If the confirmed 2012-based date is later than 1 February 2015, the rule assigns the 2011-based interim edition to the 2015-16 budget instead. **The rule, not a choice, decides.**
+
+## 3. Councils, lines and client groups
+
+**Councils (D2):**
+- Unitary authorities, metropolitan districts and London boroughs, excluding the City of London and the Isles of Scilly.
+- **The same ONS code in every year from 2014-15 to 2019-20** in the spending data, which removes reorganised councils mechanically.
+- **A council missing a final outturn return** in any year is excluded, and the number is reported.
+
+**Lines (D4):**
+- **In scope:** the classified lines in RO2 (highways and transport), RO4 (housing), RO5 (cultural, environmental, regulatory, planning) and RO3 children's social care (lines 10 to 27; the total line 30 is excluded).
+- **Excluded:**
+  - public health (RO3 61 to 90);
+  - adult social care (RO3 lines 8, 9 and 32 to 60) from the primary analyses (D3);
+  - RO1;
+  - RO6 (a sensitivity analysis keeps the client-facing lines 430, 441, 442, 460 and 475);
+  - levies (RO5 226, 244);
+  - police and fire.
+- **Matching across years, by name:**
+  - A line is matched across years by **its normalised name within its form** (lower case, punctuation and spacing removed). Codes changed over the period, for example the RO4 temporary accommodation lines.
+  - **The classification attaches to the line name** in the 2025-26 guidance.
+  - **A line whose normalised name is not found in all six years is excluded.** The number is reported, with the names.
+- **Series rules** (per council and line):
+  - excluded if net current expenditure is zero or negative in any year (income-generating lines such as parking);
+  - excluded if mean real net current expenditure over the window is below £100,000 (2014-15 prices), to avoid noise from tiny lines.
+
+**Client groups (D5), fixed now:**
+
+| Lines | Client group |
+|---|---|
+| RO3 children's social care (10 to 27) | Aged 0 to 17 |
+| RO2 71 statutory concessionary fares | Aged 65 and over |
+| All other in-scope lines (RO2 except 71; RO4; RO5) | Total population |
+| Adult social care total (sensitivity only) | Aged 18 and over |
+
+## 4. Measures
+
+For council $c$, line $l$, financial year $t$ (2015-16 to 2019-20, each against the year before):
+
+- **Outcome (protection):**
+$$y_{clt}=\ln\frac{E_{clt}/P_{clt}}{E_{cl,t-1}/P_{cl,t-1}}$$
+  - $E$ is real net current expenditure;
+  - $P$ is the client-group population (mid-year estimate).
+  - The outcome is **winsorised** at the 1st and 99th percentiles of the pooled sample.
+- **Realised client growth:** $g^{\text{real}}_{clt}=\ln(P_{clt}/P_{cl,t-1})$.
+- **Projected client growth (H-dynamic's variable):**
+$$g^{\text{proj}}_{clt}=\ln\frac{\hat P_{cl}(\tau+5)}{\hat P_{cl}(\tau)}$$
+  - $\hat P$ comes from the projection edition assigned to year $t$'s budget (Section 2);
+  - $\tau$ is the calendar year in which financial year $t$ begins.
+- **Statutory class:** A, B or C from the classification. **Ambiguous lines** are excluded from G25 in the primary analysis (D6).
+- **Scarcity** (for G25-C): the change in the council's real Core Spending Power per head (total population) from 2015-16 to 2019-20.
+
+## 5. Models and tests
+
+All standard errors are **clustered by council.** Tests are one-sided at α = 0.05 unless stated.
+
+**PT1 (primary):**
+$$y_{clt}=\beta\,g^{\text{proj}}_{clt}+\gamma\,g^{\text{real}}_{clt}+\alpha_l+\alpha_{ct}+\varepsilon_{clt}$$
+- $\alpha_l$ are line fixed effects. They absorb each line's average trend, and with it its statutory class.
+- $\alpha_{ct}$ are council-by-year fixed effects. They absorb each council's overall cut in each year.
+- **The test:** $\beta>0$.
+
+**PT1-S (secondary, only if PT1 finds $\beta>0$):**
+- **The comparison:** the linear model above against a **single-threshold model**, in which $g^{\text{proj}}$ is replaced by an indicator that it exceeds a threshold. The threshold is chosen from the nine deciles of $g^{\text{proj}}$.
+- **Both are compared by BIC,** counting the threshold as one extra parameter.
+- **The reading:**
+  - **graded** if the linear model's BIC is lower by more than 2;
+  - **stepped** if the threshold model's is lower by more than 2;
+  - **indeterminate** otherwise.
+
+**G25 (primary, half weight):**
+$$y_{clt}=\delta_A\,[\text{A}]+\delta_B\,[\text{B}]+\gamma\,g^{\text{real}}_{clt}+\alpha_{ct}+\varepsilon_{clt}$$
+- C is the reference class; ambiguous lines are excluded.
+- **The tests:** $\delta_A>0$ (A protected more than C), $\delta_B>0$, and $\delta_A-\delta_B>0$.
+
+**G25-C (secondary, half weight):** the G25 model with an interaction between $[\text{A}]$ and scarcity.
+- **The test:** the A-against-C gap widens where funding fell more. The interaction is positive when scarcity is coded so that a larger value means a deeper fall.
+
+**SS (descriptive):**
+- **The council-years counted:** those in which in-scope real spending fell.
+- **What is reported:** the share in which any A line's real spending fell while C lines kept more than half of their base-year spending.
+- **How to read it:** under strict priority the share is near zero; under shared cutting it is substantial. No verdict.
+
+## 6. Verdict table
+
+**PT1** (the verdict for H-fixed against H-dynamic in this system). The smallest effect that matters is set now: $\beta^{\ast}=0.25$. That means a 10% higher projected five-year client growth goes with 2.5 percentage points more protection per year.
+
+| Result | Verdict |
+|---|---|
+| $\beta>0$ (one-sided p < 0.05) | **H-fixed fails in this system; dynamic priority earned for institutions of this kind.** PT1-S then reports graded, stepped or indeterminate |
+| $\beta$ not significant, and the upper 95% confidence bound below 0.25 | **H-fixed supported:** no meaningful anticipation |
+| $\beta$ not significant, upper bound at or above 0.25 | **Inconclusive** (not enough precision) |
+| $\beta<0$ with two-sided p < 0.05 | **Contrary to H-dynamic** (protection moves away from growing groups). Logged as found |
+
+**G25** (half weight):
+
+| Result | Verdict |
+|---|---|
+| $\delta_A>0$ (p < 0.05), with point estimates ordered $\delta_A\ge\delta_B\ge0$ | **Supported** |
+| $\delta_A>0$ (p < 0.05), but the order is violated | **Partly supported** |
+| $\delta_A$ not significantly greater than 0 | **Fails** |
+| $\delta_A<0$ with two-sided p < 0.05 | **Contradicted** |
+
+**G25-C:** supported if the interaction test passes; not supported otherwise. Half weight.
+
+## 7. Sensitivity analyses (reported; not part of the verdicts)
+
+1. **Adult social care included** (the total line, client group 18 and over).
+2. **Long difference:** one observation per council and line, from 2014-15 to 2019-20. The projection is the one assigned to the 2014-15 budget; growth is realised over the window.
+3. **Ambiguous lines in G25,** set to their lowest and their highest candidate class.
+4. **RO6 client-facing lines included** (430, 441, 442, 460, 475).
+5. **Ten-year projected growth** in place of five-year.
+6. **No winsorising.**
+7. **London boroughs excluded.**
+8. **The £100,000 minimum** replaced by £50,000 and by £250,000.
+
+## 8. Contamination and weights
+
+- **G25 carries half weight.** Claude knows the broad pattern (discretionary services were cut most; social care was relatively protected). The classifier declared similar background knowledge and disclaimed using it.
+- **PT1 carries full weight.** Claude does not know whether projected client growth predicts protection once line, council-year and realised growth are held constant.
+- **The classification was produced blind,** before any data, by a model applying a fixed rule with citations.
+
+## 9. Procedure
+
+**Before any data is opened:**
+1. **James confirms;** the pre-registration is frozen, and its SHA is recorded in CONTROL.md.
+2. **The 2012-based projection's publication date** is confirmed from the ONS release page (documentation) and recorded.
+3. **Claude writes the analysis code** (tests/scripts/pt1_councils.py) and tests it on synthetic data built to give each verdict. It is committed with its SHA.
+
+**Opening the data:**
+4. **The data is downloaded** into data/ (git-ignored), with sources and checksums in data/README.md.
+5. **Structure inspection.** The spreadsheet layouts (sheet names, header rows, line labels, council codes) are not documented, so a structure-only script prints headers and labels, **never values**, to configure the parser. Every parser setting is logged as an implementation note **before** the analysis runs.
+6. **A counting step** reports, with no outcome values:
+   - councils in and out (and why);
+   - lines matched and excluded (with names);
+   - series excluded by the positivity and £100,000 rules.
+
+**Running:**
+7. **The analysis runs once,** unchanged. Outputs go to tests/results/PT1/ (README.md and summary.json).
+8. **Deviations** (a bug, a missing field, a changed name) are logged with reasons, never silently fixed.
+
+**After the run:**
+9. **Computation replicated by a second model** from the same files and this pre-registration.
+10. **Blind adjudication by GPT** (a fresh chat) against Section 6. Its verdict is recorded verbatim.
+
+## 10. Decision log (methodology choices, with the direction each pushes)
+
+| No. | Choice | Direction |
+|---|---|---|
+| 1 | Window 2014-15 to 2019-20 (D1) | Neutral: avoids definition breaks and the pandemic |
+| 2 | Single-tier councils with stable codes (D2) | Neutral: fewer councils, cleaner responsibilities |
+| 3 | Adult social care excluded from the primary analyses (D3) | **Harder for G25:** it removes the largest A-class service, which is expected to look protected. **Neutral for PT1:** earmarked funding would otherwise confound it |
+| 4 | Public health excluded (ring-fenced; its class is an artefact of the source) | Neutral |
+| 5 | Lines matched by name; lines missing in any year excluded | Neutral: some lines lost |
+| 6 | Line and council-year fixed effects in PT1 | **Harder for H-dynamic:** only variation in projected growth within line and council-year counts |
+| 7 | Realised growth controlled | **Harder for H-dynamic:** anticipation must show beyond what actually happened |
+| 8 | No modes or role changes declared (R1 to R3 closed) | **Harder for H-fixed:** any effect counts against it |
+| 9 | Smallest meaningful effect $\beta^\ast=0.25$, which allows "H-fixed supported" from a null | **Easier for H-fixed** (a null can support it). Limited by requiring the confidence bound below $\beta^\ast$; otherwise inconclusive |
+| 10 | One-sided tests | **Favours detecting the predicted direction.** "Contrary" uses two-sided tests |
+| 11 | Ambiguous lines excluded from primary G25 (D6) | Neutral; bounded by sensitivity 3 |
+| 12 | Winsorising at 1 and 99 per cent | Neutral; sensitivity 6 |
+| 13 | Positivity and £100,000 series rules | Neutral; sensitivity 8 |
+| 14 | Structure inspection of spreadsheets after freezing (no values) | **Procedural:** parser settings logged before the run |
+
+==================== INPUT 2: ANALYSIS CODE (tests/scripts/pt1_councils.py) ====================
+"""PT1 (fixed against dynamic priority) and G25: analysis code.
+
+Implements the frozen pre-registration tests/PT1 Priority test - pre-registration.md (frozen 7 October 2026,
+SHA-256 begins a4aab81d). Written before any spending, population or funding data was opened; tested only on
+synthetic data (tests/scripts/pt1_synthetic.py).
+
+Input: tidy CSV files in DIR, produced by a parser written after the structure-only inspection (pre-registration
+Section 9, step 5); the parser is separate and its settings are logged before the run.
+    spend.csv  ons_code, la_type (UA | MD | LB | other), year (financial year start, 2014..2019), form (RO2..RO6),
+               line_name, nce_thousands (net current expenditure, GBP thousands, cash)
+    pop.csv    ons_code, year (mid-year), group (all | 0_17 | 65plus | 18plus), population
+    proj.csv   ons_code, edition (2011i | 2012 | 2014 | 2016), year, group, population
+    csp.csv    ons_code, year (2015..2019), csp_thousands (Core Spending Power, cash)
+    cpi.csv    year (financial year start), cpi (financial-year average index)
+Classification: tests/PT1_statutory_classification.csv.
+
+Usage: python pt1_councils.py --data DIR --out DIR
+"""
+import argparse
+import hashlib
+import json
+import os
+import re
+import sys
+
+import numpy as np
+import pandas as pd
+from scipy import stats
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+CLASSIFICATION = os.path.join(HERE, "..", "PT1_statutory_classification.csv")
+
+YEARS = list(range(2014, 2020))               # financial years 2014-15 .. 2019-20
+EDITION = {2014: "2011i", 2015: "2012", 2016: "2012", 2017: "2014", 2018: "2014", 2019: "2016"}
+EXCLUDED_CODES = {"E09000001", "E06000053"}   # City of London, Isles of Scilly
+SINGLE_TIER = {"UA", "MD", "LB"}
+BETA_STAR = 0.25
+ALPHA = 0.05
+
+IMPLEMENTATION_NOTES = [
+    "Line names are normalised by lower-casing and removing every character that is not a letter or digit; the "
+    "leading 'line NN' label, if present in a name, is removed before normalising.",
+    "Scope: classification rows in RO2, RO4, RO5, and RO3 lines 10 to 27 (children's social care), minus RO5 226 "
+    "and 244. Sensitivity 1 adds RO3 60 (total adult social care); sensitivity 4 adds RO6 430, 441, 442, 460, 475.",
+    "A spending line is in scope if its normalised name equals the normalised name of an in-scope classification "
+    "row in the same form; lines in the data with no such match are out of scope (counted).",
+    "Councils: la_type in UA, MD, LB; City of London and Isles of Scilly excluded; a council must have spending rows "
+    "in all six years (same ONS code).",
+    "Duplicate names: if a normalised line name occurs more than once in the same council, year and form, that "
+    "council's series for the line is dropped (counted); names must identify a line uniquely.",
+    "Series rules per council-line: positive nce in all six years; mean real nce over the window at least the "
+    "minimum (GBP thousands, 2014-15 prices; primary 100, sensitivity 50 and 250).",
+    "Real terms: nce divided by cpi(year)/cpi(2014).",
+    "Client groups: RO3 children's social care 0_17; RO2 71 statutory concessionary fares 65plus; RO3 60 adult "
+    "social care total 18plus; all others 'all'. RO2 71 is identified by its normalised name.",
+    "Outcome winsorised at the 1st and 99th percentiles of the pooled sample of the model being estimated.",
+    "Projected growth: ln(P(tau+h)/P(tau)) from the edition assigned to the budget year, tau = financial year start, "
+    "h = 5 (sensitivity 5: h = 10; where an edition does not reach tau+10, the growth to its last year is scaled by "
+    "10/available years).",
+    "Fixed effects absorbed by alternating projections (convergence 1e-10 on the maximum change). Cluster-robust "
+    "standard errors by council with the small-sample factor G/(G-1)*(N-1)/(N-K), K = estimated coefficients plus "
+    "the number of line fixed effects (council-year effects are nested in clusters and not counted); t "
+    "distribution with G-1 degrees of freedom.",
+    "PT1-S thresholds: the nine deciles of g_proj in the estimation sample; BIC = N ln(RSS/N) + k ln(N) computed "
+    "on the fixed-effect-demeaned data, k = slope parameters (+1 for the threshold).",
+    "G25-C scarcity: minus the change in ln(real CSP per head of total population) from 2015-16 to 2019-20; the "
+    "interaction is [A] x scarcity (scarcity's main effect is absorbed by council-year effects).",
+    "SS: council-years (2015-16 on) where total in-scope real nce fell from the year before; share in which any "
+    "A-class series fell while the C-class series in that council kept more than half their 2014-15 real total.",
+    "Ambiguous candidates ordered A > B > C; 'lowest' takes the last (C-most) candidate, 'highest' the first.",
+]
+
+
+# ------------------------------------------------------------------ helpers
+def norm(name):
+    s = str(name).lower()
+    s = re.sub(r"^\s*line\s*\d+\s*", "", s)
+    return re.sub(r"[^a-z0-9]", "", s)
+
+
+def sha(path):
+    return hashlib.sha256(open(path, "rb").read()).hexdigest()
+
+
+def load(data_dir):
+    d = {k: pd.read_csv(os.path.join(data_dir, f"{k}.csv")) for k in ("spend", "pop", "proj", "csp", "cpi")}
+    d["cls"] = pd.read_csv(CLASSIFICATION)
+    return d
+
+
+def scope_table(cls, extra=()):
+    c = cls.copy()
+    c["key"] = c["line_name"].map(norm)
+    keep = c["form"].isin(["RO2", "RO4", "RO5"]) | ((c["form"] == "RO3") & c["line"].between(10, 27))
+    keep &= ~((c["form"] == "RO5") & c["line"].isin([226, 244]))
+    for form, line in extra:
+        keep |= (c["form"] == form) & (c["line"] == line)
+    c = c[keep].copy()
+    c["group"] = "all"
+    c.loc[(c["form"] == "RO3") & c["line"].between(10, 27), "group"] = "0_17"
+    c.loc[(c["form"] == "RO2") & (c["line"] == 71), "group"] = "65plus"
+    c.loc[(c["form"] == "RO3") & (c["line"] == 60), "group"] = "18plus"
+    return c[["form", "line", "key", "cls", "candidates", "group"]]
+
+
+def build_panel(d, min_mean=100.0, extra=(), horizon=5):
+    """Council-line-year panel after the frozen council, line and series rules. Returns (panel, counts)."""
+    counts = {}
+    sp = d["spend"].copy()
+    sp["key"] = sp["line_name"].map(norm)
+    sc = scope_table(d["cls"], extra)
+    sp = sp.merge(sc, on=["form", "key"], how="left")
+    counts["spend_rows_out_of_scope"] = int(sp["cls"].isna().sum())
+    sp = sp[sp["cls"].notna()]
+    # councils
+    st = sp.groupby("ons_code")["la_type"].first()
+    ok = st.index[st.isin(SINGLE_TIER) & ~st.index.isin(EXCLUDED_CODES)]
+    yrs = sp.groupby("ons_code")["year"].apply(lambda s: set(s))
+    ok = [c for c in ok if set(YEARS) <= yrs[c]]
+    counts["councils_single_tier_all_years"] = len(ok)
+    counts["councils_dropped"] = int(sp["ons_code"].nunique() - len(ok))
+    sp = sp[sp["ons_code"].isin(ok) & sp["year"].isin(YEARS)]
+    # lines present in all six years (anywhere in the data)
+    ly = sp.groupby(["form", "key"])["year"].apply(lambda s: set(s))
+    lines_ok = [k for k, v in ly.items() if set(YEARS) <= v]
+    counts["lines_matched_all_years"] = len(lines_ok)
+    counts["lines_dropped_not_all_years"] = sorted([f"{k[0]}:{k[1]}" for k, v in ly.items() if not set(YEARS) <= v])
+    sp = sp.set_index(["form", "key"]).loc[lines_ok].reset_index()
+    # duplicate names within council-year-form: drop that council's series
+    dup = sp.duplicated(["ons_code", "year", "form", "key"], keep=False)
+    bad = set(map(tuple, sp.loc[dup, ["ons_code", "form", "key"]].drop_duplicates().values))
+    counts["series_dropped_duplicate_names"] = len(bad)
+    if bad:
+        idx = pd.MultiIndex.from_frame(sp[["ons_code", "form", "key"]])
+        sp = sp[~idx.isin(list(bad))]
+    # real terms
+    cpi = d["cpi"].set_index("year")["cpi"]
+    sp["real"] = sp["nce_thousands"] / (cpi.loc[sp["year"]].values / cpi.loc[2014])
+    # series rules
+    g = sp.groupby(["ons_code", "form", "key"])
+    full = g["year"].transform("nunique") == len(YEARS)
+    pos = g["real"].transform(lambda s: (s > 0).all())
+    big = g["real"].transform("mean") >= min_mean
+    counts["series_total"] = int(g.ngroups)
+    counts["series_dropped_incomplete"] = int(sp[~full].groupby(["ons_code", "form", "key"]).ngroups)
+    counts["series_dropped_nonpositive"] = int(sp[full & ~pos].groupby(["ons_code", "form", "key"]).ngroups)
+    counts["series_dropped_below_minimum"] = int(sp[full & pos & ~big].groupby(["ons_code", "form", "key"]).ngroups)
+    sp = sp[full & pos & big]
+    counts["series_kept"] = int(sp.groupby(["ons_code", "form", "key"]).ngroups)
+    # population
+    pop = d["pop"].set_index(["ons_code", "year", "group"])["population"]
+    sp["P"] = [pop.get((c, y, gr), np.nan) for c, y, gr in zip(sp["ons_code"], sp["year"], sp["group"])]
+    # projected growth
+    pr = d["proj"].set_index(["ons_code", "edition", "year", "group"])["population"]
+    last = d["proj"].groupby("edition")["year"].max()
+
+    def gproj(c, y, gr):
+        e = EDITION[y]
+        h = horizon
+        end = y + h
+        scale = 1.0
+        if end > last[e]:
+            scale = h / (last[e] - y)
+            end = last[e]
+        a, b = pr.get((c, e, y, gr), np.nan), pr.get((c, e, end, gr), np.nan)
+        return scale * np.log(b / a)
+    sp["g_proj"] = [gproj(c, y, gr) for c, y, gr in zip(sp["ons_code"], sp["year"], sp["group"])]
+    sp = sp.sort_values(["ons_code", "form", "key", "year"])
+    sp["lnpc"] = np.log(sp["real"] / sp["P"])
+    sp["lnP"] = np.log(sp["P"])
+    grp = sp.groupby(["ons_code", "form", "key"])
+    sp["y"] = grp["lnpc"].diff()
+    sp["g_real"] = grp["lnP"].diff()
+    sp["line_id"] = sp["form"] + ":" + sp["key"]
+    sp["cy"] = sp["ons_code"] + ":" + sp["year"].astype(str)
+    return sp, counts
+
+
+# ------------------------------------------------------------------ estimation
+def demean(cols, fe_lists, tol=1e-10, maxit=10000):
+    X = cols.copy()
+    for _ in range(maxit):
+        old = X.copy()
+        for fe in fe_lists:
+            X = X - X.groupby(fe).transform("mean")
+        if np.max(np.abs((X - old).values)) < tol:
+            break
+    return X
+
+
+def ols_cluster(df, ycol, xcols, fes, cluster, n_line_fe):
+    d = df[list(dict.fromkeys([ycol] + xcols + fes + [cluster]))].dropna()
+    Z = demean(d[[ycol] + xcols], [d[f] for f in fes])
+    y, X = Z[ycol].values, Z[xcols].values
+    XtX_inv = np.linalg.pinv(X.T @ X)
+    b = XtX_inv @ X.T @ y
+    u = y - X @ b
+    N, k = X.shape
+    K = k + n_line_fe
+    meat = np.zeros((k, k))
+    for _, idx in d.groupby(cluster).indices.items():
+        s = X[idx].T @ u[idx]
+        meat += np.outer(s, s)
+    G = d[cluster].nunique()
+    V = XtX_inv @ meat @ XtX_inv * (G / (G - 1)) * ((N - 1) / max(N - K, 1))
+    se = np.sqrt(np.diag(V))
+    return dict(b=b, se=se, V=V, N=N, G=G, df=G - 1, rss=float(u @ u), names=xcols, Z=Z, u=u)
+
+
+def one_sided(b, se, df):
+    t = b / se
+    return float(stats.t.sf(t, df)), float(2 * stats.t.sf(abs(t), df))
+
+
+def winsor(df, col):
+    lo, hi = df[col].quantile([0.01, 0.99])
+    df = df.copy()
+    df[col] = df[col].clip(lo, hi)
+    return df
+
+
+# ------------------------------------------------------------------ tests
+def pt1(panel, do_winsor=True):
+    p = panel.dropna(subset=["y", "g_proj", "g_real"])
+    if do_winsor:
+        p = winsor(p, "y")
+    n_line = p["line_id"].nunique()
+    r = ols_cluster(p, "y", ["g_proj", "g_real"], ["line_id", "cy"], "ons_code", n_line)
+    b, se = r["b"][0], r["se"][0]
+    p1, p2 = one_sided(b, se, r["df"])
+    tcrit = stats.t.ppf(0.975, r["df"])
+    upper = b + tcrit * se
+    if p1 < ALPHA:
+        verdict = "H-fixed fails in this system; dynamic priority earned for institutions of this kind"
+    elif b < 0 and p2 < ALPHA:
+        verdict = "Contrary to H-dynamic"
+    elif upper < BETA_STAR:
+        verdict = "H-fixed supported (no meaningful anticipation)"
+    else:
+        verdict = "Inconclusive (insufficient precision)"
+    out = dict(beta=float(b), se=float(se), p_one_sided=p1, p_two_sided=p2, ci95=[float(b - tcrit * se), float(upper)],
+               gamma_realised=float(r["b"][1]), N=r["N"], councils=r["G"], lines=int(n_line), verdict=verdict)
+    if p1 < ALPHA:
+        out["PT1_S"] = pt1s(p, r)
+    return out
+
+
+def pt1s(p, r):
+    Z = r["Z"]
+    N = len(Z)
+    bic_lin = N * np.log(r["rss"] / N) + 2 * np.log(N)
+    d = p.dropna(subset=["y", "g_proj", "g_real"])
+    best = None
+    for q in np.arange(0.1, 1.0, 0.1):
+        th = d["g_proj"].quantile(q)
+        dd = d.assign(step=(d["g_proj"] > th).astype(float))
+        rr = ols_cluster(dd, "y", ["step", "g_real"], ["line_id", "cy"], "ons_code", d["line_id"].nunique())
+        if best is None or rr["rss"] < best[1]:
+            best = (float(th), rr["rss"])
+    bic_step = N * np.log(best[1] / N) + 3 * np.log(N)
+    if bic_lin < bic_step - 2:
+        shape = "graded"
+    elif bic_step < bic_lin - 2:
+        shape = "stepped"
+    else:
+        shape = "indeterminate"
+    return dict(bic_linear=float(bic_lin), bic_step=float(bic_step), threshold=best[0], shape=shape)
+
+
+def class_cols(panel, ambiguous="exclude"):
+    p = panel.copy()
+    c = p["cls"].copy()
+    if ambiguous != "exclude":
+        amb = p["cls"] == "ambiguous"
+        cands = p.loc[amb, "candidates"].str.split("/")
+        c.loc[amb] = cands.map(lambda L: L[-1] if ambiguous == "lowest" else L[0])
+    p["cls_used"] = c
+    p = p[p["cls_used"].isin(["A", "B", "C"])]
+    p["A"] = (p["cls_used"] == "A").astype(float)
+    p["B"] = (p["cls_used"] == "B").astype(float)
+    return p
+
+
+def g25(panel, ambiguous="exclude", do_winsor=True):
+    p = class_cols(panel, ambiguous).dropna(subset=["y", "g_real"])
+    if do_winsor:
+        p = winsor(p, "y")
+    r = ols_cluster(p, "y", ["A", "B", "g_real"], ["cy"], "ons_code", 0)
+    dA, dB = r["b"][0], r["b"][1]
+    seA, seB = r["se"][0], r["se"][1]
+    seAB = np.sqrt(r["V"][0, 0] + r["V"][1, 1] - 2 * r["V"][0, 1])
+    pA, pA2 = one_sided(dA, seA, r["df"])
+    pB, _ = one_sided(dB, seB, r["df"])
+    pAB, _ = one_sided(dA - dB, seAB, r["df"])
+    if pA < ALPHA and dA >= dB >= 0:
+        v = "Supported"
+    elif pA < ALPHA:
+        v = "Partly supported"
+    elif dA < 0 and pA2 < ALPHA:
+        v = "Contradicted"
+    else:
+        v = "Fails"
+    return dict(delta_A=float(dA), delta_B=float(dB), p_A=pA, p_A_two_sided=pA2, p_B=pB, p_A_minus_B=pAB,
+                N=r["N"], councils=r["G"], verdict=v, weight=0.5)
+
+
+def g25c(panel, d, do_winsor=True):
+    p = class_cols(panel).dropna(subset=["y", "g_real"])
+    cpi = d["cpi"].set_index("year")["cpi"]
+    csp = d["csp"].copy()
+    csp["real"] = csp["csp_thousands"] / (cpi.loc[csp["year"]].values / cpi.loc[2014])
+    pop = d["pop"][d["pop"]["group"] == "all"].set_index(["ons_code", "year"])["population"]
+    csp["pc"] = [r / pop.get((c, y), np.nan) for c, y, r in zip(csp["ons_code"], csp["year"], csp["real"])]
+    w = csp.pivot(index="ons_code", columns="year", values="pc")
+    scar = -(np.log(w[2019]) - np.log(w[2015]))
+    p["scarcity"] = p["ons_code"].map(scar)
+    p["A_x_scar"] = p["A"] * p["scarcity"]
+    if do_winsor:
+        p = winsor(p, "y")
+    r = ols_cluster(p.dropna(subset=["scarcity"]), "y", ["A", "B", "A_x_scar", "g_real"], ["cy"], "ons_code", 0)
+    b, se = r["b"][2], r["se"][2]
+    p1, _ = one_sided(b, se, r["df"])
+    return dict(interaction=float(b), se=float(se), p_one_sided=p1,
+                verdict="Supported" if p1 < ALPHA else "Not supported", weight=0.5)
+
+
+def ss(panel):
+    p = class_cols(panel)
+    tot = p.groupby(["ons_code", "year"])["real"].sum().unstack()
+    base_c = p[(p["cls_used"] == "C") & (p["year"] == 2014)].groupby("ons_code")["real"].sum()
+    n = hit = 0
+    for c in tot.index:
+        for y in range(2015, 2020):
+            if tot.loc[c, y] < tot.loc[c, y - 1]:
+                n += 1
+                a = p[(p["ons_code"] == c) & (p["cls_used"] == "A")].pivot(index="key", columns="year", values="real")
+                cnow = p[(p["ons_code"] == c) & (p["cls_used"] == "C") & (p["year"] == y)]["real"].sum()
+                a_fell = (a[y] < a[y - 1]).any() if len(a) else False
+                if a_fell and base_c.get(c, 0) > 0 and cnow > 0.5 * base_c[c]:
+                    hit += 1
+    return dict(council_years_with_fall=n, share_A_fell_while_C_kept_over_half=(hit / n if n else None))
+
+
+def long_difference(d):
+    panel, _ = build_panel(d)
+    first = panel[panel["year"] == 2014].set_index(["ons_code", "line_id"])
+    lastp = panel[panel["year"] == 2019].set_index(["ons_code", "line_id"])
+    j = first[["lnpc", "lnP", "g_proj"]].join(lastp[["lnpc", "lnP"]], rsuffix="_e").dropna().reset_index()
+    j["y"] = j["lnpc_e"] - j["lnpc"]
+    j["g_real"] = j["lnP_e"] - j["lnP"]
+    j = winsor(j, "y")
+    r = ols_cluster(j, "y", ["g_proj", "g_real"], ["line_id", "ons_code"], "ons_code", j["line_id"].nunique())
+    p1, p2 = one_sided(r["b"][0], r["se"][0], r["df"])
+    return dict(beta=float(r["b"][0]), se=float(r["se"][0]), p_one_sided=p1, N=r["N"])
+
+
+# ------------------------------------------------------------------ main
+def analyse(data_dir, out_dir):
+    d = load(data_dir)
+    panel, counts = build_panel(d)
+    res = dict(prereg="tests/PT1 Priority test - pre-registration.md", prereg_sha256_begins="a4aab81d",
+               code_sha256=sha(os.path.abspath(__file__)), classification_sha256=sha(CLASSIFICATION),
+               implementation_notes=IMPLEMENTATION_NOTES, counts=counts)
+    res["PT1"] = pt1(panel)
+    res["G25"] = g25(panel)
+    res["G25_C"] = g25c(panel, d)
+    res["SS"] = ss(panel)
+    sens = {}
+    p1, _ = build_panel(d, extra=[("RO3", 60)])
+    sens["1_adult_social_care_included"] = dict(PT1=pt1(p1))
+    sens["2_long_difference"] = long_difference(d)
+    sens["3_ambiguous_lowest"] = g25(panel, "lowest")
+    sens["3_ambiguous_highest"] = g25(panel, "highest")
+    p4, _ = build_panel(d, extra=[("RO6", 430), ("RO6", 441), ("RO6", 442), ("RO6", 460), ("RO6", 475)])
+    sens["4_RO6_client_lines"] = dict(PT1=pt1(p4), G25=g25(p4))
+    p5, _ = build_panel(d, horizon=10)
+    sens["5_ten_year_projection"] = dict(PT1=pt1(p5))
+    sens["6_no_winsorising"] = dict(PT1=pt1(panel, do_winsor=False), G25=g25(panel, do_winsor=False))
+    p7 = panel[~panel["ons_code"].str.startswith("E09")]
+    sens["7_london_excluded"] = dict(PT1=pt1(p7), G25=g25(p7))
+    for m in (50.0, 250.0):
+        pm, _ = build_panel(d, min_mean=m)
+        sens[f"8_minimum_{int(m)}"] = dict(PT1=pt1(pm), G25=g25(pm))
+    res["sensitivity"] = sens
+    os.makedirs(out_dir, exist_ok=True)
+    json.dump(res, open(os.path.join(out_dir, "summary.json"), "w"), indent=2, default=float)
+    print(json.dumps(dict(PT1=res["PT1"]["verdict"], G25=res["G25"]["verdict"], G25_C=res["G25_C"]["verdict"]), indent=1))
+    return res
+
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--data", required=True)
+    ap.add_argument("--out", required=True)
+    a = ap.parse_args()
+    analyse(a.data, a.out)
+
+==================== INPUT 3: PARSER (tests/scripts/pt1_parse.py) ====================
+"""PT1: parser from the downloaded files to the tidy CSVs read by pt1_councils.py.
+
+Written after the frozen pre-registration (step 5, structure inspection). Every setting below is logged in
+tests/PT1 Priority test - procedure log.md before the counting step.
+
+Modes:
+  --structure   prints layout facts only (sheet, header row, name row, line names, number of councils, class codes).
+                No values are printed.
+  --build OUT   writes spend.csv, pop.csv, proj.csv, csp.csv and cpi.csv to OUT.
+"""
+import argparse
+import json
+import os
+import re
+import sys
+import zipfile
+
+import numpy as np
+import pandas as pd
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.join(HERE, "..", "..", "data", "pt1")
+YEARS = {"2014-to-2015": 2014, "2015-to-2016": 2015, "2016-to-2017": 2016, "2017-to-2018": 2017,
+         "2018-to-2019": 2018, "2019-to-2020": 2019}
+SKIP = ("***", "revenue outturn", "net current", "hide or", "row_no", "col_no", "additional information", "£",
+        "£")
+CROSSWALK_FILE = os.path.join(HERE, "..", "PT1_line_name_crosswalk.csv")
+
+
+def text(v):
+    if v is None or (isinstance(v, float) and np.isnan(v)):
+        return ""
+    return str(v).strip()
+
+
+def read_book(path):
+    engine = "odf" if path.endswith(".ods") else None
+    xl = pd.ExcelFile(path, engine=engine)
+    return {sh: pd.read_excel(path, sheet_name=sh, header=None, engine=engine) for sh in xl.sheet_names}
+
+
+def parse_sheet(df):
+    """Return dict(header_row, name_row, blocks=[(name, nce_col)], councils_rows, code_col, class_col) or None."""
+    h = None
+    for r in range(min(40, len(df))):
+        if text(df.iat[r, 0]) == "E-code":
+            h = r
+            break
+    if h is None:
+        return None
+    hdr = [text(x) for x in df.iloc[h].tolist()]
+    code_col = hdr.index("ONS Code") if "ONS Code" in hdr else None
+    class_col = hdr.index("Class") if "Class" in hdr else None
+    name_row, names = None, []
+    for r in range(h - 1, -1, -1):
+        cells = [(c, text(df.iat[r, c])) for c in range(df.shape[1])]
+        cells = [(c, t) for c, t in cells if t and not t.lower().startswith(SKIP) and not t.startswith(SKIP)]
+        if len(cells) >= 3:
+            name_row, names = r, cells
+            break
+    if name_row is None:
+        return None
+    starts = [c for c, _ in names] + [df.shape[1]]
+    blocks = []
+    for i, (c, nm) in enumerate(names):
+        nce = [k for k in range(c, starts[i + 1]) if hdr[k].lower().startswith("net current expenditure")]
+        blocks.append((nm, nce[0] if nce else None))
+    rows = [r for r in range(h + 1, len(df)) if re.match(r"^E\d{4}$", text(df.iat[r, 0]))]
+    return dict(header_row=h, name_row=name_row, blocks=blocks, council_rows=rows, code_col=code_col,
+                class_col=class_col)
+
+
+def ro_files():
+    out = []
+    for yd, y in YEARS.items():
+        d = os.path.join(ROOT, "ro", yd)
+        for f in sorted(os.listdir(d)):
+            m = re.search(r"(RO\d)", f)
+            out.append((y, m.group(1), os.path.join(d, f)))
+    return out
+
+
+def structure():
+    rep = {}
+    for y, form, path in ro_files():
+        book = read_book(path)
+        for sh, df in book.items():
+            p = parse_sheet(df)
+            if p is None:
+                continue
+            classes = sorted({text(df.iat[r, p["class_col"]]) for r in p["council_rows"]}) if p["class_col"] is not None else []
+            names = [nm for nm, _ in p["blocks"]]
+            with_nce = sum(1 for _, c in p["blocks"] if c is not None)
+            key = f"{form}|{y}|{sh}"
+            rep[key] = dict(header_row=p["header_row"], name_row=p["name_row"], n_blocks=len(names),
+                            n_blocks_with_nce=with_nce, n_councils=len(p["council_rows"]), classes=classes,
+                            names=names)
+            print(f"{form} {y} [{sh}] header row {p['header_row']}, name row {p['name_row']}, blocks {len(names)} "
+                  f"(with NCE column {with_nce}), councils {len(p['council_rows'])}, classes {classes}")
+    json.dump(rep, open(os.path.join(ROOT, "structure", "_parser_structure.json"), "w"), indent=1)
+
+
+def norm(name):
+    t = str(name).lower()
+    t = re.sub(r"^\s*line\s*\d+\s*", "", t)
+    return re.sub(r"[^a-z0-9]", "", t)
+
+
+def crosswalk():
+    cw = pd.read_csv(CROSSWALK_FILE)
+    return {(r.form, norm(r.data_name)): r.classification_name for r in cw.itertuples()}
+
+
+RELABEL = {("RO5", 2019): ("Sports development and community recreation",
+                           "Sports and recreation facilities, including golf courses")}
+
+
+def build_spend():
+    cw = crosswalk()
+    rows = []
+    for y, form, path in ro_files():
+        book = read_book(path)
+        for sh, df in book.items():
+            p = parse_sheet(df)
+            if p is None:
+                continue
+            seen = {}
+            for nm, col in p["blocks"]:
+                seen[nm] = seen.get(nm, 0) + 1
+                if (form, y) in RELABEL and nm == RELABEL[(form, y)][0] and seen[nm] == 2:
+                    nm = RELABEL[(form, y)][1]          # source labelling error, corrected by position (logged)
+                if col is None:
+                    continue
+                name = cw.get((form, norm(nm)), nm)
+                for r in p["council_rows"]:
+                    v = pd.to_numeric(df.iat[r, col], errors="coerce")
+                    rows.append(dict(ons_code=text(df.iat[r, p["code_col"]]), la_type=text(df.iat[r, p["class_col"]]),
+                                     year=y, form=form, line_name=name, data_name=nm, nce_thousands=v))
+    sp = pd.DataFrame(rows)
+    sp["la_type"] = sp["la_type"].replace({"L": "LB"})
+    # crosswalk merges (different data names, same classification name) are summed; true duplicates are left
+    key = ["ons_code", "la_type", "year", "form", "line_name"]
+    g = sp.groupby(key)
+    merged = g["data_name"].transform("nunique") > 1
+    once = sp.groupby(key + ["data_name"])["data_name"].transform("size") == 1
+    to_sum = sp[merged & once]
+    rest = sp[~(merged & once)]
+    summed = to_sum.groupby(key, as_index=False).agg(nce_thousands=("nce_thousands", lambda s: s.sum(min_count=1)),
+                                                     data_name=("data_name", lambda s: " + ".join(sorted(s))))
+    out = pd.concat([rest, summed], ignore_index=True)
+    return out[["ons_code", "la_type", "year", "form", "line_name", "nce_thousands", "data_name"]]
+
+
+def groups_from_single_age(df, code, age, years):
+    """df rows: one per area and single age (age numeric 0..90, 90 = 90 and over). Returns long table."""
+    d = df[[code, age] + years].copy()
+    d[age] = pd.to_numeric(d[age].astype(str).str.replace(" and over", "", regex=False), errors="coerce")
+    d = d.dropna(subset=[age])
+    out = []
+    for gname, mask in (("all", lambda a: a >= 0), ("0_17", lambda a: a <= 17), ("65plus", lambda a: a >= 65),
+                        ("18plus", lambda a: a >= 18)):
+        s = d[mask(d[age])].groupby(code)[years].sum()
+        s = s.reset_index().melt(id_vars=code, var_name="year", value_name="population")
+        s["group"] = gname
+        out.append(s.rename(columns={code: "ons_code"}))
+    o = pd.concat(out, ignore_index=True)
+    o["year"] = o["year"].astype(str).str.extract(r"(\d{4})")[0].astype(int)
+    return o
+
+
+def build_pop():
+    z = zipfile.ZipFile(os.path.join(ROOT, "mye", "ukdetailedtimeseries20012019.zip"))
+    d = pd.read_csv(z.open("MYEB2_detailed_components_of_change_series_EW_(2019).csv"))
+    d = d[d["country"] == "E"]
+    years = [f"population_{y}" for y in range(2010, 2020)]
+    d = d.groupby(["ladcode19", "age"], as_index=False)[years].sum()     # both sexes
+    return groups_from_single_age(d, "ladcode19", "age", years)
+
+
+def build_proj():
+    out = []
+    # interim 2011-based (xls; header row with 'Code', 'Area', 'Age group' then year columns)
+    z = zipfile.ZipFile(os.path.join(ROOT, "snpp", "syoa_2011i_persons.zip"))
+    tmp = os.path.join(ROOT, "structure", "_tmp_2011i.xls")
+    open(tmp, "wb").write(z.read("persons2011snpp.xls"))
+    raw = pd.read_excel(tmp, sheet_name="Population - persons", header=None)
+    os.remove(tmp)
+    h = [r for r in range(20) if text(raw.iat[r, 0]) == "Code"][0]
+    cols = [text(x) for x in raw.iloc[h].tolist()]
+    cols = [str(int(float(c))) if re.match(r"^\d{4}(\.0)?$", c) else c for c in cols]
+    d = raw.iloc[h + 1:].copy()
+    d.columns = cols
+    years = [c for c in cols if re.match(r"^\d{4}$", c)]
+    d[years] = d[years].apply(pd.to_numeric, errors="coerce")
+    g = groups_from_single_age(d, "Code", "Age group", years)
+    g["edition"] = "2011i"
+    out.append(g)
+    for ed, member, code, age in (("2012", "2012 SNPP Population persons.csv", "areacode", "AgeGroup"),
+                                  ("2014", "2014 SNPP Population persons.csv", "AREA_CODE", "AGE_GROUP"),
+                                  ("2016", "2016 SNPP Population persons.csv", "AREA_CODE", "AGE_GROUP")):
+        z = zipfile.ZipFile(os.path.join(ROOT, "snpp", f"z1_{ed}based.zip"))
+        d = pd.read_csv(z.open(member))
+        years = [c for c in d.columns if re.match(r"^\d{4}$", str(c))]
+        g = groups_from_single_age(d, code, age, years)
+        g["edition"] = ed
+        out.append(g)
+    return pd.concat(out, ignore_index=True)[["ons_code", "edition", "year", "group", "population"]]
+
+
+def build_csp():
+    d = pd.read_excel(os.path.join(ROOT, "csp", "Core_Spending_Power_Summary.xlsx"), sheet_name="input")
+    d = d[d["ons_code"].notna()]
+    # deviation D-5: keep single-tier council codes only (Greater Manchester Fire and the Combined Authority share
+    # E31000040, which made the analysis pivot fail; no council in scope is affected)
+    d = d[d["ons_code"].astype(str).str[:3].isin(["E06", "E08", "E09"])]
+    long = d.melt(id_vars="ons_code", value_vars=[f"csp_{y}" for y in range(2015, 2020)], var_name="year",
+                  value_name="csp_millions")
+    long["year"] = long["year"].str[-4:].astype(int)
+    long["csp_thousands"] = pd.to_numeric(long["csp_millions"], errors="coerce") * 1000.0
+    return long[["ons_code", "year", "csp_thousands"]]
+
+
+def build_cpi():
+    rows = []
+    for line in open(os.path.join(ROOT, "cpi", "d7bt.csv"), encoding="utf-8"):
+        m = re.match(r'^"(\d{4}) ([A-Z]{3})","([\d.]+)"', line.strip())
+        if m:
+            rows.append((int(m.group(1)), m.group(2), float(m.group(3))))
+    d = pd.DataFrame(rows, columns=["y", "mon", "cpi"])
+    mi = {m: i for i, m in enumerate(["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"])}
+    d["fy"] = np.where(d["mon"].map(mi) >= 3, d["y"], d["y"] - 1)
+    fy = d.groupby("fy")["cpi"].agg(["mean", "size"])
+    fy = fy[fy["size"] == 12]
+    return pd.DataFrame(dict(year=fy.index, cpi=fy["mean"].values))
+
+
+def build(out):
+    os.makedirs(out, exist_ok=True)
+    for name, fn in (("spend", build_spend), ("pop", build_pop), ("proj", build_proj), ("csp", build_csp),
+                     ("cpi", build_cpi)):
+        df = fn()
+        df.to_csv(os.path.join(out, f"{name}.csv"), index=False)
+        print(name, "rows:", len(df))      # row counts only
+
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--structure", action="store_true")
+    ap.add_argument("--build", default=None)
+    a = ap.parse_args()
+    if a.structure:
+        structure()
+    if a.build:
+        build(a.build)
+
+==================== INPUT 4a: LINE-NAME CROSSWALK (tests/PT1_line_name_crosswalk.csv) ====================
+form,data_name,classification_line,classification_name,reason
+RO2,Structural maintenance - other LA roads,32,Structural maintenance – other local authority roads,same line; 'LA' abbreviated
+RO2,"Environmental, safety and routine maintenance - other LA roads",44,"Environmental, safety and routine maintenance – other local authority roads",same line; 'LA' abbreviated
+RO2,Support to operators - other,75,Support to operators - Other public transport services,same line; shortened name
+RO3,Children's social care: Sure start children's centres/flying start and early years,10,Children’s social care – Sure start children’s centres and early years,same line; 2014-15 to 2016-17 name
+RO4,"Other nightly paid, privately managed accommodation",80,"Nightly paid, privately managed accommodation, self-contained",temporary accommodation by type; window-year line for the 2025-26 line (2020-21 recoding)
+RO4,Private managed accommodation leased by the authority,81,Private sector accommodation leased by authority or by a registered provider,two window-year lines combined into the 2025-26 line (2020-21 recoding); summed
+RO4,Private managed accommodation leased by RSLs,81,Private sector accommodation leased by authority or by a registered provider,two window-year lines combined into the 2025-26 line (2020-21 recoding); summed
+RO4,Hostels (non-HRA support),82,"Hostels (including reception centres, emergency units and refuges)",same accommodation type
+RO4,Bed/breakfast accommodation,83,Bed and breakfast hotels (including shared annexes),same accommodation type
+RO4,Accommodation within the authority's own stock (non-HRA),84,Local authority or housing association (LA/HA) stock,two window-year lines combined into the 2025-26 LA/HA stock line; summed
+RO4,Accommodation within RSL stock,84,Local authority or housing association (LA/HA) stock,two window-year lines combined into the 2025-26 LA/HA stock line; summed
+RO4,Directly with a private sector landlord,85,Any other type of temporary accommodation (including private landlord and not known),two window-year lines combined into the 2025-26 'any other type (including private landlord)' line; summed
+RO4,Other temporary accommodation,85,Any other type of temporary accommodation (including private landlord and not known),two window-year lines combined into the 2025-26 'any other type (including private landlord)' line; summed
+RO4,Homelessness: Administration,87,"Homelessness Services: Administration, Prevention, Relief & Main Duty","two window-year lines combined into the 2025-26 'administration, prevention, relief and main duty' line; summed"
+RO4,Homelessness: Prevention,87,"Homelessness Services: Administration, Prevention, Relief & Main Duty","two window-year lines combined into the 2025-26 'administration, prevention, relief and main duty' line; summed"
+RO4,Homelessness: Support,88,Homelessness Services: Specialist Services and Support,window-year support line for the 2025-26 'specialist services and support' line
+RO4,Other council property (Non-HRA),60,Other council property,same line; '(Non-HRA)' qualifier
+RO5,Library service,150,Library services,same line; singular
+RO5,"Sports and recreation facilities, including golf courses",129,Sports and leisure facilities (including golf courses),same line; earlier name
+RO5,Open spaces,131,"Parks and open spaces (including play areas), community parks and open spaces",same line; earlier name (2014-15 to 2018-19)
+RO5,Parks & Open Spaces (including play areas),131,"Parks and open spaces (including play areas), community parks and open spaces",same line; 2019-20 name (allotments reported separately from 2019-20; that line is excluded by the all-years rule)
+
+==================== INPUT 4b: STATUTORY CLASSIFICATION (tests/PT1_statutory_classification.csv; text columns removed) ====================
+form,line,line_name,cls,candidates
+RO1,10,Early years,ambiguous,A/B
+RO1,20,Primary schools – including nursery classes in primary schools,B,B
+RO1,30,Secondary schools,B,B
+RO1,40,Special schools and alternative provision,ambiguous,A/B
+RO1,45,Post-16 provision,B,B
+RO1,65,Other education and community budget,ambiguous,A/B/C
+RO2,11,"Highways maintenance planning, policy and strategy",B,B
+RO2,12,"Public and other transport planning, policy and strategy",B,B
+RO2,31,Structural maintenance – principal roads,A,A
+RO2,32,Structural maintenance – other local authority roads,A,A
+RO2,33,Structural maintenance – bridges,ambiguous,A/C
+RO2,41,"Environmental, safety and routine maintenance – principal roads",A,A
+RO2,44,"Environmental, safety and routine maintenance – other local authority roads",A,A
+RO2,48,Winter service,A,A
+RO2,49,Street lighting (including energy costs),C,C
+RO2,51,Congestion charging,C,C
+RO2,52,Bus lane enforcement,B,B
+RO2,54,Road safety education and safe routes (including school crossing patrols),B,B
+RO2,58,Other traffic management,B,B
+RO2,61,On-street parking,B,B
+RO2,62,Off-street parking,B,B
+RO2,71,Statutory concessionary fares,A,A
+RO2,72,Discretionary concessionary fares,C,C
+RO2,73,Support to operators - Bus services,B,B
+RO2,74,Support to operators - Rail services,B,B
+RO2,75,Support to operators - Other public transport services,B,B
+RO2,76,Public transport co-ordination,ambiguous,B/C
+RO2,80,"Airports, harbours and toll facilities",C,C
+RO3,10,Children’s social care – Sure start children’s centres and early years,B,B
+RO3,13,Children’s social care – Children looked after,A,A
+RO3,16,Children looked after - Residential care,A,A
+RO3,17,Children looked after - Fostering services,A,A
+RO3,18,- Children looked after – asylum seeking children who are looked after,A,A
+RO3,19,‘Children looked after – of which – other’,ambiguous,A/B
+RO3,15,Children’s social care – other children’s and families services,ambiguous,B/C
+RO3,22,Children’s social care – Family Support Services,ambiguous,B/C
+RO3,23,Children’s social care – Youth Justice,B,B
+RO3,25,Children’s social care – Safeguarding Children and Young People’s Services,ambiguous,A/B
+RO3,26,Children’s social care – Asylum Seekers,ambiguous,B/C
+RO3,27,Children’s social care – Services for Young People,B,B
+RO3,30,Total Children Social Care,ambiguous,A/B/C
+RO3,32,Adults (18–64) – see below for the definitions of the following:,A,A
+RO3,33,Older people (65+) – see below for the definitions of the following:,A,A
+RO3,34,Adults (18–64) – see below for the definitions of the following:,A,A
+RO3,35,Older people (65+) – see below for the definitions of the following:,A,A
+RO3,36,Adults (18–64) – see below for the definitions of the following:,ambiguous,A/C
+RO3,37,Older people (65+) – see below for the definitions of the following:,ambiguous,A/C
+RO3,40,Adults (18–64) – see below for the definitions of the following:,A,A
+RO3,41,Older people (65+) – see below for the definitions of the following:,A,A
+RO3,44,Adults (18–64) – see below for the definitions of the following:,ambiguous,A/C
+RO3,45,Older people (65+) – see below for the definitions of the following:,ambiguous,A/C
+RO3,48,Social support – Substance misuse support,C,C
+RO3,49,Social support – Asylum seeker support,C,C
+RO3,50,Social support – Social isolation,C,C
+RO3,51,Social support – Support for carer,C,C
+RO3,53,Assistive equipment and technology,A,A
+RO3,54,Care assessment and safeguarding,ambiguous,A/C
+RO3,55,Information and early intervention (non-attributable costs),ambiguous,A/C
+RO3,56,"Commissioning, strategy and admin support",ambiguous,B/C
+RO3,8,Disbursement payment to care homes,C,C
+RO3,9,Other payments to care providers,C,C
+RO3,60,Total Adult Social Care,ambiguous,A/B/C
+RO3,61,Sexual health - STI testing and treatment (prescribed functions),C,C
+RO3,62,Sexual health - Contraception (prescribed functions),C,C
+RO3,63,"Sexual health - Advice, prevention and promotion (non-prescribed functions)",C,C
+RO3,65,NHS Health Check Programme (prescribed functions),C,C
+RO3,66,Health protection - Local authority role in health protection (prescribed functions),C,C
+RO3,68,National child measurement programme (prescribed functions),C,C
+RO3,70,Public health advice (prescribed functions),C,C
+RO3,71,Obesity - adults,C,C
+RO3,72,Obesity - children,C,C
+RO3,73,Physical activity – adults,C,C
+RO3,74,Physical activity - children,C,C
+RO3,76,Substance misuse - Adult drug and alcohol treatment and recovery services and commissioning,C,C
+RO3,78,Substance misuse - Adult drug and alcohol prevention,C,C
+RO3,80,Line 80         Substance misuse - Children and young people specialist substance use services and prevention,C,C
+RO3,81,Smoking and tobacco - Stop smoking services and interventions,C,C
+RO3,82,Smoking and tobacco - Wider tobacco control,C,C
+RO3,83,Children 5–19 public health programmes,C,C
+RO3,84,Miscellaneous public health services - 0-5 children’s services (prescribed functions),C,C
+RO3,85,Miscellaneous public health services - 0-5 children’s services - Other (non-prescribed functions),C,C
+RO3,86,Health at work,C,C
+RO3,87,Public mental health,C,C
+RO3,89,Miscellaneous public health services,C,C
+RO3,90,Total Public Health,C,C
+RO4,10,"Housing strategy, advice and enabling",ambiguous,B/C
+RO4,20,Housing advances,C,C
+RO4,31,Administration of financial support for repairs and improvements,ambiguous,A/C
+RO4,38,Other private sector housing renewal,ambiguous,A/C
+RO4,80,"Nightly paid, privately managed accommodation, self-contained",A,A
+RO4,81,Private sector accommodation leased by authority or by a registered provider,A,A
+RO4,82,"Hostels (including reception centres, emergency units and refuges)",A,A
+RO4,83,Bed and breakfast hotels (including shared annexes),A,A
+RO4,84,Local authority or housing association (LA/HA) stock,A,A
+RO4,85,Any other type of temporary accommodation (including private landlord and not known),A,A
+RO4,86,Temporary accommodation administration,ambiguous,A/C
+RO4,87,"Homelessness Services: Administration, Prevention, Relief & Main Duty",A,A
+RO4,88,Homelessness Services: Specialist Services and Support,C,C
+RO4,51,Rent allowances – discretionary payments,C,C
+RO4,52,Non-HRA rent rebates – discretionary payments,C,C
+RO4,53,Rent rebates to HRA tenants – discretionary payments,C,C
+RO4,57,Housing benefits administration,A,A
+RO4,60,Other council property,C,C
+RO4,75,Supporting people,C,C
+RO4,78,Other welfare services,ambiguous,A/C
+RO5,111,Archives,C,C
+RO5,112,Arts development and support,C,C
+RO5,113,Heritage,ambiguous,A/C
+RO5,114,Museums and galleries,C,C
+RO5,115,Theatres and public entertainment,C,C
+RO5,121,Community centres and public halls,C,C
+RO5,122,Foreshore,C,C
+RO5,123,Sports development and community recreation,C,C
+RO5,129,Sports and leisure facilities (including golf courses),C,C
+RO5,131,"Parks and open spaces (including play areas), community parks and open spaces",C,C
+RO5,137,Allotments,B,B
+RO5,140,Tourism,C,C
+RO5,150,Library services,B,B
+RO5,210,"Cemetery, cremation and mortuary services",ambiguous,A/C
+RO5,219,Trading standards,B,B
+RO5,220,Water safety,C,C
+RO5,221,Food safety,B,B
+RO5,222,Environmental protection; noise and nuisance,ambiguous,A/B
+RO5,223,Housing standards,A,A
+RO5,224,Health and safety,B,B
+RO5,225,Port health (excluding levies),B,B
+RO5,226,Port health levies,C,C
+RO5,227,Pest control,ambiguous,B/C
+RO5,228,Public conveniences,C,C
+RO5,229,Animal and public health; infectious disease control,ambiguous,A/C
+RO5,230,Licensing - Alcohol and entertainment licensing; taxi licensing,A,A
+RO5,231,Crime reduction,B,B
+RO5,232,Safety services,C,C
+RO5,233,CCTV,C,C
+RO5,241,Defences against flooding,C,C
+RO5,243,Land drainage and related work (excluding levy / Special levies),C,C
+RO5,244,Land drainage and related work - Levy / Special levies,C,C
+RO5,247,Coast protection,C,C
+RO5,250,Agricultural and fisheries services,C,C
+RO5,270,Street cleansing (not chargeable to Highways),A,A
+RO5,281,Waste collection,A,A
+RO5,282,Waste disposal,A,A
+RO5,283,Trade waste,A,A
+RO5,284,Recycling,A,A
+RO5,285,Waste minimisation,C,C
+RO5,286,Climate change costs,ambiguous,A/C
+RO5,310,Building control,B,B
+RO5,320,Development control,A,A
+RO5,335,Conservation and listed buildings planning policy,B,B
+RO5,338,Other planning policy,B,B
+RO5,340,Environmental initiatives,ambiguous,B/C
+RO5,350,Economic development,C,C
+RO5,351,Economic research,B,B
+RO5,352,Business support,C,C
+RO5,360,Community development,ambiguous,B/C
+RO6,410,Corporate and democratic core,ambiguous,A/B/C
+RO6,421,Council tax collection,A,A
+RO6,422,Council tax discounts for prompt payment,C,C
+RO6,423,Council tax discounts locally funded,C,C
+RO6,425,Council tax support administration,C,C
+RO6,426,Non-domestic rates (NDR) collection,A,A
+RO6,428,Business improvement district (BID) ballots,A,A
+RO6,430,"Registration of births, deaths and marriages",A,A
+RO6,441,Registration of electors,C,C
+RO6,442,Conducting elections,ambiguous,A/C
+RO6,450,Emergency planning,B,B
+RO6,460,Local land charges,A,A
+RO6,465,Local welfare assistance schemes,C,C
+RO6,470,"General grants, bequests and donations",C,C
+RO6,475,Coroners’ court services,A,A
+RO6,476,Other court services,C,C
+RO6,481,Retirement benefits,A,A
+RO6,482,Costs of unused shares of IT facilities and other assets,C,C
+RO6,484,Revenue expenditure on surplus assets,C,C
+RO6,489,Management and support services,C,C
+RO6,500,Other services,ambiguous,A/B/C
+
+==================== INPUT 5: PROCEDURE LOG, PARSER SETTINGS AND DEVIATIONS D-1 TO D-5 ====================
+## Step 5: structure inspection and parser settings (7 October 2026; logged before the counting step)
+
+**Inspection** (no values printed):
+- **Scripts:** tests/scripts/pt1_structure.py (text cells only, numbers masked) and tests/scripts/pt1_parse.py --structure.
+- **Outputs:** data/pt1/structure/ (git-ignored).
+
+**What the inspection found:**
+- **RO files:**
+  - one data sheet per form and year (2014-15: three sheets per form);
+  - a header row whose first cell is "E-code" (row 9 or 12 in 2014-15, row 4 in 2017-18, row 6 otherwise);
+  - line names in the nearest row above the header that holds names (group banners in "***" skipped);
+  - one block of columns per line, with net current expenditure in the column headed "Net Current Expenditure" (in 2014-15, on the third sheet);
+  - council rows identified by an E-code in column 0;
+  - an ONS code column and a Class column.
+- **Class codes:** L, MD, UA, SD, SC, O. "L" (London) is mapped to LB.
+- **Mid-year estimates (MYEB2, 2019 geography):** one row per council, single year of age (0 to 90, 90 = 90 and over) and sex, with population_2001 to population_2019.
+- **Projections:**
+  - 2012, 2014 and 2016 editions: persons CSVs, single year of age plus "90 and over" and "All ages", with year columns;
+  - interim 2011-based: an xls sheet "Population - persons", header row "Code, Area, Age group", years 2011 to 2021.
+- **Core Spending Power:** sheet "input" in the 2019-20 summary workbook, with ons_code and csp_2015 to csp_2019 in £ millions.
+
+**Parser settings (implementation notes, fixed now):**
+1. **Net current expenditure** is the column headed "Net Current Expenditure" in each line's block. Non-numeric cells become missing.
+2. **Population groups** are summed from single years of age, both sexes: all ages, 0 to 17, 65 and over, 18 and over. "90 and over" is age 90; the "All ages" rows are not used. The same applies to projections (persons).
+3. **CPI** is the mean of the 12 monthly D7BT values from April to March for each financial year.
+4. **Core Spending Power** is converted from £ millions to £ thousands (×1000). The analysis uses ratios, so units do not affect results.
+
+**Deviations from the pre-registration (name matching, Section 3).** These are of the kind the pre-registration anticipates ("a changed name"), and were decided from names only, before any values.
+
+- **D-1. Name crosswalk.** 21 data names in the window years differ from the 2025-26 guidance names that the classification uses. They are mapped by tests/PT1_line_name_crosswalk.csv, with a reason for each.
+  - **The differences:** abbreviations ("other LA roads"); singular and plural ("Library service"); earlier names ("Open spaces", "Sports and recreation facilities"); and the RO4 temporary accommodation and homelessness lines, which are finer in the window than in 2025-26.
+  - **Without the crosswalk,** the frozen exact-name rule would drop core lines (libraries, parks, sports facilities, most temporary accommodation and homelessness) for a purely editorial reason.
+  - **Direction: neutral.** Names only, no values.
+- **D-2. Many-to-one lines summed.** Where the crosswalk maps several window-year lines to one 2025-26 line, they are summed into that line for each council and year (missing only if every component is missing). Examples: leased by the authority + leased by registered social landlords → line 81; homelessness administration + prevention → line 87.
+  - **This follows the official 2020-21 recoding,** which combined these lines (PT1-S1).
+  - **Without it,** the duplicate-name rule would drop them.
+  - **Direction: neutral.**
+- **D-3. A labelling error in the source** (RO5, 2019-20). Two adjacent blocks are both labelled "Sports development and community recreation". In every other year, the second position is "Sports and recreation facilities, including golf courses". The second block is relabelled by position.
+  - **Without the fix,** the duplicate-name rule would drop both sports lines in every council.
+  - **Direction: neutral.**
+- **D-4 (a limitation, no intervention).** From 2019-20, "Allotments" is reported separately from "Parks & Open Spaces". Both open-spaces names map to line 131. The 2019-only allotments line drops out under the all-years rule. If allotments sat inside "Open spaces" before 2019-20, line 131 has a small definitional fall in 2019-20. **Not corrected; reported.**
+
+**Known risk, to be checked by count in step 6:**
+- **The cause:** the projections of 2011 and 2012 use the council codes of their time. A council whose code changed before 2014 (stable within the spending window) may lack early projections under its later code.
+- **Consequence:** its 2014-15 to 2016-17 projected growth is then missing, and those rows drop out of PT1.
+- **What happens next:** the counting step reports the number. **If it is material, a documented code-history mapping is a candidate deviation for James to decide** before the run.
+
+**Next:** step 6, build the tidy files and run the counting step (counts only, no outcome values).
+
+## Step 7, attempt 1: the run stopped with an error before any result (7 October 2026)
+
+- **Command:** `python tests/scripts/pt1_councils.py --data data/pt1/tidy --out tests/results/PT1` (code unchanged, SHA-256 begins 995abfc5).
+- **What happened:** the script stopped in G25-C, when it reshaped the Core Spending Power table: "Index contains duplicate entries, cannot reshape" (tests/results/PT1/run.log). **Nothing was printed before the error and no summary file was written. No result has been seen.**
+- **Cause:** the Core Spending Power "input" sheet gives one ONS code, E31000040, to two bodies: Greater Manchester Fire and the Greater Manchester Combined Authority (which took over fire functions in 2017). Neither is a single-tier council or in the panel (all 121 panel councils have E06, E08 or E09 codes). Checked by code and name only, numbers masked.
+- **Proposed D-5 (awaiting James):** the parser keeps only E06, E08 and E09 codes in the Core Spending Power table (tests/scripts/pt1_parse.py, build_csp). The analysis code stays unchanged. No council in scope is affected. **Direction: neutral.** After the fix, data/pt1/tidy/csp.csv is rebuilt and its checksum replaced in the manifest, coverage of the 121 councils is checked, and the run is repeated once. Because attempt 1 produced no result, the repeat is not a choice among results.
+
+**D-5 approved by James and applied (7 October 2026).** data/pt1/tidy/csp.csv rebuilt: 635 rows, 127 codes, no duplicates. All 121 panel councils present, with no missing spending power cells. New checksum begins ba78a1e9; the other four tidy files are unchanged. Analysis code unchanged (995abfc5).
+
+==================== END OF INPUTS ====================
