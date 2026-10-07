@@ -1,16 +1,14 @@
 # Public record for the PAM paper: paths to keep (git filter-repo --paths-from-file).
 # Built 7 October 2026 from what the paper and supplement cite or are built from (James's list).
 # Excluded: CONTROL.md, CLAUDE.md, DECISIONS.md, LOG.md, data/, archive/. Planning only; nothing extracted.
+# Excluded by James (7 October 2026): papers/pam-model/05, 06 and 09.
 papers/pam-model/00 Inclusion register.md
 papers/pam-model/01 Mathematical section (draft).md
 papers/pam-model/02 Paper draft 1.md
 papers/pam-model/03 Supplement draft 1.md
 papers/pam-model/04 Citation check.md
-papers/pam-model/05 Origins and provenance.md
-papers/pam-model/06 Framing options.md
 papers/pam-model/07 Paper draft 2.md
 papers/pam-model/08 Paper draft 3.md
-papers/pam-model/09 Publication procedure.md
 papers/pam-model/public_paths.txt
 raw/2026-10-06_chatgpt_H1-VDB-R1.md
 raw/2026-10-06_gemini_H1-VDB-S1.md
