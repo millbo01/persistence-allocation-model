@@ -1,0 +1,71 @@
+S15466 | FORMAL | In vivo mimicking multiphase model towards impact of host on avascular tumour growth
+S14023 | EMPIRICAL | Nutritional manipulations and tumor growth I. The effects of starvation
+S14187 | EMPIRICAL | Host and tumor responses to increasing levels of intravenous nutritional support.
+S14419 | EMPIRICAL | Effect of chronic protein malnutrition on host-tumor composition and growth
+S14710 | EMPIRICAL | Feeding response of tumor-bearing rats to insulin and insulin withdrawal and the contribution of autonomous tumor drain to cachectic depletion.
+S15185 | EMPIRICAL | Tumors—effective nitrogen traps independent of protein intake
+S13981 | EMPIRICAL | Tumor-host relations in14C-thiamine utilization
+S14326 | EMPIRICAL | Intravenous nutrition and tumor host protein metabolism
+S14239 | EMPIRICAL | Evaluation of oxidative metabolism in tumour-host livers as a possible cause of energy loss in cachectic sarcoma-bearing mice
+S15026 | EMPIRICAL | John Ludbrook APPS Symposium Neural Mechanisms In The Cardiovascular Responses To Acute Central Hypovolaemia
+S15018 | EMPIRICAL | Drosophila as a Model for Tumor-Induced Organ Wasting
+S15295 | EMPIRICAL | Differential BCAA Metabolism in Tissues of Tumor-Bearing Mice: A Path to Understanding Cancer Cachexia
+S15745 | NEIGHBOUR | Invited Review: New Perspectives on the Roles of Nutrition and Metabolic Priorities in the Subfertility of High-Producing Dairy Cows
+S15302 | NEIGHBOUR | Sleep and Sleep Loss: An Energy Paradox?
+S14435 | NEIGHBOUR | Avenues of Communication between the Brain and Tissues/Organs Involved in Energy Homeostasis
+S14208 | NEIGHBOUR | The Host–Tumor Relationship—Nutritional Factors and Biomarkers
+S15910 | NEIGHBOUR | Cancer cachexia: A tumor-driven disorder of whole-body homeostasis
+S15024 | NEIGHBOUR | The Dynamic Plant: Capture, Transformation, and Management of Energy
+S13828 | UNSURE | Energizing the Mind and Body
+S13862 | UNSURE | Role of hypothalamus in regulation of glucose homeostasis
+S13891 | UNSURE | A Hybrid Multiscale Model of Solid Tumour Growth and Invasion: Evolution and the Microenvironment
+S13900 | UNSURE | Tumor-host relationships. II. Tolerance to injection of amino acids.
+S13904 | UNSURE | The influence of intravenous hyperalimentation (IVH) on wound healing in tumor-bearing rats
+S13919 | UNSURE | Effect of iron deficiency on transplantable Murine Plasmacytoma
+S13942 | UNSURE | Tumor-host zinc metabolism the central role of metallothionein
+S13953 | UNSURE | Integrative physiology of skeletal muscle for maintaining cognitive health
+S13978 | UNSURE | [The regression of medial smooth muscle in host arteries supplying human cancers and its functional significance].
+S13979 | UNSURE | INSULIN AND TISSUE SUGAR
+S13879 | UNSURE | Apparent cellular ingress of albumin in Walker 256 tumor and rat muscle.
+S14029 | UNSURE | The Role of Information Processing Between the Brain and Peripheral Physiological Systems in Pacing and Perception of Effort
+S14089 | UNSURE | [Characteristics of nutrient utilization in cancer patients].
+S14103 | UNSURE | Central command: Feedforward control of the sympathoadrenal system during exercise
+S14106 | UNSURE | Changes in blood metabolic parameters during the development of Walker‐256 tumour‐induced cachexia in rats are not caused by decreased food intake
+S14129 | UNSURE | Biochemistry of Cancer
+S14132 | UNSURE | La cachexie associée au cancer
+S14183 | UNSURE | A Time-Course Comparison of Skeletal Muscle Metabolomic Alterations in Walker-256 Tumour-Bearing Rats at Different Stages of Life
+S14324 | UNSURE | Food and water intakes and Walker tumor growth in rats with hypothalamic lesions
+S14341 | UNSURE | Generation of extracellular atp in blood and its mediated inhibition of host weight loss in tumor-bearing mice
+S14448 | UNSURE | Exercise and fatigue-control mechanisms
+S14450 | UNSURE | Effect of alanylglutamine-enriched infusion on tumor growth and cellular immune function in rats
+S14458 | UNSURE | Glial Regulation of Energy Metabolism
+S14462 | UNSURE | The role of brain in the regulation of glucose homeostasis
+S14493 | UNSURE | A Child, a Nervous System, and The Architecture of Growth
+S14549 | UNSURE | The Need of the Organism
+S14555 | UNSURE | Neural investment patterns reflect task specialization in the leaf-cutting ant Acromyrmex subterraneus
+S14578 | UNSURE | Synaptic Silencing as Metabolic Self-Defence: From Energy Crisis to Connectivity Collapse in Alzheimer's Disease
+S14586 | UNSURE | Structural and Functional Evidence for Xylem‐Mediated Water Transport and High Transpiration in Agrobacterium tumefaciens‐Induced Tumors of Ricinus communis*
+S14590 | UNSURE | Work and water intake and the water need of rats during growth of a tumor
+S14605 | UNSURE | Investment in higher order central processing regions is not constrained by brain size in social insects
+S14620 | UNSURE | Physiological changes in intracranial pressure affect arterial pressure
+S14884 | UNSURE | Tumor host relations
+S14928 | UNSURE | Tumour–host interactions in Drosophila : mechanisms in the tumour micro‐ and macroenvironment
+S14938 | UNSURE | A monolithic multiphase porous medium framework for (a-)vascular tumor growth
+S15016 | UNSURE | Evaluation of anorexia as the cause of altered protein synthesis in skeletal muscles from nongrowing mice with sarcoma.
+S15040 | UNSURE | The effects of gastrointestinal malignancy on whole body protein metabolism
+S15098 | UNSURE | Novel mechanisms for the metabolic control of puberty: implications for pubertal alterations in early-onset obesity and malnutrition
+S15119 | UNSURE | Effect of K3T3 sarcomas on tissue concentrations of vitamin E
+S15214 | UNSURE | Nutritional and environmental effects on reproduction in small ruminants
+S15367 | UNSURE | Plasma and brain amino acids in Walker 256 carcinosarcoma-bearing rats.
+S15441 | UNSURE | A biologic radar system for the assessment of body mass the model of a geometry sensitive endocrine system is presented
+S15464 | UNSURE | Into the black and back: the ecology of brain investment in Neotropical army ants (Formicidae: Dorylinae)
+S15505 | UNSURE | The interactions between energy homeostasis and neurovascular plasticity
+S15530 | UNSURE | The role of the hypothalamus in the development of cancer cachexia
+S15621 | UNSURE | Principle and Application of Pacing Strategy
+S15672 | UNSURE | Neural control of the circulation during exercise: insights from the 1970–1971 Oxford studies
+S15712 | UNSURE | Comparative Studies on Protein Turnover Regulations in Tumor Cells and Host Tissues: Development and Analysis of an Experimental Model
+S15806 | UNSURE | Evolution of malignant tumors as neoorgan and predictions of future scenarios resulting from inappropriate treatment
+S15871 | UNSURE | Symbiotic nitrogen fixation: a launchpad for investigating old and new challenges
+S16002 | UNSURE | Fetal Nutrition: How We Become What We Are
+S16066 | UNSURE | ON THE CHAOTIC NATURE OF A CAPUTO FRACTIONAL MATHEMATICAL MODEL OF CANCER AND ITS CROSSOVER BEHAVIORS
+S16072 | UNSURE | A Comparison of the Changes in Carbohydrate, Fat, and Protein Metabolism Occurring with Malignant and Benign Tumors and the Impact of Nutritional Support

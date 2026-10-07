@@ -80,3 +80,43 @@ Strand C is therefore of limited sensitivity, as the protocol requires.
 **Implication for strand C:** older, foundational plant models are described in root:shoot and growth vocabulary, not allocation vocabulary. This confirms the protocol's statement that strand C has limited sensitivity, and supports deviation D-1 (reviews).
 
 **Still blocked:** OpenAlex strand D and the H1 abstract check. The free budget was still exhausted at 13:37 UTC on 7 October; it resets at midnight UTC.
+
+## Update (7 October 2026, fourth session): OpenAlex strand D fetched and screened; search 2 complete
+
+**Fetch** (scripts/check1_s2_openalex_D.py; report openalex_D_report.json):
+- 7,372 records; 563 matched existing records; 6,809 new.
+- Final deduplicated set: 18,363 records (dedup_records.csv). Existing record numbers are unchanged.
+
+**Known items, final:** K1 to K4 found; H2 found; **H1 missed**.
+
+**H1 diagnosis complete.** OpenAlex holds H1 with an abstract ("transport and utilization of two required substrates... root: shoot ratios"). Neither the title nor the abstract contains any strand C phrase. The miss is vocabulary alone.
+
+**Screening** (deviation D-2; screening_D_openalex.csv; counts_D_openalex.json):
+
+| Decision | Number |
+|---|---|
+| Excluded at the title pass | 6,493 |
+| Abstract read, off-topic | 199 |
+| **Included, I-access** | **4**: Selfish Brain supply-chain papers (2007, 2008); a brain-centred four-compartment model in a fractional reformulation (2026 preprint); a lifespan brain-health model built on Goebel et al. 2010 (2025 abstract) |
+| **Included, I-fixed (weak)** | **1**: a 1982 computer model in which an autonomous tumour drain draws first |
+| Duplicates of existing includes | 7 |
+| CHECK (title or abstract only) | 5 |
+| Near miss (DEB, two organisms) | 11 |
+| Formal, but no allocation under shortage | 19 |
+| Neighbours (unification table) | 40 |
+| Empirical | 30 |
+
+**Two empirical records to note, logged as found:**
+- **S11597** (Biochem J 1991, 2-deoxyglucose): in tumour-bearing mice the tumour became the second glucose consumer after the brain, and the brain's glucose use **fell**, whether or not the mice were cachectic. This runs against brain priority, at one study's weight.
+- **S15185** (J Surg Res 1989): the tumour gained protein while liver and gut mucosa were depleted. This is an order among host tissues under a parasitic sink.
+
+**Search 2 is complete.** Strand D, with both databases screened, has 21 includes:
+- 12 I-access (8 from PubMed, 4 from OpenAlex);
+- 7 I-emergent;
+- 1 weak I-emergent;
+- 1 weak I-fixed.
+
+There is also 1 provisional I-access, 5 OpenAlex CHECK records, and 1 probable exclude from PubMed.
+
+**No new class of model appeared.** The Selfish Brain family, the DEB tumour-in-host models and the haemodynamic and neuron-glia models found earlier remain the whole of strand D.
+

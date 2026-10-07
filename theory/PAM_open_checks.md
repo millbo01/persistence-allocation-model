@@ -37,7 +37,18 @@ Three checks were set before the paper claims any of them:
   2. **The Selfish Brain formal models** (Göbel, Peters and colleagues 2008 to 2013): brain priority through insulin-gated access.
   3. **DEB tumour-in-host models** (van Leeuwen et al. 2003; Tosca and colleagues 2018 to 2021): tumour and host compete by workload.
 - **What none of them has** (as far as abstracts and the one full review show): loss of existing units, switching off and scars; repair competing for access; a conserved account of where unmet demand goes; viability; and application outside its own domain.
-- **Open:** OpenAlex strand D (blocked by the daily budget); five CHECK records needing full text.
+- **Completed 7 October 2026:**
+  - The five PubMed CHECK records are resolved (check_records_resolved.md). The tilt circulation model is order from access (cerebral autoregulation against broadcast constriction). The spreading-depression and GLUT1 neuron-glia models are emergent order (astrocytes draw their own store first, or absorb the shock).
+  - OpenAlex strand D was fetched and screened (6,809 new records; title pass by agents under a liberal rule, checked against Claude's blind sample, deviation D-2). It added 4 Selfish Brain family models and 1 weak 1982 tumour-drain model; **no new class of model.**
+  - H1's miss is fully explained by vocabulary: its title and abstract speak of root:shoot ratios and substrate transport.
+- **Final answer to check 1:** formal precedents for an order among organs under shortage exist in:
+  - plants (strict priority; access-derived priority);
+  - the Selfish Brain family (insulin-gated access);
+  - DEB tumour-in-host models;
+  - circulation and neuron-glia models (autoregulation; stores drawn first).
+
+  None of them has unit loss, switching off or scars; repair competing for access; a conserved load ledger; viability; or use outside its own domain.
+- **Logged as found:** in tumour-bearing mice the brain's glucose use fell while the tumour became the second consumer (S11597, Biochem J 1991). This is against brain priority, at one study's weight.
 
 **Limit (earlier):** web searches are not a systematic review. If the paper is to say "no DEB model orders organs by access", that sentence needs a proper search: a database search with stated terms, run by Claude or by a sourcing model with a prompt. **Proposal for James below.**
 
@@ -347,7 +358,7 @@ Reframe accepted as the working basis, with his reasons:
 
 ## Still open
 
-- **Check 1:** OpenAlex strand D (after the daily reset); five CHECK full texts; why held-out H1 was missed.
+- **Check 1:** complete. Five OpenAlex CHECK records (title or abstract only) remain, none likely to change the answer.
 - **Check 2:** done at search level (above). Read in full, if the paper leans on them: Sadid et al. 2026 and Bergauer et al. 2026 (calibrated order of bed resistances); Peters and Boyd 1968 (organ weights in starvation).
 - **Check 3:**
   - Hochachka 1996 and Buttgereit and Brand 1995 in full: behind bot checks; James to download in a browser if wanted;

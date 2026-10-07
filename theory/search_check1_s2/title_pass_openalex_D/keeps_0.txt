@@ -1,0 +1,177 @@
+S11555 | FORMAL | Data from A Tumor-in-Host DEB-Based Approach for Modeling Cachexia and Bevacizumab Resistance
+S11556 | FORMAL | Dynamic Energy Budget Theory for Metabolic Organisation
+S11557 | FORMAL | Resource Ecology of Virulence in a Planktonic Host‐Parasite System: An Explanation Using Dynamic Energy Budgets
+S11559 | FORMAL | Parasitic castration: a perspective from a model of dynamic energy budgets
+S11560 | FORMAL | A dynamic energy budget for the whole life‐cycle of holometabolous insects
+S11561 | FORMAL | Dynamic energy budgets of syntrophic symbiotic relationships between heterotrophic hosts and photoautotrophic symbionts
+S11562 | UNSURE | The selfish brain: learning from addiction
+S11563 | FORMAL | How the selfish brain organizes its supply and demand
+S11564 | NEIGHBOUR | Das Selfish-Brain-Paradigma
+S11565 | NEIGHBOUR | Die Selfish-Brain-Theorie
+S11567 | NEIGHBOUR | 2 Selfish-Brain-Theorie
+S11569 | UNSURE | Role of tumor and host autophagy in cancer metabolism
+S11570 | UNSURE | Tumour and host interactions
+S11571 | FORMAL | The selfish brain: energy shift during hypoglycemia
+S11572 | FORMAL | The Selfish Brain: A new model of the LHPA-system
+S11573 | NEIGHBOUR | Selfish Brain and the field of research on ingestive behaviour
+S11574 | UNSURE | Review of The selfish brain: Learning from addiction.
+S11575 | UNSURE | HOW TUMORS AFFECT HOST METABOLISM*
+S11577 | UNSURE | Vascular Relationships of Tumor and Host*
+S11582 | UNSURE | Book Review: The Selfish Brain—Learning from Addiction
+S11583 | NEIGHBOUR | The Selfish Brain: What Matters Is My Body, not Yours?
+S11586 | FORMAL | Dynamic Energy Budget theory predicts smaller energy reserves in thyasirid bivalves that harbour symbionts
+S11587 | NEIGHBOUR | Cerebrovascular Abnormalities Supporting the Selfish Brain Hypothesis of Human Hypertension
+S11589 | UNSURE | Protein metabolism in the tumour-bearing host.
+S11590 | NEIGHBOUR | Does brain size of Asiatic toads ( Bufo gargarizans ) trade-off with other energetically expensive organs along altitudinal gradients?
+S11592 | FORMAL | A quantitative estimation of the energetic cost of brown ring disease in the Manila clam using Dynamic Energy Budget theory
+S11593 | UNSURE | Effect of glutamine on tumor and host growth
+S11597 | UNSURE | Metabolic substrate utilization by tumour and host tissues in cancer cachexia
+S11600 | NEIGHBOUR | The Selfish Immune System when the Immune System Overrides the ‘Selfish’ Brain
+S11602 | UNSURE | Lipogenesis in tumour and host tissues in mice bearing colonic adenocarcinomas
+S11605 | EMPIRICAL | The selfish brain – Unaltered brain temperature in the acute state of Anorexia Nervosa
+S11609 | FORMAL | Advances in dynamic energy budget modeling of terrestrial arthropods by considering different timing of reproductive investment
+S11610 | UNSURE | CHEMISTRY OF THE TUMOR-BEARING HOST
+S11612 | UNSURE | Interchange of amino acids between tumor and host
+S11618 | FORMAL | Selfish-brain theory: challenges in the top-down analysis of metabolic supply chains
+S11626 | FORMAL | Mathematical modeling of energy consumption in the acute inflammatory response during sepsis
+S11627 | NEIGHBOUR | Selfish brain and immune system prompt energy shortage in chronic inflammation/aging
+S11629 | UNSURE | Response of tumor and host to hyperalimentation and antiglutamine treatments
+S11665 | FORMAL | A Resource Use and Efficiency Trade-Off Altering Growth of a Microbial Parasite: Modelled Using Dynamic Energy Budget Theory
+S11689 | UNSURE | Photoperiod Affects Organ Specific Glucose Metabolism in Male Siberian Hamsters (Phodopus sungorus)
+S11691 | UNSURE | A comparative study of the influence of malignant tumor on host metabolism in mice and man.Evaluation of an experimental model
+S11692 | UNSURE | Refeeding differentially affects tumor and host cell proliferation
+S11693 | UNSURE | Tumour and Host Tissue Responses to Branched-Chain Amino Acid Supplementation of Patients with Cancer
+S11695 | NEIGHBOUR | Insights from cardiovascular magnetic resonance imaging supporting the selfish brain hypothesis of arterial hypertension
+S11696 | UNSURE | Tumor Glycolysis-Host Gluconeogenesis in Cancer Cachexia
+S11706 | UNSURE | Cytokines Causing Cachexia in Tumor Bearing Hosts
+S11766 | UNSURE | The effects of glucose and amino acids on tumor and host DNA synthesis
+S11768 | UNSURE | The effects of dietary deficiencies of magnesium and potassium on the growth and chemistry of transplanted tumours and host tissues in the rat
+S11777 | UNSURE | Effect of nutritional supplementation on protein synthesis in tumour and host tissues of rats with colonic cancer
+S11778 | UNSURE | Zebrafish as a New Model to Study the Crosstalk between Tumor and Host Metabolism
+S11798 | UNSURE | Cancer As a Slack-Sharing System: Structural Tradeoffs in Tumor and Host
+S11840 | UNSURE | Dietary Restriction of Specific Amino Acids Modulates Tumor and Host Interactions
+S11847 | UNSURE | Iron accumulation in mammary tumor suggests a tug of war between tumor and host for the microelement.
+S11854 | UNSURE | Tumor and Host Carcass Changes During Total Parenteral Nutrition in an Anorectic Rat-Tumor System
+S11870 | UNSURE | Discontinuity in the competitive interaction of tumor cells with the tumor-bearing host—a hypotheses
+S11874 | UNSURE | Leucine oxidation and protein degradation in the extensor digitorum longus and soleus of the tumor-bearing host
+S11889 | UNSURE | Parenteral hyper alimentation on cell proliferation activity of tumor and host tissues
+S11891 | UNSURE | Drosophila Larval Models of Invasive Tumorigenesis for In Vivo Studies on Tumour/Peripheral Host Tissue Interactions during Cancer Cachexia
+S11904 | FORMAL | A Fractional-Order Model of Brain-Centered Energy Metabolism (FCEM)
+S11909 | UNSURE | Polyamine‐directed preferential nutritional repletion of normal tissues in tumor‐bearing hosts
+S11916 | EMPIRICAL | Influence of higher brain centres and vasopressin on the haemodynamic response to acute central hypovolaemia in rabbits
+S11922 | UNSURE | O.75 Effect of enteral nutrition on protein synthesis in tumour and host tissues of rats with colon cancer
+S11949 | NEIGHBOUR | Diabetes and Cartesian Dualism: what is the evidence for a brain‐centred gluco‐regulatory system?
+S11951 | UNSURE | Paired Tumor-Host Bioenergetic Phenotyping in Cancer: A Translational Research Framework Linking Mitochondrial Biology to Patient Function
+S11962 | UNSURE | The influence of dietary protein content on cell cycle parameters of tumour and host tissue. Impact of protein deprivation and replenishment
+S11976 | UNSURE | The CAT-SIR is out of the bag: tumors prefer host rather than dietary nutrients
+S11978 | UNSURE | Effects of Three Feeding Schedules on Tumor and Host of Lewis Lung Carcinoma-Bearing Mice
+S11987 | UNSURE | A study on the interaction between tumors and hosts from histochemical view point of carbohydrate metabolism.
+S11988 | UNSURE | Drosophila larval models of invasive tumourigenesis for in vivo studies on tumour/peripheral host tissue interactions during cancer cachexia
+S11993 | UNSURE | Tumor and host tissue responses to branched-chain amino acid supplementation of patients with cancer
+S12012 | NEIGHBOUR | The multiple faces of the human immune system: Modern life causes low-grade inflammation and thereby provokes conflict between the selfish immune system and the selfish brain
+S12022 | UNSURE | Effects of branched chain amino acids enriched formula on protein metabolism in tumor bearing host
+S12046 | UNSURE | Lewis lung carcinoma in mice as an experimental therapy model. I. The growth kinetics and the effect of tumor on host.
+S12065 | UNSURE | Metabolic Relationships Between Tumor and Host During Massive Doses of Prednisone in Human Neoplastic Disease 2
+S12068 | UNSURE | The effect of dietary protein content on cell cycle parameters of tumor and host tissue. A flow cytometric study
+S12071 | FORMAL | Supplementary Material S5 from A Tumor-in-Host DEB-Based Approach for Modeling Cachexia and Bevacizumab Resistance
+S12074 | UNSURE | Pvf1/Pvr Axis Promotes Neural-Controlled Akh Release to Govern Tumor-Induced Host Wasting
+S12076 | FORMAL | Supplementary Material S1 from A Tumor-in-Host DEB-Based Approach for Modeling Cachexia and Bevacizumab Resistance
+S12077 | FORMAL | Supplementary Material S3 from A Tumor-in-Host DEB-Based Approach for Modeling Cachexia and Bevacizumab Resistance
+S12078 | FORMAL | Supplementary Material S2 from A Tumor-in-Host DEB-Based Approach for Modeling Cachexia and Bevacizumab Resistance
+S12084 | FORMAL | Supplementary Material S4 from A Tumor-in-Host DEB-Based Approach for Modeling Cachexia and Bevacizumab Resistance
+S12087 | UNSURE | Quantitative in vivo flux analysis reveals tumor and host lipogenic remodeling in KRAS-driven lung cancer
+S12097 | UNSURE | Structured lipid made from fish oil and medium-chain triglycerides alters tumor and host metabolism in Yoshida-sarcoma-bearing rats
+S12141 | UNSURE | A DEB model to predict accumulation and detoxification of paralytic shellfish toxins by the Japanese Oyster (Crassostrea gigas)
+S12146 | UNSURE | Prostaglandin E and prostacyclin receptor expression in tumor and host tissues from MCG 101‐bearing mice: A model with prostanoid‐related cachexia
+S12170 | UNSURE | A PK/PD model for tumor-in-host growth kinetics following administration of an antiangiogenic agent given alone or in combination regimens
+S12218 | UNSURE | Tumor and host response to arginine and branched chain amino acid-enriched total parenteral nutrition. A study involving Walker 256 carcinosarcoma-bearing rats
+S12235 | UNSURE | Physical modelling of epithelia: reverse engineering cell competition in silico
+S12237 | UNSURE | Modeling the Adaptation of Parasites to Changes in Host Condition
+S12240 | UNSURE | PD05.04. Clinical Value of Tumor and Host Metabolic Dynamics on Serial 18F-FDG PET in Locally Advanced Resectable Esophageal Squamous Cell Carcinoma
+S12272 | UNSURE | Syntrophic splitting of central carbon metabolism in host cells bearing functionally different symbiotic bacteria
+S12274 | NEIGHBOUR | Large-brained birds lay smaller but heavier clutches
+S12285 | UNSURE | PHOSPHORUS-ALTERED PARASITE-HOST INTERACTIONS EXAMINED AT MULTIPLE SCALES
+S12306 | UNSURE | Modelling how resource competition among snail hosts affects the mollusciciding frequency and intensity needed to control human schistosomes
+S12310 | UNSURE | Cancer metabolism and the dynamics of metastasis
+S12316 | UNSURE | The emergence of humans: The coevolution of intelligence and longevity with intergenerational transfers
+S12329 | UNSURE | Evolution of symbiosis in hermatypic corals: A model of the past, present, and future
+S12333 | NEIGHBOUR | Immunometabolic considerations with regard to the domestic chicken, Gallus gallus
+S12338 | UNSURE | Impact of excess and harmful radiation on energy budgets in scleractinian corals
+S12339 | UNSURE | Computational hemodynamics of poultry: First application of CTA–CFD to elucidate vascular adaptation and heat stress injury
+S12340 | FORMAL | Modeling food dependent symbiosis in Exaiptasia pallida
+S12342 | NEIGHBOUR | A metabolic trade-off impacting childhood language development and body growth
+S12343 | UNSURE | Between-individual variability in the energetic and reproductive dynamics of European seabass (Dicentrarchus labrax)
+S12348 | UNSURE | The impacts of early environmental adversity on cognitive functioning, body mass, and life-history behavioral profiles
+S12352 | UNSURE | Neural Investment as an Entropy-Budget Strategy: A Thermodynamic Derivation of Primate Longevity from the Principle of Biological Time Equivalence
+S12355 | UNSURE | A historical perspective of nutrient change impact on an infectious disease in Daphnia
+S12357 | NEIGHBOUR | Metabolic trade‐offs in childhood: Exploring the relationship between language development and body growth
+S12359 | NEIGHBOUR | Gehirn und metabolisches Syndrom
+S12360 | UNSURE | Top-Down Systemic Metabolic Suppression Induced by Positive Temporal Lobe Variants: A Hypothesis on Temporal-Hypothalamic Axis Tuning and Low-Entropy Somatic Self-Maintenance Based
+S12362 | UNSURE | Tumor-Derived Ligands Trigger Tumor Growth and Host Wasting via Differential MEK Activation
+S12367 | UNSURE | Tentative Definitions of Evolution in Relation with Type 2 Diabetes
+S12372 | EMPIRICAL | Brain More Resistant to Energy Restriction Than Body: A Systematic Review
+S12378 | FORMAL | Symbiosis increases population size and buffers environmental fluctuations in a physiologically-structured model parameterized for thyasirid bivalves
+S12389 | UNSURE | Energy balance and cancer risk at the cellular and whole organism level: modification by metformin
+S12395 | UNSURE | Blood flow responses to mild-intensity exercise in ectopic vs. orthotopic prostate tumors; dependence upon host tissue hemodynamics and vascular reactivity
+S12405 | EMPIRICAL | The selfish yet forgetful brain: Stable cerebral oxygen metabolism during hypoglycemia but impaired memory consolidation
+S12406 | NEIGHBOUR | A duel between cognitive and physical performance: who wins- the brain or body?
+S12416 | UNSURE | Evolution of brain elaboration
+S12421 | UNSURE | The Resource-Constrained Brain: A New Perspective on the Equity Premium Puzzle
+S12422 | UNSURE | Underweight and overweight: between Scylla and Charybdis
+S12426 | UNSURE | A Brain-Focused Foundation for Economic Science
+S12430 | UNSURE | Robust modeling of appetite regulation
+S12432 | UNSURE | A Chemical Basis for Tumor-Host Relations
+S12465 | UNSURE | The Brain as a Central Regulatory Switch: A Systems-Level Hypothesis of Multisystem Physiological Dysregulation
+S12469 | UNSURE | Nutritional modulation of tumor growth
+S12492 | UNSURE | Models of the Human Metabolism
+S12505 | UNSURE | Supply chains in life‐science applications
+S12506 | NEIGHBOUR | Übergewichtsspirale: Das egoistische Gehirn? – Neue wissenschaftliche Theorien zur Adipositas
+S12510 | UNSURE | Uncomplicated starvation versus cancer cachexia.
+S12532 | UNSURE | Evolutionary Origins of Diabetes Mellitus
+S12540 | UNSURE | The Storage Hormone Insulin Doesn’t Work—Insulin Resistance
+S12545 | UNSURE | Perspective Chapter: Hypertension with a Focus on Comprehensive Magnetic Resonance Imaging
+S12612 | UNSURE | Comparison of Intravenous Glucose and Fat Calories on Host and Tumor Growth
+S12614 | UNSURE | Homo erectus: The Hunger Challenge
+S12620 | UNSURE | Brain and Islet: Key Partners in Glucose Homeostasis
+S12630 | NEIGHBOUR | The Thrifty Gut: Irritable Bowel Syndrome as an Algorithmic Mismatch of Evolutionary Energy Management
+S12696 | UNSURE | Tumour growth and nitrogen metabolism in the host (Review).
+S12718 | NEIGHBOUR | Performing under pressure: hypertension and the regulation of cerebral oxygen delivery
+S12746 | NEIGHBOUR | Glucose fluxes: Primacy of the brain
+S12819 | UNSURE | Mathematical modeling of the biphasic dopaminergic response to glucose
+S12883 | UNSURE | EFFECT OF PROTEIN-INTAKE ON TUMOR-GROWTH AND HOST SURVIVAL IN TUMOR-BEARING ANIMALS
+S12918 | UNSURE | Cancer cachexia: Focus on cachexia factors and inter-organ communication
+S12919 | UNSURE | How Should We Think About the Role of the Brain in Glucose Homeostasis and Diabetes?
+S12928 | UNSURE | Glucose turnover in adult non-growing tumour-bearing mice
+S12931 | FORMAL | Build-ups in the supply chain of the brain: on the neuroenergetic cause of obesity and type 2 diabetes
+S12946 | UNSURE | The Integrative Role of CNS Fuel-Sensing Mechanisms in Energy Balance and Glucose Regulation
+S12951 | UNSURE | Tumour–host interactions through the lens of Drosophila
+S12958 | UNSURE | BIOCHEMICAL AND BIOLOGIC EFFECTS OF SOMATOSTATIN THERAPY ON TUMOR-GROWTH AND HOST METABOLISM
+S12964 | UNSURE | Malignant Drosophila Tumors Interrupt Insulin Signaling to Induce Cachexia-like Wasting
+S13010 | UNSURE | AN INTEGRATIVE APPROACH TO ANIMAL LIFE
+S13027 | UNSURE | Tumor Effects on Gluconeogenesis in the Isolated Perfused Rat Liver
+S13054 | UNSURE | Cancer phenotype as the outcome of an evolutionary game between normal and malignant cells
+S13079 | UNSURE | Is it Time to Retire the ‘Central Governor’?
+S13109 | UNSURE | Selective increase in tumor oxygen tension with angiotensin II.
+S13118 | UNSURE | Autonomic control of energy balance and glucose homeostasis
+S13199 | NEIGHBOUR | Immunometabolism in animal production: building efficiency from health
+S13214 | UNSURE | The conjecture of carrying capacity in cancer: Thermodynamic implications
+S13246 | UNSURE | Smaller Brains and Optic Lobes in Reproductive Workers of the Ant Harpegnathos
+S13257 | UNSURE | Competitive cell interactions in cancer: a cellular tug of war
+S13356 | UNSURE | Symbiont Reintroduction Alters Tumor Progression and Life‐History Traits in the Tumor‐Bearing Freshwater Cnidarian Hydra oligactis
+S13440 | UNSURE | Volume‐dependent transfer of free fatty acids from ehrlich ascites carcinoma to host tissues
+S13445 | UNSURE | Are Tumoral Factors Responsible for Host Tissue Wasting in Cancer Cachexia?
+S13485 | UNSURE | Reduction of weight loss and tumour size in a cachexia model by a high fat diet
+S13493 | UNSURE | Host-tumor interaction and nutrient supply
+S13573 | UNSURE | Hypothalamic integration of energy metabolism : proceedings of the 24th International Summer School of Brain Research, held at the Royal Netherlands Academy of Arts and Sciences, A
+S13587 | UNSURE | Mechanisms of cell competition emerging from Drosophila studies
+S13589 | UNSURE | Dynamic precision oncology: from static mutation matching to adaptive tumor–host ecosystems
+S13610 | UNSURE | Effect of growth hormone and protein intake on tumor growth and host cachexia
+S13629 | UNSURE | AGE RELATED CHANGES IN REPRODUCTIVE ACTIVITY AND GROWTH IN INDOPLANORBIS EXUSTUS
+S13703 | UNSURE | Stimulation of Tumor Growth by Nutrition Support
+S13705 | UNSURE | Interference of amino acid patterns and tissue-specific amino acids absorption dominance under the influence of tumor cell protein degradation toxins
+S13715 | UNSURE | Cancer-Induced Reprogramming of Host Glucose Metabolism: “Vicious Cycle” Supporting Cancer Progression
+S13720 | UNSURE | Blood glucose levels and gluconeogenesis in animals bearing transplantable tumors.
+S13727 | UNSURE | Effect of the Hewitt keratinizing epidermal carcinoma on cell proliferation in different organs of the host mouse and in human psoriatic skin cultured in diffusion chambers
+S13781 | UNSURE | Pancreatic cancer-associated organ dysfunction promotes muscle autophagy and contributes to peripheral tissue wasting
+S13804 | UNSURE | Bidirectional Relationship Between the Central Nervous System and Peripheral Tumours
+S13817 | UNSURE | Fertility in male sheep: modulators of the acute effects of nutrition on the reproductive axis of male sheep

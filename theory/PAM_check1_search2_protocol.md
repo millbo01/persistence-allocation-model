@@ -88,3 +88,14 @@ As search 1 (codes I-access, I-fixed, I-emergent, F, E, X1 to X6), with one clar
    Whether each was retrieved by the search is reported.
 3. **Reading:** each selected review is read in full where open, otherwise its abstract only, and said so.
 4. **Extraction, for each review:** the classes of allocation model it names; how each class sets the order among organs under shortage (I-access, I-fixed or I-emergent); the key works cited for each class; and anything resembling PAM's ledger, repair or viability.
+
+## Deviation D-2 (Claude's method decision, logged 7 October 2026): strand D OpenAlex title pass by agents, with a blind check
+
+**What changes:** the size rule requires a title pass of the 6,809 new OpenAlex strand D records. The pass was done by three general-purpose agents, one after another (one chunk each), under a deliberately **liberal** rule: keep anything that could be a formal allocation model, a neighbour theory, or organ-sparing data. Claude then read every kept abstract (316).
+
+**Check:** before any agent ran, Claude screened a random sample of 300 titles (seed 20261007) blind. The agents kept all 10 of Claude's sample keeps and marginals, plus 12 more. Files: theory/search_check1_s2/title_pass_openalex_D/.
+
+**Direction:** towards sensitivity (more records reach the abstract stage). It does not make PAM easier to pass; check 1 asks whether precedents exist, and a looser pass can only find more.
+
+**Network:** OpenAlex was queried from James's own connection (VPN off, James, 7 October 2026), after the shared VPN exit address had used up its free daily budget.
+

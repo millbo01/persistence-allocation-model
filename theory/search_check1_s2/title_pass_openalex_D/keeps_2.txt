@@ -1,0 +1,68 @@
+S16111 | UNSURE | Impaired Brain Insulin Signalling,a Potential Cause of Obesity: A Review of Literature
+S16115 | UNSURE | A paradigm shift for the prevention and treatment of individual and global obesity
+S16141 | UNSURE | Brain pathology in relation to somatic diseases: Exploring the body–brain crosstalk
+S16144 | UNSURE | Metabolic Deviation of Mouse Liver by RhILl-α or RhTNF/Cachectin1
+S16155 | UNSURE | Editorial: Bioenergetic and behavioral effects of rapid anthropogenic change and eco-evolutionary implications
+S16167 | UNSURE | Adaptations of Arginine's Intestinal-Renal Axis in Cachectic Tumor-Bearing Rats
+S16180 | UNSURE | Logistic resource limitation model for quasi real-time measured subjective cognitive load predicts Hill function of hemoglobin-oxygen saturation
+S16208 | UNSURE | Neuroendocrine Response to Psychosocial Stressors, Inflammation Mediators and Brain-periphery Pathways of Adaptation
+S16235 | UNSURE | Mechanisms of experimental cancer cachexia. Interaction between mononuclear phagocytes and colon-26 carcinoma and its relevance to IL-6-mediated cancer cachexia
+S16244 | UNSURE | Effects of Different Lipid Sources in Total Parenteral Nutrition on Whole Body Protein Kinetics and Tumor Growth
+S16257 | UNSURE | Effect of Protein Intake on Tumor Growth and Cell Cycle Kinetics
+S16266 | UNSURE | Spatiotemporal Multi‐Omic Mapping Reveals Liver‐Muscle Metabolic Crosstalk in Cancer Cachexia
+S16322 | UNSURE | Tumor immunogenicity, nutritional repletion, and cancer.
+S16361 | UNSURE | Competition for host essential and nonessential fatty acids by Ehrlich ascites carcinoma in mice.
+S16376 | UNSURE | Effect of insulin‐like growth factor 1 on host response to tumor
+S16390 | UNSURE | Effects of a lengthy period of undernutrition from birth and subsequent nutritional rehabilitation on the synapse: Granule cell neuron ratio in the rat dentate gyrus
+S16404 | UNSURE | Review of the endocrine organ–like tumor hypothesis of cancer cachexia in pancreatic ductal adenocarcinoma
+S16439 | UNSURE | Glucose uptake and amino acid metabolism in perfused hearts from tumor-bearing rats
+S16488 | UNSURE | The Effect of an Acute Fast on Human Head and Neck Carcinoma Xenograft: Growth Effects on an 'Isolated Tumor Vascular Pedicle' in the Nude Rat
+S16497 | UNSURE | The Adipokinetic Hormone Receptor Modulates Sexual Behavior, Pheromone Perception and Pheromone Production in a Sex-Specific and Starvation-Dependent Manner in Drosophila melanogaster
+S16582 | UNSURE | Cachexia Anorexia Syndrome and Associated Metabolic Dysfunction in Peritoneal Metastasis
+S16595 | UNSURE | Environmental and Exercise Anaerobiosis in Frogs
+S16662 | UNSURE | Effect of Tumor Burden on Futile Glucose and Lipid Cycling in Tumor-Bearing Animals
+S16694 | UNSURE | Conjugated Linoleic Acid Isomers and Trans Fatty Acids Inhibit Fatty Acid Transport in Hepatoma 7288CTC and Inguinal Fat Pads in Buffalo Rats
+S16731 | UNSURE | Impact of exogenous growth hormone on host preservation and tumor cell-cycle distribution in a rat sarcoma model
+S16737 | UNSURE | Role of Insulin in Development of Cancer Cachexia in Nongrowing Sarcoma-Bearing Mice: Special Reference to Muscle Wasting
+S16738 | EMPIRICAL | THE LIPID AND WATER CONTENT OF CARCASS, SKELETAL MUSCLE, AND TESTICLE IN THE HOST COMPONENT OF THE ALBINO RAT – WALKER CARCINOMA 256 DUAL ORGANISM AT PROGRESSIVE STAGES OF TUMOR GROWTH
+S16753 | UNSURE | A bidirectional brain-fat body axis for pathogen avoidance
+S16837 | UNSURE | Insulin-tumour interrelationships in EL4-lymphoma or thymoma-bearing mice. II. Effects of dietary omega-3 and omega-6 polyunsaturated fatty acids
+S16843 | UNSURE | 〈Reviews〉Hypothalamic Regulation of Glucose Metabolism in Skeletal Muscle
+S16905 | UNSURE | MicroCT Enables Simultaneous Longitudinal Tracking of Murine Pancreatic Cancer Progression and Cachexia
+S16915 | UNSURE | Data from MicroCT Enables Simultaneous Longitudinal Tracking of Murine Pancreatic Cancer Progression and Cachexia
+S16950 | UNSURE | Differential Branched-Chain Amino Acid Metabolism in Tissues of Tumor-Bearing Mice
+S16951 | UNSURE | The host matters: Integrating resting energy expenditure into personalized medicine beyond tumor-centered approaches
+S16952 | UNSURE | Activation State of the Supramammillary Nucleus Regulates Body Composition and Peripheral Fuel Metabolism
+S16995 | UNSURE | Review: Abnormal Substrate Metabolism and Nutritional Strategies in Cancer Management
+S17170 | UNSURE | Baseline fdg pet/ct-derived tumor burden and host metabolic activity predict complete metabolic response to neoadjuvant chemotherapy in ınvasive ductal breast cancer
+S17180 | UNSURE | ECOLOGY AND PHYSIOLOGY OF EN ROUTE NEARCTIC-NEOTROPICAL MIGRATORY BIRDS: A CALL FOR COLLABORATION
+S17209 | UNSURE | Polyunsaturated fatty acid requirements of murine colon adenocarcinomas
+S17222 | UNSURE | Normalization of Tumor-Induced Increases in Hepatic Amino Acid Transport After Surgical Resection
+S17260 | UNSURE | Central nervous system mechanisms contributing to the cachexia–anorexia syndrome
+S17273 | UNSURE | Central Command And Vertebral Blood Flow During Static Arm Exercise In Humans
+S17288 | UNSURE | Role Of Central Command In Middle Cerebral Blood Flow Velocity During Static Exercise In Humans
+S17304 | UNSURE | Accelerated hepatic arginine transport in the tumor-bearing rat
+S17331 | UNSURE | Alterations in Oxidative Metabolism and Glutamine Transport Support Glucose Production in the Tumor-Influenced Hepatocyte
+S17444 | NEIGHBOUR | Homeostatic Deception via Dissociated Catabolic Ketosis: A Proposed Mechanistic Framework for Tumor-Driven Metabolic Hijacking in Solid Tumors
+S17454 | UNSURE | Abstract IA26: Pancreatic adenocarcinoma and altered whole-body metabolism
+S17521 | UNSURE | Repeated evolution of reduced visual investment at the onset of ecological speciation in high-altitude Heliconius butterflies
+S17559 | UNSURE | Metabolic effects of medium chain triglyceride-enriched total parenteral nutrition in rats bearing Yoshida sarcoma
+S17569 | UNSURE | Arginine‐Enhanced Enteral Nutrition Augments the Growth of a Nitric Oxide‐Producing Tumor
+S17653 | UNSURE | The Role of Progesterone in the Diet-Induced Suppression of LH Secretion in the Adult Female Rat
+S17655 | UNSURE | Integrating metabolism into a computational model of brain health across the human lifespan
+S17670 | UNSURE | Hypoglycemia with glycerol salvage: a role in anti-neoplastic therapy?
+S17676 | UNSURE | Abstract A045: Pancreatic cancer-associated systemic nutrient starvation elevates autophagic proteolysis in the muscle
+S17701 | UNSURE | Exercise in the heat : old ideas, new dogmas : review article
+S17713 | UNSURE | Modulating immunometabolism in transition dairy cows: the role of inflammatory lipid mediators
+S17751 | UNSURE | Cerebral Blood Flow during Dynamic Exercise Correlates with Blood Pressure in Autonomic Brain Regions
+S17801 | UNSURE | Cardiac function and feed efficiency: Increased right-heart workload in feed inefficient beef cattle
+S17846 | UNSURE | Abstract PR008: Cross-talk between metastatic cells and host systems: Neutrophil metabolic adaptation, immune profiling, and systemic metabolic shifts in tumor progression and cachexia
+S17912 | UNSURE | Thermal challenge and food intake: Mutual regulatory mechanisms
+S17976 | UNSURE | O9.2. ANTIPSYCHOTIC DRUGS IMPAIR BRAIN GLUCOSE SENSING RESULTING IN WHOLE BODY INSULIN RESISTANCE
+S18071 | UNSURE | Interaction between the muscle metaboreflex and central command – A clearer picture of cardiorespiratory control during exercise
+S18112 | NEIGHBOUR | Brain control of blood glucose levels
+S18226 | NEIGHBOUR | Ist der Typ 2 Diabetes eine zentralnervöse Erkrankung?
+S18240 | UNSURE | Reply to J-P Chaput et al
+S18283 | UNSURE | From Fat to Full: Peripheral and Central Mechanisms Controlling Food Intake and Energy Balance: View from the Chair
+S18304 | UNSURE | Dual‐specificity phosphatase 8: A gatekeeper in hypothalamic control of glucose metabolism in males
+S18306 | UNSURE | [no title in record; year field shows 1911-11-23]

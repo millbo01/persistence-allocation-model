@@ -1,0 +1,15 @@
+{
+  "screened": 6809,
+  "decisions": {
+    "CHECK": 5,
+    "DUP": 7,
+    "E": 30,
+    "I-access": 4,
+    "I-fixed (weak)": 1,
+    "X-formal-other": 19,
+    "X-off": 199,
+    "X-title": 6493,
+    "X1-neighbour": 40,
+    "X5-near": 11
+  }
+}

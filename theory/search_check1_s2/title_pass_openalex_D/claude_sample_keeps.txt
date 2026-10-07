@@ -1,0 +1,11 @@
+# Claude's blind title pass of sample300.txt (liberal rule), made before any agent ran
+S11949 keep (neighbour: brain-centred glucoregulation, evidence review)
+S11951 keep (tumour-host bioenergetic framework)
+S12071 keep (supplement to DEB tumour-in-host cachexia model; duplicate of an include)
+S12077 keep (same)
+S12746 keep (neighbour: primacy of the brain in glucose fluxes)
+S15712 keep (tumour vs host protein turnover, experimental model)
+S15745 keep (neighbour: metabolic priorities in dairy cows)
+S12389 marginal (energy balance cellular and whole organism)
+S15024 marginal (plant energy management, book)
+S14458 marginal (glial regulation of energy metabolism)

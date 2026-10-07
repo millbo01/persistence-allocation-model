@@ -1,0 +1,300 @@
+S11569|2019|Role of tumor and host autophagy in cancer metabolism
+S11576|1972|Fusion of Tumour and Host Cells
+S11601|2020|Autonomic Brain Centers and Pathophysiology of COVID-19
+S11652|2011|Implementing innovative models of dementia care: The Healthy Aging Brain Center
+S11661|1972|Brain Centers of Reinforcement and the Effects of Alcohol
+S11666|2005|Nitroaspirin corrects immune dysfunction in tumor-bearing hosts and promotes tumor eradication by cancer vaccination
+S11693|1994|Tumour and Host Tissue Responses to Branched-Chain Amino Acid Supplementation of Patients with Cancer
+S11721|1962|A quantitative study of tumor and host response in cervical cancer
+S11758|1988|Prostaglandin E2-Mediated Inactivation of Various Killer Lineage Cells by Tumor-Bearing Host Macrophages
+S11770|1972|Unimpeded Growth of Tumour in Hosts Pre-immunized with Tyrosyl- or Dinitrophenyl-coated Tumour Cells
+S11777|1989|Effect of nutritional supplementation on protein synthesis in tumour and host tissues of rats with colonic cancer
+S11793|1974|[Disturbance of immune surveillance in tumor-bearing host (author's transl)].
+S11811|2018|Metastasis and the impact of translation in the tumor and host: a phospho-eIF4E story
+S11815|2025|Stroke Timing Through a Circadian Lens: A Brain‐Centric Perspective
+S11855|2014|906: Investigating the cellular and molecular mechanisms of tumour and host immune response to ionizing irradiation in zebrafish
+S11867|1988|Membrane changes during tumor progression. Host control of metastatic spread.
+S11882|2002|Cell-surface Tumoricidal Molecules and NF-kB in the Tumor-burdened Host
+S11942|2015|Enhancing the Delivery of Oncolytic Vaccinia Virus to the Tumors of Hosts with Pre-Existing Immunity
+S11945|2015|Integrative genomic approaches to dissecting host-tumor and host-pathogen immune processes
+S11947|2006|Prolactin Promotes Growth of a Spontaneous T Cell Lymphoma: Role of Tumor and Host Derived Cytokines
+S11949|2014|Diabetes and Cartesian Dualism: what is the evidence for a brain‐centred gluco‐regulatory system?
+S11951|2026|Paired Tumor-Host Bioenergetic Phenotyping in Cancer: A Translational Research Framework Linking Mitochondrial Biology to Patient Function
+S11968|2020|Multisite Tumor Sampling Reveals Extensive Heterogeneity of Tumor and Host Immune Response in Ovarian Cancer
+S11989|1980|Active immunotherapy in tumor-bearing hosts with soluble tumor-specific transplantation antigen. Abstr.
+S12017|2012|Estrogen-BDNF signalling in neuronal cells: toward a brain-centric approach to the cure of aging and osteoporosis
+S12030|2010|PO-90 Effect of betaine on tissue factor expression in human and tumor-associated host cells
+S12033|1987|An approach for the generation of effector lymphocytes from tumor-bearing hosts for the adoptive immunotherapy of established tumors.
+S12039|2016|Long‐Term Follow‐Up of Patients Undergoing Resection of TNM Stage I Colorectal Cancer: An Analysis of Tumour and Host Determinants of Outcome
+S12052|1981|Immunochemical characterization of murine B16 melanoma-associated antigens and their detection in sera of tumor-bearing hosts by radioimmunoassay
+S12059|2014|Ghrelin Modulates the fMRI BOLD Response of Homeostatic and Hedonic Brain Centers Regulating Energy Balance in the Rat
+S12060|2025|Advancing Brain-Centered Anesthesia: Highlights from the SBI EEG Bootcamp at the University of Minnesota
+S12071|2023|Supplementary Material S5 from A Tumor-in-Host DEB-Based Approach for Modeling Cachexia and Bevacizumab Resistance
+S12077|2023|Supplementary Material S3 from A Tumor-in-Host DEB-Based Approach for Modeling Cachexia and Bevacizumab Resistance
+S12146|2005|Prostaglandin E and prostacyclin receptor expression in tumor and host tissues from MCG 101‐bearing mice: A model with prostanoid‐related cachexia
+S12169|1999|Roles of transforming growth factor-beta in tumor-bearing hosts : apoptosis and defective T cell-mediated immune function
+S12179|1990|Polyoma-induced thymic epithelial tumors: analysis by 2D gel electrophoresis of tumors upon labeling the entire tumor bearing host.
+S12250|1990|Encasement and other deformations of tumor-embedded host arteries due to loss of medial smooth muscles. Morphometric and three-dimensional reconstruction studies on some human carc
+S12268|2018|Super Imposing Psycho-Electromagnetic Waves/Telepathic Waves on Individual Consciousness. During This Phenomena Which Brain Centers/ Bioplasmic Channels are Being Activated
+S12281|1981|Differential effect of allopurinol (hpp) on incorporation of 5-fluorouracil (fu) into rna of tumor and host cells isolated from cf1 mice bearing ehrlich ascites tumor (et). Abstr.
+S12313|2021|Distinct microbiota assembly mechanisms revealed in different reconstruction stages during gut regeneration in the sea cucumber Apostichopus japonicus
+S12325|2011|Unhealthy herds: indirect effects of predators enhance two drivers of disease spread
+S12346|2021|Molecular Docking Study of α-Cyclodextrin With Psoralen: MDA-MB-231 Cancer Cell
+S12385|2018|Principles of nutrition for the cancer patient
+S12389|2012|Energy balance and cancer risk at the cellular and whole organism level: modification by metformin
+S12400|2004|The critical role of type‐1 innate and acquired immunity in tumor immunotherapy
+S12415|1979|Canine mammary cancer
+S12437|1988|Effects of Short-Term Dietary Restriction on Survival of Mammary Ascites Tumor-Bearing Rats
+S12455|2017|Targeting Platelets for the Treatment of Cancer
+S12494|1998|Induction of antigen-specific T cell anergy: An early event in the course of tumor progression
+S12518|1990|Interleukin 2 and LAK Cells
+S12534|2015|Tumor-induced myeloid deviation: when myeloid-derived suppressor cells meet tumor-associated macrophages
+S12536|2025|Figure S9 from The Effects of Clinically Relevant Radionuclides on the Activation of an IFN1 Response Correlate with Radionuclide Half-life and Linear Energy Transfer and Influence
+S12606|1970|Malignancy, electrophoretic mobilities and sialic acids at the electrokinetic surface of TA3 cells
+S12620|2013|Brain and Islet: Key Partners in Glucose Homeostasis
+S12632|2000|Serologically identified tumour antigens as cancer vaccines
+S12658|2009|Influences of social housing conditions on chemotherapeutic efficacy : tumor, host and temporal factors
+S12675|2021|Spatial Cognition in Teleost Fish: Strategies and Mechanisms
+S12683|2003|Two-Photon Calcium Imaging Reveals an Odor-Evoked Map of Activity in the Fly Brain
+S12697|2001|Pharmacological Effects of the Ruthenium Complex NAMI‐A Given Orally to CBA Mice With MCa Mammary Carcinoma
+S12714|1999|Why Do Flowers Vary?
+S12735|2023|Evolution of connectivity architecture in the Drosophila mushroom body
+S12746|2004|Glucose fluxes: Primacy of the brain
+S12775|2013|Remote control of macrophage production by cancer
+S12836|1991|Treatment of skeletal disease in breast cancer with clodronate
+S12903|2016|Schizophrenia in the Era of Brain Complexity
+S12912|1964|Immunology of Experimental Tumors
+S12915|2021|Effects of Melatonin on Anterior Pituitary Plasticity: A Comparison Between Mammals and Teleosts
+S12937|1993|Goals of palliative cancer therapy: scope of the problem
+S12960|2011|The secreted factors responsible for pre-metastatic niche formation: Old sayings and new thoughts
+S12976|1973|The Biological Significance of Tumor-Bound Immunoglobulins
+S12983|1985|Eradication of a disseminated syngeneic mouse lymphoma by systemic adoptive transfer of immune lymphocytes and its dependence upon a host component(s).
+S12986|1973|Procaine hydrochloride olfactory block eliminates mounting in the male golden hamster
+S12992|1999|In vivo blockade of CTLA-4 enhances the priming of responsive T cells but fails to prevent the induction of tumor antigen-specific tolerance
+S12997|2005|A109 BEHAVIORAL EFFECTS IN ADULT RATS OF CHRONIC TREATMENT WITH THE CANNABINOID RECEPTOR AGONIST WIN 55,212-2 DURING DIFFERENT PHASES OF DEVELOPMENT
+S13044|2008|Tumor-Specific T-Cell Memory: Clearing the Regulatory T-Cell Hurdle
+S13083|2012|Immune Suppression: The Hallmark of Myeloid Derived Suppressor Cells
+S13104|2012|Hormones, Mood and Affect
+S13108|1995|Histological differentiation of oral squamous cell cancer in relation to tobacco smoking
+S13115|1986|Prediction of Methylphenidate (Ritalin) Responsiveness Through Sensory Integrative Testing
+S13131|1992|Principles of combining biomodulators with cytotoxic agents in vivo.
+S13157|2025|Overview on biomarkers for immune oncology drugs
+S13169|2013|Translational research in nasopharyngeal carcinoma
+S13245|2009|Obesity-Blocking Neurons in Drosophila
+S13249|1977|Passive Immunotherapy of Cancer in Animals and Man
+S13273|1987|Mechanisms of Dyspnea
+S13282|2004|Tolerance and Cancer: Mechanisms of Tumor Evasion and Strategies for Breaking Tolerance
+S13303|2016|Imaging the Role of the Tumor Microenvironment in Tumor Progression and Metastasis
+S13321|1982|Malignant Glioma
+S13322|2014|Central Role Mechanism of Psychological Stress-induced Visceral Hypersensitivity
+S13378|2009|Cancer invasion and metastasis: interacting ecosystems
+S13394|2017|Osteopontin at the Crossroads of Inflammation and Tumor Progression
+S13426|1978|Antibody production by spleen cells of mice bearing MCA‐induced tumours: Search for suppressor cells
+S13459|2002|New aspects of signal transduction in the Xenopus laevis melanotrope cell
+S13476|2008|Short-term and long-term plasticity at corticostriatal synapses: Implications for learning and memory
+S13481|1967|The effect of inhalation of air ions on the electro-chemical properties of blood during exsanguination and recovery of cats
+S13528|2000|Cancer-induced Defective Cytotoxic T Lymphocyte Effector Function: Another Mechanism How Antigenic Tumors Escape Immune-mediated Killing
+S13542|1979|Specific Effects of a Hepatoma on Metabolic Capabilities of the Liver in Tumor-Bearing Rats
+S13586|1996|Human breast cancer cell line xenografts as models of breast cancer — The immunobiologies of recipient mice and the characteristics of several tumorigenic cell lines
+S13619|2016|Social Power, Influence, and Aggression
+S13686|2004|Colony-Stimulating Factor-1 Blockade by Antisense Oligonucleotides and Small Interfering RNAs Suppresses Growth of Human Mammary Tumor Xenografts in Mice
+S13701|2011|Flies race to a safe place
+S13712|2004|Physiological and morphological characterization of honeybee olfactory neurons combining electrophysiology, calcium imaging and confocal microscopy
+S13727|1976|Effect of the Hewitt keratinizing epidermal carcinoma on cell proliferation in different organs of the host mouse and in human psoriatic skin cultured in diffusion chambers
+S13731|2012|Blocking IDO activity to enhance anti-tumor immunity
+S13749|2023|Fantastic voyage: Chasing oxytocin from the bedside to the bench and back again
+S13762|2003|Postnatal Development of Radial Glia and the Ventricular Zone (VZ): a Continuum of the Neural Stem Cell Compartment
+S13801|2008|Alcohol and the Liver
+S13849|2018|Gut–brain axis biochemical signalling from the gastrointestinal tract to the central nervous system: gut dysbiosis and altered brain function
+S13850|2012|Leptin and the hypothalamo-pituitary–adrenal stress axis
+S13885|2012|Effects of dietary polyphenols on neuroregulatory factors and pathways that mediate food intake and energy regulation in obesity
+S13921|2015|Vertebrobasilar Remodeling In Hypertension: Cause or Consequence
+S13924|1975|Immune Response to a Syngeneic Mammary Adenocarcinoma
+S13930|2003|High dietary level of synthetic vitamin E on lipid peroxidation, membrane fatty acid composition and cytotoxicity in breast cancer xenograft and in mouse host tissue
+S13941|1988|Interleukin 1 as a Tumor Cytostatic Mediator Released from Tumor Ascites-Treated Macrophages
+S13964|1980|Circulating Immune Complexes in Cancer
+S13977|2014|Emotional regulation of pain: the role of noradrenaline in the amygdala
+S13980|2013|Immunological challenges for peptide-based immunotherapy in glioblastoma
+S13983|2004|Melanoma-restricted genes
+S13998|2020|Uprooting the Timaeus: Maimonides and the Re-medicalization of Galenism
+S14015|1984|Studies of the thymus in mice bearing the Lewis Lung carcinoma. III. Possible mechanisms of tumor-induced thymic atrophy
+S14024|2026|17th century: the real linguistic turn
+S14045|2020|The Complex Role of Autophagy in Melanoma Evolution: New Perspectives From Mouse Models
+S14140|1979|Coumarin Anticoagulation and Experimental Metastases
+S14156|2007|Olfaction and olfactory learning in Drosophila: recent progress
+S14202|1993|Monocyte Chemotactic Protein-1 (MCP-1): Signal Transduction and Involvement in the Regulation of Macrophage Traffic in Normal and Neoplastic Tissues
+S14236|2026|The Chronic Thermal Stress Model of Androgenetic Alopecia: A Unified Environmental–Vascular–Molecular Hypothesis
+S14262|2004|Poster 165 botulinum toxin type a for radiation-induced trismus and facial pain: a case report. Linda I. Okereke, MD (New York-Presbyterian Hosp, New York, NY); Michael D. Stubblef
+S14298|1981|Isolation and characterization of an immunosuppressive acidic protein from ascitic fluids of cancer patients.
+S14321|2001|The role of the nervous system in hypertension
+S14377|2015|The immunobiology of myeloid-derived suppressor cells in cancer
+S14380|1909|THE MUSCLE INDICATOR
+S14400|1995|Monocyte Activation by Tumour Cells: a Role for Carbohydrate Structures Associated with CD2
+S14407|1984|Amplitude distributions of the spider heartpulse in response to gravitational stimuli
+S14416|2008|Thematic Review Series: Sphingolipids. Ganglioside GM3 suppresses the proangiogenic effects of vascular endothelial growth factor and ganglioside GD1a
+S14458|2018|Glial Regulation of Energy Metabolism
+S14460|2007|Gene therapy with CX3CL1/Fractalkine induces antitumor immunity to regress effectively mouse hepatocellular carcinoma
+S14505|1997|Reversal of Tumor-Induced Immunosuppression: A New Approach to Cancer Therapy
+S14525|2006|P03.15: Prenatal diagnosis of hydranencephaly using 2D and 3D ultrasound
+S14546|2008|Preganglionic Neuron
+S14601|2001|Effect of Interleukin‐2 and Selenium on the Growth of Squamous Cell Carcinoma Cells
+S14605|2014|Investment in higher order central processing regions is not constrained by brain size in social insects
+S14673|2022|The downregulation of type I IFN signaling in G-MDSCs under tumor conditions promotes their development towards an immunosuppressive phenotype
+S14686|1955|STUDIES ON THE IMMUNOLOGICAL RESPONSE TO FOREIGN TUMOR TRANSPLANTS IN THE MOUSE
+S14694|1994|Erythropoietin Therapy for Anemia in Two Nonagenarians
+S14751|2013|Cardiovascular and Antidipsogenic Effects of Nesfatin-1
+S14780|1975|Prospects for the immunotherapy of cancer
+S14783|1930|Further observations upon the correlation between the arginine and vitamin B content of diets, and the effect of thyroxine upon tumour growth
+S14791|1983|Plasma pharmacokinetics of adriamycin and adriamycinol: implications for the design of in vitro experiments and treatment protocols.
+S14811|2005|Met‐Enkephalin Involvement in Morphine‐Modulated Peritonitis in Swiss Mice
+S14830|2022|Novelty detection in early olfactory processing of the honey bee, Apis mellifera
+S14837|1992|Na[trans-RuCl4(DMSO)Im], a metal complex of ruthenium with antimetastatic properties
+S14840|2013|Circulating and Tumor-Infiltrating Myeloid-Derived Suppressor Cells in Patients with Colorectal Carcinoma
+S14887|1985|Inhibition of recombinant interferon-gamma-induced Ia antigen expression by shed B16 F10 melanoma cell membrane vesicles.
+S14890|2005|Role of Cytochrome P450 Phenotyping in Cancer Treatment
+S14934|1997|Tumor Heterogeneity and Growth Control
+S14961|1988|Tryptophan degradation in transplanted tumor cells undergoing rejection.
+S14992|2017|Horizontal mitochondrial transfer and tumor initiation
+S15024|2018|The Dynamic Plant: Capture, Transformation, and Management of Energy
+S15045|2003|Immature dendritic cell/tumor cell fusions induce potent antitumour immunity
+S15069|2018|Listening to Learn: Family Engagement When Children are Deaf or Hearing Impaired
+S15152|1981|Depopulation and repopulation of the R1H rhabdomyosarcoma of the rat after X-irradiation
+S15162|2010|The Expression of Corticotropin-Releasing Factor in the Central Nucleus of the Amygdala, Induced by Colorectal Distension, is Attenuated by General Anesthesia
+S15188|1983|Tumor regression in tumor-bearing mice by inoculations of immunogenic somatic hybrid cells in combination with cyclophosphamide.
+S15278|2017|Critical Care Recovery Center: Can a Geriatric Model of Care Guide Recovery of ICU Survivors?
+S15313|2002|Analysis of the gene-expression profile regarding the progression of human gastric carcinoma
+S15316|2023|Neural coding of numerousness
+S15328|2023|Shallow networks run deep: Peripheral preprocessing facilitates odor classification
+S15342|2008|Orphan Neuropeptides and the Regulation of Food Intake
+S15377|2016|Chronic stress, cortical plasticity and neuroecology
+S15384|2026|BUSINESS MODEL EFFICIENCY AND NOVELTY, AND OUTCOME WHILE ACCOUNTING FOR MANAGED COMPETITION: QUANTITATIVE STUDY AMONG DUTCH PHYSIOTHERAPY PRIMARY HEALTHCARE ORGANISATIONS
+S15440|2011|New insights into an ancient insect nose: The olfactory pathway of Lepismachilis y-signata (Archaeognatha: Machilidae)
+S15443|1965|THE MECHANISM OF ACTION OF 6-MERCAPTOPURINE. I. BIOCHEMICAL EFFECTS.
+S15482|2014|Animal Models of Metastasis
+S15506|1929|The Influence of Ingestion of Various Animal Tissues on the Growth of Carcinoma and Sarcoma in Rats
+S15515|1989|Nuclear disintegration of target cells by killer B lymphocytes from tumor‐bearing mice
+S15517|2008|Tumor-Induced Immune Suppression ofIn vivoEffector T-Cell Priming Is Mediated by the B7-H1/PD-1 Axis and Transforming Growth Factor β
+S15549|2012|The Thyroid Gland
+S15570|2011|Endocrine Metabolism V
+S15584|1984|Effect of a Neutrophiliaa‐Inducing Tumor on Hemopoietic Stem Cells in Mice
+S15612|2014|Gating of steering signals through phasic modulation of reticulospinal neurons during locomotion
+S15656|1959|Phenothiazine誘導体の中枢作用に関する薬理学的研究 : とくに大脳皮質除去動物におけるChlorpromazineの作用
+S15677|2002|[Functional magnetic resonance imaging in the assessment of motor centers in patients with brain tumors in motor area].
+S15681|2020|Preclinical Activity of JNJ-7957, a Novel BCMA×CD3 Bispecific Antibody for the Treatment of Multiple Myeloma, Is Potentiated by Daratumumab
+S15705|2002|Origin and development of descending catecholaminergic pathways to the spinal cord in amphibians
+S15710|2019|Brain Control of Sexually Dimorphic Liver Function and Disease: The Endocrine Connection
+S15712|1986|Comparative Studies on Protein Turnover Regulations in Tumor Cells and Host Tissues: Development and Analysis of an Experimental Model
+S15716|2012|Modulation of Host Natural Killer Cell Functions in Breast Cancer via Prostaglandin E2 Receptors EP2 and EP4
+S15732|2025|Perioperative thirst management
+S15741|2019|Discussion of HeartMath Techniques for the Transformation of Shame Experiences
+S15745|2007|Invited Review: New Perspectives on the Roles of Nutrition and Metabolic Priorities in the Subfertility of High-Producing Dairy Cows
+S15759|2007|The organization of the pretectal nuclei in the trout: A revision based on experimental holodogical studies
+S15761|1998|Nicotinic acetylcholine receptors in the rat and primate nucleus tractus solitarius and on rat and human inferior vagal (nodose) ganglia: evidence from in vivo microdialysis and [1
+S15849|1987|Effects of starvation, chilling, and injury on endocrine gland function in Galleria mellonella
+S15961|2005|Elevated Serum Cytokines Correlated with Altered Behavior, Serum Cortisol Rhythm, and Dampened 24-Hour Rest-Activity Patterns in Patients with Metastatic Colorectal Cancer
+S15973|2015|Chronic constriction injury-induced nociception is relieved by nanomedicine-mediated decrease of rat hippocampal tumor necrosis factor
+S15995|2023|Cardiovascular Brain Circuits
+S16024|2015|The prevalence of antinuclear antibodies in patients with schizophrenia spectrum disorders: results from a large cohort study
+S16033|2021|Organization and neural connections of the lateral complex in the brain of the desert locust
+S16037|2004|Dopamine Inhibits Mitral/Tufted→ Granule Cell Synapses in the Frog Olfactory Bulb
+S16042|2018|Unbiased testing of all single nucleotide variants specific to a tumor for anti-tumor CD8+ T cell immune response
+S16044|2002|Photoperiodic Photoreceptors and Clock Location
+S16049|2008|empty spiraclesis required for the development of olfactory projection neuron circuitry inDrosophila
+S16101|2026|Ileal Gpbar1 gates depressive phenotypes via gut to brain “vagal-NTS-PVN” GABAergic axis
+S16106|2012|A role for central command in the generation of the exaggerated cardiovascular response to exercise in hypertension
+S16108|2016|Neurobiology of pain in osteoarthritis
+S16141|2026|Brain pathology in relation to somatic diseases: Exploring the body–brain crosstalk
+S16164|2011|Acute ether stress differentially affects corticotropin-releasing factor and urocortin 1 in the Brattleboro rat
+S16175|2004|Malfunction of the Dendritic Cell System in Cancer
+S16176|1978|Progesterone receptor levels in estrogen-induced renal carcinomas after serial passage beneath the renal capsule of Syrian hamsters.
+S16183|2023|Experience-dependent plasticity of a highly specific olfactory circuit in Drosophila melanogaster
+S16253|2010|Numerical schemes
+S16336|2007|Collaboration between hepatic and intratumoral prodrug activation in a P450 prodrug-activation gene therapy model for cancer treatment
+S16411|1996|Molecular cloning and tissue distribution of mouse protein C inhibitor (PCI)
+S16435|2019|Moth pheromone‐selective projection neurons with cell bodies in the antennal lobe lateral cluster exhibit diverse morphological and neurophysiological characteristics
+S16472|2001|Vascular endothelial growth factor effects on nuclear factor-kappaB activation in hematopoietic progenitor cells.
+S16537|2009|Cyclooxygenase 2 Modulates Killing of Cytotoxic T Lymphocytes by Colon Cancer Cells
+S16538|2018|An all-optical activation and readout setup to investigate the insect olfactory system network
+S16543|2018|Report on the 10th International Conference of Students of Systematic Musicology (SysMus17)
+S16609|2019|Histopathology of stromal changes in tumor and tumor like lesions of breast using special stains
+S16616|2023|Data from Oligodendrocyte Progenitor Cells Promote Neovascularization in Glioma by Disrupting the Blood–Brain Barrier
+S16646|2016|The immunomodulatory effect of IFN-β on tumor-associated macrophages in in-transit melanoma
+S16654|2012|Faculty Opinions recommendation of Paracrine signalling in colorectal liver metastases involving tumor cell-derived PDGF-C and hepatic stellate cell-derived PAK-2.
+S16702|2000|Microanatomical Compartments of Clonal and Reactive T Cells in Mycosis Fungoides: Molecular Demonstration by Single Cell Polymerase Chain Reaction of T Cell Receptor Gene Rearrange
+S16707|2008|Combined Anti-CD40 Conditioning and Well-timed Immunization Prolongs CD8+ T Cell Accumulation and Control of Established Brain Tumors
+S16720|2025|Mechanisms of metabolic surgery effectiveness in obesity and type 2 diabetes: a puzzle with some known pieces
+S16732|2000|Effect of cyclooxygenase and nitric oxide synthase inhibitors on tumor growth in mouse tumor models with and without cancer cachexia related to prostanoids.
+S16735|1996|Sexual dimorphism of GABAA receptor levels in subcortical brain regions of a woodland rodent (Apodemus sylvaticus)
+S16762|2019|Evaluation of Stromal Myofibroblasts in Laryngeal Dysplasia and Invasive Squamous Cell Carcinoma
+S16791|2023|DNA and RNA from the same single nucleus reveals interactions between genomic and transcriptomic landscapes in human tumor samples
+S16799|2025|Investigation of the Role of Serine Endopeptidases on Sleep in Drosophila
+S16815|2011|Gastric Endocrine Cell and Food Intake Regulation
+S16846|1963|The Coding of Roentgen Images for Computer Analysis as Applied to Lung Cancer
+S16855|1993|Photodynamic therapy of human squamous cell carcinoma in vitro and in xenografts in nude mice
+S16857|2012|PD-1 (CD279) Contributes to the Exhaustion of Gamma/Delta-T Cells in Tumor-Bearing Mice
+S16922|2026|Dysregulated competitive splicing between circular and linear RNAs characterizes hepatocellular carcinoma tumorigenesis and recurrence
+S16950|2025|Differential Branched-Chain Amino Acid Metabolism in Tissues of Tumor-Bearing Mice
+S16988|2018|Abnormal vestibular asymmetries in patients with major depression
+S17002|2022|An interaction between basolateral amygdala orexinergic and endocannabinoid systems in inducing anti-nociception in the rat formalin test
+S17031|2022|974 Regulatory B cells producing IL-10 are increased in human tumour draining lymph nodes
+S17116|2020|The Effect of a Leading Sound on the Local-Field Potentials Elicited by a Trailing Sound in the Rat’s Inferior Colliculus
+S17122|2014|B7-H1 blockade improves efficacy of regulatory T cell depletion as cancer immunotherapy by reducing Treg regeneration, possibly through tumor B7-H1 effects (VAC3P.950)
+S17139|1977|Reversal of SV40 Tumor-Mediated Suppression of Spleen Cell Cytotoxicity by Antibody
+S17170|2026|Baseline fdg pet/ct-derived tumor burden and host metabolic activity predict complete metabolic response to neoadjuvant chemotherapy in ınvasive ductal breast cancer
+S17177|1999|The role of soluble tumor necrosis factor receptor type I in tumor survival
+S17248|2015|Clinicopathological implications of newly defined immune checkpoints in extra-hepatic cholangiocarcinoma.
+S17249|2013|Fluid and Loci: Death and Memory in Shakespearean Plays
+S17257|2025|Selection of therapeutically effective T-cell receptors from the diverse tumor-bearing repertoire
+S17289|2025|Kindlin-2–Mediated Hematopoiesis Remodeling Regulates Triple-Negative Breast Cancer Immune Evasion
+S17299|2012|Neuroblast lineage-specific origin of the neurons of the Drosophila larval olfactory system
+S17302|2019|Two ICD Inducers are better than one for induction of anti-tumor immunity in cold carcinomas
+S17320|1965|癌貧血の成因に関する研究 -造血機構について-
+S17338|2010|Abstract 1344: TGFß, an inflammation and immune suppressor in tumor microenvironment and progression
+S17366|2009|Evolution of the brain and sensory systems of the kiwi
+S17388|2010|Chemical Communication in Crustaceans: Research Challenges for the Twenty-First Century
+S17414|2024|Target engagement of the subgenual anterior cingulate cortex with transcranial temporal interference stimulation in major depressive disorder: a protocol for a randomized sham-cont
+S17474|1995|Modulation of natural killer cell-mediated cytotoxicity by tamoxifen and estradiol
+S17489|2022|Intratracheal instillation of respirable particulate matter elicits neuroendocrine activation
+S17520|2016|Anticipatory synergy adjustments and anticipatory postural adjustments: Effects of predictability of perturbation direction
+S17521|2024|Repeated evolution of reduced visual investment at the onset of ecological speciation in high-altitude Heliconius butterflies
+S17523|2016|Adult intraventricular astroblastoma
+S17536|2026|Gut-Derived Metabolic Imbalance in Autism Spectrum Disorder: Toward the Concept of a Metabolic Subtype
+S17563|2021|Nutritional Status of the Children with Acute Lymphoblastic Leukemia at Diagnosis and after Completion of Induction
+S17573|2017|Rationalization of the Irrational Neuropathologic Basis of Hypothyroidism-Olfaction Disorders Paradox: Experimental Study
+S17606|1999|Neurobiological and Anthropological Aspects of Compulsions and Rituals
+S17621|2025|Reviewer #1 (Public review): Differences in size and number of embryonic type-II neuroblast lineages correlate with divergent timing of central complex development between beetle a
+S17638|2023|Prognostischer Aussagewert des lent scoring systems bei Patienten mit malignem Pleuraerguss
+S17658|2017|Opioid detoxification during pregnancy needs to be grounded in addiction science
+S17665|2020|Long-chain polyunsaturated omega-3 fatty acids reduce multiple myeloma exosome-mediated suppression of NK cell cytotoxicity
+S17711|2010|利用高解析度雷射光鉗系統進行肺癌標靶治療藥物PD153035之熱力學參數分析
+S17713|2022|Modulating immunometabolism in transition dairy cows: the role of inflammatory lipid mediators
+S17725|2008|[Effect of Xiaochaihu decoction and different herbal formulation of component on inhibiting H22 liver cancer in mice and enhancing immune function].
+S17732|2023|A subset of neutrophils as a predictive biomarker for immunotherapy response in patients with non–small-cell lung cancer and melanoma.
+S17837|2012|Abstract 384: CD14+S100A9 high monocytic myeloid-derived suppressor cells and their clinical relevance in non-small cell lung cancer
+S17838|2021|186 Development of KSQ-001, an engineered TIL (eTIL) therapy for solid tumors through CRISPR/Cas9-mediated editing of SOCS1
+S17840|2004|Bryostatin 1/ionomycin (B/I) ex vivo stimulation preferentially activates L-selectinlow tumor-sensitized lymphocytes
+S17878|2018|Abstract A015: Intrapatient heterogeneity of multiple myeloma is evenly distributed in multiple myeloma lesions
+S17890|2018|Editorial 2018 Current Opinion in Endocrinology
+S17946|2018|Prognostic Significance of Neutrophil to Lymphocyte Ratio (NLR) in Relapsed/Refractory Aggressive Lymphoma Salvage Chemotherapy — Analysis of Canadian Cancer Trials Group (CCTG) ly
+S17958|2013|Abstract 3983: Resuscitating immune surveillance in cancer.
+S17963|2023|538 Longitudinal transcriptomic local and peripheral changes are associated with immunotherapy resistance in murine model of triple negative breast cancer
+S17966|2026|Editorial: Editor’s challenge: Dr. Sara Pilotto - modulating tumor-host interplay through lifestyle in lung cancer
+S17979|2009|5-HT1A AND 5-HT1B RECEPTORS IN THE SUPRACHIASMATIC NUCLEUS OF THE COMMON MARMOSET (Callitbrix jaccbus)
+S17980|2017|Brain Tumor Necrosis Factor‐α Converting Enzyme Contributes to Sympathetic Activation in Heart Failure Rats
+S17986|2025|UNRAVELING NEURODEGENERATIVE PATHWAYS AND AUDITORY DEFICITS IN 5XFAD MICE: INSIGHTS INTO AD SENSORY ALTERATIONS
+S18089|2011|Host Pharmacogenetic Factors Significantly Contribute to Refinement of Prognosis in Children with Acute Lymphoblastic Leukemia (ALL): Result From the Malaysia-Singapore (Ma-Spore) 
+S18109|2006|The cell nucleus taking centre stage. Workshop on the Functional Organization of the Cell Nucleus
+S18141|2014|Three Cases of Hearing Loss Related to Mumps During a Nationwide Outbreak in The Netherlands, 2009–2013
+S18188|2016|Combining Immunomics and Genomics for the Analysis of the Microenvironment of Colorectal Cancer Liver Metastases
+S18197|2023|Gastrocytes and GLUttony – astrocyte regulation of calorie intake via glutamatergic modulation of gastric activity in rats
+S18207|2019|An Atlas of Clinically-Distinct Tumor Cellular Ecosystems in Diffuse Large B Cell Lymphoma
+S18218|2020|Sympathetic reactivity and inflammation: another joint problem in rheumatoid arthritis?
+S18234|2017|Genome-wide in vivo screen identifies host molecule in promoting cancer metastasis
+S18238|2020|Defining populations of dorsal horn interneurons
+S18284|2023|See[ing] elegance in sensory biology: an interview with Piali Sengupta
+S18289|2025|Academic Burnout and Suicidal Ideation among Young Scholars: A Cross-Sectional Study
+S18295|2014|Onkolytische Virotherapie und Modulation des Tumormilieus mittels verschiedener Vaccinia Virus Typen
+S18300|1997|Tumor chemosensitivity and chemoresistance assays
+S18324|2025|New paradigm for aging research: aging studies through innovative AI applications and interdisciplinary collaborations
+S18333|2006|Intracranial Microenvironment Reveals Independent Opposing Functions of Host αVβ3 Expression on Glioma Growth and Angiogenesis
+S18338|2023|Twenty years of research in melanoma therapy–From “nothing works” to cures: A personal account
