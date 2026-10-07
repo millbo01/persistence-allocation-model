@@ -82,9 +82,13 @@ Notation: $N$, the top's full need; $B$, other parts' basal maintenance; $P$, su
 
 **Conservation**
 
-**Proposition 1 (relocation).** In a shortfall, $\Gamma=\sum_sd_s+I+\sum_i\ell_i$. For fixed supply, store draws and outside input, the total unmet load $\sum_i\ell_i$ is the same under every access setting: every order, every phase assignment, every gate. Access settings decide only where load lands.
+**Proposition 1 (relocation under scarcity, creation by gating).** In any step,
+$$\sum_i\ell_i=\Gamma-\sum_sd_s-I+R_{\text{unused}}+X,$$
+where $R_{\text{unused}}$ is resource left unused (refilled, spilled, or left in the flow) and $X$ is allocation above reference.
+1. **Scarcity-limited regime.** Where the flow is fully used and no part receives above its reference allocation, total unmet load is $\Gamma-\sum_sd_s-I$: the same under every access ordering at fixed supply, store draw and outside input. Access decides only where the deficit lands.
+2. **Access-limited regime.** Where a gate leaves resource unused, total unmet load rises one for one with the resource left unused, balanced in the ledger by refill or spill. Opening the gate removes that load, up to the idle resource, without any other part losing.
 
-*Reading.* This is the formal content of the model's principle that load is relocated, never removed. It is an identity, not an empirical claim. Its consequence is testable: an intervention that restores one part's supply without adding resource must leave an equal deficit elsewhere. Total load can fall only through supply, store draw (which requires release headroom) or resource from outside.
+*Reading.* Item 1 is the formal content of the principle that load is relocated, never removed: in a resource-short system, an intervention that restores one part's supply without adding resource must leave an equal deficit elsewhere, and total load falls only through supply, store draw (which requires release headroom) or resource from outside. Item 2 separates a second kind of load: an opportunity cost of control architecture, as when growth signalling holds a maintenance process shut while nutrients are present. It is created and undone by gating, without relocation. The two regimes predict different consequences of intervention: a matching deficit elsewhere in the first, and in the second a matching fall in refill or spill, with no deficit elsewhere.
 
 **The silence and the break**
 
@@ -113,11 +117,13 @@ Under full release there is no slowing before the store empties.
 
 *Reading.* With equal switch-off rates, units are switched off and then lost in ascending order of rank. Strict lexicographic priority is assumed in hierarchical plant allocation models (Wermelinger et al. 1991; Grossman and DeJong 1994). Here it is the reduced form of an access network, with the order fixed in advance from access.
 
-**Proposition 6 (rank from affinity).** Let parts take a shared resource from a pool at level $C$ by saturable uptake, $v_i=V_iC/(K_i+C)$, with $\sum_iv_i(C)=S$.
-1. At every level of supply, a part's fractional supply falls with $K_i$: parts lose access in order of affinity, lowest first.
-2. As neighbouring affinities separate ($K_{i+1}/K_i\to\infty$), the allocation tends to the strict priority of Proposition 5. Between, loss is shared.
+**Proposition 6 (rank under saturable uptake).** Let parts take a shared resource from a pool at level $C$ by saturable uptake, $v_i=V_iC/(K_i+C)$, with $\sum_iv_i(C)=S$, and let $r_i=q^0_i/V_i$ be each part's reference allocation as a share of its maximum uptake.
+1. Part $i$ is adequately supplied if and only if $C\ge C^\ast_i=K_i\,r_i/(1-r_i)$ (and never if $r_i\ge1$).
+2. As supply falls, parts lose adequate access in descending order of $C^\ast_i$.
+3. Affinity alone ($K_i$) decides the order only where $r_i$ is equal across parts, or ordered compatibly.
+4. Strict priority (Proposition 5) is approached when neighbouring thresholds are far apart; where they are close, the shortfall is shared.
 
-*Reading.* Where access is by saturable uptake, the rank is a measurable property (half-saturation constants), and whether priority is strict or shared is set by their separation. In our checks, with four parts the largest deviation from strict order was 0.15 at a hundredfold separation, 0.02 at $10^4$ and 0.002 at $10^6$. This links the model's rank to Michaelis-Menten competition, to metabolic control analysis (measured hierarchies of ATP consumers; Buttgereit and Brand 1995), and to triage of micronutrients by binding affinity (Ames 2006).
+*Reading.* Where access is by saturable uptake, the model's rank is a measurable property fixed before outcomes, but it combines affinity, capacity and requirement: a high-affinity part working close to its maximum can lose adequate supply before a low-affinity part with large capacity and small requirement. Whether priority is strict or shared is set by how far apart the thresholds lie. This links the model's rank to Michaelis-Menten competition, to metabolic control analysis (measured hierarchies of ATP consumers; Buttgereit and Brand 1995), and to triage of micronutrients by binding affinity (Ames 2006), with the qualification that affinity is one determinant, not the whole.
 
 **Proposition 7 (the limit of rank).** Two parts each need one unit of each of two complementary resources per unit of work, one unit of each is available, and the orders conflict (part A first for resource 1, part B first for resource 2). Allocating each resource by its own order gives neither part any work. Every split $(z,1-z)$ of both resources gives total work 1 and is Pareto efficient; the two ordinal orders do not choose among them.
 
@@ -179,7 +185,7 @@ $$L^\ast=F^{-1}\!\Big(1-\frac{V}{c_S\,\rho}\Big)\quad (V<c_S\rho),\qquad L^\ast=
 
 Each quantitative claim was checked against a minimal implementation of the reduced form, written from the equations above and independent of the simulation engine used earlier in the work. The checks draw random instances (up to 2,000 per result) and test the stated equalities, bounds and orderings: Propositions 1 to 3, 4 (lead time within one step), 5, 6, 7, 8 (both bounds), 9, 10, 12, 14 and 16. All pass. Code is in the supplementary material (`pam_propositions_check.py`).
 
-Two of the checks corrected earlier statements of the same results. The rate-decides-harm expression, first written as an estimate of loss, proved to be an upper bound, so the scar threshold derived from it is necessary rather than sufficient (Proposition 8). And the speed of economising, first thought to matter for loss, does not, because economising cuts work rather than renewal (Proposition 10).
+Two of the checks corrected earlier statements of the same results, and review corrected two more, each then confirmed numerically: the invariance of total load holds only where the flow is fully used (Proposition 1), and rank under saturable uptake depends on capacity and requirement as well as affinity (Proposition 6). The rate-decides-harm expression, first written as an estimate of loss, proved to be an upper bound, so the scar threshold derived from it is necessary rather than sufficient (Proposition 8). And the speed of economising, first thought to matter for loss, does not, because economising cuts work rather than renewal (Proposition 10).
 
 ### 3.7 What the model predicts that neighbouring theories do not state
 
@@ -187,10 +193,10 @@ The model converges with several established theories, and we treat that converg
 
 | Result | Dynamic Energy Budget theory | Selfish Brain theory | Allostasis and allostatic load | Control theory |
 |---|---|---|---|---|
-| Total unmet load is invariant under access settings (P1) | Conserves mass and energy; keeps no reference requirement against which unmet load is counted | A supply chain with build-ups in front of bottlenecks; no account of unmet requirement across many parts | Load hidden from total expenditure, stated in words | No resource ledger |
+| Scarcity load is relocated; gating creates and removes load (P1) | Conserves mass and energy; keeps no reference requirement against which unmet load is counted | A supply chain with build-ups in front of bottlenecks; no account of unmet requirement across many parts | Load hidden from total expenditure, stated in words | No resource ledger |
 | The record carries no information inside the silence region (P2) | Not stated | Brain energy held while body loses, for two compartments | Stated in words (the hidden cost) | A regulated variable held by feedback, without a shortfall budget |
 | Store left at the break rises with the rate of shortfall (P3) | Reserve dynamics give the release form; the decompensation threshold with a margin is not stated | Not stated | Not stated | Not stated |
-| Rank from affinity; strict as the limit of shared uptake (P6) | Not stated across parts | Access by insulin dependence, two compartments | Not stated | Not stated |
+| Rank under saturable uptake from affinity, capacity and requirement (P6) | Not stated across parts | Access by insulin dependence, two compartments | Not stated | Not stated |
 | Scar threshold in speed and depth (P8) | No unit loss or scarring; ageing damage is irreparable | Not stated | Wear of structures, in words | Not stated |
 | Failure with receivers supplied implies a cut or narrowed link, or damage (P11) | Not stated | Not stated | Not stated | Not stated |
 | Physical against chosen rerouting (P12) | Not stated | Not stated | Not stated | Known in power systems; not stated as a cross-domain prediction |
@@ -198,7 +204,7 @@ The model converges with several established theories, and we treat that converg
 
 ## Appendix A. Proofs
 
-**Proposition 1.** In a shortfall the flow is exhausted, so $\sum_ia_i=S=U+I+\sum_sd_s$. Then $\sum_i\ell_i=\sum_i(q^0_i-a_i)=\sum_iq^0_i-S=\Gamma-\sum_sd_s-I$, which contains no access term. ∎
+**Proposition 1.** Conservation within the step gives $U+I+\sum_sd_s=\sum_ia_i+R_{\text{unused}}$. With $\ell_i=[q^0_i-a_i]_+$, $\sum_i(q^0_i-a_i)=\sum_i\ell_i-X$. Hence $\sum_i\ell_i=\sum_iq^0_i-U-I-\sum_sd_s+R_{\text{unused}}+X$, the identity as stated; in both regimes stated, $X=0$. Item 1: $R_{\text{unused}}=0$, so the total contains no access term. Item 2: $R_{\text{unused}}$ equals the resource the gate leaves unused. ∎
 
 **Proposition 2.** The top draws first, then all basal maintenance, then support parts (A2). So the top is met if and only if $S\ge N$, and basal maintenance and supports if and only if $S\ge N+B+P$. The top's work next step falls only through its own units (impossible while it is met) or through dependency on supports (excluded when they are met). Since $\sum_iq^0_i=N+B+P+D_4$, $S\ge N+B+P$ is equivalent to $\Gamma\le\sum_sd_s+D_4$; without dependency, the top's work is unaffected by shortfalls below it, giving $M=D_4+P+B$. ∎
 
@@ -208,7 +214,7 @@ The model converges with several established theories, and we treat that converg
 
 **Proposition 5.** Draws are sequential within a phase: a part is short only if the flow is exhausted at its turn, so every later part in that phase draws nothing. Phases complete in order, so a basal shortfall implies that phases 3 and 4 drew nothing, and a shortfall at the top implies that every other draw was zero. ∎
 
-**Proposition 6.** The fractional supply $C/(K_i+C)$ is decreasing in $K_i$ for every $C>0$. For $K_i\ll C\ll K_{i+1}$, part $i$ is near saturation and part $i+1$ near zero; as the ratios $K_{i+1}/K_i$ grow, the interval of $C$ in which two neighbouring parts are both partly supplied shrinks relative to the scale of $C$, and the allocation approaches the lexicographic filling of Proposition 5. ∎
+**Proposition 6.** $V_iC/(K_i+C)\ge q^0_i$ rearranges to $C\ge K_iq^0_i/(V_i-q^0_i)=C^\ast_i$. The pool level $C$ falls monotonically with supply, so parts cross their thresholds in descending order of $C^\ast_i$. With $r_i$ equal, $C^\ast_i\propto K_i$. With thresholds far apart, at any $C$ at most one part is near its threshold, so the shortfall falls on one part at a time (strict); otherwise several are short together (shared). ∎
 
 **Proposition 7.** Under the law of the minimum, allocating each resource by its own order gives A both units of resource 1 and none of resource 2, and B the reverse, so both work zero. Any common split $(z,1-z)$ gives work $z$ and $1-z$, total 1, and no allocation gives more, since each resource limits total work to 1. ∎
 

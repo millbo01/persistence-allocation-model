@@ -33,8 +33,8 @@
 | 8 | **Economising is a magnitude;** consolidation is its default realisation; **switched off defined** | Approved for v0.19, 7 October |
 | 9 | **Sequential records; mode held constant in a test of dynamic priority; repair capacity as a state** | Amendment from probes P10 to P12, 7 October |
 | 10 | **Predictions given their derived forms:** G3, G12, G13, G16, G20, G23(b), G24, G26; new read-outs (two thresholds, time of crisis, cost of restoration) | Amendments from the derived results and propositions, 7 October |
-| 11 | **Derived result beside the principle:** total unmet load is invariant under access settings at fixed supply, stores and outside input | Propositions P1, 7 October |
-| 12 | **Rank from affinity** as a mapping rule | Propositions P17, 7 October |
+| 11 | **Derived result beside the principle:** scarcity-limited load is relocated by access; access-limited load is created and removed by gating | Propositions P1, 7 October (corrected after review) |
+| 12 | **Rank under saturable uptake** as a mapping rule (affinity, capacity and requirement together) | Propositions P17, 7 October (corrected after review) |
 | 13 | **Drain against capture** as the extension's first test | Propositions P18, 7 October |
 | 14 | **Results of H1 and PT1 recorded** | 7 October |
 
@@ -44,10 +44,10 @@
 
 > In a system that regulates its own persistence, a governor holds the levels its persistence depends on by regulating access to finite shared resources among parts that have no demand of their own; the allocation among parts is the resulting flow. Each part works to the limit of the scarcest resource that reaches it. When what reaches a part falls short of what the reference state requires, whether supply falls, requirement rises or access is restricted, the governor draws its stores, and lower-ranked parts lose access first and switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: the resource gap is met from stores, met from outside the boundary, or left unmet at a named part, and unmet load leaves its residue in switched-off, lost or scarred units, or in work not done, which may land across the boundary. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Repair is its own network, governed like any part: under a sustained shortfall it loses access and lost units wait. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. A part dies only when its route back is cut; the system collapses when load reaches the top or a non-bypassable link is cut, and dies only when no route back remains.
 
-**Derived result** (propositions P1). At fixed supply, store draw and resource from outside, **the total unmet load is the same under every access setting**: every order, every phase, every gate the governor sets. Access decides only where load lands.
-- Total load falls only by raising supply, drawing the stores harder (which needs release headroom), or bringing resource in from outside.
-- An intervention that restores one part's supply without adding resource moves the same amount of load onto other parts.
-- This is an identity of the model, not an empirical claim; the empirical content is where the load lands.
+**Derived result** (propositions P1; corrected 7 October 2026 after review). Two regimes:
+- **Scarcity-limited: access relocates load.** Where the flow is fully used and no part receives above its reference allocation, the total unmet load is the same under every access ordering at fixed supply, store draw and resource from outside. Access decides only where it lands. An intervention that restores one part's supply without adding resource moves the same amount of load onto other parts. Total load falls only by raising supply, drawing the stores harder (which needs release headroom), or bringing resource in from outside.
+- **Access-limited: gating creates and removes load.** Where a gate leaves resource unused, total unmet load rises one for one with the resource left unused, balanced by refill or spill. Opening the gate removes that load, up to the idle resource, without any other part losing. A mode switch that opens one class of work and closes another can move access-limited load between the classes.
+- Both follow from the resource identity; neither is an empirical claim. The empirical content is where the load lands, and which regime a system is in.
 
 ## 2. Scope
 
@@ -149,11 +149,11 @@
      - how strongly each vascular bed constricts under sympathetic drive;
      - autoregulation;
      - redundant routes;
-     - **affinity, where access is by saturable uptake** (propositions P17; Section 8, step 4);
+     - **under saturable uptake, the adequacy threshold:** affinity, maximum uptake and the reference requirement together (propositions P17; Section 8, step 4);
      - which budget lines are discretionary.
 
      **It is never read off the observed order of sacrifice** in the data being tested.
-   - **Strict or shared:** where access is by saturable uptake, priority is strict only where neighbouring affinities are far apart, and shared otherwise (P17).
+   - **Strict or shared:** where access is by saturable uptake, priority is strict only where neighbouring adequacy thresholds are far apart, and shared otherwise (P17).
    - **The open question (Tier 1):** is the order fixed, or does it reverse with conditions?
      - **A valid test needs two recipients competing for the same scarce resource at the same time,** with their order reversing between conditions.
      - A part receiving more in one condition and less in another is not such a test.
@@ -218,7 +218,7 @@
   - **Time is therefore an allocation dimension:** with resources held equal, a backlog grows with the share of time spent in settings that gate its process shut.
 
 **Movement and failure.**
-- **Load is relocated, never removed** (Section 1 and its derived result).
+- **Load is relocated, never removed,** where the system is resource-short. Where a gate holds resource idle, access-limited load is created and removed by gating instead (Section 1 and its derived result).
 - **Load backs up a dependency:** a part limited by throughput leaves work undone, and parts depending on its output lose capacity.
 - **Coupling is shared dependency.** Parts sharing an input, a stressor, a store or repair machinery move together (G18).
 - **Pathways and severance.**
@@ -275,7 +275,7 @@ Do this before opening any outcome data.
 4. **Parts.** For each part:
    - its units and capacity;
    - **its rank for each resource, fixed from documented properties of access** (Section 4, item 2), or one shared rank if the orders are documented to coincide;
-   - **where access is by saturable uptake** (transporters, binding), the rank is the **order of affinities** (half-saturation constants), lowest affinity losing first. Priority is **strict** only where neighbouring affinities are far apart, and **shared** otherwise. Document the constants and their separation before outcomes (propositions P17);
+   - **where access is by saturable uptake** (transporters, binding), document each part's half-saturation constant K, maximum uptake V and reference allocation q⁰. A part loses adequate supply when the pool falls below **C\* = K·r/(1 − r)**, with r = q⁰/V. **The rank is the order of C\*, highest first.** Affinity alone decides only where r is equal across parts. Priority is **strict** only where neighbouring thresholds are far apart, and **shared** otherwise (propositions P17);
    - its rebuild time, template limit and route back (fixed capital: none);
    - its requirements per unit of work, basal maintenance and renewal (renewal as a baseline per active unit **plus wear per unit of work**);
    - **its reference allocation** (for load);
@@ -478,7 +478,7 @@ Every place where v0.19's wording differs from v0.18 as amended, and why. Nothin
 | 4 | Section 3, repair network | Strict rank stated in G23(b) only; no renewal composition | "Served strictly by rank"; renewal as baseline plus wear | Flag 5 (strict rank); wear restored (James, 7 October) |
 | 5 | Section 3, stores and spill | "Release can taper as it empties (the knee)"; spill once stores are full | Proportional release by default; full release as alternative, possibly mode-dependent; knee as engine form; spill with a recovery fraction; resources as a flow | DEB imports; flow correction (James, 7 October) |
 | 6 | Section 4, item 1 | Order of claims ending "from surplus only... at their value (the expected frequency of shortfall)" | Ordered draw from the flow; item 5 by marginal value; renewal named in phases 3 and 4 | Flow correction; marginal-value amendment |
-| 7 | Section 4, item 2 | Rank examples without affinity; strict or shared not addressed | Affinity added to examples; strict or shared by separation of affinities | Flag I |
+| 7 | Section 4, item 2 | Rank examples without affinity; strict or shared not addressed | The adequacy threshold under saturable uptake added to the examples; strict or shared by separation of thresholds | Flag I, corrected after review (P17) |
 | 8 | Section 4, item 3 | "Access is cut early and evenly. Units switch off in an orderly way" | Economising as a magnitude; consolidation default, throttled share declared; no loss at any speed; saving timing; remodelling as economising | Approved for v0.19; flag F; remodelling folded in (probe register) |
 | 9 | Section 4, item 5 | Recovery text sat in Section 6 | Moved to Section 4 as what the governor does; G26's fractile added | Marginal-value amendment; flag D |
 | 10 | Section 5 | "Unchanged from v0.17" pointer | Written out; basal shortfall now shrinks the part (DEB); unused resource stays in the flow; throttled realisation; rate decides harm and rising requirement summarised | DEB imports; flow correction; flags B and F; P14 |
@@ -503,3 +503,10 @@ Every place where v0.19's wording differs from v0.18 as amended, and why. Nothin
 - The central claim is verbatim from v0.18 as corrected and amended.
 - The scope section is verbatim.
 - G9, G14, G15 and G17 are carried from v0.16 unexamined, as before.
+
+**Corrections after review (7 October 2026;** raw/2026-10-07_chatgpt-assumed_v019-and-maths-section-review.md**), applied to this draft:**
+- **The derived result beside the principle** (Section 1) now separates two regimes. The first version asserted invariance of total load under every access setting; its proof assumed the flow fully used, which a closed gate need not leave true (checked numerically).
+- **Rank under saturable uptake** (Sections 4 and 8) is the order of the adequacy threshold C\* = K·r/(1 − r), not of affinity alone (checked numerically, with a counter-example).
+- **v0.18** still carries the earlier forms of both (Section 1; Section 8, step 4) until v0.19 is approved.
+- **The central claim is unchanged here.** A wording that separates local shortfall from a system-wide deficit is with James (the claim's "the governor draws its stores" follows every origin of load, including access, where stores need not be drawn).
+

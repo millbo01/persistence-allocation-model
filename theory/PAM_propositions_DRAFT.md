@@ -40,31 +40,35 @@
 
 ## 2. Propositions
 
-### P1. Conservation of load, and its invariance under access (the formal content of "relocated, never removed")
+### P1. Conservation of load: relocation under scarcity, creation by gating (the formal content of "relocated, never removed")
 
-**Statement.** In a shortfall (no part above reference, nothing refilled or spilled):
-1. **Ledger closure:** $\Gamma=\sum_sd_s+I+\sum_i\ell_i$.
-2. **Invariance:** for fixed supply $U$, outside input $I$ and store draws $d_s$, **the total unmet load $\sum_i\ell_i$ is the same under every access setting** (every order $\pi$, every phase assignment, every gate the governor sets). Access settings decide only **where** the load lands.
+**Corrected 7 October 2026** after review (raw/2026-10-07_chatgpt-assumed_v019-and-maths-section-review.md). The first version asserted invariance of total load under **every** access setting. Its proof assumed the flow is fully used, which a closed gate need not leave true. Checked numerically: the general identity below holds in all random cases, gates included.
 
-**Proof.** Conservation of the resource within the step: everything drawn is $\sum_ia_i=S=U+I+\sum_sd_s$ when the flow is exhausted, which it is in a shortfall. Then $\sum_i\ell_i=\sum_i(q^0_i-a_i)=\sum_iq^0_i-S=\Gamma-\sum_sd_s-I$. The right side contains no access term. ∎
+**Statement.**
+1. **General identity** (from the full resource ledger, maths Section 7). In any step,
+$$\sum_i\ell_i=\Gamma-\sum_sd_s-I+R_{\text{unused}}+X,$$
+where $R_{\text{unused}}$ is the resource left unused (refilled, spilled, or left in the flow) and $X=\sum_i[a_i-q^0_i]_+$ is allocation above reference.
+2. **Scarcity-limited regime: access relocates load.** Where the flow is fully used and no recipient receives above its reference allocation, under each of the settings compared, the total unmet load equals $\Gamma-\sum_sd_s-I$. It is the same under every access ordering at fixed supply, store draw and outside input. **Access decides only where that fixed deficit lands.**
+3. **Access-limited regime: gating creates and removes load.** Where a gate leaves resource unused, total unmet load rises one for one with the resource it leaves unused, and the counterpart is refill or spill, so conservation holds. **Opening the gate removes that load, up to the idle resource, without any other part losing.**
+   - **Example:** a part's reference allocation is 10 and supply is 10. Gate open: load 0. Gate closed: load 10, with 10 units refilled or spilled.
+   - A **mode switch** that opens one class of work and closes another can move access-limited load from one class to the other, rather than remove it.
 
-**Corollary (the only levers on total load).** Total unmet load falls only by:
-- raising supply;
-- drawing the stores harder (which needs release headroom);
-- bringing resource in from outside.
+**Corollary (two intervention regimes).**
+- **Where all resource is already used,** an intervention that restores one part's supply without adding resource moves the same amount of load onto other parts. Total load falls only by raising supply, drawing the stores harder (which needs release headroom), or bringing resource in from outside.
+- **Where resource sits idle behind a closed gate,** opening the gate removes load up to the idle amount, at no cost in resource to any other part.
 
-**Any intervention that restores one part's supply at fixed supply, stores and outside input moves the same amount of load onto other parts.**
+**Proof.** Conservation within the step: $U+I+\sum_sd_s=\sum_ia_i+R_{\text{unused}}$. Since $\sum_i(q^0_i-a_i)=\sum_i\ell_i-X$, we have $\sum_i\ell_i=\sum_iq^0_i-\sum_ia_i+X=\Gamma-\sum_sd_s-I+R_{\text{unused}}+X$. Item 2: $R_{\text{unused}}=0$ and $X=0$, so the total contains no access term. Item 3: $X=0$ and $R_{\text{unused}}$ equals the resource the gate leaves unused. ∎
 
-**Established mathematics:** a conservation law (the continuity equation) for a single conserved flow; the same identity underlies DEB's mass balance and the Peters and Langemann supply chain. What is PAM's own is the **bookkeeping of unmet requirement** against a fixed reference (A5), which those models do not keep.
+**Established mathematics:** a conservation law (the continuity equation). What is PAM's own is the **bookkeeping of unmet requirement** against a fixed reference, and the **separation of two regimes** by whether resource is left unused.
 
 **Reading:**
-- This is the formal statement of the principle. It is an identity of the model, not an empirical claim.
-- The empirical content is where the load lands (P3, P6, P7).
-- The corollary is testable as a pattern: an intervention that corrects a visible figure without adding resource should be followed by a matching deficit elsewhere. Two candidate illustrations from the reading:
-  - **stroke:** restoring blood glucose with intensive insulin reopened the periphery's route, and in one trial infarct growth was 2.5 times larger (Sprengell et al. 2021b, citing Rosso et al. 2012; **to be read in the original before use**);
-  - **hypertension under treatment:** blocking one compensatory route moves the load to the next (Sterling 2018).
+- **Scarcity-limited load is relocated, never removed** (the principle, for the resource gap).
+- **Access-limited load is an opportunity cost of control architecture.** It can be created and undone by gating, while resource is idle, without relocation. This is the significance of the build and consolidate modes and of growth signalling holding autophagy shut while nutrients are present.
+- **Testable patterns:**
+  - in a resource-short system, correcting a visible figure without adding resource should be followed by a matching deficit elsewhere (stroke and intensive insulin, Sprengell et al. 2021b citing Rosso et al. 2012, to be read in the original; hypertension under treatment, Sterling 2018);
+  - in an access-limited system, opening the gate should relieve the gated process with **no** matching deficit elsewhere, and with a matching fall in refill or spill.
 
-**Check:** P1 (2,000 random instances: closure, and total load unchanged under random reorderings).
+**Check:** P1 (2,000 random instances: the general identity with random gates; invariance under reordering when the flow is fully used; the gated example).
 
 ### P2. The silence: when the record holds (G1, G4)
 
@@ -364,26 +368,33 @@ $$L^\ast=F^{-1}\!\Big(1-\frac{V}{c_S\,\rho}\Big)\quad\text{if }V<c_S\rho,\qquad 
 
 **Check:** P16 (the deadlock and the frontier).
 
-### P17. Strict priority as the limit of shared uptake (rank from affinity; maths queue item 7)
+### P17. Rank under saturable uptake: affinity, capacity and requirement together (maths queue item 7)
 
-**Statement.** Parts take a shared resource from a common pool by saturable uptake, $v_i=V_iC/(K_i+C)$, where $C$ is the pool's level and $K_i$ the part's half-saturation constant (inverse affinity). The supply $S$ fixes $C$ through $\sum_iv_i(C)=S$.
-1. **Order:** at every level of supply, a part's fractional supply $C/(K_i+C)$ falls with $K_i$. **Parts lose access in order of affinity, lowest affinity first.** The order is a documented access property.
-2. **Limit:** as the affinities separate ($K_{i+1}/K_i\to\infty$), the allocation tends to strict priority (P3). With separation $R$ between neighbours, the largest deviation from strict order (four parts, $V_i=1$) was 0.15 at $R=10^2$, 0.02 at $R=10^4$ and 0.002 at $R=10^6$.
-3. **Between,** loss is **shared**: higher-ranked parts lose some supply before lower-ranked parts lose all.
+**Corrected 7 October 2026** after review (raw/2026-10-07_chatgpt-assumed_v019-and-maths-section-review.md). The first version took the order of affinity as the order of loss. Rank is the order in which a part loses **adequate** access relative to its reference allocation, and that depends on capacity and requirement as well as affinity. Checked numerically, with a counter-example to the first version.
 
-**Proof.** Item 1: $C/(K+C)$ is decreasing in $K$. Item 2: for $K_i\ll C\ll K_{i+1}$, part $i$ is near saturation and part $i+1$ near zero, so the allocation fills parts in order of affinity. ∎
+**Statement.** Parts take a shared resource from a common pool by saturable uptake, $v_i=V_iC/(K_i+C)$: $C$ is the pool's level, $K_i$ the half-saturation constant (inverse affinity) and $V_i$ the maximum uptake. Supply $S$ fixes $C$ through $\sum_iv_i(C)=S$. Let $r_i=q^0_i/V_i$ be the part's reference allocation as a share of its maximum uptake.
+1. **Adequacy threshold.** Part $i$ is adequately supplied if and only if $C\ge C^\ast_i$, where
+$$C^\ast_i=K_i\,\frac{r_i}{1-r_i}\qquad(r_i<1).$$
+A part with $r_i\ge1$ is inadequate at any supply.
+2. **Rank.** As supply falls, parts lose adequate access in **descending order of $C^\ast_i$**. Every term is a documented property ($K_i$, $V_i$, $q^0_i$), measurable before outcomes.
+3. **Affinity alone** decides the order only where $r_i$ is equal across parts (then $C^\ast_i\propto K_i$), or where $K_i$ and $r_i/(1-r_i)$ are ordered the same way.
+   - **Counter-example to affinity alone:** a high-affinity part whose requirement is close to its maximum ($V=1$, $K=1$, $q^0=0.9$; $C^\ast=9$) becomes inadequate before a low-affinity part with a large maximum and a small requirement ($V=10$, $K=10$, $q^0=0.5$; $C^\ast\approx0.53$).
+4. **Fractional saturation** $C/(K_i+C)$ does fall with $K_i$ at every supply. That is the order of **saturation**, not of adequacy.
+5. **Strict or shared.** Strict priority (P3) is approached when neighbouring thresholds $C^\ast_i$ are far apart. Where they are close, loss of adequacy is near-simultaneous and the shortfall is shared. In the saturation check (four parts, $V_i=1$, equal requirements), the largest deviation from strict filling was 0.15, 0.02 and 0.002 at neighbour separations of $10^2$, $10^4$ and $10^6$.
+
+**Proof.** Item 1: $V_iC/(K_i+C)\ge q^0_i$ rearranges to $C\ge K_iq^0_i/(V_i-q^0_i)$. Item 2: $C$ falls monotonically as $S$ falls, so parts cross their thresholds in descending order of $C^\ast_i$. Items 3 and 4 follow from item 1. Item 5: with thresholds far apart, at any $C$ at most one part is near its threshold, so the shortfall falls on one part at a time. ∎
 
 **Established mathematics:**
 - Michaelis-Menten competition for a shared substrate;
-- metabolic control analysis (elasticities of each consumer to supply; Buttgereit and Brand 1995 measured such a hierarchy in thymocytes);
-- Ames's triage mechanism ("adjustment of the binding affinity of each protein").
+- metabolic control analysis (Buttgereit and Brand 1995 measured a hierarchy of ATP consumers by sensitivity to supply);
+- Ames's triage mechanism (binding affinity).
 
-**Reading [flag I, accepted]:**
-- **This is the formal bridge from documented access to rank** that v0.18 left domain-specific (maths flag 6). Where access is by saturable uptake, $\pi_r$ is the order of affinities, measurable before outcomes.
-- **Whether priority is strict or shared is set by how far apart the affinities are.** That is the PT1 secondary question (strict against shared), now with a measurable criterion.
-- Proposed as a mapping rule, not a change to the core.
+**Reading [flag I, revised]:**
+- **The bridge from documented access to rank** that v0.18 left domain-specific (maths flag 6) is the adequacy threshold $C^\ast$, not affinity alone. Affinity is one determinant; capacity and the reference requirement are the others.
+- **Strict or shared** is set by how far apart the thresholds are: the PT1 secondary question (strict against shared), with a measurable criterion.
+- **For mapping:** where access is by saturable uptake, document $K_i$, $V_i$ and the reference allocation, and fix the rank as the order of $C^\ast_i$.
 
-**Check:** P17 (deviation from strict order at three separations; order by affinity at three supply levels).
+**Check:** P17 (adequacy order equals the order of $C^\ast$ in 200 random three-part cases; the counter-example; the saturation separations).
 
 ### P18. An autonomous drain is a supply cut; capture is more (extension layer: host and tumour)
 
@@ -438,6 +449,8 @@ $$L^\ast=F^{-1}\!\Big(1-\frac{V}{c_S\,\rho}\Big)\quad\text{if }V<c_S\rho,\qquad 
 | C | G20 | Under maximum flow, failure with willing receivers intact means a link **cut or constricted below need,** or damage | Add "or constricted below need" | Slightly easier; neutral if capacity is measured independently |
 | D | G26 | Refill level is a critical fractile of remembered episode depths | Add the quantitative form | Harder (more specific) |
 | E | Principle (Section 1 of v0.18) | Total unmet load is invariant under access settings at fixed supply, stores and outside input | State P1's invariance as a derived result beside the principle | Neutral (identity) |
+
+**Corrections after review (7 October 2026;** raw/2026-10-07_chatgpt-assumed_v019-and-maths-section-review.md**):** P1 restated with two regimes (relocation under scarcity; creation and removal by gating); P17 restated with the adequacy threshold. Both checked numerically. The corresponding v0.19 text is corrected in the draft; v0.18 carries the earlier forms until v0.19 is approved.
 
 **Not decided here:** whether P4's sheep reading (rate-independence observed, so a high-turnover or full-release store in that setting) belongs in the paper. It is an observation about the release profile, not a test.
 

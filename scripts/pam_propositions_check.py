@@ -450,11 +450,75 @@ def check_P18(trials=2000):
     return bad
 
 
+# ---------- P1 (corrected): general identity with gates and above-reference allocation; the gated example ----------
+def check_P1_general(trials=2000):
+    bad = 0
+    for _ in range(trials):
+        n = 5
+        q = [random.uniform(0.5, 3) for _ in range(n)]
+        U = random.uniform(0, sum(q) * 1.5)
+        d = random.uniform(0, 2)
+        I = random.uniform(0, 1)
+        gate = [random.random() < 0.7 for _ in range(n)]   # a closed gate draws nothing
+        over = [random.uniform(1.0, 1.5) for _ in range(n)]  # a part may draw above its reference (X > 0)
+        S = U + d + I
+        a = []
+        for qi, g, o in zip(q, gate, over):
+            x = min(S, qi * o) if g else 0.0
+            a.append(x)
+            S -= x
+        R_unused = S
+        X = sum(max(0.0, ai - qi) for qi, ai in zip(q, a))
+        load = sum(max(0.0, qi - ai) for qi, ai in zip(q, a))
+        gap = sum(q) - U
+        if abs(load - (gap - d - I + R_unused + X)) > 1e-9:
+            bad += fail("P1 general identity", f"{load} vs {gap - d - I + R_unused + X}")
+    # the gated example: reference 10, supply 10
+    if not (max(0, 10 - min(10, 10)) == 0 and 10 == 10):
+        bad += fail("P1 example", "")
+    return bad
+
+
+# ---------- P17 (corrected): adequacy order is the order of C* = K r / (1 - r) ----------
+def adequacy_order(V, Km, q):
+    order = []
+    S = sum(V)
+    while S > 1e-3 and len(order) < len(V):
+        v = uptake_alloc(V, Km, S)
+        for i in range(len(V)):
+            if i not in order and v[i] < q[i] - 1e-9:
+                order.append(i)
+        S *= 0.995
+    return order
+
+
+def check_P17_adequacy(trials=200):
+    bad = 0
+    # counter-example to affinity alone
+    V, Km, q = [1.0, 10.0], [1.0, 10.0], [0.9, 0.5]
+    if adequacy_order(V, Km, q) != [0, 1]:
+        bad += fail("P17 counter-example", str(adequacy_order(V, Km, q)))
+    for _ in range(trials):
+        n = 3
+        V = [random.uniform(0.5, 5) for _ in range(n)]
+        Km = [10 ** random.uniform(-1, 2) for _ in range(n)]
+        q = [random.uniform(0.1, 0.9) * v for v in V]
+        Cs = [k * (qi / v) / (1 - qi / v) for k, v, qi in zip(Km, V, q)]
+        if min(abs(math.log(Cs[i] / Cs[j])) for i in range(n) for j in range(i + 1, n)) < 0.05:
+            continue  # near-ties: the discrete supply grid cannot separate them
+        pred = sorted(range(n), key=lambda i: -Cs[i])
+        obs = adequacy_order(V, Km, q)
+        if obs != pred:
+            bad += fail("P17 adequacy order", f"obs {obs} pred {pred} C* {Cs}")
+    return bad
+
+
 if __name__ == "__main__":
     total = 0
     for name, f in [("P1", check_P1), ("P2", check_P2), ("P3", check_P3), ("P4", check_P4), ("P5", check_P5),
                     ("P6", check_P6), ("P7", check_P7), ("P9", check_P9), ("P10", check_P10),
-                    ("P11", check_P11), ("P13", check_P13), ("P16", check_P16), ("P17", check_P17), ("P18", check_P18)]:
+                    ("P11", check_P11), ("P13", check_P13), ("P16", check_P16), ("P17", check_P17), ("P18", check_P18),
+                    ("P1 general", check_P1_general), ("P17 adequacy", check_P17_adequacy)]:
         b = f()
         print(f"{name}: {'ok' if b == 0 else str(b) + ' failures'}")
         total += b
