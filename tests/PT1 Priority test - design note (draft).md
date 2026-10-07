@@ -194,3 +194,21 @@ So a graded response that tracks expected value, with no declared role change, i
 - **The prompt** (tests/prompts/PT1-C1b.txt) is unchanged in rule and blinding, with the files attached instead of fetched.
 - **Scope:** main service lines in RO1, RO2, RO4, RO5 and RO6, plus the children's social care, adult social care and public health lines and their totals in RO3.
 - **Which model:** one that reads attached files, in a fresh chat. Not the chat that will adjudicate.
+
+## PT1-C1b assessment (7 October 2026)
+
+**Stored:** raw/2026-10-07_chatgpt_PT1-C1b.md (GPT, fresh chat, files attached).
+
+**The rule was applied as written.**
+- 105 lines classified: A 25, B 16, C 40, ambiguous 24 (A/B 4, A/C 11, B/C 6, A/B/C 3).
+- Every A or B cites the review's reference numbers.
+- No spending information was used (declared).
+
+**Three issues:**
+1. **A prompt fault (Claude's).** The scope "line numbers below 90" excluded RO5 and RO6, whose service lines are numbered from 100 upwards. RO5 holds libraries, culture, sport, open spaces, waste, regulatory services and planning, the main discretionary services. GPT correctly did not broaden the scope. **Follow-up PT1-C1c,** in the same chat, covers RO5 and RO6 (excluding police and fire).
+2. **Public health is all C** because the 2011 review predates the 2013 transfer of public-health duties (Health and Social Care Act 2012). The classification is an artefact of the source's date, not of the law in the window. Public health was funded by a ring-fenced grant throughout 2013-14 to 2019-20, so it does not compete for general revenue. **Proposed rule: exclude public health from PT1,** which was already the intent for ring-fenced services.
+3. **Adult social care is classified on pre-Care Act duties** (National Assistance Act 1948; Chronically Sick and Disabled Persons Act 1970). The Care Act 2014 replaced them from April 2015. The A class (provision to people meeting legal criteria) carries over in substance, but **this is noted as a limitation.**
+   - **The adult and children's social care totals are ambiguous (A/B/C).** If the analysis uses totals (because sub-lines change across years), the pre-registration needs a fixed rule for their class.
+   - **Proposed:** a totals rule (the class held by most of the group's classified sub-lines, ambiguous lines counted as half to each candidate), plus sensitivity analyses with the totals set to each candidate.
+
+**Window: reconsider 2014-15 to 2019-20.** The adult social care sub-lines in the current guidance (by primary support reason) appear to date from the 2014-15 alignment with the SALT collection. Starting in 2014-15 would also avoid the academies and "services for young people" changes of that year. To be confirmed from documentation, not from data.

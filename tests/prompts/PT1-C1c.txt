@@ -1,0 +1,15 @@
+PT1-C1c: continue the classification for RO5 and RO6 (same chat, same three files, same rule)
+
+My scope instruction in the previous prompt was wrong: "line numbers below 90" excluded RO5 and RO6, whose main service lines are numbered from 100 upwards. You were right not to broaden it yourself. Please now classify these lines, under exactly the same rules, the same A / B / C / ambiguous rule, the same citation requirement (Unique ref Number and Legislation from the attached duties files), and the same ban on any use of spending figures, cuts or service changes.
+
+WHICH LINES TO CLASSIFY NOW
+- RO5: every service line in the main service table of RO5 (cultural; environmental; regulatory; planning and development; and any other service groups in RO5), excluding totals and group subtotals.
+- RO6: every service line in the main service table of RO6 except police services and fire and rescue services (for example central services, corporate and democratic core, local tax collection, elections, coroners, and other services), excluding totals.
+- Exclude, as before: memorandum items, subjective analysis lines, trading account lines, and lines that only give accounting instructions.
+
+OUTPUT
+- Part 1: the classification table for RO5 and RO6 only, with the same columns as before (form and line number; line name exactly as in file 3; main activity; class; duties relied on; notes).
+- Part 2: coverage for RO5 and RO6 (count per class, count ambiguous, any line in scope not classified with the reason).
+- Part 3: the same declaration about knowledge of spending, cuts or service changes.
+- The same self-check, item by item.
+Do not repeat or revise the earlier RO1 to RO4 rows.
