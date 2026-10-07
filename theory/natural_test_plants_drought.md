@@ -68,3 +68,10 @@ In mature spruce, an earlier drought reduced physiological stress in a later one
 - **A possible refinement:** a scar can lower future demand (less leaf area) as well as lowering capacity. That may make a previously stressed system more tolerant, not less. Whether a scar raises or lowers future vulnerability depends on whether it cuts demand more than capacity.
 
 Weight: surface level, from search summaries; P2, P3 and P5 were known in advance.
+
+**Checked against the sources (7 October 2026, for the model paper):**
+- The 25 to 31% native embolism in healthy-looking trees attributed above to PMC9751299 (Losso et al. 2022) was **not found** in that paper's abstract or text on checking; it is not used. The paper reports PLC of 65.1 ± 3.3% during drought and canopy browning above 70%.
+- Hammond et al. 2019 confirmed in full text (loblolly pine saplings, n = 83): lethal threshold at 80% loss of conductivity; foliar colour lagged hydraulic failure.
+- PMC5774510 is Dai, Wang and Wan (2018), AoB Plants: Robinia died at about 95% loss of conductivity under both fast and slow drought; Platycladus at about 45%. Duration changed carbohydrate depletion, not the hydraulic threshold.
+- The segmentation study ("Out on a limb") is Peters and Choat (2025), Plant Cell Environ 48:2162-2177: in 12 Australian species, segmentation "universally absent or negative". Logged as a finding against the leaves-first mapping.
+

@@ -1,6 +1,6 @@
 # [Title: James's call] The Persistence Allocation Model: how systems that regulate their own persistence ration finite resources
 
-*Draft 1, 7 October 2026. Drafted to the inclusion register (00 Inclusion register.md). Citations marked [verify] have been read only as abstracts or are from memory, and must be checked against the original before submission. Supplementary material is in 03 Supplement draft 1.md.*
+*Draft 1, 7 October 2026. Drafted to the inclusion register (00 Inclusion register.md). **Citations verified 7 October 2026** (record: 04 Citation check.md): every reference's bibliographic details checked against Crossref, PubMed or OpenAlex, and every claim attributed to a source checked against the text read (full text, or abstract where stated in the record). Supplementary material is in 03 Supplement draft 1.md.*
 
 ---
 
@@ -37,11 +37,11 @@ We searched for formal models of priority among parts under shortage, systematic
 
 **Energetics of the whole organism.** Dynamic Energy Budget (DEB) theory (Kooijman 2010) is the most complete quantitative theory of resource use in organisms. It conserves mass and energy, pays somatic maintenance before growth and reproduction (the κ rule), releases reserve in proportion to its content, shrinks structure when reserve cannot pay maintenance, and treats defence as "more facultative" than somatic maintenance. We import four of its forms (Section 3.2). DEB does not order organs under shortage from their access, keep a ledger of unmet requirement, or allocate repair: damage in DEB is irreparable.
 
-**The brain as protected consumer and regulator.** The Selfish Brain theory (Peters et al. 2004) holds that the brain gives priority to its own energy supply, by suppressing insulin and so closing the insulin-dependent route into muscle and fat while drawing through an insulin-independent one. It is formalised as a compartment model with insulin as the brain's feedback signal (Göbel et al. 2010 [verify]). It is tested by pre-registered systematic reviews: under caloric restriction the brain lost almost no mass while the body lost a great deal (Sprengell, Kubera and Peters 2021). This is the nearest formal precedent for an order of loss set by access, for two compartments and one resource.
+**The brain as protected consumer and regulator.** The Selfish Brain theory (Peters et al. 2004) holds that the brain gives priority to its own energy supply, including by inhibiting glucose uptake into muscle and fat. In later formulations the brain suppresses insulin and so closes the insulin-dependent route into muscle and fat while drawing through an insulin-independent one, set out as an energy-conserving supply-chain model (Peters and Langemann 2009). A brain-centred compartment model has been analysed formally (Göbel and Langemann 2011). It is tested by pre-registered systematic reviews: under caloric restriction the brain lost almost no mass while the body lost a great deal (Sprengell, Kubera and Peters 2021). This is the nearest formal precedent for an order of loss set by access, for two compartments and one resource.
 
-**Stress, maintenance and repair.** The energetic model of allostatic load (Bobba-Alves, Juster and Picard 2022) proposes that the energetic cost of stress first uses up reserve capacity and then squeezes growth, maintenance and repair, potentially without raising total energy expenditure. That is the model's hidden load and its repair cut first, stated in words. Allostasis more broadly (Sterling 2012) treats regulation as predictive and brain-led. The central governor model of exercise (Noakes 2012 [verify]; for a critique, see Shephard 2009 [verify]) holds that exercise is stopped before any system fails, with a reserve of motor units always kept. The selfish immune system (Straub 2014 [verify]) adds the immune and repair system as a second claimant that can take control of the body's spare energy. In this model, the brain and immune settings are two modes of one governor function. A unifying theory of hypoxia tolerance (Hochachka et al. 1996) describes coordinated cuts in energy supply and demand, with protein synthesis arrested and ion pumping held.
+**Stress, maintenance and repair.** The energetic model of allostatic load (Bobba-Alves, Juster and Picard 2022) proposes that the energetic cost of stress first uses up reserve capacity and then squeezes growth, maintenance and repair, potentially without raising total energy expenditure. That is the model's hidden load and its repair cut first, stated in words. Allostasis more broadly (Sterling 2012) treats regulation as predictive and brain-led. The central governor model of exercise (Noakes 2012; for a critique, see Shephard 2009) holds that exercise is stopped before any system fails, with a reserve of motor units always kept. The selfish immune system (Straub 2014) adds the immune and repair system as a second claimant that can take control of the body's spare energy. In this model, the brain and immune settings are two modes of one governor function. A unifying theory of hypoxia tolerance (Hochachka et al. 1996) describes a balanced suppression of energy supply and demand, in which ion pumping and protein synthesis are cut back (channel and translational arrest) while the cell's energy state is held.
 
-**Allocation by access in cells and plants.** In thymocytes, a measured hierarchy of ATP consumers loses supply in order: macromolecule synthesis first, ion pumping later, proton leak last (Buttgereit and Brand 1995). Triage theory (Ames 2006) proposes that scarce micronutrients go to proteins needed for short-term survival over those needed for long-term health, partly through binding affinity, at the level of enzymes, cells and organs. Plant growth models allocate carbon among organs either by strict priority (Grossman and DeJong 1994 [verify]) or by transport, where "sink priority" emerges from the transport network and sink kinetics (Minchin, Thorpe and Farrar 1993).
+**Allocation by access in cells and plants.** In thymocytes, a measured hierarchy of ATP consumers loses supply in order: macromolecule synthesis first, ion pumping later, proton leak last (Buttgereit and Brand 1995). Triage theory (Ames 2006) proposes that scarce micronutrients go to proteins needed for short-term survival over those needed for long-term health, partly through binding affinity, at the level of enzymes, cells and organs. Plant growth models allocate carbon among organs either by strict priority (Grossman and DeJong 1994; classified as hierarchical by Marcelis and Heuvelink 2007) or by transport, where "sink priority" emerges from the transport network and sink kinetics (Minchin, Thorpe and Farrar 1993).
 
 **Control.** Perceptual control theory (Powers 1973) describes hierarchies in which higher levels set the reference values of lower ones. It gives the governor its form, but has no resource, store or ledger.
 
@@ -136,7 +136,7 @@ The intuitive rate-independence of the break holds only for full release. Under 
 
 **Proposition 4 (order).** Within a phase, the parts short of their draw form a lower segment of $\pi$. No part loses basal maintenance while any part draws for work. The top goes short last.
 
-Strict priority of this kind is an assumption in hierarchical plant models (Grossman and DeJong 1994 [verify]). Here it is the reduced form of an access network, with the order fixed in advance.
+Strict priority of this kind is an assumption in hierarchical plant models (Grossman and DeJong 1994; Marcelis and Heuvelink 2007). Here it is the reduced form of an access network, with the order fixed in advance.
 
 **Proposition 5 (rank under saturable uptake).** Parts take a shared resource by saturable uptake, $v_i=V_iC/(K_i+C)$, from a pool at level $C$. Let $r_i=q^0_i/V_i$ be each part's reference requirement as a share of its maximum uptake. Part $i$ is adequately supplied if and only if $C\ge C^\ast_i=K_ir_i/(1-r_i)$, so parts lose adequate access in descending order of $C^\ast_i$. Affinity ($K_i$) alone decides the order only where $r_i$ is equal across parts. Priority is strict where neighbouring thresholds are far apart, and shared where they are close.
 
@@ -227,7 +227,7 @@ The sharpest discriminating tests are these:
 Both tests were pre-registered before any outcome data were opened. Each computation was replicated by a second analyst (a language model working from the same files), and each verdict was given blind by a separate model against fixed adjudication rules. Records are in Supplement S5.
 
 **H1: warning before decompensation in surgical blood loss (G12).**
-- **Data:** VitalDB, an open database of high-resolution intraoperative recordings (Lee et al. 2022 [verify]).
+- **Data:** VitalDB, an open database of high-resolution intraoperative recordings (Lee et al. 2022).
 - **Prediction:** before falls in arterial pressure in cases with high blood loss, recovery from small fluctuations should slow. This was measured as a rise in the lag-1 autocorrelation of mean arterial pressure, against controls from the same case.
 - **Cohorts:** the primary cohort (no fluid boluses) had no qualifying high-loss cases. The fallback cohort, with a loss threshold of 15% of estimated blood volume, gave 25 high-loss and 42 low-loss cases, analysed at half weight.
 - **Result:** the median excess rise was −0.072 (one-sided p = 0.48), and high-loss cases did not exceed low-loss ones (p = 0.78). **G12 failed,** at half weight, with two qualifications:
@@ -253,10 +253,10 @@ Before the held-out tests, the model was checked against published findings in s
 
 | Feature | Blood loss | Plants in drought |
 |---|---|---|
-| Record held while load rises | Arterial pressure held while stroke volume and compensatory reserve fall | Canopy stays green while 25 to 31% of water conduction is lost |
-| Lower priority pays first | Skin, gut and muscle beds constrict before kidney; brain only partly protected | Leaves and fine roots fail first, as hydraulic fuses |
-| Buffer behaves as a stock | Blood volume lost at the break: 27.0% at a slow rate against 27.3% at a fivefold faster rate (8 sheep; Scully et al. 2016 [verify]) | About the same loss of conductivity at death whatever the drought's duration [sources from natural test 5 to cite] |
-| Break at a set depletion | About 30% blood loss | About 80% loss of conductivity |
+| Record held while load rises | Arterial pressure well maintained while cardiac output falls (Evans et al. 2001); vital signs stable in early bleeding while the compensatory reserve falls (Convertino et al. 2016) | Changes in foliage colour lag hydraulic failure, best predicting trees already dead rather than dying (loblolly pine saplings; Hammond et al. 2019) |
+| Lower priority pays first | Splanchnic vasoconstriction the dominant compensation in a model calibrated to 35 adults under lower-body negative pressure (Bergauer et al. 2026); renal resistance rising before carotid in a model calibrated to 43 swine (Sadid et al. 2026, preprint) | Not used here: the leaves-first ordering is contested (Section 6) |
+| Buffer behaves as a stock | Blood volume removed at a 30 mmHg fall in mean pressure: 27.0 ± 4.2% at about 0.4% of blood volume a minute against 27.3 ± 3.2% at about 2% a minute (mean ± SE; 8 sheep, crossover; Scully et al. 2016) | Saplings died at the same loss of conductivity under fast and slow drought, with species-specific thresholds (about 95% and 45%; Dai, Wang and Wan 2018) |
+| Break at a set depletion | Decompensation (sympathetic withdrawal) once cardiac output falls to 50 to 60% of rest, about 30% blood loss (Evans et al. 2001) | About 80% loss of conductivity in loblolly pine saplings (Hammond et al. 2019) |
 
 The sheep result fits full release, or a store with turnover high relative to the gap (Proposition 3). It is an observation about the release profile in that setting, not a test.
 
@@ -279,8 +279,8 @@ The sheep result fits full release, or a store with turnover high relative to th
 - **PT1 was inconclusive.**
 - **Findings logged against the model, not yet weighed:**
   - autopsies after prolonged inanition (Krieger 1921, as cited by Peters and Langemann 2009) found heart, liver, pancreas and kidney all losing about 40% of their mass while the brain lost under 2%, with no order among the organs below the brain. Whether this conflicts with the model depends on the order fixed for energy and protein at a starvation mapping;
-  - a study finding the leaves-before-stems order of hydraulic failure absent or reversed in several tree species [verify];
-  - an earlier drought easing stress in a later one in spruce [source to cite].
+  - in 12 Australian tree species, the predicted leaves-before-stems order of hydraulic failure (vulnerability segmentation) was "universally absent or negative" (Peters and Choat 2025);
+  - in mature spruce, an earlier drought eased physiological stress in a later one (Hikino et al. 2026), where a stressed start should fare worse.
 
   Details and weights are in Supplement S7.
 - **Independence is partial.** The model was built from the same physiology its neighbours describe. Its natural-system observations support it only as compatibility.
@@ -339,28 +339,35 @@ A proposed extension treats components with their own access loops (a tumour; a 
 
 ## References
 
-*To be verified against the originals before submission; entries marked [verify] in the text especially.*
-
-- Ames BN (2006). Low micronutrient intake may accelerate the degenerative diseases of aging through allocation of scarce micronutrients by triage. *PNAS* 103:17589-17594.
-- Aubin J-P (1991). *Viability Theory*. Birkhäuser.
-- Bobba-Alves N, Juster R-P, Picard M (2022). The energetic cost of allostasis and allostatic load. *Psychoneuroendocrinology* 146:105951.
-- Buttgereit F, Brand MD (1995). A hierarchy of ATP-consuming processes in mammalian cells. *Biochem J* 312:163-167.
-- Ford LR, Fulkerson DR (1956). Maximal flow through a network. *Can J Math* 8:399-404.
-- Göbel B et al. (2010). [verify] *Theory Biosci*.
-- Grossman YL, DeJong TM (1994). [verify] *Tree Physiol*.
-- Hochachka PW, Buck LT, Doll CJ, Land SC (1996). Unifying theory of hypoxia tolerance. *PNAS* 93:9493-9498.
-- Ibaraki T, Katoh N (1988). *Resource Allocation Problems: Algorithmic Approaches*. MIT Press.
-- Kooijman SALM (2010). *Dynamic Energy Budget Theory for Metabolic Organisation*, 3rd edn. Cambridge University Press.
-- Krieger M (1921). [verify; cited via Peters and Langemann 2009].
-- Lee HC et al. (2022). [verify] VitalDB. *Sci Data*.
-- Minchin PEH, Thorpe MR, Farrar JF (1993). A simple mechanistic model of phloem transport which explains sink priority. *J Exp Bot* 44:947-955.
-- Noakes TD (2012). Fatigue is a brain-derived emotion that regulates the exercise behavior to ensure the protection of whole body homeostasis. *Front Physiol* [verify volume].
-- Peters A et al. (2004). The selfish brain: competition for energy resources. *Neurosci Biobehav Rev* 28:143-180 [verify pages].
-- Peters A, Langemann D (2009). Build-ups in the supply chain of the brain. *Front Neuroenergetics* 1:2.
-- Powers WT (1973). Feedback: beyond behaviorism. *Science* 179:351-356.
-- Scully CG et al. (2016). [verify] *Physiol Rep*.
-- Shephard RJ (2009). Is it time to retire the "central governor"? *Sports Med* [verify].
-- Sherbrooke CC (1968). METRIC: a multi-echelon technique for recoverable item control. *Oper Res* 16:122-141.
-- Sprengell M, Kubera B, Peters A (2021). Brain more resistant to energy restriction than body: a systematic review. *Front Neurosci* 15:639617.
-- Sterling P (2012). Allostasis: a model of predictive regulation. *Physiol Behav* 106:5-15.
-- Straub RH (2014). Insulin resistance, selfish brain, and selfish immune system. *Arthritis Res Ther* [verify].
+- Ames BN (2006). Low micronutrient intake may accelerate the degenerative diseases of aging through allocation of scarce micronutrients by triage. *PNAS* 103:17589-17594. doi:10.1073/pnas.0608757103
+- Aubin J-P (1991). *Viability Theory*. Birkhäuser, Boston.
+- Bergauer A, Urevc J, Halilovič M, Batzel J, Pivec V, Goswami N (2026). Modeling sex-dependent cardiovascular responses to lower body negative pressure. *Am J Physiol Heart Circ Physiol* 331:H240-H259. doi:10.1152/ajpheart.00258.2026
+- Bobba-Alves N, Juster R-P, Picard M (2022). The energetic cost of allostasis and allostatic load. *Psychoneuroendocrinology* 146:105951. doi:10.1016/j.psyneuen.2022.105951
+- Buttgereit F, Brand MD (1995). A hierarchy of ATP-consuming processes in mammalian cells. *Biochem J* 312:163-167. doi:10.1042/bj3120163
+- Convertino VA, Hinojosa-Laborde C, Muniz GW, Carter R III (2016). Integrated compensatory responses in a human model of hemorrhage. *J Vis Exp* 117:54737. doi:10.3791/54737
+- Dai Y, Wang L, Wan X (2018). Relative contributions of hydraulic dysfunction and carbohydrate depletion during tree mortality caused by drought. *AoB Plants* 10:plx069. doi:10.1093/aobpla/plx069
+- Evans RG, Ventura S, Dampney RA, Ludbrook J (2001). Neural mechanisms in the cardiovascular responses to acute central hypovolaemia. *Clin Exp Pharmacol Physiol* 28:479-487. doi:10.1046/j.1440-1681.2001.03473.x
+- Ford LR, Fulkerson DR (1956). Maximal flow through a network. *Can J Math* 8:399-404. doi:10.4153/CJM-1956-045-5
+- Göbel B, Langemann D (2011). Systemic investigation of a brain-centered model of the human energy metabolism. *Theory Biosci* 130:5-18. doi:10.1007/s12064-010-0105-9
+- Grossman YL, DeJong TM (1994). PEACH: a simulation model of reproductive and vegetative growth in peach trees. *Tree Physiol* 14:329-345. doi:10.1093/treephys/14.4.329
+- Hammond WM, Yu K, Wilson LA, Will RE, Anderegg WRL, Adams HD (2019). Dead or dying? Quantifying the point of no return from hydraulic failure in drought-induced tree mortality. *New Phytol* 223:1834-1843. doi:10.1111/nph.15922
+- Hikino K, Hesse BD, Gebhardt T, Hafner BD, Buchhart C, et al. (2026). Drought legacy in mature spruce alleviates physiological stress during recurrent drought. *Plant Biol* 28:637-648. doi:10.1111/plb.70039
+- Hochachka PW, Buck LT, Doll CJ, Land SC (1996). Unifying theory of hypoxia tolerance: molecular/metabolic defense and rescue mechanisms for surviving oxygen lack. *PNAS* 93:9493-9498. doi:10.1073/pnas.93.18.9493
+- Ibaraki T, Katoh N (1988). *Resource Allocation Problems: Algorithmic Approaches*. MIT Press, Cambridge, MA.
+- Kooijman SALM (2010). *Dynamic Energy Budget Theory for Metabolic Organisation*, 3rd edn. Cambridge University Press. doi:10.1017/CBO9780511805400
+- Krieger M (1921). As cited in Peters and Langemann (2009); original not read.
+- Lee H-C, Park Y, Yoon SB, Yang SM, Park D, Jung C-W (2022). VitalDB, a high-fidelity multi-parameter vital signs database in surgical patients. *Sci Data* 9:279. doi:10.1038/s41597-022-01411-5
+- Marcelis LFM, Heuvelink E (2007). Concepts of modelling carbon allocation among plant organs. In: Vos J, Marcelis LFM, de Visser PHB, Struik PC, Evers JB (eds) *Functional-Structural Plant Modelling in Crop Production*. Springer, pp 103-111. doi:10.1007/1-4020-6034-3_9
+- Minchin PEH, Thorpe MR, Farrar JF (1993). A simple mechanistic model of phloem transport which explains sink priority. *J Exp Bot* 44:947-955. doi:10.1093/jxb/44.5.947
+- Noakes TD (2012). Fatigue is a brain-derived emotion that regulates the exercise behavior to ensure the protection of whole body homeostasis. *Front Physiol* 3:82. doi:10.3389/fphys.2012.00082
+- Peters A, Schweiger U, Pellerin L, Hubold C, Oltmanns KM, Conrad M, Schultes B, Born J, Fehm HL (2004). The selfish brain: competition for energy resources. *Neurosci Biobehav Rev* 28:143-180. doi:10.1016/j.neubiorev.2004.03.002
+- Peters JMR, Choat B (2025). Out on a limb: testing the hydraulic vulnerability segmentation hypothesis in trees across multiple ecosystems. *Plant Cell Environ* 48:2162-2177. doi:10.1111/pce.15249
+- Peters A, Langemann D (2009). Build-ups in the supply chain of the brain: on the neuroenergetic cause of obesity and type 2 diabetes mellitus. *Front Neuroenergetics* 1:2. doi:10.3389/neuro.14.002.2009
+- Powers WT (1973). Feedback: beyond behaviorism. *Science* 179:351-356. doi:10.1126/science.179.4071.351
+- Sadid S, Eden MJ, Mobin FU, Gomez MK, Januszko S, et al. (2026). Calibration of a closed-loop model of porcine aortic hemodynamics during hemorrhage. *bioRxiv* preprint. doi:10.64898/2026.01.30.702699
+- Scully CG, Daluwatte C, Marques NR, Khan M, Salter M, Wolf J, et al. (2016). Effect of hemorrhage rate on early hemodynamic responses in conscious sheep. *Physiol Rep* 4:e12739. doi:10.14814/phy2.12739
+- Shephard RJ (2009). Is it time to retire the "central governor"? *Sports Med* 39:709-721. doi:10.2165/11315130-000000000-00000
+- Sherbrooke CC (1968). METRIC: a multi-echelon technique for recoverable item control. *Oper Res* 16:122-141. doi:10.1287/opre.16.1.122
+- Sprengell M, Kubera B, Peters A (2021). Brain more resistant to energy restriction than body: a systematic review. *Front Neurosci* 15:639617. doi:10.3389/fnins.2021.639617
+- Sterling P (2012). Allostasis: a model of predictive regulation. *Physiol Behav* 106:5-15. doi:10.1016/j.physbeh.2011.06.004
+- Straub RH (2014). Insulin resistance, selfish brain, and selfish immune system: an evolutionarily positively selected program used in chronic inflammatory diseases. *Arthritis Res Ther* 16(Suppl 2):S4. doi:10.1186/ar4688
