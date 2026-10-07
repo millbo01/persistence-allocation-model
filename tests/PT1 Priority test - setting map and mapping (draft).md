@@ -69,6 +69,10 @@
 - **G25 contrast.** The class gap is larger where the council's real funding fell more (scarcity reveals the order).
 - **Strict against shared (secondary, not scored).** Did C lines absorb whole cuts before A lines lost anything (strict), or did all classes lose in proportion (shared)?
 
+## Decided (James, 7 October 2026): D1 to D6, all as recommended
+
+Carried into tests/PT1 Priority test - pre-registration.md.
+
 ## 4. Decisions for James
 
 | No. | Decision | Claude's recommendation |
