@@ -1,0 +1,27 @@
+{
+  "Q1_starvation_models": {
+    "string": "(starvation OR fasting OR \"caloric restriction\" OR \"food deprivation\" OR \"energy restriction\") AND (\"organ mass\" OR \"organ masses\" OR \"organ weight\" OR \"organ weights\" OR \"organ size\") AND (model OR mathematical OR simulation OR computational)",
+    "count": 454,
+    "retrieved": 454
+  },
+  "Q2_haemorrhage_models": {
+    "string": "(haemorrhage OR hemorrhage OR \"blood loss\" OR hypovolemia OR hypovolaemia OR \"lower body negative pressure\") AND (\"regional blood flow\" OR \"blood flow distribution\" OR \"flow redistribution\" OR \"organ perfusion\" OR \"organ blood flow\") AND (\"mathematical model\" OR \"computational model\" OR \"simulation model\" OR \"lumped parameter\" OR \"compartment model\" OR \"closed-loop model\")",
+    "count": 502,
+    "retrieved": 502
+  },
+  "Q3_chossat": {
+    "string": "Chossat",
+    "count": 75,
+    "retrieved": 75
+  },
+  "Q4_guyton_hummod": {
+    "string": "((Guyton[tiab] AND model[tiab]) OR HumMod[tiab] OR \"integrative physiological model\"[tiab]) AND (hemorrhage OR haemorrhage OR starvation OR fasting OR \"blood loss\")",
+    "count": 77,
+    "retrieved": 77
+  },
+  "Q5_order_of_organ_loss": {
+    "string": "(\"order of\" OR hierarchy OR hierarchical OR priority OR prioritisation OR prioritization) AND (organ OR organs OR tissue OR tissues) AND (starvation OR \"organ wasting\" OR \"tissue loss\" OR \"mass loss\") AND (model OR theory)",
+    "count": 173,
+    "retrieved": 173
+  }
+}
