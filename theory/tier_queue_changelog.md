@@ -6,6 +6,13 @@ The history of the canonical model (theory/TIER_QUEUE_MODEL_v*.md), moved out of
 
 The model is now called **the Persistence Allocation Model** (formerly the tier-queue model). The name changes from now on. File names, engine names (tq_*, TQ runs) and frozen documents, including the H1 VitalDB pre-registration, keep the old name.
 
+## v0.18 corrected again, from the maths (James approved, 7 October 2026)
+
+Raised while writing theory/PAM_math_v0.18.md (flags 1 to 3). James's answers:
+1. **Resources are a flow.** A part draws what its access allows and its work can use; what it does not draw stays in the flow. There is no leftover to return. (Maths only; the v0.18 text already says the allocation is the resulting flow.)
+2. **Repair is governed like any part,** by access, signals and state. There is no separate funding of rebuilding. (Maths only.)
+3. **Exported load is residue, not a resource term.** The central claim and Sections 6 and 7 no longer list export as a way the resource gap is met. A commitment the system sheds shows as unmet load at the part whose work was shed, and the work not done, landing on another system, is residue. The resource ledger's only boundary term is resource drawn in from outside.
+
 ## v0.18 corrected (James approved, 7 October 2026)
 
 **Consistency fixes, no change of content,** from GPT's review of the canonical text (raw/2026-10-07_chatgpt_v018-canonical-review.md). Claude agreed with all of them.

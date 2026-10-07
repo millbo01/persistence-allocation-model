@@ -1,6 +1,6 @@
 # The Persistence Allocation Model, v0.18 (canonical state, 6 October 2026)
 
-**Status:** working model (phase 3). **The vocabulary is frozen** (James approved v0.18, 6 October 2026). **Corrected 7 October 2026** (James approved): three consistency fixes and one open question logged, no change of content. See the changelog. The probing phase is over. No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
+**Status:** working model (phase 3). **The vocabulary is frozen** (James approved v0.18, 6 October 2026). **Corrected 7 October 2026** (James approved): three consistency fixes and one open question logged, no change of content; and a second correction from the maths (exported load is residue, not a resource term; resources are drawn from a flow). See the changelog. The probing phase is over. No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
 
 **The single reference** for the model as it stands.
 - **History:** theory/tier_queue_changelog.md.
@@ -26,7 +26,7 @@
 | 10 | **Extension layer, proposed (Section 15): nested systems.** A component is a nested system when it has its own loop regulating its own access. People in institutions are systems attached to roles. Capture is an embedded system changing the signals or gates that set its own access. Used only with a mapping guard | Reduced C |
 | 11 | **New predictions:** G24 (cascade along saturated substitutes); G25 (order of sacrifice predicted from documented access) | From F1, F3 |
 | 12 | **Revision 2. Shortfall from either side.** The central claim says "when the resources available fall short of what the reference state requires", in place of "when supply falls short". Scarcity can come from falling supply or rising requirement (work, repair, pregnancy, infection) | GPT review, point 1 |
-| 13 | **Revision 2. Two ledgers, not one.** The **resource ledger** accounts for the gap between reference requirement and supply: store draw + unmet reference allocations (the local loads) + boundary terms. The **state ledger** records what the unmet allocations leave behind (residue). Residue is a consequence of load, not a further destination for it; revision 1 added it to the same sum and so counted the deficit twice | GPT review, point 2 |
+| 13 | **Revision 2. Two ledgers, not one.** The **resource ledger** accounts for the gap between reference requirement and supply: store draw + unmet reference allocations (the local loads) + resource drawn in from outside the boundary. The **state ledger** records what the unmet allocations leave behind (residue). Residue is a consequence of load, not a further destination for it; revision 1 added it to the same sum and so counted the deficit twice | GPT review, point 2 |
 | 14 | **Revision 2. Rank is per resource.** Each resource r has its own order of sacrifice πᵣ. Where the orders coincide, a single "rank" is shorthand | GPT review, point 3 |
 | 15 | **Revision 2. The governor does not switch units.** It sets access; units switch when the resulting flow crosses their local thresholds (units change only through supply). If direct state signals are ever needed, the part's state function would take the governor's signal as an input: that would be a new mechanism, under the standing check | GPT review, point 4 |
 | 16 | **Revision 2. Damage enters from outside.** Trauma, toxins and pathogens enter as an exogenous loss of units or of pathway capacity; the model handles the resource consequences. No damage mechanism is added | GPT review (damage) |
@@ -36,7 +36,7 @@
 
 **Central claim** (v0.18. It is v0.17's approved wording with these changes: the governor regulates access (F1), part death (A6), access in place of allocation where the mechanism is described, and, in revision 2, shortfall from either side and "a system that regulates its own persistence"):
 
-> In a system that regulates its own persistence, a governor holds the levels its persistence depends on by regulating access to finite shared resources among parts that have no demand of their own; the allocation among parts is the resulting flow. Each part works to the limit of the scarcest resource that reaches it. When the resources available fall short of what the reference state requires, whether supply falls or requirement rises, the governor draws its stores, and lower-ranked parts lose access first and switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: the resource gap is met from stores, met or exported across the boundary, or left unmet at a named part, and unmet load leaves its residue in switched-off, lost or scarred units. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Repair is its own network, governed like any part: under a sustained shortfall it loses access and lost units wait. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. A part dies only when its route back is cut; the system dies when load reaches the top or a non-bypassable link is cut.
+> In a system that regulates its own persistence, a governor holds the levels its persistence depends on by regulating access to finite shared resources among parts that have no demand of their own; the allocation among parts is the resulting flow. Each part works to the limit of the scarcest resource that reaches it. When the resources available fall short of what the reference state requires, whether supply falls or requirement rises, the governor draws its stores, and lower-ranked parts lose access first and switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: the resource gap is met from stores, met from outside the boundary, or left unmet at a named part, and unmet load leaves its residue in switched-off, lost or scarred units, or in work not done, which may land across the boundary. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Repair is its own network, governed like any part: under a sustained shortfall it loses access and lost units wait. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. A part dies only when its route back is cut; the system dies when load reaches the top or a non-bypassable link is cut.
 
 ## 2. Scope
 
@@ -169,15 +169,15 @@
   - **The resource ledger** (per resource, in units of that resource). The gap between the reference requirement and supply equals:
     - store draw;
     - plus the unmet reference allocations (the sum of the local loads ℓᵢᵣ);
-    - plus boundary terms (resource drawn in from outside the boundary, or requirement exported across it).
+    - plus resource drawn in from outside the boundary.
 
-    **Every unit of gap is accounted for:** carried by a store, met from outside, exported, or left unmet at a named part.
+    **Every unit of gap is accounted for:** carried by a store, met from outside, or left unmet at a named part. **Exported load is not a resource term:** a commitment the system sheds shows as unmet load at the part whose work was shed, and the work not done, landing on another system, is residue (the state ledger). The reference allocation is never redefined to make an export disappear.
   - **The state ledger** (in units of state). What each unmet allocation leaves behind: units switched off, lost or scarred, and the work not done. **Residue is a consequence of load, not a further destination for it.** It is never added to the resource ledger.
   - **Load passing on:** where a part's unmet allocation reduces its output, parts depending on that output lose capacity. That is load moving through a dependency, counted at the receiving part.
 - **A shortfall can come from supply falling or requirement rising.**
 
 **Movement and failure.**
-- **Load is relocated, never removed.** The resource gap is met from stores, met or exported across the boundary, or left unmet at a named part. Unmet load leaves its residue in switched-off, lost or scarred units (the state ledger).
+- **Load is relocated, never removed.** The resource gap is met from stores, met from outside the boundary, or left unmet at a named part. Unmet load leaves its residue in switched-off, lost or scarred units, or in work not done, which may land across the boundary on another system (the state ledger).
 - **Load backs up a dependency:** a part limited by throughput leaves work undone, and parts depending on its output lose capacity.
 - **Coupling is shared dependency.** Parts sharing an input, a stressor, a store or repair machinery move together (G18).
 - **Pathways and severance.**
@@ -196,7 +196,7 @@
 
 **Unchanged from v0.17, Section 6,** with one change: **the ledger is now an identity.** Per resource:
 - supply in plus stores drawn = work done + maintenance and renewal + reactivation and rebuilding + stores refilled + spill;
-- against the reference allocation, the resource ledger: gap = store draw + unmet reference allocations + boundary terms;
+- against the reference allocation, the resource ledger: gap = store draw + unmet reference allocations + resource drawn in from outside;
 - separately, the state ledger: the residue each unmet allocation leaves (Section 6).
 
 ## 8. Mapping a system
