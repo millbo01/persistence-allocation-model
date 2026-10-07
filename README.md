@@ -8,6 +8,7 @@ This repository is the record behind the paper. It was extracted from the author
 - **The paper:** `papers/pam-model/08 Paper draft 3.md`.
 - **The supplement:** `papers/pam-model/03 Supplement draft 1.md`.
 - **The citation check:** `papers/pam-model/04 Citation check.md`.
+- **The paper as posted to SSRN** (the paper with the supplement appended, as a PDF): `papers/pam-model/From cells to councils.pdf`, built from the two Markdown files by `scripts/build_pdf.py`.
 - **The model:**
   - the current version, `theory/PERSISTENCE_ALLOCATION_MODEL_v0.19.md`;
   - the two versions the held-out tests were derived from: `theory/TIER_QUEUE_MODEL_v0.17.md` for H1 and `theory/PERSISTENCE_ALLOCATION_MODEL_v0.18.md` for PT1.
@@ -78,10 +79,10 @@ Both held-out tests were adjudicated blind against fixed rules (`tests/ADJUDICAT
   - `raw/2026-10-07_chatgpt_H1-VDB-ADJ1.md`;
   - `raw/2026-10-07_chatgpt_PT1-ADJ1.md`.
 
-## The first author's earlier framework
+## The author's earlier framework
 
-The work began from the first author's earlier framework for institutions, dated 27 September 2026.
-- **It is held privately** and is available from the first author on request.
+The work began from the author's earlier framework for institutions, dated 27 September 2026.
+- **It is held privately** and is available from the author on request.
 - **Fingerprints:** the SHA-256 of each of its files, as held in the working repository, is listed below. These match the values recorded when the files were exported on 2 October 2026.
 - **Checking a copy:** a copy supplied on request can be checked against these values.
 
@@ -117,6 +118,12 @@ The work began from the first author's earlier framework for institutions, dated
 | 28 | 3931948fb9ddd01696156d104eba7b723e4213c651b5a931fdc7fc11137bc80d |
 | 29 | 2f8e9affcc0305d63a9fd045d453c9671171dec15d85c1e93072143cdf91a572 |
 | Manifest | 2f1c4f8323822c85328e540a4d7df23e491c90223bd15828b3f4a3a41fde9383 |
+
+## Archives
+
+- **Zenodo** (the files at each release): concept DOI 10.5281/zenodo.23222615, which always resolves to the latest version.
+- **Software Heritage** (the full commit history with its dates): snapshot swh:1:snp:cbdafe9b4e6c27ea5f2ce307d86ebcd49ca11fcf, taken on 7 October 2026 after release v1.1.
+- **SSRN:** the paper was posted there on 7 October 2026 (release v1.2 matches the posted version).
 
 ## Licence
 

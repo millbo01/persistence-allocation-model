@@ -6,7 +6,7 @@
 
 ## Abstract
 
-Under scarcity, allocation is zero-sum. In a system short of a resource, no ordering of access reduces the total shortfall; it only decides which part carries it, and correcting a deficit at one part without adding resource moves it to another. The exceptions are few and can be named in advance. We state this as a conservation law and derive it from a general model of how systems that must persist ration finite resources. The model's architecture, a regulator ranking access to a shared flow and parts going short in reverse rank, has been built separately in at least four fields: organism energetics, the Selfish Brain account of human metabolism, cell bioenergetics and plant carbon allocation. None has been carried beyond its own domain. We reached the same architecture from principles about institutions and state it once for all of them. From the general form follow results none of these models states formally, including why a steady reading carries no information about strain beneath it, the reserve left at the point of failure, when the speed of a decline causes lasting damage, and when rerouting overloads a route despite spare capacity. Of two pre-registered, blind-adjudicated tests, a predicted early warning before haemorrhagic decompensation failed. The prediction that the order of loss follows access documented in advance was supported, at reduced weight, in English council spending, though the version tied to the depth of funding cuts was not. We state what would refute the model.
+Under scarcity, allocation is zero-sum. In a system short of a resource, no ordering of access reduces the total shortfall; it only decides which part carries it, and correcting a deficit at one part without adding resource moves it to another. The exceptions are few and can be named in advance. We state this as a conservation law and derive it from a general model of how systems that must persist ration finite resources. The model's architecture, a regulator ranking access to a shared flow and parts going short in reverse rank, has been built separately in at least four fields: organism energetics, the Selfish Brain account of human metabolism, cell bioenergetics and plant carbon allocation. We found none carried beyond its own domain. We reached the same architecture from principles about institutions and state it once for all of them. From the general form follow results none of these models states formally, including why a steady reading carries no information about strain beneath it, the reserve left at the point of failure, when the speed of a decline causes lasting damage, and when rerouting overloads a route despite spare capacity. Of two pre-registered, blind-adjudicated tests, a predicted early warning before haemorrhagic decompensation failed. The prediction that the order of loss follows access documented in advance was supported, at reduced weight, in English council spending, though the version tied to the depth of funding cuts was not. We state what would refute the model.
 
 ## 1. Introduction
 
@@ -46,7 +46,7 @@ Of the results we derive from the general form, eight are stated formally by non
 
 **Organism energetics.** Dynamic Energy Budget (DEB) theory is the architecture for whole organisms (Kooijman 2010). It ranks the uses of reserve, paying somatic maintenance before growth and reproduction (the κ rule). It releases reserve in proportion to its content, shrinks structure when reserve cannot pay maintenance, and treats defence as "more facultative" than somatic maintenance. It conserves mass and energy. It ranks uses, not organs; it keeps no ledger of unmet requirement; and it allocates no repair, since damage in DEB is irreparable. We import four of its forms (Section 3.2).
 
-**The brain.** The Selfish Brain theory is the architecture in human metabolism, with the brain as both the protected consumer and the regulator of the body's energy supply (Peters et al. 2004). The brain gives priority to its own supply by inhibiting glucose uptake into muscle and fat. In later formulations it suppresses insulin, closing the insulin-dependent route into muscle and fat while drawing through an insulin-independent one. This is set out as an energy-conserving supply-chain model (Peters and Langemann 2009), and a brain-centred compartment model has been analysed formally (Göbel and Langemann 2011). Its order has survived pre-registered systematic review: under caloric restriction the brain lost almost no mass while the body lost a great deal (Sprengell, Kubera and Peters 2021). It is formal for two compartments and one resource. It has no order fixed in advance across many parts and no ledger.
+**The brain.** The Selfish Brain theory is the architecture in human metabolism, with the brain as both the protected consumer and the regulator of the body's energy supply (Peters et al. 2004). The brain gives priority to its own supply by inhibiting glucose uptake into muscle and fat. In later formulations it suppresses insulin, closing the insulin-dependent route into muscle and fat while drawing through an insulin-independent one. This is set out as an energy-conserving supply-chain model (Peters and Langemann 2009), and a brain-centred compartment model has been analysed formally (Göbel and Langemann 2011). Its order has survived pre-registered systematic review: under caloric restriction the brain lost almost no mass while the body lost a great deal (Sprengell, Kubera and Peters 2021a). It is formal for two compartments and one resource. It has no order fixed in advance across many parts and no ledger.
 
 **The cell.** In thymocytes the architecture was measured. A hierarchy of ATP consumers loses supply in order: macromolecule synthesis first, ion pumping later, proton leak last (Buttgereit and Brand 1995). It is a measurement, without a general model.
 
@@ -63,7 +63,7 @@ Of the results we derive from the general form, eight are stated formally by non
 
 **What the convergence shows.** These fields developed in separate literatures; none of the four cites another's allocation model. Their agreement is evidence that the architecture is real. It is not evidence that the results derived from it here are true: those stand or fall by test (Sections 4 and 5).
 
-Table 1 condenses the comparison; the full table, with sixteen theories, is Supplement S3.
+Table 1 condenses the comparison; the full table, with eighteen theories, is Supplement S3.
 
 **Table 1. Prior theories against the model's components** (F, formal; W, stated in words; E, measured, without a general model; p, partial or different form; blank, not found in what we read).
 
@@ -87,7 +87,11 @@ The general model, the Persistence Allocation Model, states the architecture as 
 
 Time runs in steps. In each step three functions apply:
 
-$$g(t)=G\big(\text{sensed state}(t),\ \text{environment}(t)\big),\quad a_{ir}(t)=\Phi_{ir}\big(\{U_r,\ \text{stores}\},\ \text{network},\ g(t),\ s_i(t)\big),\quad s_i(t+1)=F_i\big(s_i(t),\ \{a_{ir}(t)\}_r\big).$$
+$$g(t)=G\big(\text{sensed state}(t),\ \text{environment}(t)\big),$$
+
+$$a_{ir}(t)=\Phi_{ir}\big(\{U_r,\ \text{stores}\},\ \text{network},\ g(t),\ s_i(t)\big),$$
+
+$$s_i(t+1)=F_i\big(s_i(t),\ \{a_{ir}(t)\}_r\big).$$
 
 - **The governor** $G$ sets access, $g$: store release, intake, the capacity of pathways and gates, and the repair network's access. It does not set allocations, and it does not switch units. It is a function, not necessarily a place: a signal produced inside a part belongs to it.
 - **The network** $\Phi$ turns access into the realised flow $a_{ir}$ of resource $r$ to part $i$: physical in bodies (pressure over resistance; transporters), a budget in organisations.
@@ -146,11 +150,11 @@ The identity is elementary. Its content is the reference fixed in advance and ne
 
 **The silence and the break**
 
-**Proposition 2 (silence).** The top's draw is met if and only if $S\ge N$; every part's basal maintenance and every support part's draw is met if and only if $S\ge N+B+P$. Hence the record is flat this step and the next if and only if $\Gamma\le\sum_sd_s+M$.
+**Proposition 2 (silence).** The top's draw is met if and only if $S\ge N$; every part's basal maintenance and every support part's draw is met if and only if $S\ge N+B+P$. Hence the record is flat this step and the next if and only if $\Gamma\le\sum_sd_s+I+M$.
 
-Inside that region the record carries no information about load below the top. It breaks at two thresholds: at once, and one step later through dependency.
+Inside that region the record carries no information about load below the top. Outside input extends the silence exactly as a store does. It breaks at two thresholds: at once, and one step later through dependency.
 
-**Proposition 3 (store left at the break).** A constant gap $\Gamma$ per step is carried by one store from level $L_0$, with $M<\Gamma\le kL_0$. Under full release the record breaks when the store is empty, whatever $\Gamma$. Under proportional release it breaks when the store falls to $L^\ast=(\Gamma-M)/k$: **a faster shortfall leaves more of the store unused,** linearly, with slope $1/k$.
+**Proposition 3 (store left at the break).** A constant gap $\Gamma$ per step is carried by one store from level $L_0$, with no outside input, and $M<\Gamma\le kL_0$. Under full release the record breaks when the store is empty, whatever $\Gamma$. Under proportional release it breaks when the store falls to $L^\ast=(\Gamma-M)/k$: **a faster shortfall leaves more of the store unused,** linearly, with slope $1/k$.
 
 The intuitive rate-independence of the break holds only for full release. Under the default release, the reserve remaining at decompensation should rise with the rate of loss.
 
@@ -184,10 +188,11 @@ Failure while willing receivers are still supplied identifies a cut or narrowed 
 Cascades and steals are expected in physically divided networks (vessels, pipes, power lines) even with spare capacity, and in networks reallocated by choice (budgets, routers) only when total capacity is short. Subclavian steal and line-outage redistribution are instances of the first; a budget moved to a channel with room is the second.
 
 **Proposition 9 (collapse, not death).** A system outside its viable set is inside the capture basin (Aubin 1991), so in collapse rather than death, if:
-- supply can return to at least the top's need plus every surviving part's basal maintenance;
+- supply, including outside input, can return to and be held above the top's need, every surviving part's basal maintenance and, where the top depends on them, the support parts' draws, with a positive remainder for the repair network;
 - the top is not scarred below what the record requires;
 - every non-bypassable link the record depends on has capacity above zero or can be restored;
-- every part the record depends on has its template intact and a pathway for repair.
+- every part the record depends on has its template intact and a pathway for repair;
+- the repair network has positive capacity, or can itself be restored.
 
 The time to re-enter the viable set is at least the longest rebuild time among those parts. The conditions are measurable before the outcome.
 
@@ -300,8 +305,9 @@ The sheep result fits full release, or a store with turnover high relative to th
 - **G12 failed** its first held-out test, and **G25-C was not supported** (Section 5.1).
 - **Findings logged against the model, not yet weighed:**
   - autopsies after prolonged inanition (Krieger 1921, as cited by Peters and Langemann 2009) found heart, liver, pancreas and kidney all losing about 40% of their mass while the brain lost under 2%, with no order among the organs below the brain. Whether this conflicts with the model depends on the order fixed for energy and protein at a starvation mapping;
-  - in 12 Australian tree species, the predicted leaves-before-stems order of hydraulic failure (vulnerability segmentation) was "universally absent or negative" (Peters and Choat 2025);
-  - in mature spruce, an earlier drought eased physiological stress in a later one (Hikino et al. 2026), where a stressed start should fare worse.
+  - in 12 Australian tree species, the predicted leaves-before-stems order of hydraulic failure (vulnerability segmentation) was "universally absent or negative" (Peters and Choat 2025).
+
+- **Logged, explained in advance and checked:** in mature spruce, an earlier drought eased physiological stress in a later one (Hikino et al. 2026), where a stressed start should fare worse. The explanation named before checking, that the first drought cut leaf area and so the demand on the same water supply, holds: leaf area fell by 60% and was still 30% lower four years later. The finding is not counted against the model.
 
   Details and weights are in Supplement S7.
 
@@ -338,7 +344,7 @@ Anything chosen with the expected outcome in mind is declared fitted. **Where ac
 
 | Prediction | What a test needs | Where the data are |
 |---|---|---|
-| G25, order of loss from access | A held-out system the authors did not know in advance, with access documented before outcomes | Public budgets outside PT1's frame; hospital bed allocation; plant carbon labelling |
+| G25, order of loss from access | A held-out system not known in advance to the author or the AI collaborator, with access documented before outcomes | Public budgets outside PT1's frame; hospital bed allocation; plant carbon labelling |
 | G12, warning before the break | A test of the store's release profile in blood loss, with the mapping fault behind the first failure named in advance | A haemorrhage source not opened in H1 (graded-rate animal haemorrhage series; MIMIC waveform records of bleeding patients). Any retest in VitalDB counts at reduced weight |
 | Fixed against dynamic priority | Two recipients competing for the same scarce resource at the same time, with the governor's mode held constant | Council spending outside PT1's frame (English single-tier councils, 2014-15 to 2019-20): a later English period, or Scottish or Welsh councils; organ perfusion studies |
 | G3, the break and the rate of shortfall | The break defined in advance, at two or more rates, with the store's release measured | Graded-rate haemorrhage; fast and slow drought in one species |
@@ -354,8 +360,8 @@ A proposed extension treats components with their own access loops (a tumour; a 
 ## How this work was done
 
 The model was built in October 2026 by one author working outside academia, with an AI system (Claude, Anthropic) as collaborator for the mathematics, literature searches, numerical checks and drafting.
-- **Time-stamped record:** every version of the model, every prediction and every test rule is recorded, with its commit history, in a public repository archived on 7 October 2026 (Miller 2026; https://doi.org/10.5281/zenodo.23222615).
-- **Predictions first:** predictions were committed before sources or data were opened.
+- **Time-stamped record:** every version of the model, every prediction and every test rule is recorded, with its commit history, in a public repository archived on 7 October 2026 (Miller 2026; https://doi.org/10.5281/zenodo.23222615). Its full commit history is preserved in Software Heritage (swh:1:snp:cbdafe9b4e6c27ea5f2ce307d86ebcd49ca11fcf).
+- **Predictions first:** each check's and each test's predictions were committed before its sources or data were opened.
 - **Tests:** each held-out test was replicated by a different AI system (ChatGPT, OpenAI), which wrote its own analysis script without seeing the data or the results, and then adjudicated blind against rules fixed in advance by the same system, in a separate session with no shared context.
 
 The dated record of the model's development is in Supplement S11.
@@ -364,7 +370,7 @@ The dated record of the model's development is in Supplement S11.
 
 **Proposition 1.** Conservation within the step gives $U+I+\sum_sd_s=\sum_ia_i+R_{\text{unused}}$. With $\ell_i=[q^0_i-a_i]_+$, $\sum_i(q^0_i-a_i)=\sum_i\ell_i-X$. Hence $\sum_i\ell_i=\sum_iq^0_i-U-I-\sum_sd_s+R_{\text{unused}}+X$, the identity stated. Regime 1: $R_{\text{unused}}=0$ and $X=0$, so the total contains no access term. Regime 2: $X=0$ and $R_{\text{unused}}$ equals the resource the gate leaves unused. ∎
 
-**Proposition 2.** The top draws first, then all basal maintenance, then support parts. So the top is met if and only if $S\ge N$, and basal maintenance and supports if and only if $S\ge N+B+P$. The top's work next step falls only through its own units (impossible while it is met) or through dependency on supports (excluded when they are met). Since $\sum_iq^0_i=N+B+P+D_4$, $S\ge N+B+P$ is equivalent to $\Gamma\le\sum_sd_s+D_4$; without dependency, $M=D_4+P+B$. ∎
+**Proposition 2.** The top draws first, then all basal maintenance, then support parts. So the top is met if and only if $S\ge N$, and basal maintenance and supports if and only if $S\ge N+B+P$. The top's work next step falls only through its own units (impossible while it is met) or through dependency on supports (excluded when they are met). Since $\sum_iq^0_i=N+B+P+D_4$ and $S=U+I+\sum_sd_s$, $S\ge N+B+P$ is equivalent to $\Gamma\le\sum_sd_s+I+D_4$; without dependency, $M=D_4+P+B$. ∎
 
 **Proposition 3.** While $kL\ge\Gamma$ the store releases the whole gap, so $L$ falls by $\Gamma$ per step. Once $kL<\Gamma$ the store releases $kL$, $L$ falls by the factor $(1-k)$ per step, and $\Gamma-kL$ falls below the top. By Proposition 2 the record breaks at the first step with $\Gamma-kL>M$, that is $L<(\Gamma-M)/k$; in discrete time the level at the break lies in $((1-k)L^\ast,L^\ast]$. Under full release with rate at least $\Gamma$, the store carries the whole gap until empty, independent of $\Gamma$. ∎
 
@@ -378,7 +384,7 @@ The dated record of the model's development is in Supplement S11.
 
 **Proposition 8.** Placing the lost flow into surviving headroom succeeds exactly when the headroom suffices; in a general network this is max-flow min-cut. By example: routes with capacities 10, 4 and 10 carry 5, 3.9 and 5. Losing the first leaves headroom 5.1 for flow 5, but a split in proportion to capacity sends about 1.43 to the second route, which then carries 5.33 against capacity 4. At fixed supply, conservation at a junction means flow leaving one branch through a collateral is subtracted from it. ∎
 
-**Proposition 9.** Under the first condition, an access setting exists that meets the top and all basal maintenance (Proposition 2), so no further units are lost (Propositions 4 and 6). Under the others, the repair network can rebuild each needed part at its rebuild rate from what is left in the flow. The system therefore reaches the viable set in finite time and can stay there: membership of the capture basin. ∎
+**Proposition 9.** Under the first condition an access setting exists that fully funds the top, its supports and all basal maintenance (Proposition 2), so the top and its supports lose no further units (Propositions 4 and 6). Other parts may still lose units, but the record does not depend on them. The positive remainder funds the repair network, which under the remaining conditions rebuilds each needed part at its rebuild rate. The system therefore reaches the viable set in finite time and can stay there: membership of the capture basin. ∎
 
 **Proposition 10.** The intake is a support part, served in phase 3. A store's marginal value $c_S\rho(1-F(L))$ is non-increasing in $L$; greedy allocation by marginal value stops refilling where it falls to $V$, the stated quantile. Greedy allocation is optimal for separable concave value (Ibaraki and Katoh 1988). ∎
 
@@ -410,14 +416,14 @@ The dated record of the model's development is in Supplement S11.
 - Minchin PEH, Thorpe MR, Farrar JF (1993). A simple mechanistic model of phloem transport which explains sink priority. *J Exp Bot* 44:947-955. doi:10.1093/jxb/44.5.947
 - Noakes TD (2012). Fatigue is a brain-derived emotion that regulates the exercise behavior to ensure the protection of whole body homeostasis. *Front Physiol* 3:82. doi:10.3389/fphys.2012.00082
 - Peters A, Schweiger U, Pellerin L, Hubold C, Oltmanns KM, Conrad M, Schultes B, Born J, Fehm HL (2004). The selfish brain: competition for energy resources. *Neurosci Biobehav Rev* 28:143-180. doi:10.1016/j.neubiorev.2004.03.002
-- Peters JMR, Choat B (2025). Out on a limb: testing the hydraulic vulnerability segmentation hypothesis in trees across multiple ecosystems. *Plant Cell Environ* 48:2162-2177. doi:10.1111/pce.15249
 - Peters A, Langemann D (2009). Build-ups in the supply chain of the brain: on the neuroenergetic cause of obesity and type 2 diabetes mellitus. *Front Neuroenergetics* 1:2. doi:10.3389/neuro.14.002.2009
+- Peters JMR, Choat B (2025). Out on a limb: testing the hydraulic vulnerability segmentation hypothesis in trees across multiple ecosystems. *Plant Cell Environ* 48:2162-2177. doi:10.1111/pce.15249
 - Powers WT (1973). Feedback: beyond behaviorism. *Science* 179:351-356. doi:10.1126/science.179.4071.351
 - Sadid S, Eden MJ, Mobin FU, Gomez MK, Januszko S, et al. (2026). Calibration of a closed-loop model of porcine aortic hemodynamics during hemorrhage. *bioRxiv* preprint. doi:10.64898/2026.01.30.702699
 - Scully CG, Daluwatte C, Marques NR, Khan M, Salter M, Wolf J, et al. (2016). Effect of hemorrhage rate on early hemodynamic responses in conscious sheep. *Physiol Rep* 4:e12739. doi:10.14814/phy2.12739
 - Shephard RJ (2009). Is it time to retire the "central governor"? *Sports Med* 39:709-721. doi:10.2165/11315130-000000000-00000
 - Sherbrooke CC (1968). METRIC: a multi-echelon technique for recoverable item control. *Oper Res* 16:122-141. doi:10.1287/opre.16.1.122
-- Sprengell M, Kubera B, Peters A (2021). Brain more resistant to energy restriction than body: a systematic review. *Front Neurosci* 15:639617. doi:10.3389/fnins.2021.639617
+- Sprengell M, Kubera B, Peters A (2021a). Brain more resistant to energy restriction than body: a systematic review. *Front Neurosci* 15:639617. doi:10.3389/fnins.2021.639617
 - Sterling P (2012). Allostasis: a model of predictive regulation. *Physiol Behav* 106:5-15. doi:10.1016/j.physbeh.2011.06.004
 - Straub RH (2014). Insulin resistance, selfish brain, and selfish immune system: an evolutionarily positively selected program used in chronic inflammatory diseases. *Arthritis Res Ther* 16(Suppl 2):S4. doi:10.1186/ar4688
 

@@ -513,12 +513,37 @@ def check_P17_adequacy(trials=200):
     return bad
 
 
+# ---------- P2 (corrected): the silence condition in terms of the gap, with outside input I > 0 ----------
+def check_P2_gap(trials=2000):
+    """Record flat this step and next iff Gamma <= sum(d) + I + M, with M = D4 (top depends on supports)
+    or M = D4 + P + B (no dependency). Gamma = sum(q0) - U; S = U + I + sum(d)."""
+    bad = 0
+    for _ in range(trials):
+        top, basal, sup, ordn = rand_instance()
+        B, P, D4 = sum(basal), sum(sup), sum(ordn)
+        need = top + B + P + D4
+        U = random.uniform(0, need)
+        I = random.uniform(0, need - U)           # outside input, random and positive
+        d = random.uniform(0, max(0.0, need - U - I))
+        S = U + I + d
+        a_top, a_b, a_p, a_o, _ = draw(S, top, basal, sup, ordn)
+        gap = need - U
+        top_met = a_top >= top - TOL
+        sup_met = top_met and all(a >= x - TOL for a, x in zip(a_p, sup)) and all(a >= x - TOL for a, x in zip(a_b, basal))
+        if sup_met != (gap <= d + I + D4 + TOL):
+            bad += fail("P2 gap, dependency", f"gap={gap} d={d} I={I} D4={D4}")
+        if top_met != (gap <= d + I + D4 + P + B + TOL):
+            bad += fail("P2 gap, no dependency", f"gap={gap} d={d} I={I}")
+    return bad
+
+
 if __name__ == "__main__":
     total = 0
     for name, f in [("P1", check_P1), ("P2", check_P2), ("P3", check_P3), ("P4", check_P4), ("P5", check_P5),
                     ("P6", check_P6), ("P7", check_P7), ("P9", check_P9), ("P10", check_P10),
                     ("P11", check_P11), ("P13", check_P13), ("P16", check_P16), ("P17", check_P17), ("P18", check_P18),
-                    ("P1 general", check_P1_general), ("P17 adequacy", check_P17_adequacy)]:
+                    ("P1 general", check_P1_general), ("P17 adequacy", check_P17_adequacy),
+                    ("P2 gap with outside input", check_P2_gap)]:
         b = f()
         print(f"{name}: {'ok' if b == 0 else str(b) + ' failures'}")
         total += b

@@ -94,3 +94,19 @@
 - **None of the four cites another's allocation model.**
 - One incidental citation exists: Kooijman 2010 cites Porter and Brand (1993) on proton leak, which is not the allocation model.
 - **Draft 3 wording, under James's rule for the "none" case:** "These fields developed in separate literatures; none of the four cites another's allocation model."
+
+## Supplement references (assembly of S2 to S9, 7 October 2026)
+
+**Method:** as for the main text.
+- **Bibliographic details:** every reference cited only in the supplement was checked against Crossref, PubMed or OpenAlex: authors, year, title, journal, volume, pages and DOI. Titles and author lists were confirmed in full by DOI.
+- **Read levels:** stated where each source is used (S3, S6, S7, S8).
+- **Count:** 41 references, consolidated in the supplement's reference list. Main-text references are not repeated.
+
+**Corrections made during assembly:**
+- **Thornley 1972:** the transport-resistance model is "A balanced quantitative model for root:shoot ratios in vegetative plants" (doi:10.1093/oxfordjournals.aob.a084602), not the photosynthate-partitioning paper of the same year that a first query returned.
+- **Luria et al. 2012:** the fetal circulation model read in check 2 is *Med Eng Phys* 34:364-369 (PMID 21871834), not the 2012 IEEE conference paper by the same group.
+- **Göbel 2010 and 2011:** known item K1 is the main-text reference Göbel and Langemann 2011 (*Theory Biosci*, online 2010). The second Göbel model (H2) is Göbel, Langemann, Oltmanns and Chung 2010, *J Theor Biol*.
+- **The comparison table (S3)** has eighteen theories. The main text said sixteen; corrected to eighteen in the paper.
+- **Withdrawn, not cited:** unsourced "compatible" examples in the working prediction table (gut of pythons, migrating birds, hibernation, sudden against gradual cardiac ischaemia). S4 lists compatible observations only where a source is given.
+- **Cherel and Groscolas (1998):** congress proceedings, read through a summary of the online page. Cited as such.
+
