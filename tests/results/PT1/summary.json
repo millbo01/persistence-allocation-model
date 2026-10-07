@@ -1,0 +1,288 @@
+{
+  "prereg": "tests/PT1 Priority test - pre-registration.md",
+  "prereg_sha256_begins": "a4aab81d",
+  "code_sha256": "995abfc5949f07feb1a9cb0d0ad11357bc8f5071062e462accfa1396e4b25540",
+  "classification_sha256": "faf4587523c85a17461090a2a854b93ed17fb7de264b49ef49784da6fbfe1d52",
+  "implementation_notes": [
+    "Line names are normalised by lower-casing and removing every character that is not a letter or digit; the leading 'line NN' label, if present in a name, is removed before normalising.",
+    "Scope: classification rows in RO2, RO4, RO5, and RO3 lines 10 to 27 (children's social care), minus RO5 226 and 244. Sensitivity 1 adds RO3 60 (total adult social care); sensitivity 4 adds RO6 430, 441, 442, 460, 475.",
+    "A spending line is in scope if its normalised name equals the normalised name of an in-scope classification row in the same form; lines in the data with no such match are out of scope (counted).",
+    "Councils: la_type in UA, MD, LB; City of London and Isles of Scilly excluded; a council must have spending rows in all six years (same ONS code).",
+    "Duplicate names: if a normalised line name occurs more than once in the same council, year and form, that council's series for the line is dropped (counted); names must identify a line uniquely.",
+    "Series rules per council-line: positive nce in all six years; mean real nce over the window at least the minimum (GBP thousands, 2014-15 prices; primary 100, sensitivity 50 and 250).",
+    "Real terms: nce divided by cpi(year)/cpi(2014).",
+    "Client groups: RO3 children's social care 0_17; RO2 71 statutory concessionary fares 65plus; RO3 60 adult social care total 18plus; all others 'all'. RO2 71 is identified by its normalised name.",
+    "Outcome winsorised at the 1st and 99th percentiles of the pooled sample of the model being estimated.",
+    "Projected growth: ln(P(tau+h)/P(tau)) from the edition assigned to the budget year, tau = financial year start, h = 5 (sensitivity 5: h = 10; where an edition does not reach tau+10, the growth to its last year is scaled by 10/available years).",
+    "Fixed effects absorbed by alternating projections (convergence 1e-10 on the maximum change). Cluster-robust standard errors by council with the small-sample factor G/(G-1)*(N-1)/(N-K), K = estimated coefficients plus the number of line fixed effects (council-year effects are nested in clusters and not counted); t distribution with G-1 degrees of freedom.",
+    "PT1-S thresholds: the nine deciles of g_proj in the estimation sample; BIC = N ln(RSS/N) + k ln(N) computed on the fixed-effect-demeaned data, k = slope parameters (+1 for the threshold).",
+    "G25-C scarcity: minus the change in ln(real CSP per head of total population) from 2015-16 to 2019-20; the interaction is [A] x scarcity (scarcity's main effect is absorbed by council-year effects).",
+    "SS: council-years (2015-16 on) where total in-scope real nce fell from the year before; share in which any A-class series fell while the C-class series in that council kept more than half their 2014-15 real total.",
+    "Ambiguous candidates ordered A > B > C; 'lowest' takes the last (C-most) candidate, 'highest' the first."
+  ],
+  "counts": {
+    "spend_rows_out_of_scope": 238215,
+    "councils_single_tier_all_years": 121,
+    "councils_dropped": 338,
+    "lines_matched_all_years": 95,
+    "lines_dropped_not_all_years": [
+      "RO2:buslaneenforcement",
+      "RO5:allotments"
+    ],
+    "series_dropped_duplicate_names": 0,
+    "series_total": 11495,
+    "series_dropped_incomplete": 0,
+    "series_dropped_nonpositive": 6345,
+    "series_dropped_below_minimum": 443,
+    "series_kept": 4707
+  },
+  "PT1": {
+    "beta": 0.05365540857799718,
+    "se": 0.405347993914426,
+    "p_one_sided": 0.44745716288027115,
+    "p_two_sided": 0.8949143257605423,
+    "ci95": [
+      -0.7489054092123467,
+      0.8562162263683412
+    ],
+    "gamma_realised": -1.4359524435049635,
+    "N": 23373,
+    "councils": 121,
+    "lines": 93,
+    "verdict": "Inconclusive (insufficient precision)"
+  },
+  "G25": {
+    "delta_A": 0.046431357423042594,
+    "delta_B": 0.004061575033051625,
+    "p_A": 2.3461129093747666e-11,
+    "p_A_two_sided": 4.692225818749533e-11,
+    "p_B": 0.2723823686504416,
+    "p_A_minus_B": 1.2843724672153372e-08,
+    "N": 18905,
+    "councils": 121,
+    "verdict": "Supported",
+    "weight": 0.5
+  },
+  "G25_C": {
+    "interaction": 0.22466894673887297,
+    "se": 0.2481072495592643,
+    "p_one_sided": 0.18349919700630546,
+    "verdict": "Not supported",
+    "weight": 0.5
+  },
+  "SS": {
+    "council_years_with_fall": 349,
+    "share_A_fell_while_C_kept_over_half": 0.9684813753581661
+  },
+  "sensitivity": {
+    "1_adult_social_care_included": {
+      "PT1": {
+        "beta": 0.030108812448883096,
+        "se": 0.39474519649486517,
+        "p_one_sided": 0.46966404787406146,
+        "p_two_sided": 0.9393280957481229,
+        "ci95": [
+          -0.7514592043515428,
+          0.811676829249309
+        ],
+        "gamma_realised": -1.3003579213467602,
+        "N": 23974,
+        "councils": 121,
+        "lines": 94,
+        "verdict": "Inconclusive (insufficient precision)"
+      }
+    },
+    "2_long_difference": {
+      "beta": -2.593612839137705,
+      "se": 2.158818045477654,
+      "p_one_sided": 0.8839998537265303,
+      "N": 4626
+    },
+    "3_ambiguous_lowest": {
+      "delta_A": 0.03542457101391482,
+      "delta_B": 0.008922742262965721,
+      "p_A": 4.909679502822127e-09,
+      "p_A_two_sided": 9.819359005644254e-09,
+      "p_B": 0.07549310522955487,
+      "p_A_minus_B": 7.137052124717458e-05,
+      "N": 23535,
+      "councils": 121,
+      "verdict": "Supported",
+      "weight": 0.5
+    },
+    "3_ambiguous_highest": {
+      "delta_A": 0.04503967518803535,
+      "delta_B": 0.014301350972300416,
+      "p_A": 2.418115588507306e-10,
+      "p_A_two_sided": 4.836231177014612e-10,
+      "p_B": 0.013842692174815605,
+      "p_A_minus_B": 5.751497819811468e-07,
+      "N": 23535,
+      "councils": 121,
+      "verdict": "Supported",
+      "weight": 0.5
+    },
+    "4_RO6_client_lines": {
+      "PT1": {
+        "beta": 0.15208501178239747,
+        "se": 0.40500975898762903,
+        "p_one_sided": 0.35397226397503595,
+        "p_two_sided": 0.7079445279500719,
+        "ci95": [
+          -0.6498061243923203,
+          0.9539761479571154
+        ],
+        "gamma_realised": -1.4149001222380555,
+        "N": 24890,
+        "councils": 121,
+        "lines": 97,
+        "verdict": "Inconclusive (insufficient precision)"
+      },
+      "G25": {
+        "delta_A": 0.04409458293362392,
+        "delta_B": 0.0008623676756722472,
+        "p_A": 2.101831247306681e-11,
+        "p_A_two_sided": 4.203662494613362e-11,
+        "p_B": 0.4488630790760807,
+        "p_A_minus_B": 2.2326521089769482e-09,
+        "N": 20045,
+        "councils": 121,
+        "verdict": "Supported",
+        "weight": 0.5
+      }
+    },
+    "5_ten_year_projection": {
+      "PT1": {
+        "beta": 0.20126714161670248,
+        "se": 0.1917264021907188,
+        "p_one_sided": 0.14796849491159075,
+        "p_two_sided": 0.2959369898231815,
+        "ci95": [
+          -0.17833779153776622,
+          0.5808720747711712
+        ],
+        "gamma_realised": -1.6559703546572604,
+        "N": 23373,
+        "councils": 121,
+        "lines": 93,
+        "verdict": "Inconclusive (insufficient precision)"
+      }
+    },
+    "6_no_winsorising": {
+      "PT1": {
+        "beta": 0.06074448549428701,
+        "se": 0.4792098770557685,
+        "p_one_sided": 0.4496713857514108,
+        "p_two_sided": 0.8993427715028216,
+        "ci95": [
+          -0.8880577205042471,
+          1.009546691492821
+        ],
+        "gamma_realised": -1.3964256601246887,
+        "N": 23373,
+        "councils": 121,
+        "lines": 93,
+        "verdict": "Inconclusive (insufficient precision)"
+      },
+      "G25": {
+        "delta_A": 0.05004934522179264,
+        "delta_B": 0.006798635030074245,
+        "p_A": 1.330719028200012e-09,
+        "p_A_two_sided": 2.661438056400024e-09,
+        "p_B": 0.19252519021337108,
+        "p_A_minus_B": 5.224055158620636e-07,
+        "N": 18905,
+        "councils": 121,
+        "verdict": "Supported",
+        "weight": 0.5
+      }
+    },
+    "7_london_excluded": {
+      "PT1": {
+        "beta": 0.0030269172020732666,
+        "se": 0.6029156623470192,
+        "p_one_sided": 0.4980028143745409,
+        "p_two_sided": 0.9960056287490818,
+        "ci95": [
+          -1.1951412679281292,
+          1.201195102332276
+        ],
+        "gamma_realised": -2.0909255395193513,
+        "N": 17938,
+        "councils": 89,
+        "lines": 92,
+        "verdict": "Inconclusive (insufficient precision)"
+      },
+      "G25": {
+        "delta_A": 0.040973264162352634,
+        "delta_B": -0.0031309232739280685,
+        "p_A": 1.2776034560230581e-07,
+        "p_A_two_sided": 2.5552069120461163e-07,
+        "p_B": 0.6613907381413526,
+        "p_A_minus_B": 6.121869380534941e-08,
+        "N": 14590,
+        "councils": 89,
+        "verdict": "Partly supported",
+        "weight": 0.5
+      }
+    },
+    "8_minimum_50": {
+      "PT1": {
+        "beta": -0.029142906684090513,
+        "se": 0.4165820699082706,
+        "p_one_sided": 0.527827905383837,
+        "p_two_sided": 0.9443441892323261,
+        "ci95": [
+          -0.8539464131076542,
+          0.7956605997394732
+        ],
+        "gamma_realised": -1.4619930572781998,
+        "N": 24608,
+        "councils": 121,
+        "lines": 93,
+        "verdict": "Inconclusive (insufficient precision)"
+      },
+      "G25": {
+        "delta_A": 0.04894091675239158,
+        "delta_B": 0.00672204842076834,
+        "p_A": 1.9926749178856346e-11,
+        "p_A_two_sided": 3.985349835771269e-11,
+        "p_B": 0.171542112144042,
+        "p_A_minus_B": 1.9969097727415305e-08,
+        "N": 19725,
+        "councils": 121,
+        "verdict": "Supported",
+        "weight": 0.5
+      }
+    },
+    "8_minimum_250": {
+      "PT1": {
+        "beta": 0.0251378966417517,
+        "se": 0.4002300310302273,
+        "p_one_sided": 0.47501169970506274,
+        "p_two_sided": 0.9500233994101255,
+        "ci95": [
+          -0.7672897108220839,
+          0.8175655041055873
+        ],
+        "gamma_realised": -1.447944194309695,
+        "N": 19944,
+        "councils": 121,
+        "lines": 91,
+        "verdict": "Inconclusive (insufficient precision)"
+      },
+      "G25": {
+        "delta_A": 0.04729544286158426,
+        "delta_B": 0.006435413816461176,
+        "p_A": 1.3315673585250572e-11,
+        "p_A_two_sided": 2.6631347170501145e-11,
+        "p_B": 0.18904892419095526,
+        "p_A_minus_B": 2.1278617212104103e-07,
+        "N": 16325,
+        "councils": 121,
+        "verdict": "Supported",
+        "weight": 0.5
+      }
+    }
+  }
+}

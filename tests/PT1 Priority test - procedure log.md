@@ -136,3 +136,11 @@
 - **Proposed D-5 (awaiting James):** the parser keeps only E06, E08 and E09 codes in the Core Spending Power table (tests/scripts/pt1_parse.py, build_csp). The analysis code stays unchanged. No council in scope is affected. **Direction: neutral.** After the fix, data/pt1/tidy/csp.csv is rebuilt and its checksum replaced in the manifest, coverage of the 121 councils is checked, and the run is repeated once. Because attempt 1 produced no result, the repeat is not a choice among results.
 
 **D-5 approved by James and applied (7 October 2026).** data/pt1/tidy/csp.csv rebuilt: 635 rows, 127 codes, no duplicates. All 121 panel councils present, with no missing spending power cells. New checksum begins ba78a1e9; the other four tidy files are unchanged. Analysis code unchanged (995abfc5).
+
+## Step 7, attempt 2: the single run (7 October 2026)
+
+- **Command and code:** as attempt 1 (SHA-256 995abfc5, unchanged), on data/pt1/tidy after D-5. Exit 0. Output: tests/results/PT1/summary.json, run.log; results written up in tests/results/PT1/README.md.
+- **Computed verdicts (not adjudicated):** PT1 inconclusive (insufficient precision); PT1-S not run; G25 supported (half weight); G25-C not supported; SS descriptive.
+- **One warning** ("divide by zero encountered in log", in G25-C): traced by a diagnostic run (output to a scratch folder, not kept) to zero Core Spending Power for the Dorset reorganisation codes, none of which is in the panel. It does not reach any estimate.
+
+**Next:** step 9, computation replicated by a second model (prompt tests/prompts/PT1-R1.txt).
