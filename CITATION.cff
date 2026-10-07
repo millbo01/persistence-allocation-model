@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this record, please cite it as below."
+title: "Record for \"From cells to councils: a conservation law of allocation under scarcity\""
+type: dataset
+authors:
+  - family-names: Miller
+    given-names: James
+    affiliation: Independent researcher
+license: CC-BY-4.0
+repository-code: "https://github.com/millbo01/persistence-allocation-model"
+keywords:
+  - conservation law
+  - resource allocation
+  - scarcity
+  - pre-registration

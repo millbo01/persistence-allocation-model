@@ -1,0 +1,24 @@
+{
+  "title": "Record for \"From cells to councils: a conservation law of allocation under scarcity\"",
+  "description": "The record behind the paper \"From cells to councils: a conservation law of allocation under scarcity\": paper and supplement drafts, the Persistence Allocation Model documents and their earlier versions, derived propositions with a numerical check, literature searches, natural-system checks, and two pre-registered held-out tests (H1, VitalDB; PT1, English local government) with their pre-registrations, analysis code, results, replications and blind adjudications. Extracted from the author's working repository with commit history and dates preserved; see README.md.",
+  "upload_type": "dataset",
+  "creators": [
+    {
+      "name": "Miller, James",
+      "affiliation": "Independent researcher"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "keywords": [
+    "conservation law",
+    "resource allocation",
+    "scarcity",
+    "priority",
+    "persistence",
+    "pre-registration",
+    "dynamic energy budget",
+    "selfish brain",
+    "sink priority"
+  ],
+  "access_right": "open"
+}

@@ -107,6 +107,10 @@ The work began from the first author's earlier framework for institutions, dated
 | 29 | 2f8e9affcc0305d63a9fd045d453c9671171dec15d85c1e93072143cdf91a572 |
 | Manifest | 2f1c4f8323822c85328e540a4d7df23e491c90223bd15828b3f4a3a41fde9383 |
 
+## Licence
+
+Text, documents and data are under CC BY 4.0; code is under MIT. See LICENSE.md.
+
 ## How the work was done
 
 - **Authorship:** the model was built by one author working outside academia, with an AI system (Claude, Anthropic) as collaborator for the mathematics, literature searches, numerical checks and drafting.
