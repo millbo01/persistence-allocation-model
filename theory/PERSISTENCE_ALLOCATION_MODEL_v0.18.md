@@ -8,7 +8,7 @@
 - **The draft as approved:** theory/PERSISTENCE_ALLOCATION_MODEL_v0.18_DRAFT.md (revision 2), kept as the record.
 - **Sections marked "as v0.17"** refer to theory/TIER_QUEUE_MODEL_v0.17.md, which is kept unchanged.
 - **The reference implementation:** theory/sim/tq_units.py (frozen; a reduced form under v0.18, Section 11).
-- **Not yet updated for v0.18:** the maths (theory/tier_queue_math_v0.16.md) and the diagram. They are due at paper time.
+- **The maths:** theory/PAM_math_v0.18.md (step 1, restatement, 7 October 2026; six flags for James). The v0.16 maths is superseded. **The diagram** is not yet updated.
 
 ## Changes from v0.17
 
