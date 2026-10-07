@@ -88,7 +88,7 @@
 | Peters et al. 2004 (W2081119206) | 312 references (OpenAlex) | No. Only the authors' own group (Peters, Fehm, Born, Schultes and colleagues) |
 | Buttgereit and Brand 1995 (W2131651601) | 23 references | No. Only Brand's and Buttgereit's own work |
 | Minchin, Thorpe and Farrar 1993 (W2044548811) | 11 references | No. Only Farrar's, Minchin's and Lang and Thorpe's own work |
-| Kooijman 2010 (W572886679) | **None deposited** in OpenAlex or Crossref | **Not checked.** The publisher's page lists the book's index as a PDF (bio.vu.nl, Kooy2010_i.pdf). It was not downloaded, because a download needs James's approval |
+| Kooijman 2010 (W572886679) | **None deposited** in OpenAlex or Crossref | **Not checked yet.** Kooy2010_i.pdf, downloaded with James's approval on 7 October (1.4 MB), is the book's "Summary of concepts", not an index. It has no reference list, and it mentions none of the other three groups. The author's site also hosts the full text (Kooy2010.pdf, 16 MB). That file holds the reference list; it is not downloaded, pending James's approval |
 
 **Result:**
 - No cross-citation among the three that could be checked. Kooijman 2010 is unchecked.

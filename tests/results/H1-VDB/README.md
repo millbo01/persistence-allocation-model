@@ -72,3 +72,5 @@ The pre-registration fixed these weights and biases before the data:
 - **The high-loss threshold dropped to 15%.**
 
 Under the standing check, a "Fails" verdict, once adjudicated, is logged in the model's Section 10. The release-profile mapping for blood loss under anaesthesia is the first candidate for revision. No new mechanism is added.
+
+**Session record (James, 7 October 2026):** ChatGPT's memory was off for the replication (R1) and the adjudication (ADJ1), so the two sessions shared no context.
