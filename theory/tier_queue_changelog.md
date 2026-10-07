@@ -342,3 +342,12 @@ James approved three wording additions from the Perplexity post-v0.18 report (pr
 2. **Mode held constant** (Section 4, item 2): a change of allocation between conditions is not evidence of rank reversal if the governor mode also changes.
 3. **Repair capacity as a state** (Section 3, the repair network): primed, reduced, impaired or shared.
 No new mechanism. Remodelling against deterioration folded into the v0.19 item on economising as a magnitude.
+
+## Maths v0.18, amended: four forms imported from DEB (7 October 2026)
+
+James approved four imports from Dynamic Energy Budget theory into theory/PAM_math_v0.18.md (reading: theory/PAM_DEB_reading.md). Forms only; no parameter values carried over. Each keeps the earlier form as a special case.
+1. **Store release proportional to content** (Section 3): rho_s = k^E_s L_s, DEB's derived mobilisation rule; the knee kept as the engine form; full release until empty kept as the alternative profile, which DEB shows can follow a mode (pond snails, photoperiod).
+2. **Spill with a recovery fraction** (Section 3): a share phi_r of undrawn flow refills the stores, the rest is spilled; phi_r = 1 is the earlier rule.
+3. **Unmet basal upkeep paid from the part own units** (Section 5): u_i = [kappa^b n_i - a^b]_+ / (kappa^b + m_i/y_i); m_i -> 0 gives the earlier rule (unfunded share lost). A first draft of this formula did not reduce to the earlier rule and was corrected before commit.
+4. **Synthesising-unit kinetics as the general form of the law of the minimum** (Section 2); the minimum stays the default reduced form. At equal co-limitation by two resources the SU gives two-thirds of the minimum. SUs do not cover sharing across parts; the MRAP guard is unchanged.
+Results R4 and R5 carry a note for the new default release. The frozen engine does not have these forms (flag 7).
