@@ -62,3 +62,21 @@ Strand C is therefore of limited sensitivity, as the protocol requires.
 - the OpenAlex part of strand D, after the daily budget resets (midnight UTC), screened the same way;
 - the five CHECK records, from full text;
 - confirming why held-out item H1 was missed.
+
+## Update (7 October 2026, third session): CHECK records resolved; H1 diagnosed in part
+
+**The five CHECK records:** resolved in check_records_resolved.md.
+- 3 read in full and included: the tilt model (I-access), spreading depression (I-emergent) and GLUT1 deficiency (I-emergent, weak).
+- 1 included provisionally from its abstract (the 0 g to 3 g model, I-access; paywalled).
+- 1 probable exclude from its abstract (the leptin glucoregulation model; paywalled).
+
+**Strand D (PubMed part) now has 16 includes.**
+
+**Why held-out H1 (Thornley 1972) was missed, so far:**
+1. **Not in PubMed.** *Annals of Botany* 1972 has no PubMed records (a search for the journal and year returns 0), so only OpenAlex could find it.
+2. **Its title has none of strand C's terms.** The title is "A Balanced Quantitative Model for Root: Shoot Ratios in Vegetative Plants". It contains "model" but none of: sink priority, sink strength, assimilate partitioning, source-sink, phloem transport, transport-resistance, carbon allocation, carbon partitioning, dry matter partitioning. It speaks of root:shoot ratios.
+3. **Crossref holds no abstract** for it. Whether OpenAlex holds one is to be checked when the budget resets. If it does not, the miss is fully explained by vocabulary plus a title-only record.
+
+**Implication for strand C:** older, foundational plant models are described in root:shoot and growth vocabulary, not allocation vocabulary. This confirms the protocol's statement that strand C has limited sensitivity, and supports deviation D-1 (reviews).
+
+**Still blocked:** OpenAlex strand D and the H1 abstract check. The free budget was still exhausted at 13:37 UTC on 7 October; it resets at midnight UTC.
