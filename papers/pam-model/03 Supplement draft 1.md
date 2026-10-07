@@ -131,6 +131,7 @@ Cases whose direction fits a proposition but which cannot bear weight. They are 
 
 **What this is.** A dated record of the model's development, with the time stamps of each step. It is not evidence for the model.
 - **Sources:** the public repository's commit history, and the first author's earlier framework for institutions (dated 27 September 2026).
+- **The earlier framework** is held privately and is available from the first author on request. Its fingerprint (the SHA-256 of each file) is given in the public repository's README, so a copy supplied on request can be checked against it.
 - **Wording:** "first author" is the human author; "AI collaborator" is Claude (Anthropic).
 - **Rule:** convergence with earlier work is reported as convergence, never as a successful prediction.
 
