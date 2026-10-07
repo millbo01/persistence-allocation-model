@@ -354,7 +354,7 @@ A proposed extension treats components with their own access loops (a tumour; a 
 ## How this work was done
 
 The model was built in October 2026 by one author working outside academia, with an AI system (Claude, Anthropic) as collaborator for the mathematics, literature searches, numerical checks and drafting.
-- **Time-stamped record:** every version of the model, every prediction and every test rule is time-stamped in a public repository [link at submission].
+- **Time-stamped record:** every version of the model, every prediction and every test rule is recorded, with its commit history, in a public repository archived on 7 October 2026 (Miller 2026; https://doi.org/10.5281/zenodo.23222615).
 - **Predictions first:** predictions were committed before sources or data were opened.
 - **Tests:** each held-out test was replicated by a different AI system (ChatGPT, OpenAI), which wrote its own analysis script without seeing the data or the results, and then adjudicated blind against rules fixed in advance by the same system, in a separate session with no shared context.
 
@@ -406,6 +406,7 @@ The dated record of the model's development is in Supplement S11.
 - Krieger M (1921). As cited in Peters and Langemann (2009); original not read.
 - Lee H-C, Park Y, Yoon SB, Yang SM, Park D, Jung C-W (2022). VitalDB, a high-fidelity multi-parameter vital signs database in surgical patients. *Sci Data* 9:279. doi:10.1038/s41597-022-01411-5
 - Marcelis LFM, Heuvelink E (2007). Concepts of modelling carbon allocation among plant organs. In: Vos J, Marcelis LFM, de Visser PHB, Struik PC, Evers JB (eds) *Functional-Structural Plant Modelling in Crop Production*. Springer, pp 103-111. doi:10.1007/1-4020-6034-3_9
+- Miller J (2026). Record for "From cells to councils: a conservation law of allocation under scarcity" (dataset). Zenodo. doi:10.5281/zenodo.23222615 (all versions; v1.0 is doi:10.5281/zenodo.23222616)
 - Minchin PEH, Thorpe MR, Farrar JF (1993). A simple mechanistic model of phloem transport which explains sink priority. *J Exp Bot* 44:947-955. doi:10.1093/jxb/44.5.947
 - Noakes TD (2012). Fatigue is a brain-derived emotion that regulates the exercise behavior to ensure the protection of whole body homeostasis. *Front Physiol* 3:82. doi:10.3389/fphys.2012.00082
 - Peters A, Schweiger U, Pellerin L, Hubold C, Oltmanns KM, Conrad M, Schultes B, Born J, Fehm HL (2004). The selfish brain: competition for energy resources. *Neurosci Biobehav Rev* 28:143-180. doi:10.1016/j.neubiorev.2004.03.002
