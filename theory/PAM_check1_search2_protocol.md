@@ -65,3 +65,26 @@ As search 1 (codes I-access, I-fixed, I-emergent, F, E, X1 to X6), with one clar
 **Revision:** a fourth sub-query added to strand D. Strand C is unchanged.
 - PubMed D4: `"tumour-in-host"[tiab] OR "tumor-in-host"[tiab] OR ((energetics[tiab] OR "energy budget"[tiab] OR "energy demands"[tiab]) AND (tumour[tiab] OR tumor[tiab] OR organ[tiab] OR organs[tiab]) AND host[tiab] AND (model[tiab] OR models[tiab] OR mathematical[tiab]))`
 - OpenAlex D4, appended to the strand D string with OR: `("tumour-in-host" OR "tumor-in-host" OR ((energetics OR "energy budget" OR "energy demands") AND (tumour OR tumor OR organ OR organs) AND host AND (model OR models OR mathematical)))`
+
+## Deviation D-1 (James approved, 7 October 2026): strand C screened through reviews, not an exhaustive title pass
+
+**What changes:** the exhaustive title pass of strand C (11,175 titles) is stopped after 410 titles. It is replaced by a targeted reading of reviews of plant allocation models. Strand D is still screened in full, as the protocol says.
+
+**Why:**
+- The question strand C was built to answer is already answered. Formal models of allocation among plant organs are common, and at least one derives sink priority from transport properties (K3, Minchin et al. 1993; class I-access).
+- What the paper needs from this literature is the classes of model and their key works, not a count. Reviews of plant allocation models classify the models directly.
+- The exhaustive pass would cost about 680,000 tokens of reading to count instances of an answered question.
+
+**Direction:** neutral to conservative. It cannot hide a precedent's existence, which is already established; it might under-count instances.
+
+**Selection rule (fixed before any reviews are searched for or read):**
+1. **From the search records:** strand C titles matching, case-insensitively, (review OR overview OR "state of the art" OR "a search for principles" OR concepts OR theory) AND (allocation OR partitioning OR "source-sink" OR "source and sink" OR sink OR phloem). Claude reads the titles that match and selects those that review **models** of allocation among plant organs.
+2. **Hand-search, declared as such:** four reviews known to Claude in advance, added whether or not the search retrieved them:
+   - Lacointe (2000), carbon allocation among tree organs in functional-structural tree models (*Ann For Sci*);
+   - Génard et al. (2008), carbon allocation in fruit trees, from theory to modelling (*Ann Bot*);
+   - Franklin et al. (2012), modeling carbon allocation in trees: a search for principles (*Tree Physiol*);
+   - Minchin and Lacointe (2005), phloem physiology and modelling long-distance carbon transport (*New Phytol*).
+   
+   Whether each was retrieved by the search is reported.
+3. **Reading:** each selected review is read in full where open, otherwise its abstract only, and said so.
+4. **Extraction, for each review:** the classes of allocation model it names; how each class sets the order among organs under shortage (I-access, I-fixed or I-emergent); the key works cited for each class; and anything resembling PAM's ledger, repair or viability.
