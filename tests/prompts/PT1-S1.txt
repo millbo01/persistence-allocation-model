@@ -1,0 +1,64 @@
+PT1-S1: documentation of English local authority finance and related data, 2008 to 2021 (structure only; no data values)
+
+You are gathering published documentation about official datasets on English local government spending, funding, population projections and service demand. It is needed to design an analysis that will be fixed before anyone opens the data.
+
+FORMAT RULE: DO NOT WRITE AN INTRODUCTION, BACKGROUND OR ESSAY
+- Your output starts directly with item 1 below. After the numbered items come only the source list and the self-check.
+- Do not explain austerity, local government policy, the reasons for spending changes, or what any figure tends to show.
+
+STRICT RULE 1: STRUCTURE ONLY, NO DATA VALUES
+- Report only what is recorded, what each item is called, how it is defined, its units, its level (which councils, which geography), its frequency, the years covered, when each edition was published, and what changed in definitions over time.
+- Do NOT report any amounts, percentages, trends, rankings, averages, changes over time, or comparisons between councils or services. Do not report which services were cut, protected, grew or fell, by how much, or in which councils.
+- If a document shows example values, charts, tables of figures or summary statistics, do not repeat or describe them.
+- Do NOT report the findings, conclusions or titles of any study, report or article that analysed these data (for example by think tanks, audit bodies, academics or journalists). Do not list such studies at all.
+
+STRICT RULE 2: NOTHING INFERRED, NOTHING UNVERIFIED
+- Work only from documents you open now: official statistical releases and their technical or methodological notes, guidance notes for the data returns, data dictionaries, and official lists of statutory duties. If you cannot open a document, say so.
+- For every answer, give the document and section it comes from. If something is not stated, write "not stated". Do not estimate or guess.
+
+QUESTIONS
+
+1. REVENUE SPENDING BY SERVICE (England, local authorities)
+   a. The official returns that record each council's revenue spending by service: the actual spending returns (Revenue Outturn, the RO forms) and the budget returns made before the year (Revenue Account budget, RA). For each: the exact name, the publisher, the years available from 2008-09 to 2020-21, the publication date of each year's edition, file formats, and where they are published.
+   b. The service categories and their sub-lines in each year (for example: education, highways and transport, children's social care, adult social care, public health, housing, cultural and related, environmental and regulatory, planning and development, police, fire, central services, other). Give the exact names, the codes or line numbers if stated, and the definition of each.
+   c. Which spending measures are recorded (for example gross expenditure, income, net current expenditure, total service expenditure) and their exact definitions. State which measure the guidance recommends for comparing services over time, if it says.
+   d. Every documented change to service categories or definitions between 2008-09 and 2020-21 (for example, public health responsibilities transferring to councils in 2013-14; changes to the treatment of schools and academies; the Better Care Fund; reclassification of lines). For each: the year, what changed, and which lines are affected.
+   e. Whether the data cover all councils, by type (county councils, shire districts, unitary authorities, metropolitan districts, London boroughs, the City of London, the Isles of Scilly), and which service categories each type is responsible for under two-tier arrangements.
+   f. Changes in the set of councils over the period (reorganisations, mergers, new unitary authorities, boundary changes), with the years, as documented.
+
+2. FUNDING (THE SCARCITY MEASURE)
+   a. The official measures of each council's core funding and spending power over the period (for example Settlement Funding Assessment, Revenue Support Grant, core spending power, formula grant before 2013-14). For each: exact name, definition, years available, publisher, level (per council), and documented changes in definition (for example the 2013-14 business rates retention reform).
+   b. Ring-fenced or specific grants that fund particular services over the period (for example the Dedicated Schools Grant, the public health grant, the Better Care Fund, the improved Better Care Fund, the social care grants and the adult social care precept). For each: exact name, which service it is tied to, the years it existed, and whether the outturn returns record spending funded by it separately.
+   c. The price index the official statistics use, or recommend, to express spending in real terms, if stated.
+
+3. POPULATION PROJECTIONS (THE EXPECTED FUTURE DEMAND)
+   a. The official subnational population projections for England published between 2008 and 2020 (each edition, for example 2006-based, 2008-based, 2010-based, 2011-based interim, 2012-based, 2014-based, 2016-based, 2018-based). For each edition: exact name, publisher, publication date, geography (local authority level?), the age groups and sex breakdown available, the projection horizon, file formats, and whether past editions remain available.
+   b. Whether the projections are produced for the same council geographies as the spending data, and how boundary changes are handled.
+   c. Any official household projections or projections of specific client groups (for example older people needing care, children) available at council level over the period, with the same details.
+
+4. CURRENT SERVICE DEMAND (BY SERVICE, BY COUNCIL, BY YEAR)
+   For each of the following, the official dataset that records demand or activity per council per year, with exact name, publisher, definition, unit, years covered, and documented breaks:
+   - adult social care clients or requests for support (for example the RAP returns before 2014-15 and SALT from 2014-15);
+   - children in need, child protection plans and children looked after;
+   - library visits or active users;
+   - road length or traffic for highways;
+   - homelessness acceptances or households in temporary accommodation;
+   - pupils or schools maintained by the council;
+   - population by age (mid-year estimates) at council level.
+
+5. STATUTORY AND DISCRETIONARY SERVICES
+   a. Any official list or review of councils' statutory duties published between 2008 and 2016 (for example the government review of statutory duties placed on local government around 2011). Give the exact name, publisher, date, how duties are listed or classified, and whether it maps duties to service categories or spending lines.
+   b. Any official guidance classifying services or spending lines as statutory, discretionary, or mixed, with the source and section.
+
+6. KNOWN LIMITATIONS
+   Documented data-quality notes for the spending returns and projections: revisions, late or missing returns, councils not submitting, known errors, comparability warnings across years or across council types, and accounting changes. Report the notes, not any figures.
+
+OUTPUT
+- A numbered list answering 1 to 6 (with their lettered parts), each answer with its document and section.
+- Then a list of every document you opened, with links.
+- Then a self-check, item by item:
+  - no introduction or background written;
+  - no data values, trends, comparisons or findings reported anywhere;
+  - no study, report or article analysing these data listed;
+  - every answer sourced or marked "not stated".
+  If any check fails, fix the output before finishing.

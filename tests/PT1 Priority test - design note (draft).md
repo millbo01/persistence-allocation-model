@@ -80,6 +80,12 @@ So a graded response that tracks expected value, with no declared role change, i
 - **Projected and current demand are correlated.** The test needs enough independent variation; the documentation run should report what is available.
 - **Accounting breaks** (the public-health transfer in 2013; the Better Care Fund) must be handled by rule, fixed before data.
 
+## Decided (James, 7 October 2026)
+
+- **Setting:** candidate 1, English local authorities.
+- **G25:** in the same dataset, at reduced weight (contamination declared).
+- **Next:** documentation prompt PT1-S1 (tests/prompts/PT1-S1.txt).
+
 ## 5. Decision for James
 
 1. **Which setting:** candidate 1 (councils, recommended), candidate 2 (graded photoperiod, if data exist), or both in sequence?
