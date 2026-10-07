@@ -53,14 +53,23 @@
 | Powers 1973 | Crossref, PubMed | Abstract | Hierarchical control |
 | Sadid et al. 2026 | PubMed | Abstract (preprint) | Renal before carotid resistance |
 | Scully et al. 2016 | Crossref | Full text | Sheep crossover figures |
-| Shephard 2009 | Crossref | Title only | Cited as a critique of the central governor model |
+| Shephard 2009 | Crossref, PubMed | Abstract (closed access) | Evidence for the central governor's corollaries lacking; an oxygen-consumption plateau argues against it |
 | Sherbrooke 1968 | Crossref | Not read (mathematical source) | METRIC |
 | Sprengell, Kubera and Peters 2021 | Crossref | Full text | Brain mass changes small against body under caloric restriction |
 | Sterling 2012 | Crossref | Abstract | Predictive, brain-led regulation |
 | Straub 2014 | PubMed | Full text | Immune and repair system as a second claimant |
 | Ghodsi et al. 2011 (S1) | OpenAlex | Not read (mathematical source) | Dominant Resource Fairness |
 
+**Read 7 October 2026 (abstracts; both closed access):**
+- **Shephard 2009:** the draft now states the critique as the abstract gives it.
+- **Rosso et al. 2012 (INSULINFARCT), Stroke 43:2343-2349:**
+  - **design:** 180 patients with hyperacute ischaemic stroke, randomised to intensive insulin or usual subcutaneous insulin for 24 hours;
+  - **glucose control:** better with intensive insulin (mean glucose below 7 mmol/L in 95.4% against 67.4%);
+  - **infarct growth:** larger with intensive insulin, a secondary outcome (median 27.9 against 10.8 cm³; P = 0.04);
+  - **three-month function:** identical (45.6% in both groups);
+  - **deaths:** 10% with intensive insulin against 15.6% with usual care, not reported as significant;
+  - **serious adverse events:** similar.
+  - **Use:** for James to decide (held example).
+
 **Still to do before submission:**
-- **Read Shephard 2009** beyond the title, if the critique is to be characterised further than "a critique".
-- **Read Rosso et al. 2012** before the held stroke example can be used.
 - **The supplement's assembly (S2 to S9)** will bring further citations; each is to be checked the same way.
