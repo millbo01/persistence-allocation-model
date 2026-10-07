@@ -52,3 +52,16 @@ As search 1 (codes I-access, I-fixed, I-emergent, F, E, X1 to X6), with one clar
 
 - theory/search_check1_s2/: raw records, deduplicated records, screening sheet, counts, known-item report.
 - The write-up goes into theory/PAM_open_checks.md, check 1.
+
+## Revision 1 (logged 7 October 2026, after run 1; the only revision allowed)
+
+**Run 1 known-item result:**
+- Design items K1, K2 and K3 were found; **K4 was missed.**
+- Held-out item H2 was found; **H1 was missed.** Strand C is therefore of limited sensitivity, and H1 is not used for any revision.
+- Run 1 outputs are kept in theory/search_check1_s2_run1/.
+
+**Diagnosis of K4** (its abstract read for this purpose, as a design item): it never uses "dynamic energy budget", "energy allocation" or "competition for energy". It calls itself a "tumour-in-host model" built on "the energetics of tumour and host". Strand D lacked the vocabulary of energetics.
+
+**Revision:** a fourth sub-query added to strand D. Strand C is unchanged.
+- PubMed D4: `"tumour-in-host"[tiab] OR "tumor-in-host"[tiab] OR ((energetics[tiab] OR "energy budget"[tiab] OR "energy demands"[tiab]) AND (tumour[tiab] OR tumor[tiab] OR organ[tiab] OR organs[tiab]) AND host[tiab] AND (model[tiab] OR models[tiab] OR mathematical[tiab]))`
+- OpenAlex D4, appended to the strand D string with OR: `("tumour-in-host" OR "tumor-in-host" OR ((energetics OR "energy budget" OR "energy demands") AND (tumour OR tumor OR organ OR organs) AND host AND (model OR models OR mathematical)))`

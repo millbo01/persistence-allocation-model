@@ -1,0 +1,49 @@
+{
+  "K1": {
+    "role": "design",
+    "expected_strand": "D",
+    "retrieved_by": [
+      "OpenAlex:D",
+      "PubMed:D"
+    ],
+    "found": true
+  },
+  "K2": {
+    "role": "design",
+    "expected_strand": "D",
+    "retrieved_by": [
+      "OpenAlex:D",
+      "PubMed:D"
+    ],
+    "found": true
+  },
+  "K3": {
+    "role": "design",
+    "expected_strand": "C",
+    "retrieved_by": [
+      "OpenAlex:C"
+    ],
+    "found": true
+  },
+  "K4": {
+    "role": "design",
+    "expected_strand": "D",
+    "retrieved_by": [],
+    "found": false
+  },
+  "H1": {
+    "role": "held-out",
+    "expected_strand": "C",
+    "retrieved_by": [],
+    "found": false
+  },
+  "H2": {
+    "role": "held-out",
+    "expected_strand": "D",
+    "retrieved_by": [
+      "OpenAlex:D",
+      "PubMed:D"
+    ],
+    "found": true
+  }
+}

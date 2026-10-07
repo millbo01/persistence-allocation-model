@@ -1,0 +1,13 @@
+{
+  "PubMed_C": 1616,
+  "PubMed_D": 373,
+  "OpenAlex_C": 11823,
+  "OpenAlex_D": 3303,
+  "retrieved_total": 17129,
+  "after_dedup": 14491,
+  "after_dedup_by_strand": {
+    "C": 11175,
+    "D": 3320
+  },
+  "no_abstract": 3576
+}
