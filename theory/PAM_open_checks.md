@@ -259,6 +259,58 @@ The check 1 searches found two research programmes closer to PAM's governor than
 - **Plaçais and Preat (2013, check 2):** under starvation the fly brain switches off costly aversive long-term memory; forcing it back on costs survival. The protected top economises inside itself: PAM's units switched off within the top part, and the cost of overriding the governor.
 - **Not yet read:** wound-healing energetics and nutrition (protein and micronutrient limits on healing), and repair-capacity models outside biology (maintenance backlogs). Left for the paper's repair section.
 
+### Remaining reading (7 October 2026, third session)
+
+**Read in full:** Peters and Langemann (2009), *Front Neuroenergetics* 1:2 (PMC2691548); Sprengell, Kubera and Peters (2021b), *Front Neurosci* 15:685031 (the second Selfish Brain review, held PDF); Mauritsson and Jonsson (2023), *Sci Rep* (PMC10556006; the "negotiable maintenance" model).
+**Not obtained:** the full texts of Hochachka et al. (1996) and Buttgereit and Brand (1995). Both are scanned PDFs; PMC and Europe PMC serve them only behind a bot check (proof-of-work; Cloudflare), which Claude does not get past. They stay abstract-only (N6, N8). James can download them in an ordinary browser if they are wanted.
+
+#### N2 addendum (a). Peters and Langemann (2009): the brain's supply chain as a formal model
+
+**The model, in the authors' terms:**
+- Four compartments (environment E, blood B, brain Y, fat/muscle F), linear ODEs that "follow the continuity equation and the law of energy conservation". Each flux has a **push** part (set by the supplier) and a **pull** part (set by the receiver).
+- **Allocative brain-pull** V = α(Y₀ − Y) + μF suppresses the blood-to-periphery flux (j_BF = k₃B − V): falling brain ATP closes the periphery's route. **Ingestive pull** L = l₁(B₀ − B) − βV.
+- **A mapping discipline:** "we assign only a single functional mechanism and a single anatomical structure to a single signal pathway in the model" (Table 1: V to the VMH and sympathetic system; the blood-to-brain push to GLUT1; the periphery's push to insulin and GLUT4).
+- **Supply-chain principle:** flow runs towards the final consumer, but "in case of an interruption at some point, the disturbance propagates retrograde... build-ups can develop in front of the 'bottleneck'". Obesity and hyperglycaemia are build-ups upstream of an incompetent brain-pull.
+- **Tests against rivals:** each hypothesis is set against a model differing in one parameter (α), and the rival is rejected where it fails a "crucial" data set. Starvation data: Krieger (1921), autopsies after inanition: heart, liver, pancreas and kidney each lost about 40% of their mass, the brain under 2%.
+- **Analytical result:** a unique, stable steady state over a wide parameter range; stationary fat mass falls strictly with brain-pull efficiency α.
+
+**[comparison]**
+- **A conserved, formal flow model with an access gate set by the top part:** PAM's architecture, for two consumers and one resource.
+- **Retrograde build-ups in front of a bottleneck are PAM's ledger in one form:** unmet flow does not vanish; it accumulates upstream as a store (fat) or as a raised level in the carrier (blood glucose). PAM generalises this to any part and names where each unit of load lands.
+- **The mapping table is close to PAM's mapping step** (each gate named with independent documentation before use). It assigns mechanisms to terms; it does not fix an order among many parts from access.
+- **Krieger's data show no order among the organs below the brain:** heart, liver, pancreas and kidney all lost about 40% of their mass. **Logged as found, as a possible non-conforming result.** Whether it conflicts with PAM depends on the rank for energy and protein fixed at a starvation mapping: rank is per resource, and the heart's documented protection is for blood flow (G25's compatible case, haemorrhage), not for tissue mass under starvation. Weight not yet judged: autopsy data after mixed causes (malnutrition, cancer, chronic infection), cited second-hand; Krieger (1921) not read. It bears on natural test 2 and check 2.
+
+#### N2 addendum (b). Sprengell, Kubera and Peters (2021b): a proximal bottleneck raises blood glucose
+
+- **Pre-registered** (PROSPERO CRD42020156816; PRISMA). 239 records, 89 full texts, 7 included (mice and rats; cerebral artery occlusion against sham).
+- **Prediction:** cutting the brain's supply (a proximal bottleneck) makes the brain suppress insulin, close the periphery's route and raise blood glucose.
+- **Result:** confirmed in all 5 studies of the 3 to 24 h window (glucose 25 to 52 mg/dl above sham); not confirmed early (under 3 h, 2 of 3 studies) or late (3 to 7 days, 2 studies). Mechanism shown in one study: an oral glucose load failed to raise insulin after occlusion, against a sixfold rise in sham animals.
+- **Cost moved to the body:** rats lost 9% of body weight in 24 h after occlusion (one study, secondary outcome).
+- **Treating the record:** intensive insulin to normalise post-stroke glucose did not improve death or dependency in trials and raised hypoglycaemia; in one trial normalisation went with "a 2.5-fold increase in infarct growth".
+- **Biphasic units:** mild ATP deficiency raises neuronal activity; severe deficiency silences it ("suspends glutamatergic activity").
+- **Method:** a study meeting all criteria (Chen et al. 2016) was found after the search; they kept to the protocol for neutrality and reported separately that it would not change the result.
+
+**[comparison]**
+- **Forcing the record back moves the load to the protected part.** Insulin restores blood glucose (the visible figure) by reopening the periphery's route, and the cost lands on the brain (infarct growth). This is PAM's ledger and the measurement rule in a clinical trial: correcting the record without relieving the shortfall relocates the load. It pairs with Plaçais and Preat (overriding the fly governor costs survival). **A strong illustration for the paper,** subject to reading Rosso et al. (2012) itself.
+- **The time window (effect at 3 to 24 h only)** is a caution for PAM's tests: a real effect can be missed by sampling too early or too late.
+- **Biphasic response:** units stay active and work harder under mild shortage and switch off under severe shortage; this matches PAM's economising and switch-off, inside the top part.
+- **Method:** the missed study and the decision to keep to the protocol mirror PAM's own handling of held-out H1 in check 1, search 2.
+
+#### N11. Mauritsson and Jonsson (2023): the Maintenance-Growth Model, with "negotiable" maintenance
+
+**The model, in the authors' terms:**
+- An energy balance: assimilation = maintenance + feeding costs + growth overhead + growth (eS = R_M + R_F + R_G + G).
+- **Maintenance split** into "non-negotiable" basal maintenance ("processes necessary to keep the organism alive") and "negotiable" maintenance ("processes that keep the organism in good shape, but that may be downregulated in order to save energy"): "mainly 'allocation to defence' (maintaining the immune system and buffering against poor conditions)" and non-necessary activity.
+- **Priority by level:** at each "energetic level", prioritised costs are paid first (basal maintenance and feeding costs); negotiable maintenance and growth share what is left.
+- **The cut has a formal shape:** the negotiable fraction ρ = ρ_N(W) · φ^δ, where φ is relative food acquirement (realised over ad libitum intake) and δ sets how fast defence is cut as food falls.
+- Fits house-cricket growth (goodness of fit 0.995 against 0.845 for a standard model that includes DEB's form); qualitatively reproduces food-restriction patterns, with the outcome "highly dependent" on δ.
+
+**[comparison]**
+- **The floor and the negotiable remainder, in formal form:** Straub's floor and CAEN (N5) and DEB's defence-before-soma, written as an equation. Defence (immune, buffering) is cut before basal upkeep: PAM's repair network losing access before basal maintenance.
+- **Intake costs are paid first**: PAM's intake held.
+- **A candidate form for PAM's economising curve:** φ^δ is a one-parameter power law for how a negotiable claim shrinks with relative supply, fitted to data. PAM's maths uses a cubic smoothstep with no theoretical meaning attached (maths map). Added to the maths work queue.
+- **What PAM adds:** many parts and a rank among them; units; the ledger; viability; systems other than bodies.
+
 ### What this does to the four candidate contributions
 
 | Claim | Before these checks | Now |
@@ -298,10 +350,8 @@ Reframe accepted as the working basis, with his reasons:
 - **Check 1:** OpenAlex strand D (after the daily reset); five CHECK full texts; why held-out H1 was missed.
 - **Check 2:** done at search level (above). Read in full, if the paper leans on them: Sadid et al. 2026 and Bergauer et al. 2026 (calibrated order of bed resistances); Peters and Boyd 1968 (organ weights in starvation).
 - **Check 3:**
-  - Peters and Langemann (2009), the brain's supply chain (open access, to read);
-  - the second Selfish Brain review in full;
-  - the insect "negotiable maintenance" model;
-  - Hochachka 1996 in full (scanned PDF) and Buttgereit and Brand 1995 in full (PMC1136240);
+  - Hochachka 1996 and Buttgereit and Brand 1995 in full: behind bot checks; James to download in a browser if wanted;
+  - Krieger (1921) and Rosso et al. (2012), cited second-hand in the Selfish Brain papers: read before the paper leans on them (Krieger is logged as non-conforming);
   - wound-healing energetics and repair-capacity models outside biology.
 - **Unification table:** first version built (theory/PAM_unification_table.md); fill cells as reading goes on.
 
@@ -320,5 +370,7 @@ Reframe accepted as the working basis, with his reasons:
 - Buttgereit and Brand (1995): https://pmc.ncbi.nlm.nih.gov/articles/PMC1136240/
 - McCann and Ames (2009), PubMed 19692494; (2011), PubMed 21402715
 - Plaçais and Preat (2013), PubMed 23349289
+- Peters and Langemann (2009): https://pmc.ncbi.nlm.nih.gov/articles/PMC2691548/
+- Mauritsson and Jonsson (2023), Sci Rep: https://pmc.ncbi.nlm.nih.gov/articles/PMC10556006/
 - Negotiable maintenance in insects: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10556006/
 - DEB for plants (2022): https://academic.oup.com/conphys/article/10/1/coac061/6701566

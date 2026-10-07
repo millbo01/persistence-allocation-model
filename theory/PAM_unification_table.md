@@ -48,6 +48,7 @@
 | **ATP-consumer hierarchy** (Buttgereit and Brand)† | · ⁴³ | E/F⁴⁴ | · | · | · | E⁴⁵ | · | · | · | · | · | · |
 | **Haemodynamic models** (Guyton, HumMod, lumped-parameter) | F⁴⁶ | F⁴⁷ | · | F⁴⁸ | · | · | p⁴ | p⁴⁹ | · | p | · | · |
 | **Fetal brain-sparing models** | p | F | · | · | · | · | · | · | · | p | · | · |
+| **Maintenance-Growth Model** (Mauritsson and Jonsson) | · | · | · | F⁵³ | · | F⁵⁴ | p⁴ | · | · | · | · | · |
 | **Disposable soma** (Kirkwood)† | · | · ⁵⁰ | · | · | · | F⁵⁰ | · | p | p | · | · | · |
 | **Perceptual control theory** (Powers) | F⁵¹ | · | · | · | · | · | · | · | · | · | ? | · |
 | **PAM** | F | F | **F** | F | **F** | **F** | **F** | **F** | **F** | F | **F** | **E⁵²** |
@@ -62,8 +63,8 @@
 6. Ageing damage accumulates; replacement of damaged cells needs undifferentiated cells (PAM's template), stated but not modelled as a scar rule.
 7. All organisms; not institutions.
 8. Insulin-gated access: GLUT4 (insulin-dependent) against GLUT1 (insulin-independent), two compartments.
-9. Predictions fixed beforehand and set against a rival, but the order is the theory's premise, not derived from access per resource.
-10. The supply chain: energy accumulates in adipose when the brain's draw falls.
+9. Predictions fixed beforehand and set against a rival, but the order is the theory's premise, not derived from access per resource. Each model term is assigned one documented mechanism (Peters and Langemann 2009, Table 1), close to PAM's mapping step.
+10. The supply chain (Peters and Langemann 2009, formal, energy-conserving): unmet flow "propagates retrograde" and builds up in front of the bottleneck (fat, blood glucose). In stroke, restoring blood glucose with intensive insulin went with larger infarcts in one trial: the load moved back to the brain (Sprengell et al. 2021b).
 11. Pre-registered systematic reviews (PROSPERO) of predictions against a rival theory.
 12. "The most urgent processes divert or steal energy from less urgent ones": urgency, judged after the fact.
 13. The cut to growth, maintenance and repair can occur "without elevating total energy expenditure", visible only in molecular sequelae.
@@ -106,6 +107,8 @@
 50. Repair investment set by optimisation (fitness), not by access.
 51. Hierarchical control: higher levels set the reference levels of lower ones.
 52. PT1 (pre-registered; adjudicated: PT1 Inconclusive; G25 Supported at half weight; G25-C Not supported at half weight).
+53. Non-negotiable basal maintenance and feeding costs paid first; negotiable maintenance and growth share the rest.
+54. Negotiable maintenance ("defence": immune system, buffering) cut as a power of relative food intake, ρ_N·φ^δ.
 
 ## What the table shows (first reading, Claude's)
 
@@ -117,4 +120,4 @@
   - **Sys:** the same rule applied outside bodies (PT1's councils).
 - **Only PAM carries all twelve.** The unification claim is that one formal rule set carries them together, across resources and kinds of system, with the discipline of fixing rank from access before data.
 
-**Next:** add rows as reading goes on (Peters and Langemann 2009; insect negotiable maintenance; the second Selfish Brain review; repair-capacity models outside biology). Replace † cells when full texts are read.
+**Next:** add rows as reading goes on (repair-capacity models outside biology; wound-healing energetics). Replace † cells when full texts are read.
