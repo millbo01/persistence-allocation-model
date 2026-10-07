@@ -28,6 +28,17 @@ Three checks were set before the paper claims any of them:
 - **Sensitivity failed a known-item check:** Göbel et al. (2010) was not retrieved, and plant source-sink allocation models (organs with sink priority drawing on a phloem flow) fell outside the terms.
 - **The null cannot be used in the paper.** A second search, with a known-item set and strands for plant source-sink models and organ competition for energy, is proposed.
 
+**Systematic search 2 (protocol theory/PAM_check1_search2_protocol.md, revision 1 and deviation D-1; results theory/search_check1_s2/):**
+- Sensitivity: all four design items found; held-out H1 (Thornley 1972) missed, so strand C is of limited sensitivity.
+- **Answer to check 1: yes, formal models of organ order under shortage exist,** in three places:
+  1. **Plant allocation models** (strand_C_reviews.md):
+     - **hierarchical models,** with a strict priority sequence among organ groups (Wermelinger et al. 1991; Grossman and DeJong 1994);
+     - **transport-resistance models,** where sink priority emerges from the transport network and sink kinetics (Thornley 1972; Minchin et al. 1993; Minchin and Lacointe 2005).
+  2. **The Selfish Brain formal models** (Göbel, Peters and colleagues 2008 to 2013): brain priority through insulin-gated access.
+  3. **DEB tumour-in-host models** (van Leeuwen et al. 2003; Tosca and colleagues 2018 to 2021): tumour and host compete by workload.
+- **What none of them has** (as far as abstracts and the one full review show): loss of existing units, switching off and scars; repair competing for access; a conserved account of where unmet demand goes; viability; and application outside its own domain.
+- **Open:** OpenAlex strand D (blocked by the daily budget); five CHECK records needing full text.
+
 **Limit (earlier):** web searches are not a systematic review. If the paper is to say "no DEB model orders organs by access", that sentence needs a proper search: a database search with stated terms, run by Claude or by a sourcing model with a prompt. **Proposal for James below.**
 
 ## Check 3 (begun): the nearest neighbours turned out to be two programmes outside DEB

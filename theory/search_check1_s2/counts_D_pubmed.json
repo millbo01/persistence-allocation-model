@@ -1,0 +1,12 @@
+{
+  "screened": 379,
+  "decisions": {
+    "CHECK": 5,
+    "E": 3,
+    "I-access": 7,
+    "I-emergent": 6,
+    "X-off": 336,
+    "X1-neighbour": 15,
+    "X5-near": 7
+  }
+}
