@@ -127,3 +127,11 @@ Cases whose direction fits a proposition but which cannot bear weight. They are 
 
 **Reference added to the supplement:** Sprengell M, Kubera B, Peters A (2021b). Proximal disruption of brain energy supply raises systemic blood glucose: a systematic review. *Front Neurosci* 15:685031. doi:10.3389/fnins.2021.685031 (read in full).
 
+## S11. Dated record of the model's development (assembly plan; added for draft 2)
+
+- **Content:**
+  - the dated steps from the earlier framework (27 September 2026) to v0.19 (7 October 2026);
+  - the three-class provenance table: theorised before the matching work was read (with whose idea each was), known when formed, and imported, with commit hashes;
+  - the caveat on the AI collaborator's training.
+- **Build from:** papers/pam-model/05 Origins and provenance.md; theory/tier_queue_provenance.md; git history.
+- **Framing (CLAUDE.md framing rule):** a receipt, not a story; no claim that the convergence is evidence for the model.

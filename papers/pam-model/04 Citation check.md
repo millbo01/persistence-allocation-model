@@ -42,6 +42,7 @@
 | Hochachka et al. 1996 | Crossref | Abstract | Balanced suppression; channel and translational arrest |
 | Ibaraki and Katoh 1988 | OpenAlex (book) | Not read (mathematical source) | Greedy allocation optimal for separable concave value |
 | Kooijman 2010 | Crossref | Sections read (theory/PAM_DEB_reading.md) | DEB forms and claims as stated |
+| Kleinrock 1965 (draft 2) | Crossref | Not read (mathematical source) | Conservation law for queues: no priority discipline reduces total weighted waiting in a work-conserving queue |
 | Krieger 1921 | Not checked | Not read | Cited only "as cited in Peters and Langemann 2009" |
 | Lee et al. 2022 | PubMed | Not read (data source) | VitalDB |
 | Marcelis and Heuvelink 2007 | Crossref | Full text | Classification of plant allocation models |
