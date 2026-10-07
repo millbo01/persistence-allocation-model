@@ -1,0 +1,335 @@
+{
+  "prereg": "tests/PT1 Priority test - pre-registration.md",
+  "prereg_sha256_begins": "a4aab81d",
+  "code_sha256": "995abfc5949f07feb1a9cb0d0ad11357bc8f5071062e462accfa1396e4b25540",
+  "classification_sha256": "faf4587523c85a17461090a2a854b93ed17fb7de264b49ef49784da6fbfe1d52",
+  "implementation_notes": [
+    "Line names are normalised by lower-casing and removing every character that is not a letter or digit; the leading 'line NN' label, if present in a name, is removed before normalising.",
+    "Scope: classification rows in RO2, RO4, RO5, and RO3 lines 10 to 27 (children's social care), minus RO5 226 and 244. Sensitivity 1 adds RO3 60 (total adult social care); sensitivity 4 adds RO6 430, 441, 442, 460, 475.",
+    "A spending line is in scope if its normalised name equals the normalised name of an in-scope classification row in the same form; lines in the data with no such match are out of scope (counted).",
+    "Councils: la_type in UA, MD, LB; City of London and Isles of Scilly excluded; a council must have spending rows in all six years (same ONS code).",
+    "Duplicate names: if a normalised line name occurs more than once in the same council, year and form, that council's series for the line is dropped (counted); names must identify a line uniquely.",
+    "Series rules per council-line: positive nce in all six years; mean real nce over the window at least the minimum (GBP thousands, 2014-15 prices; primary 100, sensitivity 50 and 250).",
+    "Real terms: nce divided by cpi(year)/cpi(2014).",
+    "Client groups: RO3 children's social care 0_17; RO2 71 statutory concessionary fares 65plus; RO3 60 adult social care total 18plus; all others 'all'. RO2 71 is identified by its normalised name.",
+    "Outcome winsorised at the 1st and 99th percentiles of the pooled sample of the model being estimated.",
+    "Projected growth: ln(P(tau+h)/P(tau)) from the edition assigned to the budget year, tau = financial year start, h = 5 (sensitivity 5: h = 10; where an edition does not reach tau+10, the growth to its last year is scaled by 10/available years).",
+    "Fixed effects absorbed by alternating projections (convergence 1e-10 on the maximum change). Cluster-robust standard errors by council with the small-sample factor G/(G-1)*(N-1)/(N-K), K = estimated coefficients plus the number of line fixed effects (council-year effects are nested in clusters and not counted); t distribution with G-1 degrees of freedom.",
+    "PT1-S thresholds: the nine deciles of g_proj in the estimation sample; BIC = N ln(RSS/N) + k ln(N) computed on the fixed-effect-demeaned data, k = slope parameters (+1 for the threshold).",
+    "G25-C scarcity: minus the change in ln(real CSP per head of total population) from 2015-16 to 2019-20; the interaction is [A] x scarcity (scarcity's main effect is absorbed by council-year effects).",
+    "SS: council-years (2015-16 on) where total in-scope real nce fell from the year before; share in which any A-class series fell while the C-class series in that council kept more than half their 2014-15 real total.",
+    "Ambiguous candidates ordered A > B > C; 'lowest' takes the last (C-most) candidate, 'highest' the first."
+  ],
+  "counts": {
+    "spend_rows_out_of_scope": 2982,
+    "councils_single_tier_all_years": 79,
+    "councils_dropped": 4,
+    "lines_matched_all_years": 101,
+    "lines_dropped_not_all_years": [
+      "RO5:allotments"
+    ],
+    "series_dropped_duplicate_names": 1,
+    "series_total": 7978,
+    "series_dropped_incomplete": 0,
+    "series_dropped_nonpositive": 79,
+    "series_dropped_below_minimum": 79,
+    "series_kept": 7820
+  },
+  "PT1": {
+    "beta": 0.6090956683975675,
+    "se": 0.025156432535394842,
+    "p_one_sided": 2.5175439417935937e-38,
+    "p_two_sided": 5.035087883587187e-38,
+    "ci95": [
+      0.5590130584227175,
+      0.6591782783724174
+    ],
+    "gamma_realised": -0.04244016234994682,
+    "N": 39100,
+    "councils": 79,
+    "lines": 99,
+    "verdict": "H-fixed fails in this system; dynamic priority earned for institutions of this kind",
+    "PT1_S": {
+      "bic_linear": -271924.996315688,
+      "bic_step": -271320.4784157412,
+      "threshold": 0.042815316538398686,
+      "shape": "graded"
+    }
+  },
+  "G25": {
+    "delta_A": 0.029183256933607835,
+    "delta_B": 0.014707640990176322,
+    "p_A": 1.8418045180800054e-67,
+    "p_A_two_sided": 3.683609036160011e-67,
+    "p_B": 8.303752400970107e-48,
+    "p_A_minus_B": 6.906278969198411e-40,
+    "N": 31200,
+    "councils": 79,
+    "verdict": "Supported",
+    "weight": 0.5
+  },
+  "G25_C": {
+    "interaction": 0.003866269343813707,
+    "se": 0.004625738861698691,
+    "p_one_sided": 0.20290559132957803,
+    "verdict": "Not supported",
+    "weight": 0.5
+  },
+  "SS": {
+    "council_years_with_fall": 73,
+    "share_A_fell_while_C_kept_over_half": 1.0
+  },
+  "sensitivity": {
+    "1_adult_social_care_included": {
+      "PT1": {
+        "beta": 0.6045263828228797,
+        "se": 0.023078224125233728,
+        "p_one_sided": 1.0561482039464948e-40,
+        "p_two_sided": 2.1122964078929896e-40,
+        "ci95": [
+          0.558581167969779,
+          0.6504715976759805
+        ],
+        "gamma_realised": -0.025473394403210017,
+        "N": 39495,
+        "councils": 79,
+        "lines": 100,
+        "verdict": "H-fixed fails in this system; dynamic priority earned for institutions of this kind",
+        "PT1_S": {
+          "bic_linear": -274657.1929758288,
+          "bic_step": -274012.28406761127,
+          "threshold": 0.037625355858894066,
+          "shape": "graded"
+        }
+      }
+    },
+    "2_long_difference": {
+      "beta": 2.7414439041594347,
+      "se": 0.27394705881487724,
+      "p_one_sided": 6.109599812245487e-16,
+      "N": 7820
+    },
+    "3_ambiguous_lowest": {
+      "delta_A": 0.026432088695183965,
+      "delta_B": 0.011215993228228647,
+      "p_A": 1.4562429743213274e-64,
+      "p_A_two_sided": 2.912485948642655e-64,
+      "p_B": 8.067105736906795e-41,
+      "p_A_minus_B": 6.882737076141659e-44,
+      "N": 39100,
+      "councils": 79,
+      "verdict": "Supported",
+      "weight": 0.5
+    },
+    "3_ambiguous_highest": {
+      "delta_A": 0.02253120649757132,
+      "delta_B": 0.012681817019737912,
+      "p_A": 6.050578870941535e-63,
+      "p_A_two_sided": 1.210115774188307e-62,
+      "p_B": 2.752776051541089e-46,
+      "p_A_minus_B": 1.3878416318910534e-32,
+      "N": 39100,
+      "councils": 79,
+      "verdict": "Supported",
+      "weight": 0.5
+    },
+    "4_RO6_client_lines": {
+      "PT1": {
+        "beta": 0.6078970944304534,
+        "se": 0.024973154637509643,
+        "p_one_sided": 1.7413631034513032e-38,
+        "p_two_sided": 3.4827262069026063e-38,
+        "ci95": [
+          0.5581793627213862,
+          0.6576148261395205
+        ],
+        "gamma_realised": -0.03665882680381538,
+        "N": 41075,
+        "councils": 79,
+        "lines": 104,
+        "verdict": "H-fixed fails in this system; dynamic priority earned for institutions of this kind",
+        "PT1_S": {
+          "bic_linear": -285774.60510702874,
+          "bic_step": -285166.31536185293,
+          "threshold": 0.042815316538398686,
+          "shape": "graded"
+        }
+      },
+      "G25": {
+        "delta_A": 0.029255971253315194,
+        "delta_B": 0.014670000879108566,
+        "p_A": 1.0871572057412347e-69,
+        "p_A_two_sided": 2.1743144114824695e-69,
+        "p_B": 4.1037584940988733e-47,
+        "p_A_minus_B": 4.675628586040566e-41,
+        "N": 32780,
+        "councils": 79,
+        "verdict": "Supported",
+        "weight": 0.5
+      }
+    },
+    "5_ten_year_projection": {
+      "PT1": {
+        "beta": 0.30876982504761286,
+        "se": 0.012454297405168848,
+        "p_one_sided": 4.90073385522645e-39,
+        "p_two_sided": 9.8014677104529e-39,
+        "ci95": [
+          0.2839752235644234,
+          0.3335644265308023
+        ],
+        "gamma_realised": -0.04778639078731078,
+        "N": 39100,
+        "councils": 79,
+        "lines": 99,
+        "verdict": "H-fixed fails in this system; dynamic priority earned for institutions of this kind",
+        "PT1_S": {
+          "bic_linear": -271929.96984209353,
+          "bic_step": -271327.17539964593,
+          "threshold": 0.05782671663498972,
+          "shape": "graded"
+        }
+      }
+    },
+    "6_no_winsorising": {
+      "PT1": {
+        "beta": 0.6270242704414193,
+        "se": 0.024266849264296588,
+        "p_one_sided": 2.7535825587461794e-40,
+        "p_two_sided": 5.507165117492359e-40,
+        "ci95": [
+          0.5787126847142993,
+          0.6753358561685393
+        ],
+        "gamma_realised": -0.047267234907843694,
+        "N": 39100,
+        "councils": 79,
+        "lines": 99,
+        "verdict": "H-fixed fails in this system; dynamic priority earned for institutions of this kind",
+        "PT1_S": {
+          "bic_linear": -270591.7448603251,
+          "bic_step": -269958.0129497035,
+          "threshold": 0.042815316538398686,
+          "shape": "graded"
+        }
+      },
+      "G25": {
+        "delta_A": 0.029708099249591304,
+        "delta_B": 0.014990461409102386,
+        "p_A": 6.332633241414789e-68,
+        "p_A_two_sided": 1.2665266482829578e-67,
+        "p_B": 2.205856667804953e-48,
+        "p_A_minus_B": 4.811822944701645e-40,
+        "N": 31200,
+        "councils": 79,
+        "verdict": "Supported",
+        "weight": 0.5
+      }
+    },
+    "7_london_excluded": {
+      "PT1": {
+        "beta": 0.6090956683975675,
+        "se": 0.025156432535394842,
+        "p_one_sided": 2.5175439417935937e-38,
+        "p_two_sided": 5.035087883587187e-38,
+        "ci95": [
+          0.5590130584227175,
+          0.6591782783724174
+        ],
+        "gamma_realised": -0.04244016234994682,
+        "N": 39100,
+        "councils": 79,
+        "lines": 99,
+        "verdict": "H-fixed fails in this system; dynamic priority earned for institutions of this kind",
+        "PT1_S": {
+          "bic_linear": -271924.996315688,
+          "bic_step": -271320.4784157412,
+          "threshold": 0.042815316538398686,
+          "shape": "graded"
+        }
+      },
+      "G25": {
+        "delta_A": 0.029183256933607835,
+        "delta_B": 0.014707640990176322,
+        "p_A": 1.8418045180800054e-67,
+        "p_A_two_sided": 3.683609036160011e-67,
+        "p_B": 8.303752400970107e-48,
+        "p_A_minus_B": 6.906278969198411e-40,
+        "N": 31200,
+        "councils": 79,
+        "verdict": "Supported",
+        "weight": 0.5
+      }
+    },
+    "8_minimum_50": {
+      "PT1": {
+        "beta": 0.6090956683975675,
+        "se": 0.025156432535394842,
+        "p_one_sided": 2.5175439417935937e-38,
+        "p_two_sided": 5.035087883587187e-38,
+        "ci95": [
+          0.5590130584227175,
+          0.6591782783724174
+        ],
+        "gamma_realised": -0.04244016234994682,
+        "N": 39100,
+        "councils": 79,
+        "lines": 99,
+        "verdict": "H-fixed fails in this system; dynamic priority earned for institutions of this kind",
+        "PT1_S": {
+          "bic_linear": -271924.996315688,
+          "bic_step": -271320.4784157412,
+          "threshold": 0.042815316538398686,
+          "shape": "graded"
+        }
+      },
+      "G25": {
+        "delta_A": 0.029183256933607835,
+        "delta_B": 0.014707640990176322,
+        "p_A": 1.8418045180800054e-67,
+        "p_A_two_sided": 3.683609036160011e-67,
+        "p_B": 8.303752400970107e-48,
+        "p_A_minus_B": 6.906278969198411e-40,
+        "N": 31200,
+        "councils": 79,
+        "verdict": "Supported",
+        "weight": 0.5
+      }
+    },
+    "8_minimum_250": {
+      "PT1": {
+        "beta": 0.6078731828636786,
+        "se": 0.025209520540976155,
+        "p_one_sided": 3.343592408542056e-38,
+        "p_two_sided": 6.687184817084112e-38,
+        "ci95": [
+          0.5576848827885281,
+          0.6580614829388292
+        ],
+        "gamma_realised": -0.03992599174830418,
+        "N": 39075,
+        "councils": 79,
+        "lines": 99,
+        "verdict": "H-fixed fails in this system; dynamic priority earned for institutions of this kind",
+        "PT1_S": {
+          "bic_linear": -271752.96880498907,
+          "bic_step": -271148.3827161743,
+          "threshold": 0.042815316538398686,
+          "shape": "graded"
+        }
+      },
+      "G25": {
+        "delta_A": 0.029147586850067745,
+        "delta_B": 0.014707606837243974,
+        "p_A": 2.0635558814426885e-67,
+        "p_A_two_sided": 4.127111762885377e-67,
+        "p_B": 8.611241686917642e-48,
+        "p_A_minus_B": 1.0104684172234794e-39,
+        "N": 31190,
+        "councils": 79,
+        "verdict": "Supported",
+        "weight": 0.5
+      }
+    }
+  }
+}

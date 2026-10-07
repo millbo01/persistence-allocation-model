@@ -1,0 +1,205 @@
+[
+  {
+    "scenario": "S1_dynamic_graded",
+    "expected_PT1": "H-fixed fails",
+    "got_PT1": "H-fixed fails in this system; dynamic priority earned for institutions of this kind",
+    "beta": 0.6090956683975675,
+    "ci": [
+      0.5590130584227175,
+      0.6591782783724174
+    ],
+    "shape": "graded",
+    "expected_G25": "Supported",
+    "got_G25": "Supported",
+    "match": true,
+    "counts": {
+      "spend_rows_out_of_scope": 2982,
+      "councils_single_tier_all_years": 79,
+      "councils_dropped": 4,
+      "lines_matched_all_years": 101,
+      "series_dropped_duplicate_names": 1,
+      "series_total": 7978,
+      "series_dropped_incomplete": 0,
+      "series_dropped_nonpositive": 79,
+      "series_dropped_below_minimum": 79,
+      "series_kept": 7820
+    },
+    "lines_dropped": [
+      "RO5:allotments"
+    ]
+  },
+  {
+    "scenario": "S2_fixed_precise",
+    "expected_PT1": "H-fixed supported",
+    "got_PT1": "H-fixed supported (no meaningful anticipation)",
+    "beta": 0.014319541093144907,
+    "ci": [
+      -0.004602498832916347,
+      0.03324158101920616
+    ],
+    "shape": null,
+    "expected_G25": "Supported",
+    "got_G25": "Supported",
+    "match": true,
+    "counts": {
+      "spend_rows_out_of_scope": 4422,
+      "councils_single_tier_all_years": 119,
+      "councils_dropped": 4,
+      "lines_matched_all_years": 101,
+      "series_dropped_duplicate_names": 1,
+      "series_total": 12018,
+      "series_dropped_incomplete": 0,
+      "series_dropped_nonpositive": 119,
+      "series_dropped_below_minimum": 119,
+      "series_kept": 11780
+    },
+    "lines_dropped": [
+      "RO5:allotments"
+    ]
+  },
+  {
+    "scenario": "S3_fixed_noisy",
+    "expected_PT1": "Inconclusive",
+    "got_PT1": "Inconclusive (insufficient precision)",
+    "beta": 0.38005418983768263,
+    "ci": [
+      -0.4496474559844876,
+      1.2097558356598528
+    ],
+    "shape": null,
+    "expected_G25": null,
+    "got_G25": "Partly supported",
+    "match": true,
+    "counts": {
+      "spend_rows_out_of_scope": 822,
+      "councils_single_tier_all_years": 20,
+      "councils_dropped": 3,
+      "lines_matched_all_years": 101,
+      "series_dropped_duplicate_names": 1,
+      "series_total": 2019,
+      "series_dropped_incomplete": 0,
+      "series_dropped_nonpositive": 20,
+      "series_dropped_below_minimum": 20,
+      "series_kept": 1979
+    },
+    "lines_dropped": [
+      "RO5:allotments"
+    ]
+  },
+  {
+    "scenario": "S4_contrary",
+    "expected_PT1": "Contrary",
+    "got_PT1": "Contrary to H-dynamic",
+    "beta": -0.5193116311418612,
+    "ci": [
+      -0.5667763473799386,
+      -0.4718469149037838
+    ],
+    "shape": null,
+    "expected_G25": "Supported",
+    "got_G25": "Supported",
+    "match": true,
+    "counts": {
+      "spend_rows_out_of_scope": 2982,
+      "councils_single_tier_all_years": 79,
+      "councils_dropped": 4,
+      "lines_matched_all_years": 101,
+      "series_dropped_duplicate_names": 1,
+      "series_total": 7978,
+      "series_dropped_incomplete": 0,
+      "series_dropped_nonpositive": 79,
+      "series_dropped_below_minimum": 79,
+      "series_kept": 7820
+    },
+    "lines_dropped": [
+      "RO5:allotments"
+    ]
+  },
+  {
+    "scenario": "S5_stepped",
+    "expected_PT1": "H-fixed fails",
+    "got_PT1": "H-fixed fails in this system; dynamic priority earned for institutions of this kind",
+    "beta": 0.5048421034598289,
+    "ci": [
+      0.33527656263602645,
+      0.6744076442836314
+    ],
+    "shape": "stepped",
+    "expected_G25": "Supported",
+    "got_G25": "Supported",
+    "match": true,
+    "counts": {
+      "spend_rows_out_of_scope": 2982,
+      "councils_single_tier_all_years": 79,
+      "councils_dropped": 4,
+      "lines_matched_all_years": 101,
+      "series_dropped_duplicate_names": 1,
+      "series_total": 7978,
+      "series_dropped_incomplete": 0,
+      "series_dropped_nonpositive": 79,
+      "series_dropped_below_minimum": 79,
+      "series_kept": 7820
+    },
+    "lines_dropped": [
+      "RO5:allotments"
+    ]
+  },
+  {
+    "scenario": "S6_class_reversed",
+    "expected_PT1": "H-fixed supported",
+    "got_PT1": "H-fixed supported (no meaningful anticipation)",
+    "beta": 0.0140064973840965,
+    "ci": [
+      -0.005067568597056437,
+      0.033080563365249435
+    ],
+    "shape": null,
+    "expected_G25": "Contradicted",
+    "got_G25": "Contradicted",
+    "match": true,
+    "counts": {
+      "spend_rows_out_of_scope": 4422,
+      "councils_single_tier_all_years": 119,
+      "councils_dropped": 4,
+      "lines_matched_all_years": 101,
+      "series_dropped_duplicate_names": 1,
+      "series_total": 12018,
+      "series_dropped_incomplete": 0,
+      "series_dropped_nonpositive": 119,
+      "series_dropped_below_minimum": 119,
+      "series_kept": 11780
+    },
+    "lines_dropped": [
+      "RO5:allotments"
+    ]
+  },
+  {
+    "scenario": "S7_no_class_effect",
+    "expected_PT1": "H-fixed supported",
+    "got_PT1": "H-fixed supported (no meaningful anticipation)",
+    "beta": 0.014213427992501283,
+    "ci": [
+      -0.004921696041690904,
+      0.03334855202669347
+    ],
+    "shape": null,
+    "expected_G25": "Fails",
+    "got_G25": "Partly supported",
+    "match": false,
+    "counts": {
+      "spend_rows_out_of_scope": 4422,
+      "councils_single_tier_all_years": 119,
+      "councils_dropped": 4,
+      "lines_matched_all_years": 101,
+      "series_dropped_duplicate_names": 1,
+      "series_total": 12018,
+      "series_dropped_incomplete": 0,
+      "series_dropped_nonpositive": 119,
+      "series_dropped_below_minimum": 119,
+      "series_kept": 11780
+    },
+    "lines_dropped": [
+      "RO5:allotments"
+    ]
+  }
+]
