@@ -6,6 +6,14 @@ The history of the canonical model (theory/TIER_QUEUE_MODEL_v*.md), moved out of
 
 The model is now called **the Persistence Allocation Model** (formerly the tier-queue model). The name changes from now on. File names, engine names (tq_*, TQ runs) and frozen documents, including the H1 VitalDB pre-registration, keep the old name.
 
+## v0.18 corrected (James approved, 7 October 2026)
+
+**Consistency fixes, no change of content,** from GPT's review of the canonical text (raw/2026-10-07_chatgpt_v018-canonical-review.md). Claude agreed with all of them.
+1. **The central claim and Section 6** no longer say load "ends in" switched-off or lost units. The resource gap is met from stores, met or exported across the boundary, or left unmet at a named part; unmet load leaves residue in switched-off, lost or scarred units. This matches the two ledgers. James's "relocated, never removed" is kept.
+2. **Change 1** no longer says the governor switches units (removed in revision 2).
+3. **Section 13** records H1 as complete.
+4. **Logged as a Tier 2 open question:** whether "collapse is not death" applies to the whole system.
+
 ## Changes in v0.18 (James approved, 6 October 2026)
 
 **The vocabulary is frozen again, and the probing phase is over.**

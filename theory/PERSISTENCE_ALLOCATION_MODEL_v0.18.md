@@ -1,6 +1,6 @@
 # The Persistence Allocation Model, v0.18 (canonical state, 6 October 2026)
 
-**Status:** working model (phase 3). **The vocabulary is frozen** (James approved v0.18, 6 October 2026). The probing phase is over. No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
+**Status:** working model (phase 3). **The vocabulary is frozen** (James approved v0.18, 6 October 2026). **Corrected 7 October 2026** (James approved): three consistency fixes and one open question logged, no change of content. See the changelog. The probing phase is over. No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
 
 **The single reference** for the model as it stands.
 - **History:** theory/tier_queue_changelog.md.
@@ -14,7 +14,7 @@
 
 | No. | Change | Source |
 |---|---|---|
-| 1 | **The governor regulates access; the allocation is the resulting flow.** It releases stores, opens and closes intake, sets the capacity of pathways and gates, and switches units. Its signals are broadcast, and each pathway responds by rules encoded locally. Explicit allocation (a budget line) is one way of setting access. The central claim is reworded accordingly | F1 (James's cooling-loop question; GPT) |
+| 1 | **The governor regulates access; the allocation is the resulting flow.** It releases stores, opens and closes intake, and sets the capacity of pathways and gates. Its signals are broadcast, and each pathway responds by rules encoded locally. Explicit allocation (a budget line) is one way of setting access. The central claim is reworded accordingly | F1 (James's cooling-loop question; GPT) |
 | 2 | **Rank is the order in which parts lose adequate access when a shared resource is scarce.** It is a coarse-grained property of the network (topology, pathway capacity, gating, autoregulation), not a list held by the governor. It answers one question only: who absorbs the shortfall first. **It is fixed at mapping from documented properties of access,** never read off the observed order of sacrifice | F1, F2 |
 | 3 | **A valid test of dynamic priority** needs two recipients competing for the same scarce resource at the same time, with their order of sacrifice reversing between conditions. A part receiving more in one condition and less in another (skin in heat and in haemorrhage) is not a test | F2 (James's correction) |
 | 4 | **Severance is a pathway's capacity at zero.** A pathway's capacity is the sum of its routes. Losing some routes lowers capacity and moves flow onto the rest, which can saturate and fail in turn (a cascade). No partial-severance state | F3 (James; GPT) |
@@ -36,7 +36,7 @@
 
 **Central claim** (v0.18. It is v0.17's approved wording with these changes: the governor regulates access (F1), part death (A6), access in place of allocation where the mechanism is described, and, in revision 2, shortfall from either side and "a system that regulates its own persistence"):
 
-> In a system that regulates its own persistence, a governor holds the levels its persistence depends on by regulating access to finite shared resources among parts that have no demand of their own; the allocation among parts is the resulting flow. Each part works to the limit of the scarcest resource that reaches it. When the resources available fall short of what the reference state requires, whether supply falls or requirement rises, the governor draws its stores, and lower-ranked parts lose access first and switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: it ends in switched-off or lost units, drawn stores, or across the boundary. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Repair is its own network, governed like any part: under a sustained shortfall it loses access and lost units wait. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. A part dies only when its route back is cut; the system dies when load reaches the top or a non-bypassable link is cut.
+> In a system that regulates its own persistence, a governor holds the levels its persistence depends on by regulating access to finite shared resources among parts that have no demand of their own; the allocation among parts is the resulting flow. Each part works to the limit of the scarcest resource that reaches it. When the resources available fall short of what the reference state requires, whether supply falls or requirement rises, the governor draws its stores, and lower-ranked parts lose access first and switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: the resource gap is met from stores, met or exported across the boundary, or left unmet at a named part, and unmet load leaves its residue in switched-off, lost or scarred units. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Repair is its own network, governed like any part: under a sustained shortfall it loses access and lost units wait. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. A part dies only when its route back is cut; the system dies when load reaches the top or a non-bypassable link is cut.
 
 ## 2. Scope
 
@@ -177,7 +177,7 @@
 - **A shortfall can come from supply falling or requirement rising.**
 
 **Movement and failure.**
-- **Load is relocated, never removed.** It ends as drawn stores, switched-off or lost units, or load leaving across the boundary.
+- **Load is relocated, never removed.** The resource gap is met from stores, met or exported across the boundary, or left unmet at a named part. Unmet load leaves its residue in switched-off, lost or scarred units (the state ledger).
 - **Load backs up a dependency:** a part limited by throughput leaves work undone, and parts depending on its output lose capacity.
 - **Coupling is shared dependency.** Parts sharing an input, a stressor, a store or repair machinery move together (G18).
 - **Pathways and severance.**
@@ -276,6 +276,7 @@ Do this before opening any outcome data.
 - **Sensitivity to framing.**
 
 **Tier 2: refining a surviving model.**
+- **Collapse or death of the whole system** (logged 7 October 2026). A part dies only when its route back is severed. **The open question:** does the same criterion apply to the system? If the top reaches zero capacity with its route back intact, is that collapse or death? Exhaustion currently calls it "system death". It is left open unless a mapping forces the distinction.
 - **The release profile** (a knee, or full release until a switch). **Live after H1:** the taper reading failed for blood loss under anaesthesia.
 - **The repair network:** resident and mobile kept apart, or one workforce?
 - **What starts anticipatory economising;** how the expected shortfall is learned; what sets a template limit.
@@ -307,7 +308,7 @@ Do this before opening any outcome data.
 ## 13. Way forward
 
 1. **v0.18 approved** (6 October 2026); the vocabulary frozen again; the probing phase ended.
-2. **H1:** blind adjudication (prompt ready), then the result into Section 11.
+2. **H1 complete** (7 October 2026; Section 11). Resolve the release-profile question through the standing check.
 3. **Design the test of fixed against dynamic priority** (Section 4, item 2) and a test of G25 with access fixed in advance.
 4. **The model paper, then a preprint.** Before writing:
    - read DEB and the nearest work;
