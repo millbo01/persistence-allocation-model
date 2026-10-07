@@ -17,7 +17,7 @@ From the derived results (theory/PAM_results_v0.18.md) and the maths items 2 and
    - outside support is admissible or not as fixed at mapping.
    The Tier 2 question on collapse and death is closed.
 3. **Recovery by marginal value:** a store unit is worth the probability that the next shortfall is deeper than the store, times the cost of being short. A part unit is worth the probability it is needed, times the cost of its output being short. G10 stays qualitative unless costs are mapped. **New prediction G26:** partial refill.
-4. **G3, G12 and G20 sharpened** (results flags 1 to 3). The record's two thresholds, the time of crisis and the cost of restoration are added to the read-outs.
+4. **G3, G12, G20 and G23(b) sharpened** (results flags 1 to 3 and 5; repair is served strictly by rank: only parts ranked after another damaged part slow). The record's two thresholds, the time of crisis and the cost of restoration are added to the read-outs.
 
 ## v0.18 corrected a third time, from the literature map (James approved, 7 October 2026)
 
