@@ -137,3 +137,10 @@ So a graded response that tracks expected value, with no declared role change, i
 **Next:**
 1. A short second documentation run (PT1-S2) on those gaps.
 2. A separate blind classification prompt: map the 2011 statutory-duties review to RO service lines by a fixed rule, with no spending data and no outcome knowledge.
+
+## Decided (James, 7 October 2026): a secondary question, strict or shared
+
+**The question.** Under the funding squeeze, did lower-priority services absorb whole cuts first (strict priority, the reduced form), or did all services lose in proportion, with weights (shared)?
+- **Status:** a secondary question in the pre-registration. It does not enter the PT1 verdict.
+- **Why it matters:** the same question applies to repair (results flag 5).
+- **The resource:** PT1 has one scarce resource (general revenue), so the multi-resource problem does not arise (theory/PAM_maths_literature_map.md).

@@ -1,0 +1,57 @@
+PT1-S2: documentation of English local authority data, gaps from a first run (structure only; no data values)
+
+You are gathering published documentation about official datasets on English local government spending, funding, population projections and service demand, for 2013-14 to 2020-21. It is needed to design an analysis that will be fixed before anyone opens the data. A first documentation run left the specific gaps listed below; answer only these.
+
+FORMAT RULE: DO NOT WRITE AN INTRODUCTION, BACKGROUND OR ESSAY
+- Your output starts directly with item 1 below. After the numbered items come only the source list and the self-check.
+- Do not explain local government policy, austerity, or why anything changed.
+
+STRICT RULE 1: STRUCTURE ONLY, NO DATA VALUES
+- Report only what is recorded, what each item is called, how it is defined, its units, its level, its frequency, the years covered, publication dates, file names and formats, and what changed in definitions or codes.
+- Do NOT report any amounts, percentages, trends, rankings, averages, changes over time, or comparisons between councils or services. Do not report which services were cut, protected, grew or fell.
+- If a document shows example values, charts or tables of figures, do not repeat or describe them.
+- Do NOT report the findings, conclusions or titles of any study, report or article that analysed these data (think tanks, audit bodies, academics, journalists, councils' own reports). Do not list such documents in your sources at all. Use only official statistical releases, their technical notes, data return guidance, legislation and official dataset pages.
+
+STRICT RULE 2: NOTHING INFERRED, NOTHING UNVERIFIED
+- Work only from documents you open now. If you cannot open a document, say so.
+- For every answer, give the document and section. If something is not stated, write "not stated". Do not estimate or guess.
+
+QUESTIONS
+
+1. REVENUE OUTTURN AND BUDGET DATA, 2013-14 TO 2020-21
+   For each financial year from 2013-14 to 2020-21:
+   a. Is individual local authority Revenue Outturn (RO) data published, and individual local authority Revenue Account budget (RA) data? Give the exact title of each year's publication, its publication date (first release and final release if both exist), and the file names or formats.
+   b. The service lines (sub-lines) recorded on each RO form for that year, with their line codes and names: RO1 education; RO2 highways and transport; RO3 adult social care and public health; children's social care (state which form); RO4 housing; RO5 cultural, environmental, regulatory and planning (including libraries, culture and heritage, recreation and sport, open spaces, waste collection, waste disposal, planning, regulatory services); RO6 central and other services.
+   c. Every change in line codes, line names or definitions between consecutive years in this period, with the year and the lines affected.
+   d. Whether published outturn data are revised in later releases, and how revisions are flagged.
+
+2. POPULATION PROJECTIONS: PUBLICATION DATES
+   For each edition of the ONS subnational population projections for England (2010-based, 2011-based interim, 2012-based, 2014-based, 2016-based, 2018-based): the exact publication date, whether the local authority tables by single year of age and sex remain downloadable today (and where), and which local authority boundaries each edition uses.
+
+3. WHICH COUNCILS DELIVER WHICH SERVICES
+   a. Any official statement (in the RO guidance, the statistical releases, or a government page) of which service categories are the responsibility of county councils and which of shire district councils in two-tier areas, and which are delivered by unitary authorities, metropolitan districts and London boroughs.
+   b. Whether each RO form is completed by every council type, or only by those responsible for the service.
+
+4. REORGANISATIONS, 2013 TO 2021
+   The official list of changes to English local authorities in this period (new unitary authorities, mergers, abolitions), each with its effective date and the legislation that made it. How the finance statistics treat predecessor and successor authorities (for example, whether predecessor data are combined or kept separate).
+
+5. SERVICE DEMAND SERIES, BY COUNCIL, BY YEAR (2013-14 TO 2020-21)
+   For each, give the exact dataset name, publisher, unit, the years available at council level, definitions, and documented breaks:
+   a. Adult social care: the Referrals, Assessments and Packages of Care (RAP) return (to 2013-14) and the Short and Long Term (SALT) return (from 2014-15): the measures each records (for example clients receiving long-term support, requests for support), and the documented break between them.
+   b. Children's social care: children looked after (the SSDA903 collection) and the children in need census: the measures recorded per council per year.
+   c. Libraries: any official series of library visits, active borrowers or number of libraries per council (state the publisher and any licence or access restriction, for example a subscription dataset).
+   d. Highways: road length by local authority and traffic by local authority (Department for Transport): measures, units and years.
+   e. Waste: household waste collected per council (the official waste statistics): measures and years.
+
+6. FUNDING MEASURES BY COUNCIL AND YEAR
+   For each year from 2013-14 to 2020-21: is Core Spending Power, Settlement Funding Assessment or Revenue Support Grant published per council? Give the exact table names, the publication (provisional and final settlement), and documented changes in how each measure is defined between years.
+
+OUTPUT
+- A numbered list answering 1 to 6 (with their lettered parts), each answer with its document and section.
+- Then a list of every document you opened, with links. Official sources only.
+- Then a self-check, item by item:
+  - no introduction or background written;
+  - no data values, trends, comparisons or findings reported anywhere;
+  - no study, report or article analysing these data listed, including in the source list;
+  - every answer sourced or marked "not stated".
+  If any check fails, fix the output before finishing.

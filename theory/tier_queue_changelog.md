@@ -6,6 +6,16 @@ The history of the canonical model (theory/TIER_QUEUE_MODEL_v*.md), moved out of
 
 The model is now called **the Persistence Allocation Model** (formerly the tier-queue model). The name changes from now on. File names, engine names (tq_*, TQ runs) and frozen documents, including the H1 VitalDB pre-registration, keep the old name.
 
+## v0.18 corrected a third time, from the literature map (James approved, 7 October 2026)
+
+From theory/PAM_maths_literature_map.md (James's GPT chat on the maths; raw/2026-10-07_chatgpt_PAM-maths-literature-and-MRAP.md):
+1. **The stores' value is renamed "the expected frequency of shortfall".** It is updated from a 0-or-1 indicator, so it estimates how often supply falls short, not by how much. The quantity is unchanged.
+2. **Bundles of activity under joint scarcity.** Parts draw bundles, never separate resources. πᵣ is the order of sacrifice when r alone limits. Conflicting orders under joint scarcity are reported as underdetermined (the explicit network is needed).
+3. **Pathway capacity is the maximum flow** from source to part. Severance is a minimum cut of zero. The parallel sum is the special case.
+4. **Mapping check:** the law of the minimum applies only where inputs are complementary.
+
+Also: the literature-before-formula rule was added to CLAUDE.md.
+
 ## v0.18 corrected again, from the maths (James approved, 7 October 2026)
 
 Raised while writing theory/PAM_math_v0.18.md (flags 1 to 3). James's answers:

@@ -1,6 +1,6 @@
 # The Persistence Allocation Model, v0.18 (canonical state, 6 October 2026)
 
-**Status:** working model (phase 3). **The vocabulary is frozen** (James approved v0.18, 6 October 2026). **Corrected 7 October 2026** (James approved): three consistency fixes and one open question logged, no change of content; and a second correction from the maths (exported load is residue, not a resource term; resources are drawn from a flow). See the changelog. The probing phase is over. No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
+**Status:** working model (phase 3). **The vocabulary is frozen** (James approved v0.18, 6 October 2026). **Corrected 7 October 2026** (James approved): three consistency fixes and one open question logged, no change of content; a second correction from the maths (exported load is residue, not a resource term; resources are drawn from a flow); and a third from the literature map (the stores' value renamed; bundles of activity under joint scarcity; pathway capacity as maximum flow; a complementarity check in mapping). See the changelog. The probing phase is over. No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
 
 **The single reference** for the model as it stands.
 - **History:** theory/tier_queue_changelog.md.
@@ -122,12 +122,13 @@
    2. **every part's basal maintenance,** by rank. Existence comes before anyone's work;
    3. support parts' work (parts the top depends on; the intake while it has something to take in);
    4. every other part's work, by rank, **with the repair network ranked among them;**
-   5. **from surplus only:** reactivation and rebuilding (the repair network's backlog), against refilling the stores at their value (the expected shortfall).
+   5. **from surplus only:** reactivation and rebuilding (the repair network's backlog), against refilling the stores at their value (the expected frequency of shortfall).
 
    - **The repair network's own capacity** reaches the parts it serves in their rank order.
    - **When supply falls short,** stores are drawn (each up to its release rate), then lower-ranked parts lose access first.
 2. **Rank.**
    - **Per resource:** each resource r has its own order of sacrifice, πᵣ. There is no reason the order for oxygen must match the order for protein, iron, staff time or money. **Where the orders coincide, a single "rank" is shorthand,** and the mapping says so.
+   - **Under joint scarcity:** πᵣ is the order of sacrifice when resource r alone is limiting. Parts draw **bundles of activity**, never separate resources. Where several complementary resources bind together and their orders conflict, ordinal ranks do not decide the outcome: the explicit network is needed, and the reduced form reports the case as underdetermined (maths, Section 2).
    - **What it is:** for each resource, the order in which parts lose adequate access when it is scarce. It is a coarse-grained property of the network: topology, pathway capacity, gating, autoregulation, redundancy. **The engine's fixed ranks stand for that order.**
    - **What it answers:** who absorbs the shortfall first. It does not set how much each part receives in normal running, which the governor varies all the time.
    - **How it is fixed:** at mapping, from documented properties of access. **Examples:**
@@ -137,7 +138,7 @@
      - which budget lines are discretionary.
 
      **It is never read off the observed order of sacrifice** in the data being tested.
-   - **The open question (Tier 1):** is that order fixed, or does it reverse with conditions? The engine reproduces everything tested so far with fixed ranks, the intake rule and one dynamic quantity, the stores' value (the expected shortfall).
+   - **The open question (Tier 1):** is that order fixed, or does it reverse with conditions? The engine reproduces everything tested so far with fixed ranks, the intake rule and one dynamic quantity, the stores' value (the expected frequency of shortfall).
      - **A valid test needs two recipients competing for the same scarce resource at the same time,** with their order reversing between conditions.
      - A part receiving more in one condition and less in another is not such a test.
      - Under item 1, a reversal could also come from local autoregulation, so the test is designed with the network in view.
@@ -181,9 +182,9 @@
 - **Load backs up a dependency:** a part limited by throughput leaves work undone, and parts depending on its output lose capacity.
 - **Coupling is shared dependency.** Parts sharing an input, a stressor, a store or repair machinery move together (G18).
 - **Pathways and severance.**
-  - **A pathway's capacity** is the sum of its routes in the simplest parallel case.
+  - **A pathway's capacity** is the maximum flow from the resource's source to the part: the sum of its routes in the simplest parallel case.
   - **Losing some routes lowers capacity,** and flow moves onto the rest. If they saturate, they fail in turn: a cascade (G24).
-  - **Severance is a pathway's capacity at zero,** however many cuts that took.
+  - **Severance is a pathway's capacity at zero** (the minimum cut between source and part has capacity zero), however many cuts that took.
   - **Severing a bypassable route relocates flow; severing a non-bypassable link stops it.**
 - **The death cascade (exhaustion).** Parts switch off in ascending rank, then lose units in ascending rank. The top loses its last units last: system death.
 - **Severance of a non-bypassable link** breaks the record while stores are full and other parts are funded.
@@ -206,6 +207,7 @@ Do this before opening any outcome data.
 1. **Boundary, currency and protected level.** Name the system, its boundary and the level whose viability is protected. Fix all three before outcomes are seen: they are the model's main safeguards.
 2. **Resources, carriers and stores.**
    - Which resources does work need, in what ratio?
+   - **Are they complementary** (used in fixed proportion)? The law of the minimum applies only where they are. Substitutable inputs are mapped as one resource, or declared.
    - What carries them (the network)?
    - Which stores exist for each, in what order, with what release?
    - Which can be spilled?
@@ -279,7 +281,7 @@ Do this before opening any outcome data.
 - **Collapse or death of the whole system** (logged 7 October 2026). A part dies only when its route back is severed. **The open question:** does the same criterion apply to the system? If the top reaches zero capacity with its route back intact, is that collapse or death? Exhaustion currently calls it "system death". It is left open unless a mapping forces the distinction.
 - **The release profile** (a knee, or full release until a switch). **Live after H1:** the taper reading failed for blood loss under anaesthesia.
 - **The repair network:** resident and mobile kept apart, or one workforce?
-- **What starts anticipatory economising;** how the expected shortfall is learned; what sets a template limit.
+- **What starts anticipatory economising;** how the expected frequency of shortfall is learned; what sets a template limit.
 - **Harmful inputs:** entered for now as exogenous loss of units or pathway capacity (Section 3, Damage). A mechanism is added only if a pre-committed test fails without one.
 - **Governors as modes,** and whether rarity sets which wins.
 - **The carried v0.16 mechanisms:** which predictions need them?
@@ -330,7 +332,7 @@ Do this before opening any outcome data.
 - **Damage:** an exogenous loss of units or of pathway capacity.
 - **Load flow:** the deficit moving through the system.
 - **Load residue:** the state change left by absorbing it; recorded in the state ledger, never added to the resource ledger.
-- **Pathway capacity:** the sum of a pathway's routes.
+- **Pathway capacity:** the maximum flow from a resource's source to a part (the sum of the routes in the parallel case).
 - **Severance:** pathway capacity at zero.
 - **Switched off, lost, scar, economising, chronic:** as v0.17.
 - **Exhaustion and severance:** the two routes to system death.

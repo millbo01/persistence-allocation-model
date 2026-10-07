@@ -1,0 +1,51 @@
+PT1-C1: classification of council spending lines by statutory duty (rule-based; no spending data)
+
+You are building a classification that will be fixed before anyone opens spending data. Each spending line that English councils report in their annual Revenue Outturn returns is to be classified by how far councils are legally required to provide it, using one official source and one fixed rule. The classification must not depend in any way on how much was spent on any service, or on how spending changed.
+
+FORMAT RULE: DO NOT WRITE AN INTRODUCTION, BACKGROUND OR ESSAY
+- Your output starts directly with Part 1. After the parts come only the source list and the self-check.
+
+STRICT RULES
+1. NO SPENDING INFORMATION. Do not open, use or mention any figures on council spending, budgets, cuts, savings or service changes, from any source. Do not consult or cite any study, report or article about council spending or austerity (think tanks, audit bodies, academics, journalists, councils' own reports). If you know from memory how any service's spending changed, you must not use that knowledge; classify only from the legal duties as written.
+2. TWO SOURCES ONLY.
+   a. The service lines: the "General fund revenue account outturn: specific guidance notes" for the 2016-17 financial year (or, if that year cannot be opened, the nearest year you can open, stating which). Use the service lines on forms RO1 to RO6 and the children's social care lines, at the level of the individual line (not just the form).
+   b. The duties: the Department for Communities and Local Government "Review of statutory duties placed on local government" (published 30 June 2011; the dataset of duties), and the legislation it cites where you need to read the wording of a duty.
+   If you cannot open either source, say so and stop.
+3. NOTHING INFERRED. Every classification cites the duty or duties it rests on (Act and section, as listed in the review). If no duty is found, say so.
+
+THE RULE (apply it the same way to every line)
+For each service line, identify its main activity from the line's description in the guidance notes. Then:
+- Class A: STATUTORY, SPECIFIED. At least one duty in the review requires the council to provide this activity to individuals or places that meet criteria set in law (for example a duty to assess and meet eligible needs, to accommodate, to collect, to provide to everyone entitled). The council must provide it whenever the criteria are met.
+- Class B: STATUTORY, LEVEL AT DISCRETION. At least one duty in the review requires the council to provide or secure this activity, but leaves its level, extent or manner to the council (for example a duty to provide a "comprehensive and efficient" service, to "secure" or "promote", to have regard to, or to prepare a plan or strategy).
+- Class C: DISCRETIONARY. No duty in the review covers the line's main activity. The council may provide it under a power but is not required to.
+- AMBIGUOUS: if the line's main activity could reasonably fall in two classes, record "ambiguous", give both candidate classes, and give the reason. Do not choose between them.
+Where a line combines several activities, classify by the main activity as described in the guidance, and list any secondary activity with its own class in the notes.
+
+PART 1: THE CLASSIFICATION TABLE
+One row per service line, with these columns:
+- form and line code;
+- line name (exactly as in the guidance);
+- main activity (one short phrase, from the guidance description);
+- class (A, B, C or ambiguous with both candidates);
+- duties relied on (Act, section, and the review's own identifier if it has one);
+- notes (secondary activities; any difficulty applying the rule).
+
+PART 2: COVERAGE
+- The number of lines classified in each class, and the number marked ambiguous.
+- Any line you could not classify, with the reason.
+- The guidance year used.
+
+PART 3: DECLARATION
+- State plainly whether you used any knowledge of council spending, cuts or service changes in making any classification. If you are aware of such knowledge for any line, name the line and confirm the classification rests only on the duties cited.
+
+OUTPUT
+- Parts 1 to 3.
+- Then a list of every document you opened, with links (the guidance notes, the review dataset, and any legislation).
+- Then a self-check, item by item:
+  - no introduction written;
+  - no spending figures, cuts or service changes mentioned or used;
+  - only the two sources (and cited legislation) used;
+  - the same rule applied to every line;
+  - every classification cites its duties or states that none was found;
+  - ambiguous lines left unresolved, with both candidates.
+  If any check fails, fix the output before finishing.
