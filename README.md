@@ -2,13 +2,24 @@
 
 ## What this is
 
-This repository is the record behind the paper. It was extracted from the author's working repository with its commit history and dates preserved. It keeps only the files the paper and its supplement cite or are built from:
-- the paper and supplement drafts;
-- the model documents and their earlier versions;
-- the derived propositions and their numerical check;
-- the literature searches;
-- the natural-system checks;
-- the two held-out tests (H1 and PT1): their pre-registrations, setting maps, procedure logs, prompts, scripts, results, replications and blind adjudications.
+This repository is the record behind the paper. It was extracted from the author's working repository with its commit history and dates preserved.
+
+**The current files:**
+- **The paper:** `papers/pam-model/08 Paper draft 3.md`.
+- **The supplement:** `papers/pam-model/03 Supplement draft 1.md`.
+- **The citation check:** `papers/pam-model/04 Citation check.md`.
+- **The model:**
+  - the current version, `theory/PERSISTENCE_ALLOCATION_MODEL_v0.19.md`;
+  - the two versions the held-out tests were derived from: `theory/TIER_QUEUE_MODEL_v0.17.md` for H1 and `theory/PERSISTENCE_ALLOCATION_MODEL_v0.18.md` for PT1.
+- **The derived propositions and their numerical check:** `theory/PAM_propositions_DRAFT.md`, `scripts/`.
+- **The comparison with prior theories, the open checks and the probe register:** `theory/PAM_*`.
+- **The natural-system checks:** `theory/natural_test_*`.
+- **The literature searches:** `theory/search_check*/` and their protocols.
+- **The two held-out tests (H1 and PT1):** in `tests/` and `raw/`. That covers their pre-registrations, setting maps, procedure logs, prompts, scripts, results, replications and blind adjudications.
+
+**Earlier versions are in the history.** Earlier drafts of the paper, earlier versions of the model (from v0.1 on 5 October 2026), and working files were removed from the current files on 7 October 2026, after release v1.0. They remain in the commit history with their dates.
+- **To see them:** open a file's history on GitHub, or run `git log --all -- <path>` and `git show <commit>:<path>`.
+- **The v1.0 archive on Zenodo** holds all of them as files.
 
 Commit dates are the working repository's own. Commit hashes differ from the working repository's, because the history was filtered; the map below links the hashes cited in the records to their new values.
 
