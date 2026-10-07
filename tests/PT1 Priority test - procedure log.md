@@ -93,3 +93,37 @@
 - **What happens next:** the counting step reports the number. **If it is material, a documented code-history mapping is a candidate deviation for James to decide** before the run.
 
 **Next:** step 6, build the tidy files and run the counting step (counts only, no outcome values).
+
+## Step 6: tidy files built and counting step run (7 October 2026)
+
+**Tidy files:** data/pt1/tidy/ (checksums in data/pt1/tidy/MANIFEST.txt), from tests/scripts/pt1_parse.py --build. Row counts: spend 491,518; pop 12,680; proj 117,948; csp 1,960; cpi 38.
+
+**Counts** (tests/scripts/pt1_count.py; tests/results/PT1/counts.json; no outcome values):
+
+**Councils:**
+- **121 kept:** 32 London boroughs, 36 metropolitan districts, 53 unitaries. These are single-tier councils with the same code in all six years. The City of London and the Isles of Scilly are excluded.
+
+**Lines:**
+- **95 matched in all six years.**
+- **Dropped as not present in all years:** bus lane enforcement (absent in 2014-15) and allotments (2019-20 only, D-4).
+
+**Series:**
+- 11,495 council-line series in total.
+- **Dropped:**
+  - 6,345 with zero or negative spending in some year (lines a council does not run, and income-generating lines such as parking);
+  - 443 below the £100,000 mean;
+  - 0 for duplicate names;
+  - 0 incomplete.
+- **Kept: 4,707.**
+- **By class:** A 1,334; B 1,214; C 1,233; ambiguous 926.
+
+**Rows:**
+- 23,535 with an outcome.
+- **Usable for PT1:** 23,373.
+- **Usable for G25:** 18,905 (ambiguous lines excluded).
+
+**Missing projections:**
+- **243 rows,** all for 2014-15 to 2016-17, in two councils whose codes changed before the window: Northumberland (E06000057) and Gateshead (E08000037).
+- **That is 1.0% of PT1 rows. Not material,** so no code-history deviation is proposed; the rows drop out as the frozen code handles missing values.
+
+**Next:** step 7, the single analysis run (tests/scripts/pt1_councils.py, unchanged; SHA-256 begins 995abfc5).
