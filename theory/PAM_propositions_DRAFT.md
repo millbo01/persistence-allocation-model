@@ -25,7 +25,7 @@
 | A1 | **One resource at a time.** Results hold resource by resource. Where several resources bind, a part's work is the minimum over them (or the synthesising-unit form, which is never larger), so the record holds only if it holds for every resource | maths Section 2 |
 | A2 | **The ordered draw.** The available flow $S=U+I+\sum_s d_s$ is drawn in phases: (1) the top's full need; (2) every other part's basal maintenance; (3) support parts' work and renewal; (4) every other part's work and renewal. Within a phase, parts draw in the fixed order $\pi$, each up to its draw | maths Section 2 |
 | A3 | **Fixed order.** $\pi$ is fixed over the period considered (no dynamic priority) | v0.18, Tier 1 alternative excluded |
-| A4 | **Stores.** Store $s$ releases at most $\rho_s(L_s)$ per step. The default is proportional release, $\rho_s=k_sL_s$ with $0<k_s\le1$ (DEB). The alternative is full release, $\rho_s=L_s$. A store is drawn only for the need left after supply | maths Section 3 |
+| A4 | **Stores.** Store $s$ releases at most $\rho_s(L_s)$ per step. The default is proportional release, $\rho_s=k_sL_s$ with $0<k_s\le1$ (DEB). The alternative is full release, a constant rate $\rho_s=\rho^0_s$ until the store is empty. A store is drawn only for the need left after supply | maths Section 3 |
 | A5 | **Reference.** $q^0_i$ is fixed at mapping as a rule and is never lowered because units switched off | maths Section 7 |
 | A6 | **Units change only through supply,** except damage from outside. Switch-off rate $\theta K$ per step; disorderly failure at $1/\tau_f$ per step; unmet basal maintenance is paid from the part's own units with yield $m$ and overhead $y\ge1$ | maths Section 5 |
 | A7 | **Margin.** $M$ is the most the system can leave unmet below the top before the record moves. $M=D_4$ (ordinary parts' work and renewal) when the top depends on its supports ($\omega_{\text{top}}>0$); $M=D_4+P+B$ when it does not | maths Section 4; results R1 |
@@ -105,7 +105,7 @@
 **Set-up.** A constant gap $\Gamma$ per step (the rate of shortfall) is carried by one store with level $L$, from $L_0$, with margin $M$ (A7) and $M<\Gamma\le kL_0$.
 
 **Statement.**
-1. **Full release:** the record breaks when the store is empty, after a cumulative shortfall of $L_0$ (to within one step), **whatever $\Gamma$.** This is G3's rate-independent case.
+1. **Full release** ($\rho^0\ge\Gamma$): the record breaks when the store is empty, after a cumulative shortfall of $L_0$ (to within one step), **whatever $\Gamma$.** This is G3's rate-independent case. (The numerical check uses the limit $\rho^0\to\infty$; the result holds for any $\rho^0\ge\Gamma$.)
 2. **Proportional release ($\rho=kL$):** the store carries the whole gap while $kL\ge\Gamma$. Below $L=\Gamma/k$, it releases $kL<\Gamma$ and decays geometrically, and the difference falls on parts below the top. **The record breaks when the store falls to**
 $$L^\ast=\frac{\Gamma-M}{k}$$
 (in discrete time, within the step: $L^\ast(1-k)<L_{\text{break}}\le L^\ast$).
@@ -133,7 +133,7 @@ $$L^\ast=\frac{\Gamma-M}{k}$$
 $$T_{\text{lead}}\approx\frac{\ln\big(\Gamma/(\Gamma-M)\big)}{-\ln(1-k)}\ \approx\ \frac1k\ln\frac{\Gamma}{\Gamma-M}$$
 (within one step).
 3. **Hence the warning is shorter the larger the gap relative to the margin,** and vanishes as $M\to0$ (no parts below the top left to carry load, so headroom loss and break coincide).
-4. **Full release gives no slowing before the store empties** (headroom $L-\Gamma$ stays positive until the last steps), so there is no warning beyond the final step.
+4. **Full release gives no slowing before the store empties:** headroom $\rho^0-\Gamma$ is constant until the store holds less than one step's release, so there is no warning beyond the final step.
 
 **Proof.** Headroom zero at $L_w=\Gamma/k$. Thereafter $L$ decays by the factor $(1-k)$ per step until $L<(\Gamma-M)/k$ (P4). The number of steps is $\ln(L_w/L^\ast)/(-\ln(1-k))$. ∎
 
