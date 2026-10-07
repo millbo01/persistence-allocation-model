@@ -1,0 +1,17 @@
+P1: ok
+P2: ok
+P3: ok
+P4: ok
+P5: ok
+P6: ok
+P7: ok
+P9: ok
+P10: ok
+P11: ok
+P13: ok
+P16: ok
+P17: ok
+P18: ok
+P1 general: ok
+P17 adequacy: ok
+ALL OK
