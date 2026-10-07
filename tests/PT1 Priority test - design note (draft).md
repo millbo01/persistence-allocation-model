@@ -212,3 +212,24 @@ So a graded response that tracks expected value, with no declared role change, i
    - **Proposed:** a totals rule (the class held by most of the group's classified sub-lines, ambiguous lines counted as half to each candidate), plus sensitivity analyses with the totals set to each candidate.
 
 **Window: reconsider 2014-15 to 2019-20.** The adult social care sub-lines in the current guidance (by primary support reason) appear to date from the 2014-15 alignment with the SALT collection. Starting in 2014-15 would also avoid the academies and "services for young people" changes of that year. To be confirmed from documentation, not from data.
+
+## PT1-C1c assessment (7 October 2026): the classification is complete
+
+**Stored:** raw/2026-10-07_chatgpt_PT1-C1c.md (same GPT chat as C1b).
+
+**Result:**
+- **RO5 and RO6:** 71 lines (A 15, B 12, C 33, ambiguous 11). The rule was applied as written, with citations, and no spending knowledge was declared.
+- **With C1b, the full classification is 176 lines:** A 40, B 28, C 73, ambiguous 35.
+
+**Known limitation of the source (the 2011 review), recorded before data.** Several C classes come from gaps in the review's coverage, not from the absence of a duty in law:
+- council tax support administration and local welfare assistance (schemes created after 2011, which GPT noted itself);
+- electoral registration (the review lists only the jury-supply duty);
+- archives.
+
+**Handling, proposed for the pre-registration.** The classification is used as produced, by rule. A sensitivity analysis drops RO6 central and overhead lines. Most of the source-gap lines are there, and they are not client-facing services in the sense the test needs.
+
+**The classification feeds two things:**
+- **H-fixed's rank** (A before B before C, the documented access property) for PT1;
+- **G25's prediction** (statutory class predicts the order of sacrifice), at reduced weight because of Claude's prior knowledge, and the classifier's, which it declared and disclaimed.
+
+**Next:** the setting map and mapping (one document), then the pre-registration.
