@@ -53,3 +53,13 @@ This is the order the ant probe pointed to, and it follows from the existing rul
 | P9 | Dehnel's phenomenon in shrews | Reversible economising to lower the cost of upkeep ("when income cannot rise, make the system cheaper to keep alive") | Winter shrinkage of the body and organs, the brain included, with spring regrowth. Measurements show lower absolute energy use. The brain shrinks by cell shrinkage with neuron numbers stable. The change is seasonal and anticipatory | **Convergence** on reversible economising and on scaling down while keeping the route back. **The ranking of tissues was not predicted,** so it is not scored | Boundary 1, resource 2, part 1, **rank 5**, reference 2 to 3, prediction 2 |
 
 **Unverified leads from P8 and P9:** the 2025 Australian segmentation study; the 130-species study (2024); the shrew metabolic measurements; the 2025 brain cell-shrinkage report.
+
+## Probes from the Perplexity report (7 October 2026)
+
+**Source:** raw/2026-10-07_perplexity_PAM-post-v018-report.md. **No ledger was scored before the search,** so bias cannot be assessed; shorebird phenotypic flexibility and muscle repair were already known (theory/deterioration_threshold_scan.md; natural test 8). Citations in the report are leads, not checked.
+
+| No. | Case | What the model said | Existing science it met | What it showed |
+|---|---|---|---|---|
+| P10 | Cold-stressed guinea pigs | Requirement-limited load; early reproductive output held, later dependent stages degraded | Mixed: one study found no effect on reproductive output; another found coping by reduced activity; a review reported delayed weaning and slower offspring growth | **Mapping point:** a record can be a sequential pathway (birth, lactation, weaning); the early stage can hold while load appears downstream. Non-diagnostic for priority |
+| P11 | Migratory shorebirds (refuelling against flight preparation) | Phase-specific access and reversible remodelling under governor modes, not rank reversal | Phenotypic flexibility: digestive organs grow while refuelling and shrink before departure; heart and flight muscle grow | **Sharpens v0.18 Section 4, item 3:** a change of mode changes allocation without changing rank; a dynamic-rank test also needs the mode controlled. Non-diagnostic for dynamic priority |
+| P12 | Skeletal-muscle repair | Repair as a network that competes for access; strict rank under shortage (G23b) | Repair depends on satellite cells plus shared immune, vascular and stromal support; priming after one injury; impaired repair and fibrosis after repeated injury | **Repair capacity is itself a state** (primed, depleted, fibrotic, cut off). G23b remains untested: it needs simultaneous matched injuries sharing a limiting repair resource |
