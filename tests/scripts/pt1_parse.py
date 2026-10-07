@@ -210,6 +210,9 @@ def build_proj():
 def build_csp():
     d = pd.read_excel(os.path.join(ROOT, "csp", "Core_Spending_Power_Summary.xlsx"), sheet_name="input")
     d = d[d["ons_code"].notna()]
+    # deviation D-5: keep single-tier council codes only (Greater Manchester Fire and the Combined Authority share
+    # E31000040, which made the analysis pivot fail; no council in scope is affected)
+    d = d[d["ons_code"].astype(str).str[:3].isin(["E06", "E08", "E09"])]
     long = d.melt(id_vars="ons_code", value_vars=[f"csp_{y}" for y in range(2015, 2020)], var_name="year",
                   value_name="csp_millions")
     long["year"] = long["year"].str[-4:].astype(int)
