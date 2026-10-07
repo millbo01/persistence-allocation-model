@@ -1,6 +1,6 @@
-# The Persistence Allocation Model, v0.19 (consolidation, 7 October 2026)
+# The Persistence Allocation Model, v0.19 (canonical state, 7 October 2026)
 
-**Status:** working model (phase 3). **Consolidation draft for James's approval.** It becomes the canonical state when James approves it; until then v0.18 stands.
+**Status:** working model (phase 3). **Approved by James, 7 October 2026: the canonical state.** v0.18 is kept as the record.
 
 **What v0.19 is:** v0.18 with every dated correction and amendment of 6 and 7 October 2026 folded into the text, the two items approved for v0.19 applied, and the sections v0.18 took "as v0.17" written out in full. **Nothing new enters.** Every change from v0.18's wording is listed in the consolidation notes at the end, with its source, so it can be checked.
 
@@ -37,12 +37,13 @@
 | 12 | **Rank under saturable uptake** as a mapping rule (affinity, capacity and requirement together) | Propositions P17, 7 October (corrected after review) |
 | 13 | **Drain against capture** as the extension's first test | Propositions P18, 7 October |
 | 14 | **Results of H1 and PT1 recorded** | 7 October |
+| 15 | **Central claim:** "load appears at that part. Where the system as a whole is short, the governor draws its stores" in place of "the governor draws its stores" directly after the three origins of shortfall | James, 7 October (after review; option A) |
 
 ## 1. The principle
 
-**Central claim** (unchanged from v0.18 as corrected and amended on 7 October 2026):
+**Central claim** (v0.18's wording with one change, approved by James on 7 October 2026: a local shortfall is separated from a system-wide deficit, so that load from a restricted gate does not imply drawing the stores):
 
-> In a system that regulates its own persistence, a governor holds the levels its persistence depends on by regulating access to finite shared resources among parts that have no demand of their own; the allocation among parts is the resulting flow. Each part works to the limit of the scarcest resource that reaches it. When what reaches a part falls short of what the reference state requires, whether supply falls, requirement rises or access is restricted, the governor draws its stores, and lower-ranked parts lose access first and switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: the resource gap is met from stores, met from outside the boundary, or left unmet at a named part, and unmet load leaves its residue in switched-off, lost or scarred units, or in work not done, which may land across the boundary. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Repair is its own network, governed like any part: under a sustained shortfall it loses access and lost units wait. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. A part dies only when its route back is cut; the system collapses when load reaches the top or a non-bypassable link is cut, and dies only when no route back remains.
+> In a system that regulates its own persistence, a governor holds the levels its persistence depends on by regulating access to finite shared resources among parts that have no demand of their own; the allocation among parts is the resulting flow. Each part works to the limit of the scarcest resource that reaches it. When what reaches a part falls short of what the reference state requires, whether supply falls, requirement rises or access is restricted, load appears at that part. Where the system as a whole is short, the governor draws its stores, and lower-ranked parts lose access first and switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: the resource gap is met from stores, met from outside the boundary, or left unmet at a named part, and unmet load leaves its residue in switched-off, lost or scarred units, or in work not done, which may land across the boundary. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Repair is its own network, governed like any part: under a sustained shortfall it loses access and lost units wait. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. A part dies only when its route back is cut; the system collapses when load reaches the top or a non-bypassable link is cut, and dies only when no route back remains.
 
 **Derived result** (propositions P1; corrected 7 October 2026 after review). Two regimes:
 - **Scarcity-limited: access relocates load.** Where the flow is fully used and no part receives above its reference allocation, the total unmet load is the same under every access ordering at fixed supply, store draw and resource from outside. Access decides only where it lands. An intervention that restores one part's supply without adding resource moves the same amount of load onto other parts. Total load falls only by raising supply, drawing the stores harder (which needs release headroom), or bringing resource in from outside.
@@ -403,7 +404,7 @@ Do this before opening any outcome data.
 
 ## 13. Way forward
 
-1. **v0.19 approved** (pending James).
+1. **v0.19 approved** (James, 7 October 2026).
 2. **The model paper's mathematical section,** written from the derived propositions.
 3. **A cleaner G25 test** (no contamination) and a more precise priority test.
 4. **The G12 mapping fault** to be named before any re-look at H1.
@@ -500,7 +501,7 @@ Every place where v0.19's wording differs from v0.18 as amended, and why. Nothin
 | 26 | Section 15 | Items 1 to 6 | Item 7, drain against capture | Flag J |
 
 **Checked, not changed:**
-- The central claim is verbatim from v0.18 as corrected and amended.
+- The central claim is verbatim from v0.18 as corrected and amended, except the one clause changed by James's decision (Changes table, row 15).
 - The scope section is verbatim.
 - G9, G14, G15 and G17 are carried from v0.16 unexamined, as before.
 
@@ -508,5 +509,5 @@ Every place where v0.19's wording differs from v0.18 as amended, and why. Nothin
 - **The derived result beside the principle** (Section 1) now separates two regimes. The first version asserted invariance of total load under every access setting; its proof assumed the flow fully used, which a closed gate need not leave true (checked numerically).
 - **Rank under saturable uptake** (Sections 4 and 8) is the order of the adequacy threshold C\* = K·r/(1 − r), not of affinity alone (checked numerically, with a counter-example).
 - **v0.18** still carries the earlier forms of both (Section 1; Section 8, step 4) until v0.19 is approved.
-- **The central claim is unchanged here.** A wording that separates local shortfall from a system-wide deficit is with James (the claim's "the governor draws its stores" follows every origin of load, including access, where stores need not be drawn).
+- **The central claim:** option A adopted by James (7 October 2026): "load appears at that part. Where the system as a whole is short, the governor draws its stores".
 

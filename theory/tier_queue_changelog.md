@@ -375,3 +375,14 @@ James accepted flags F to J (theory/PAM_propositions_DRAFT.md, batch 2):
 
 No new mechanism (the wear term restores an engine form).
 
+## v0.19 approved (James, 7 October 2026)
+
+theory/PERSISTENCE_ALLOCATION_MODEL_v0.19.md is the canonical state; v0.18 is kept as the record.
+- **Consolidation:** v0.18 with every correction and amendment of 6 and 7 October folded in; the two items approved for v0.19 applied (economising as a magnitude, consolidation its default realisation; switched off defined); the "as v0.17" sections written out; G1 to G26 in one table. Every wording change is listed in the document's consolidation notes.
+- **Corrections after review** (raw/2026-10-07_chatgpt-assumed_v019-and-maths-section-review.md), checked numerically:
+  - **the derived result beside the principle** now has two regimes: scarcity-limited load is relocated by access; access-limited load is created and removed by gating (general identity: total load = gap - store draw - outside input + unused resource + allocation above reference);
+  - **rank under saturable uptake** is the order of the adequacy threshold C* = K r/(1 - r), with r the reference allocation over maximum uptake; affinity alone decides only at equal r.
+- **Central claim (option A, James):** "When what reaches a part falls short of what the reference state requires, whether supply falls, requirement rises or access is restricted, **load appears at that part. Where the system as a whole is short,** the governor draws its stores, and lower-ranked parts lose access first and switch units off." The rest of the claim is unchanged.
+
+No new mechanism.
+
