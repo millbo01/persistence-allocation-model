@@ -95,3 +95,45 @@ So a graded response that tracks expected value, with no declared role change, i
 1. The structure-only documentation prompt for another model (what is recorded, at what level, from when, with no values).
 2. Then the setting map and the mapping.
 3. Then the pre-registration, with every rescue route (R1 to R3) declared.
+
+## PT1-S1 assessment (7 October 2026)
+
+**Stored:** raw/2026-10-07_gemini_PT1-S1.md (SHA-256 begins 5d0150bf).
+
+**Format held.**
+- No figures, trends or comparisons appear anywhere.
+- **Minor breach of the "no studies" rule,** as in H1. The works-cited list includes titles of analytical pieces: a think-tank report on children in care, a university report, an academic paper, a council audit report and a trade-press article. No findings are given. Logged.
+
+**What it establishes:**
+1. **Spending:** the Revenue Outturn suite (RO1 education; RO2 highways and transport; RO3 adult social care and public health; children's social care separate; RO4 housing, excluding the Housing Revenue Account; RO5 cultural, environmental, regulatory and planning; RO6 protective, central and other) and the Revenue Account budget returns, from MHCLG, in ODS and Excel.
+   - **Measures:** gross expenditure, income, net current expenditure, and total service expenditure (net of service-specific income).
+   - **No recommended measure** for comparing services over time.
+2. **Documented breaks:**
+   - **2013-14:** public health moves to councils (ring-fenced grant, new RO3 lines); business rates retention begins; police funding is separated.
+   - **2014-15:** academies leave RO1; "services to young people" move from education to children's social care.
+   - **2020-21:** the temporary-accommodation lines in RO4 are recoded.
+   - **The returns warn** that pre-2013-14 data are not reliably comparable with later years.
+3. **Funding:** Core Spending Power, Settlement Funding Assessment, Revenue Support Grant and Baseline Funding Level are defined (from current notes). Their availability by year for 2008-09 to 2020-21 is not stated. **CPI** is used for real terms.
+4. **Projections:** ONS subnational population projections exist for every edition from 2006-based to 2018-based, at council level, by single year of age and sex, over 25 years, with past editions kept. **Publication dates are stated only for the 2018-based edition** (24 March 2020).
+5. **Demand:**
+   - **Children in need and looked after** (DfE): editions documented for 2012-13 to 2018-19.
+   - **Homelessness:** a break in April 2018 (P1E replaced by H-CLIC).
+   - **Adult social care:** only the 2023-24 break (SALT to client-level data) is documented. **The pre-2014-15 collection (RAP) and the start of SALT were not covered.**
+   - **Library and highways demand:** not stated.
+6. **Statutory duties:** DCLG's "Review of statutory duties placed on local government" (30 June 2011, updated 2018) groups duties by government department. **No official mapping from duties to spending lines exists, and no official statutory or discretionary classification of services.**
+
+**What this means for the design:**
+- **The H-fixed covariate must be built.** Statutory status, the documented access property and the rank under H-fixed, has no official mapping to spending lines. It must be constructed from the 2011 review by a rule fixed before any spending data is opened, ideally by another model, blind to outcomes.
+  - **For G25** this matters doubly: Claude's prior knowledge of which services were cut makes a Claude-built classification suspect.
+- **The window should start in 2013-14** (the comparability break, public health), or treat the 2013-14 and 2014-15 breaks by rule. **Proposed:** 2013-14 to 2019-20 (seven years, before the pandemic), with lines defined consistently across those years.
+- **Projection publication dates are needed** to establish what was available before each budget. **Gaps to fill:**
+  - projection publication dates;
+  - year-by-year availability of the RO data from 2013-14;
+  - adult social care demand series before SALT;
+  - library and highways demand;
+  - which services each council type is responsible for in two-tier areas;
+  - reorganisations from 2013 to 2020.
+
+**Next:**
+1. A short second documentation run (PT1-S2) on those gaps.
+2. A separate blind classification prompt: map the 2011 statutory-duties review to RO service lines by a fixed rule, with no spending data and no outcome knowledge.
