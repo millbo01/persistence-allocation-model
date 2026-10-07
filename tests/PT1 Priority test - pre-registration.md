@@ -1,6 +1,6 @@
-# PT1, fixed against dynamic priority (with G25): pre-registration (DRAFT for James, 7 October 2026)
+# PT1, fixed against dynamic priority (with G25): pre-registration (FROZEN 7 October 2026)
 
-Drafted by Claude, 7 October 2026. **Status: draft. Not frozen until James confirms. No spending, population or funding data for this test has been opened.** After freezing, any change is a new, separately logged experiment.
+Drafted by Claude, 7 October 2026. **Status: frozen 7 October 2026 (James confirmed). No spending, population or funding data for this test had been opened when this was committed.** Any later change is a new, separately logged experiment.
 
 **Sources:**
 - **Model:** theory/PERSISTENCE_ALLOCATION_MODEL_v0.18.md, as corrected on 7 October 2026 (access-limited load; "chronic").
