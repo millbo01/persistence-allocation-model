@@ -1,6 +1,6 @@
 # The Persistence Allocation Model, v0.18 (canonical state, 6 October 2026)
 
-**Status:** working model (phase 3). **The vocabulary is frozen** (James approved v0.18, 6 October 2026). **Corrected 7 October 2026** (James approved): three consistency fixes and one open question logged, no change of content; a second correction from the maths (exported load is residue, not a resource term; resources are drawn from a flow); and a third from the literature map (the stores' value renamed; bundles of activity under joint scarcity; pathway capacity as maximum flow; a complementarity check in mapping); and an amendment (7 October 2026: recovery by marginal value; collapse and death by viability; G3, G12 and G20 sharpened; the partial-refill prediction); and a correction for access-limited load and "chronic" (7 October 2026). **PT1 and G25 results recorded** (7 October 2026; Sections 10 to 13). See the changelog. The probing phase is over. No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
+**Status:** working model (phase 3). **The vocabulary is frozen** (James approved v0.18, 6 October 2026). **Corrected 7 October 2026** (James approved): three consistency fixes and one open question logged, no change of content; a second correction from the maths (exported load is residue, not a resource term; resources are drawn from a flow); and a third from the literature map (the stores' value renamed; bundles of activity under joint scarcity; pathway capacity as maximum flow; a complementarity check in mapping); and an amendment (7 October 2026: recovery by marginal value; collapse and death by viability; G3, G12 and G20 sharpened; the partial-refill prediction); and a correction for access-limited load and "chronic" (7 October 2026). **PT1 and G25 results recorded** (7 October 2026; Sections 10 to 13). **Amended 7 October 2026** (James approved; from the Perplexity probes P10 to P12): sequential records in mapping (Section 8, step 1); the governor mode held constant in a test of dynamic priority (Section 4, item 2); repair capacity as a state (Section 3). See the changelog. The probing phase is over. No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
 
 **The single reference** for the model as it stands.
 - **History:** theory/tier_queue_changelog.md.
@@ -105,6 +105,7 @@
 - **Under stress:**
   - **sustained shortfall:** it loses access, so healing slows even where the damaged part's own supply is ample;
   - **acute threat:** it is moved towards likely sites of damage.
+- **Its capacity is itself a state:** primed by acute load that is recovered from, reduced by sustained shortfall, impaired by damage to its niche or supply, and shared across sites through common support.
 
 **Resources, carriers and stores.**
 - **Several resources.** Work, maintenance and renewal each need their own set of resources, in fixed ratio.
@@ -141,6 +142,7 @@
    - **The open question (Tier 1):** is that order fixed, or does it reverse with conditions? The engine reproduces everything tested so far with fixed ranks, the intake rule and one dynamic quantity, the stores' value (the expected frequency of shortfall).
      - **A valid test needs two recipients competing for the same scarce resource at the same time,** with their order reversing between conditions.
      - A part receiving more in one condition and less in another is not such a test.
+     - **A change of allocation between conditions is not evidence of rank reversal if the governor mode also changes** (item 4). The test needs the mode held constant.
      - Under item 1, a reversal could also come from local autoregulation, so the test is designed with the network in view.
 3. **Economising.** When the shortfall still expected outruns the stores, access is cut early and evenly. Units switch off in an orderly way and the stores are preserved. With a known need (a predictable season), it starts at onset.
 4. **The switch,** and governors as modes (open; Section 12): signals from outside may select a different governor that overrides the routine one. **A mode is a setting of the governor that opens one class of work and closes another** (for example, a build or production setting and a consolidate or maintenance setting). That is the source of access-limited load (Section 6).
@@ -226,7 +228,7 @@ $$B_M(t+1)=B_M(t)+\ell_M(t)-R_M(t),$$
 
 Do this before opening any outcome data.
 
-1. **Boundary, currency and protected level.** Name the system, its boundary and the level whose viability is protected. Fix all three before outcomes are seen: they are the model's main safeguards. **Also fix the viable set,** and **whether outside support counts as admissible** (it decides collapse against death).
+1. **Boundary, currency and protected level.** Name the system, its boundary and the level whose viability is protected. Fix all three before outcomes are seen: they are the model's main safeguards. **Also fix the viable set,** and **whether outside support counts as admissible** (it decides collapse against death). **A record may be an intermediate stage of a longer pathway:** an early stage can hold while load appears in a later dependent stage. Mapping fixes whether viability requires the early output, the downstream completion, or both. The order of failure in the read-outs need not be the order of onset.
 2. **Resources, carriers and stores.**
    - Which resources does work need, in what ratio?
    - **Are they complementary** (used in fixed proportion)? The law of the minimum applies only where they are. Substitutable inputs are mapped as one resource, or declared.

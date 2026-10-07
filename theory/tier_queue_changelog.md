@@ -334,3 +334,11 @@ From a review by another Claude chat, relayed by James:
 ## v0.18, results recorded (7 October 2026)
 
 PT1 (English single-tier councils, 2014-15 to 2019-20) adjudicated blind by GPT: PT1 inconclusive (full weight); G25 supported (half weight); G25-C not supported (half weight). Recorded in Sections 10 to 13. No change of content.
+
+## v0.18, amended (7 October 2026)
+
+James approved three wording additions from the Perplexity post-v0.18 report (probes P10 to P12; raw/2026-10-07_perplexity_PAM-post-v018-report.md), held until PT1 was adjudicated:
+1. **Sequential records** (Section 8, step 1): a record may be an intermediate stage of a longer pathway; mapping fixes whether viability needs the early output, the downstream completion or both; read-out order need not be onset order.
+2. **Mode held constant** (Section 4, item 2): a change of allocation between conditions is not evidence of rank reversal if the governor mode also changes.
+3. **Repair capacity as a state** (Section 3, the repair network): primed, reduced, impaired or shared.
+No new mechanism. Remodelling against deterioration folded into the v0.19 item on economising as a magnitude.
