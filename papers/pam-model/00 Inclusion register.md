@@ -155,7 +155,7 @@ Rule: at most **one example per idea in the main text**, chosen for range across
 | Haemorrhage: splanchnic and renal constriction before brain and heart | Order of loss | Body | **S** | |
 | Sheep haemorrhage: same loss at the break at a fivefold rate difference | Store behaviour (P3) | Body | **S** | Numbers; reads on the release profile |
 | Growth signalling holding autophagy shut while nutrients are present | Access-limited load (P1 regime 2) | Body (cell) | **E** | The one clear example of gated load |
-| Intensive insulin after stroke (infarct growth) | Relocation (P1 regime 1) | Body | **S** ◆ | **Only after Rosso et al. 2012 is read in the original** |
+| Intensive insulin after stroke (infarct growth) | Relocation (P1 regime 1) | Body | **Sup** (James, 7 October 2026) | Read (abstract; closed access): secondary outcome, P = 0.04, function unchanged, mechanism unmeasured. Supplement S10.1 only |
 | Hypertension under stepwise drug treatment | Relocation along routes | Body | **N** | Duplicates the stroke example; Sterling's account is narrative |
 | Subclavian steal | Rerouting by physics (P12) | Body | **E** | |
 | Power-line outage redistribution | Rerouting by physics | Engineered network | **E** | Diversification (J2) |

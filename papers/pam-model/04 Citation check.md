@@ -69,7 +69,7 @@
   - **three-month function:** identical (45.6% in both groups);
   - **deaths:** 10% with intensive insulin against 15.6% with usual care, not reported as significant;
   - **serious adverse events:** similar.
-  - **Use:** for James to decide (held example).
+  - **Use (James, 7 October 2026):** supplement only (S10.1), as a compatible illustration with its caveats; not in the main text.
 
 **Still to do before submission:**
 - **The supplement's assembly (S2 to S9)** will bring further citations; each is to be checked the same way.

@@ -104,3 +104,26 @@ Notation and assumptions as in the main text, Section 3.3. Main-text proposition
   - the bias ledger (scoring interpretive freedom before looking anything up);
   - the reverse mode, which suggests where to look and never names a cause.
 - **Build from:** theory/PERSISTENCE_ALLOCATION_MODEL_v0.19.md, Sections 8 and 9; theory/PAM_probe_register.md (bias ledger).
+
+## S10. Compatible illustrations (not tests)
+
+Cases whose direction fits a proposition but which cannot bear weight. They are known outcomes, read after the model was built.
+
+**S10.1 Intensive insulin after ischaemic stroke (Proposition 1, scarcity regime).**
+- **The trial:** Rosso et al. (2012), INSULINFARCT, *Stroke* 43:2343-2349 (abstract read; closed access). 180 patients with hyperacute ischaemic stroke were randomised to intensive or usual subcutaneous insulin for 24 hours.
+- **Results:**
+  - intensive insulin gave better glucose control (mean below 7 mmol/L in 95.4% against 67.4%);
+  - it went with larger infarct growth, a secondary outcome (median 27.9 against 10.8 cm³; P = 0.04);
+  - three-month function was identical (45.6% in both groups);
+  - deaths were 10% against 15.6%, not reported as significant.
+- **Reading under the model:** correcting a visible figure (blood glucose) without adding resource reopens the insulin-dependent route into muscle and fat. Under the Selfish Brain account, post-stroke hyperglycaemia is the brain's own pull on supply (Sprengell, Kubera and Peters 2021b), so the deficit would move to the injured brain.
+- **Why it is not support:**
+  - one trial;
+  - a secondary outcome at P = 0.04;
+  - no difference in function or death;
+  - where the glucose went was not measured;
+  - the outcome was known before the model was applied.
+- **What a test would need:** a pre-registered study in a system mapped as resource-short, measuring the delivery of the resource to each part before and after a correction that adds none, with the matching deficit predicted in advance.
+
+**Reference added to the supplement:** Sprengell M, Kubera B, Peters A (2021b). Proximal disruption of brain energy supply raises systemic blood glucose: a systematic review. *Front Neurosci* 15:685031. doi:10.3389/fnins.2021.685031 (read in full).
+
