@@ -42,7 +42,7 @@
 | Hochachka et al. 1996 | Crossref | Abstract | Balanced suppression; channel and translational arrest |
 | Ibaraki and Katoh 1988 | OpenAlex (book) | Not read (mathematical source) | Greedy allocation optimal for separable concave value |
 | Kooijman 2010 | Crossref | Sections read (theory/PAM_DEB_reading.md) | DEB forms and claims as stated |
-| Kleinrock 1965 (draft 2) | Crossref | Not read (mathematical source) | Conservation law for queues: no priority discipline reduces total weighted waiting in a work-conserving queue |
+| Kleinrock 1965 (drafts 2 and 3) | Crossref (Naval Res Logist Q 12(2):181-192, June 1965; doi:10.1002/nav.3800120206) | Not read (paywalled mathematical source) | Draft 3 wording matches the law's scope: work-conserving single-server queue, non-preemptive disciplines, load-weighted sum of waiting times (the constant is the load-weighted waiting, not total waiting). Draft 2's 'no priority discipline reduces total weighted waiting' was loose and is tightened |
 | Krieger 1921 | Not checked | Not read | Cited only "as cited in Peters and Langemann 2009" |
 | Lee et al. 2022 | PubMed | Not read (data source) | VitalDB |
 | Marcelis and Heuvelink 2007 | Crossref | Full text | Classification of plant allocation models |
@@ -74,3 +74,22 @@
 
 **Still to do before submission:**
 - **The supplement's assembly (S2 to S9)** will bring further citations; each is to be checked the same way.
+
+## Cross-citation check of the four instances (draft 3, fix 2; 7 October 2026)
+
+**Question:** do Kooijman 2010, Peters et al. 2004, Buttgereit and Brand 1995 and Minchin, Thorpe and Farrar 1993 cite each other's allocation models?
+
+**Method:**
+- Each work's OpenAlex record and its reference list.
+- Every referenced work screened by author for the other groups (Kooijman; Brand, Buttgereit; Minchin, Thorpe, Farrar; Peters, Fehm, Langemann).
+
+| Work | Reference list | Cites another of the four, or another work by those groups? |
+|---|---|---|
+| Peters et al. 2004 (W2081119206) | 312 references (OpenAlex) | No. Only the authors' own group (Peters, Fehm, Born, Schultes and colleagues) |
+| Buttgereit and Brand 1995 (W2131651601) | 23 references | No. Only Brand's and Buttgereit's own work |
+| Minchin, Thorpe and Farrar 1993 (W2044548811) | 11 references | No. Only Farrar's, Minchin's and Lang and Thorpe's own work |
+| Kooijman 2010 (W572886679) | **None deposited** in OpenAlex or Crossref | **Not checked.** The publisher's page lists the book's index as a PDF (bio.vu.nl, Kooy2010_i.pdf). It was not downloaded, because a download needs James's approval |
+
+**Result:**
+- No cross-citation among the three that could be checked. Kooijman 2010 is unchecked.
+- The draft 3 wording therefore uses "developed in separate literatures" and states what was checked. It does not say "none of the four".

@@ -1,6 +1,6 @@
 # Supplementary material (draft 1, 7 October 2026)
 
-*S1 is written in full. S2 to S9 are an assembly plan: each names its content and the working file it is to be built from (internal paths, to be replaced by the assembled text before submission).*
+*S1 and S11 are written in full. S2 to S9 are an assembly plan: each names its content and the working file it is to be built from (internal paths, to be replaced by the assembled text before submission).*
 
 ## S1. Supplementary propositions and proofs
 
@@ -127,11 +127,73 @@ Cases whose direction fits a proposition but which cannot bear weight. They are 
 
 **Reference added to the supplement:** Sprengell M, Kubera B, Peters A (2021b). Proximal disruption of brain energy supply raises systemic blood glucose: a systematic review. *Front Neurosci* 15:685031. doi:10.3389/fnins.2021.685031 (read in full).
 
-## S11. Dated record of the model's development (assembly plan; added for draft 2)
+## S11. Dated record of the model's development
 
-- **Content:**
-  - the dated steps from the earlier framework (27 September 2026) to v0.19 (7 October 2026);
-  - the three-class provenance table: theorised before the matching work was read (with whose idea each was), known when formed, and imported, with commit hashes;
-  - the caveat on the AI collaborator's training.
-- **Build from:** papers/pam-model/05 Origins and provenance.md; theory/tier_queue_provenance.md; git history.
-- **Framing (CLAUDE.md framing rule):** a receipt, not a story; no claim that the convergence is evidence for the model.
+**What this is.** A dated record of the model's development, with the time stamps of each step. It is not evidence for the model.
+- **Sources:** the public repository's commit history, and the first author's earlier framework for institutions (dated 27 September 2026).
+- **Wording:** "first author" is the human author; "AI collaborator" is Claude (Anthropic).
+- **Rule:** convergence with earlier work is reported as convergence, never as a successful prediction.
+
+### S11.1 How the model grew
+
+| Date (2026) | Step | What changed |
+|---|---|---|
+| By 27 September | The first author's earlier framework for institutions | About 60 principles. Candidate formal models: a load ledger, priority queueing and a drift threshold |
+| 30 September | First notes on natural systems | Coupling and drift; living systems tie parts' fate to the whole; cancer as a part optimising for itself |
+| 3 October | Turn to natural systems | Load conservation stated as a principle; cross-domain cases gathered |
+| 4 October | Conserved quantity attempt | Hierarchy of parts, lower parts buffering higher ones, two directions of load, recovery order, part roles (store, intake, working part) |
+| 5 October | First queueing form of the model | Parts as servers with stores; load passed down; the break as a store running out |
+| 5 October | Ten natural surface checks, each with predictions committed before sources were opened | Blood loss, fasting, kidney, honeybee colony, plants in drought, fetal growth restriction, rival recovery-order rules, muscle, the record rule, re-tuning |
+| 5 October | Priority as a formula | Order derived from marginal value, not assigned |
+| 5 October | Outside reviews absorbed, each logged as a source | Network rather than tree; use in reverse; economising |
+| 6 October | Simplifications by the first author | Work is local and load is displaced; repair as a store refilling; economising as the governor's action |
+| 6 October | The present architecture | The system dies, not its parts; a separate governor that only allocates; parts with no demand of their own; units as state; repair cut first; basal maintenance before support work |
+| 6 October | First held-out test (H1) | Pre-registered and frozen before any data were opened |
+| 7 October | Literature read; current version | Established mathematics imported (DEB forms, viability theory, max-flow min-cut); the formal instances in Section 2 found; propositions proved and checked |
+
+### S11.2 Theorised before the matching work was read (class A)
+
+**How the work ran.** The AI collaborator drafted. The first author shaped the model mainly by contesting drafts that did not fit the first author's principles or observations. Most class A ideas came from those corrections.
+
+| Idea (date fixed in the record) | Whose | Matching work, and when it was found | Agreement and difference |
+|---|---|---|---|
+| Load is conserved: relocated, not removed (earlier framework; restated 3 October) | First author | Bode integral and conservation of fragility (Csete and Doyle 2002; Doyle and Csete 2011), read 3 October, after the statement. Kleinrock's (1965) conservation law, named 5 October | Same form: priority moves cost but cannot remove it. Theirs holds across frequencies or within one queue; ours across the parts of a system (Proposition 1) |
+| The governor is a separate function that only allocates; parts have no demand of their own (6 October) | First author, correcting a draft in which the governor set targets | Supply-chain form of the Selfish Brain (Peters and Langemann 2009) and the central governor (Noakes 2012), read 7 October | Same split between a ranking regulator and passive parts. Perceptual control theory (Powers 1973) was noted by the AI collaborator when the idea was recorded |
+| Ordered draw: parts drawn in a fixed order from one flow (6 October) | AI collaborator, formalising the first author's governor rule | Plant sink priority (Grossman and DeJong 1994; Minchin, Thorpe and Farrar 1993) and the hierarchy of ATP consumers (Buttgereit and Brand 1995), found 7 October | Same architecture in plants and in the cell; neither has unit loss, scars, a ledger or use in other domains |
+| Repair is the first thing cut when supply falls (6 October) | First author | Triage theory (Ames 2006); Bobba-Alves, Juster and Picard (2022); translational arrest (Hochachka et al. 1996), found 7 October | Same order of cuts. DEB pays maintenance first; the model reconciles the two (basal upkeep first, renewal cut first) |
+| Economising: the governor lowers demand and capacity together, on purpose and reversibly (6 October) | Joint | Balanced metabolic suppression (Hochachka et al. 1996), found 7 October | Same reversible, regulated reduction |
+| A tumour acts as a cut in total supply, with the order among the other parts kept (7 October) | First author | DEB tumour-in-host models, found in a screening completed the same afternoon | Same treatment of a tumour as a competing sink. The first author had not seen these records |
+| With a store carrying the gap and its release not binding, the break comes at the same cumulative shortfall whatever the rate (G3, first clause, 5 October) | AI collaborator | Fast and slow haemorrhage in sheep (Scully et al. 2016); fast and slow drought in trees (Dai, Wang and Wan 2018), matched after | Matches the first clause. The AI collaborator knew both in outline beforehand |
+
+### S11.3 Known when the idea was formed (class B: precedent, no independence claimed)
+
+| Idea | Source, and when it was known |
+|---|---|
+| Brain spared while organs lose mass in starvation | The Selfish Brain account and Krieger's organ data, logged by the AI collaborator on 3 October. The first author did not read it; no claim is made either way |
+| A hierarchy of parts recruited under stress | Miller's Living Systems Theory, read 4 October |
+| Three states of a part (coping, stressed, compromised) | Selye's general adaptation syndrome, read 4 October (secondary source) |
+| Saturation and sudden decompensation | Woods (2018), read 3 October |
+| Renewal classes of tissues | Bizzozero (textbook pathology) |
+| The point at which a store begins to release | Cherel and Groscolas's fasting phases, read 4 October |
+| The compensatory reserve in blood loss | Convertino's work, known when the blood-loss predictions were written on 5 October |
+| Shared upstream supply and a threshold switch | Built from blood-loss findings after the first natural check, 5 October |
+
+### S11.4 Imported (class C: cited as the basis)
+
+Taken from existing work and cited as such:
+- DEB forms (shrinking, synthesising units, proportional release);
+- viability theory;
+- max-flow min-cut;
+- the newsvendor critical fractile;
+- metabolic control analysis;
+- Michaelis-Menten competition;
+- greedy allocation by marginal value.
+
+Elements adopted from outside reviews are logged in the repository with their source.
+
+### S11.5 The caveat that governs class A
+
+- The AI collaborator helped build the model, and its training very likely included the Selfish Brain, DEB, allostasis, Hochachka's and Ames's work, and plant allocation models.
+- Only the first author's route is independent. The model's wording is not.
+- Class A is therefore reported as ideas **theorised beforehand and later found in the literature**, not as predictions and not as evidence.
+- The evidence that the architecture is real is the agreement among the four fields in Section 2, which developed separately.
