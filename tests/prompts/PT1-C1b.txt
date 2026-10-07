@@ -1,0 +1,54 @@
+PT1-C1b: classification of council spending lines by statutory duty (rule-based; no spending data). THREE FILES ARE ATTACHED.
+
+You are building a classification that will be fixed before anyone opens spending data. Each spending line that English councils report in their annual Revenue Outturn returns is to be classified by how far councils are legally required to provide it, using the attached official sources and one fixed rule. The classification must not depend in any way on how much was spent on any service, or on how spending changed.
+
+ATTACHED FILES (work only from these, and from legislation they cite if you need the wording of a duty)
+1. duties_DCLG_2011.csv: the Department for Communities and Local Government "Review of statutory duties placed on local government" (revised 30 June 2011), duties under legislation for which DCLG is responsible. Columns: Department, Unique ref Number, Theme, Legislation, Year, Title of duty, guidance, associated regulations, Function.
+2. duties_other_departments_2011.csv: the same review, duties under legislation for which other government departments are responsible. Columns: Department, Theme, Unique ref Number, Legislation, Year, Title of duty, Function.
+3. RO_service_lines_guidance_2025-26.txt: the GOV.UK "General fund revenue account outturn: specific guidance notes" (current version), sections RO1 to RO6, text only. Each line appears as "Line [number] [name]" followed by its description.
+If any file cannot be read, say so and stop.
+
+FORMAT RULE: DO NOT WRITE AN INTRODUCTION, BACKGROUND OR ESSAY
+- Your output starts directly with Part 1. After the parts come only the self-check.
+
+STRICT RULES
+1. NO SPENDING INFORMATION. Do not open, use or mention any figures on council spending, budgets, cuts, savings or service changes, from any source. Do not consult or cite any study, report or article about council spending or austerity. If you know from memory how any service's spending changed, you must not use that knowledge; classify only from the duties as written in the attached review.
+2. NOTHING INFERRED. Every classification cites the duty or duties it rests on by the review's Unique ref Number (and Legislation). If no duty in the review covers the activity, say so.
+
+WHICH LINES TO CLASSIFY
+- RO1, RO2, RO4, RO5 and RO6: every service line in the main service table (the "Line [number] [name]" entries with line numbers below 90), excluding totals.
+- RO3: every children's social care line, every adult social care line and every public health line, and also the total line for each of these three groups (for example "Total Children Social Care").
+- Exclude: memorandum items (for example lines 1901, 1902, 301, 302), subjective analysis lines, trading account lines, lines that only give accounting instructions, and police and fire lines.
+
+THE RULE (apply it the same way to every line)
+For each line, take its main activity from the line's description in file 3. Then:
+- Class A: STATUTORY, SPECIFIED. At least one duty in the review requires the council to provide this activity to individuals or places that meet criteria set in law (for example a duty to assess and meet eligible needs, to accommodate, to collect, to provide to everyone entitled). The council must provide it whenever the criteria are met.
+- Class B: STATUTORY, LEVEL AT DISCRETION. At least one duty in the review requires the council to provide or secure this activity, but leaves its level, extent or manner to the council (for example a duty to provide a "comprehensive and efficient" service, to "secure" or "promote", to have regard to, or to prepare a plan or strategy).
+- Class C: DISCRETIONARY. No duty in the review covers the line's main activity. The council may provide it under a power but is not required to.
+- AMBIGUOUS: if the main activity could reasonably fall in two classes, record "ambiguous", give both candidate classes and the reason. Do not choose between them.
+Where a line combines several activities, classify by the main activity as described, and list any secondary activity with its own class in the notes. For a total line, classify by the activity that the description says makes up most of the group; if the group mixes classes, mark it ambiguous with the candidates.
+
+PART 1: THE CLASSIFICATION TABLE
+One row per line, with these columns:
+- form and line number;
+- line name (exactly as in file 3);
+- main activity (one short phrase, from the description);
+- class (A, B, C, or ambiguous with both candidates);
+- duties relied on (Unique ref Number and Legislation, from files 1 and 2);
+- notes (secondary activities; any difficulty applying the rule).
+
+PART 2: COVERAGE
+- The number of lines classified in each class, and the number marked ambiguous.
+- Any line in scope that you could not classify, with the reason.
+
+PART 3: DECLARATION
+- State plainly whether you used any knowledge of council spending, cuts or service changes in making any classification. If you are aware of such knowledge for any line, name the line and confirm the classification rests only on the duties cited.
+
+SELF-CHECK (item by item; fix the output if any fails)
+- no introduction written;
+- no spending figures, cuts or service changes mentioned or used;
+- only the three attached files (and cited legislation) used;
+- every line in scope classified or listed as unclassifiable with a reason;
+- the same rule applied to every line;
+- every classification cites Unique ref Numbers, or states that no duty was found;
+- ambiguous lines left unresolved, with both candidates.

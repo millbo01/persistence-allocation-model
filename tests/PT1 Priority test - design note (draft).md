@@ -180,3 +180,17 @@ So a graded response that tracks expected value, with no declared role change, i
 - **Line list and consistency:** PT1-C1 will list the 2016-17 sub-lines from the guidance. Across years, lines are matched by name. **A line not present in all years of the window is excluded,** by a rule fixed before data.
 
 **Next:** run PT1-C1 (statutory classification), then write the setting map and mapping.
+
+## PT1-C1 failed; PT1-C1b with attached files (7 October 2026)
+
+**PT1-C1 failed.**
+- **Stored:** raw/2026-10-07_gemini_PT1-C1.md (SHA-256 begins d92ec859).
+- **What happened:** Gemini could not open the duties dataset (spreadsheet downloads) or the full guidance. It classified nothing and stopped, as the prompt required.
+- **One breach:** a council meeting pack appears among its works cited.
+
+**The fix: PT1-C1b.**
+- **Claude downloaded the sources** (documentation, not test data): the two 2011 duties spreadsheets, converted verbatim to CSV, and the current RO specific guidance notes (2025-26), sections RO1 to RO6. They are packed in data/sources/PT1-C1b_pack/, with checksums in data/README.md.
+- **The 2016-17 guidance could not be retrieved.** The current guidance is used instead. Classification is by activity, which does not depend on the year. **Lines not present in every year of the window are dropped** by the consistency rule, applied mechanically at analysis.
+- **The prompt** (tests/prompts/PT1-C1b.txt) is unchanged in rule and blinding, with the files attached instead of fetched.
+- **Scope:** main service lines in RO1, RO2, RO4, RO5 and RO6, plus the children's social care, adult social care and public health lines and their totals in RO3.
+- **Which model:** one that reads attached files, in a fresh chat. Not the chat that will adjudicate.
