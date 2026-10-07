@@ -351,3 +351,15 @@ James approved four imports from Dynamic Energy Budget theory into theory/PAM_ma
 3. **Unmet basal upkeep paid from the part own units** (Section 5): u_i = [kappa^b n_i - a^b]_+ / (kappa^b + m_i/y_i); m_i -> 0 gives the earlier rule (unfunded share lost). A first draft of this formula did not reduce to the earlier rule and was corrected before commit.
 4. **Synthesising-unit kinetics as the general form of the law of the minimum** (Section 2); the minimum stays the default reduced form. At equal co-limitation by two resources the SU gives two-thirds of the minimum. SUs do not cover sharing across parts; the MRAP guard is unchanged.
 Results R4 and R5 carry a note for the new default release. The frozen engine does not have these forms (flag 7).
+
+## v0.18, amended: derived propositions, flags A to E (7 October 2026)
+
+James accepted all five flags from the derived propositions (theory/PAM_propositions_DRAFT.md, batch 1, checked numerically by scripts/pam_propositions_check.py):
+- **A. G3:** under proportional release, the store left unused at the break is (gap minus margin)/turnover, rising with the rate of shortfall (P4).
+- **B. Scar threshold** (results R3): the earlier expression is an upper bound on loss, so its threshold is necessary, not sufficient; a sufficient form added (P6).
+- **C. G20:** "a link cut **or constricted below need**", under pathway capacity as maximum flow (P8).
+- **D. G26:** the refill level is a critical fractile of remembered episode depths (P9).
+- **E. Principle:** the invariance of total unmet load under access settings stated beside the central claim as a derived result (P1). The claim's wording is unchanged.
+
+No new mechanism.
+

@@ -285,6 +285,8 @@ $$L^\ast=F^{-1}\!\Big(1-\frac{V}{c_S\,\rho}\Big)\quad\text{if }V<c_S\rho,\qquad 
 
 ## 5. Flags for James
 
+**All five accepted (James, 7 October 2026):** G3, G20 and G26 amended in v0.18; R3's wording corrected in theory/PAM_results_v0.18.md; P1's invariance stated beside the principle in v0.18 Section 1.
+
 | No. | Prediction | What the derivation shows | Proposed change | Direction |
 |---|---|---|---|---|
 | A | G3 | Under the default (DEB) release, the rate-independent case does not occur. The store left at the break is $(\Gamma-M)/k$, rising linearly with the rate of shortfall | Add the quantitative form as a sharpened G3 or a new prediction | Harder to refute (more specific) |
