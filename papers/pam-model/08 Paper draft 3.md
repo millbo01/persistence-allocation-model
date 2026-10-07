@@ -61,7 +61,7 @@ Of the results we derive from the general form, eight are stated formally by non
 - The selfish immune system (Straub 2014) adds the immune and repair system as a second claimant that can take control of the body's spare energy. In this model, the brain and immune settings are two modes of one governor function.
 - Perceptual control theory (Powers 1973) describes hierarchies in which higher levels set the reference values of lower ones. It gives the governor its form, but has no resource, store or ledger.
 
-**What the convergence shows.** These fields developed in separate literatures: of the four, the three whose reference lists could be checked (Peters et al. 2004; Buttgereit and Brand 1995; Minchin, Thorpe and Farrar 1993) cite none of the others' allocation models (Kooijman 2010 has no reference list in the bibliographic databases). Their agreement is evidence that the architecture is real. It is not evidence that the results derived from it here are true: those stand or fall by test (Sections 4 and 5).
+**What the convergence shows.** These fields developed in separate literatures; none of the four cites another's allocation model. Their agreement is evidence that the architecture is real. It is not evidence that the results derived from it here are true: those stand or fall by test (Sections 4 and 5).
 
 Table 1 condenses the comparison; the full table, with sixteen theories, is Supplement S3.
 

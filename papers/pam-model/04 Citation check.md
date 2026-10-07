@@ -88,8 +88,9 @@
 | Peters et al. 2004 (W2081119206) | 312 references (OpenAlex) | No. Only the authors' own group (Peters, Fehm, Born, Schultes and colleagues) |
 | Buttgereit and Brand 1995 (W2131651601) | 23 references | No. Only Brand's and Buttgereit's own work |
 | Minchin, Thorpe and Farrar 1993 (W2044548811) | 11 references | No. Only Farrar's, Minchin's and Lang and Thorpe's own work |
-| Kooijman 2010 (W572886679) | **None deposited** in OpenAlex or Crossref | **Not checked yet.** Kooy2010_i.pdf, downloaded with James's approval on 7 October (1.4 MB), is the book's "Summary of concepts", not an index. It has no reference list, and it mentions none of the other three groups. The author's site also hosts the full text (Kooy2010.pdf, 16 MB). That file holds the reference list; it is not downloaded, pending James's approval |
+| Kooijman 2010 (W572886679) | None deposited in OpenAlex or Crossref. Checked in the full text: Kooy2010.pdf, 16 MB, from the author's site, downloaded with James's approval on 7 October. Its bibliography has 1,296 numbered entries, all searched | **No citation of the other three allocation models.** No Buttgereit, Minchin, Thorpe, Farrar, A. Peters, Fehm or Langemann; the only "Peters" is R. H. Peters (body-size ecology). **One citation of other work by Brand's group:** Porter and Brand (1993), *Nature* 362:628-630, on proton leak and body mass, cited for basal respiration (entry 912). This is not the ATP-consumer hierarchy. (The earlier file, Kooy2010_i.pdf, was the book's summary of concepts, with no references) |
 
 **Result:**
-- No cross-citation among the three that could be checked. Kooijman 2010 is unchecked.
-- The draft 3 wording therefore uses "developed in separate literatures" and states what was checked. It does not say "none of the four".
+- **None of the four cites another's allocation model.**
+- One incidental citation exists: Kooijman 2010 cites Porter and Brand (1993) on proton leak, which is not the allocation model.
+- **Draft 3 wording, under James's rule for the "none" case:** "These fields developed in separate literatures; none of the four cites another's allocation model."
