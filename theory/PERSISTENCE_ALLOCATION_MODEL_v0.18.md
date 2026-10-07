@@ -1,6 +1,6 @@
 # The Persistence Allocation Model, v0.18 (canonical state, 6 October 2026)
 
-**Status:** working model (phase 3). **The vocabulary is frozen** (James approved v0.18, 6 October 2026). **Corrected 7 October 2026** (James approved): three consistency fixes and one open question logged, no change of content; a second correction from the maths (exported load is residue, not a resource term; resources are drawn from a flow); and a third from the literature map (the stores' value renamed; bundles of activity under joint scarcity; pathway capacity as maximum flow; a complementarity check in mapping); and an amendment (7 October 2026: recovery by marginal value; collapse and death by viability; G3, G12 and G20 sharpened; the partial-refill prediction); and a correction for access-limited load and "chronic" (7 October 2026). See the changelog. The probing phase is over. No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
+**Status:** working model (phase 3). **The vocabulary is frozen** (James approved v0.18, 6 October 2026). **Corrected 7 October 2026** (James approved): three consistency fixes and one open question logged, no change of content; a second correction from the maths (exported load is residue, not a resource term; resources are drawn from a flow); and a third from the literature map (the stores' value renamed; bundles of activity under joint scarcity; pathway capacity as maximum flow; a complementarity check in mapping); and an amendment (7 October 2026: recovery by marginal value; collapse and death by viability; G3, G12 and G20 sharpened; the partial-refill prediction); and a correction for access-limited load and "chronic" (7 October 2026). **PT1 and G25 results recorded** (7 October 2026; Sections 10 to 13). See the changelog. The probing phase is over. No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
 
 **The single reference** for the model as it stands.
 - **History:** theory/tier_queue_changelog.md.
@@ -278,7 +278,7 @@ Do this before opening any outcome data.
 | G24 | **Cascade along substitutes.** Losing some routes of a pathway moves their flow onto the rest; where those saturate, they fail in turn, so failure spreads along the substitutes, not by rank | 1 | Derived (F3); known in power systems; untested as a model prediction |
 | G23(b) (sharpened) | **Repair competition, strict rank.** When several parts are damaged at once, those ranked after another damaged part heal more slowly than alone; the highest-ranked damaged part heals as fast as alone | 2 | Derived (results R8); untested. Distinguishable in data from shared repair, in which every damaged part slows |
 | G26 | **Partial refill.** In recovery, a store refills only until its marginal value falls to that of the best competing use, so it need not refill to full while parts are still short | 2 | Derived (marginal analysis; theory/PAM_recovery_value_and_viability.md); untested |
-| G25 | **Order of sacrifice from access.** Under scarcity, the order in which parts lose adequate supply is predicted by properties of access documented beforehand (constriction under sympathetic drive, autoregulation, redundancy; discretionary budgets) | 2 | Derived (F1); compatible: splanchnic and renal vasoconstriction protecting heart and brain in haemorrhage; untested with access fixed in advance |
+| G25 | **Order of sacrifice from access.** Under scarcity, the order in which parts lose adequate supply is predicted by properties of access documented beforehand (constriction under sympathetic drive, autoregulation, redundancy; discretionary budgets) | 2 | Derived (F1); compatible: splanchnic and renal vasoconstriction protecting heart and brain in haemorrhage. **Supported in its first held-out test at half weight** (PT1, English single-tier councils 2014-15 to 2019-20, with statutory duty classified blind as the documented access property; adjudicated 7 October 2026): lines with a statutory duty were protected more than discretionary lines; lines with a duty of uncertain level were not distinguishable from discretionary ones, and that step fails without London (sensitivity only). **The scarcity version (G25-C) was not supported:** the gap did not widen detectably where funding fell more. tests/results/PT1/README.md |
 
 **The standing check (unchanged):** before adding any rule, attempt a complete mapping with the existing parts, resources, stores, ranks, links, boundary, objective and clock. Add a mechanism only after a confirmed qualitative failure in a pre-committed test.
 
@@ -291,15 +291,22 @@ Do this before opening any outcome data.
   - **Adjudicated blind by GPT (7 October 2026): Fails, at half weight,** with two stated qualifications (raw/2026-10-07_chatgpt_H1-VDB-ADJ1.md).
   - **Under the standing check:** G12 as mapped for blood loss under anaesthesia has failed once. The first candidate for revision is that mapping (the release profile: taper or switch), not a new mechanism. One failure at half weight does not remove G12. The release-profile question (Tier 2) is now live.
   - **The G1 check in H1 was also not consistent** (10.7% of 75 cases, against more than half), at low weight. The anaesthetist defends pressure, and the check was not decomposed.
+- **Second held-out test:** PT1, English single-tier councils, 2014-15 to 2019-20 (fixed against dynamic priority, with G25).
+  - **Run, and the computation replicated exactly by a second model** (tests/results/PT1-R1/README.md). Deviations D-1 to D-5 logged, all neutral.
+  - **Adjudicated blind by GPT (7 October 2026)** (raw/2026-10-07_chatgpt_PT1-ADJ1.md):
+    - **PT1: Inconclusive, full weight.** Projected client growth published before the budget showed no detectable effect on which lines were protected (β = 0.05), but the 95% interval (−0.75 to 0.86) includes the smallest effect that mattered (0.25). Neither fixed nor dynamic priority is earned for this system.
+    - **G25: Supported, half weight** (contamination: the broad pattern was known).
+    - **G25-C: Not supported, half weight.**
+    - **SS (descriptive):** in about 97% of council-years with a fall in spending, some statutory line also fell while discretionary lines kept more than half their 2014-15 total. A coarse measure; it does not show a strict queue at line level.
 - **The frozen engine is a reduced form under v0.18.** It writes access as an explicit order of claims. Fixed ranks stand for the network's order of sacrifice. Its other departures from v0.17 (claim order; repair inside each part) stand.
 - **The theory-building probes** of 6 October 2026 (salmon, cancer, pregnancy, the power grid, skin circulation) shaped v0.18. **They are not tests:** GPT knew the outcomes, and none counts as support.
 
 ## 12. Open questions, tiered
 
 **Tier 1: could threaten the model.**
-- **Fixed against dynamic priority.** Does the order of sacrifice reverse with conditions? It is tested by Section 4, item 2: two recipients, one scarce resource, the same time.
+- **Fixed against dynamic priority.** Does the order of sacrifice reverse with conditions? It is tested by Section 4, item 2: two recipients, one scarce resource, the same time. **First test (PT1, councils, 7 October 2026): inconclusive,** for lack of precision. Still open.
 - **Independence of inputs.** Can ranks (now from access), requirements, reference allocations, rebuild times and template limits be fixed independently of the outcome?
-- **Out-of-sample prediction.** Does the model predict a new system's order of loss and recovery without fitting it (G25)?
+- **Out-of-sample prediction.** Does the model predict a new system's order of loss and recovery without fitting it (G25)? **First held-out support at half weight (PT1, councils),** for order of loss only; recovery untested.
 - **The three outcomes in held-out data.**
 - **G18 in data.**
 - **Sensitivity to framing.**
@@ -338,7 +345,7 @@ Do this before opening any outcome data.
 
 1. **v0.18 approved** (6 October 2026); the vocabulary frozen again; the probing phase ended.
 2. **H1 complete** (7 October 2026; Section 11). Resolve the release-profile question through the standing check.
-3. **Design the test of fixed against dynamic priority** (Section 4, item 2) and a test of G25 with access fixed in advance.
+3. **PT1 complete** (7 October 2026; Section 11): fixed against dynamic priority inconclusive; G25 supported at half weight. A cleaner G25 test (no contamination) and a more precise priority test remain.
 4. **The model paper, then a preprint.** Before writing:
    - read DEB and the nearest work;
    - derive the main propositions analytically;

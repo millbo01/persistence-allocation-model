@@ -1,6 +1,6 @@
 # PT1 and G25: results of the single run (7 October 2026)
 
-**Status: computed, not yet adjudicated.** Next: computation replicated by a second model (step 9), then blind adjudication (step 10). The verdicts below are the ones the frozen code computed from the frozen tables. They are not Claude's adjudication.
+**Status: ADJUDICATED (7 October 2026).** Computation replicated exactly by a second model (tests/results/PT1-R1/README.md). Blind adjudication by GPT (raw/2026-10-07_chatgpt_PT1-ADJ1.md), accepted as given: **PT1 Inconclusive (full weight); G25 Supported (half weight); G25-C Not supported (half weight).** No faults found; D-1 to D-5 and the missing projections do not make any verdict unsafe; none of G1 to G6 changes a verdict.
 
 **Provenance**
 - Pre-registration: tests/PT1 Priority test - pre-registration.md (frozen 7 October 2026, SHA-256 begins a4aab81d).

@@ -330,3 +330,7 @@ From a review by another Claude chat, relayed by James:
 - ~~Anticipatory economising.~~ Adopted in v0.13.
 - ~~Synchrony (R11).~~ Folded into G18 (v0.14) as a consequence of shared dependency. **Horizon against budget (R14)** still held.
 - ~~Felicity ratio.~~ Adopted in v0.8 as the Felicity read-out (Section 4). Repeated loading during ordinary recovery adds no damage because the load does not exceed the raised no-strain ceiling (James, 5 October 2026): the model already says this. What remains open is below the model's level: **how** a part raises its ceiling within days while its maximal force is still reduced. The same load damaged the muscle the first time, so the ceiling that governs strain is not maximal force (consistent with rule R: maximal force is a state signal). Candidate mechanisms (loss of the most susceptible fibres, a fuse inside the part; neural or connective-tissue adaptation) are not the model's to choose.
+
+## v0.18, results recorded (7 October 2026)
+
+PT1 (English single-tier councils, 2014-15 to 2019-20) adjudicated blind by GPT: PT1 inconclusive (full weight); G25 supported (half weight); G25-C not supported (half weight). Recorded in Sections 10 to 13. No change of content.

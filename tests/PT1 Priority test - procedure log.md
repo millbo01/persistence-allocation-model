@@ -152,3 +152,8 @@
 - **Audit findings checked against the data;** none changes a scored estimate (tests/results/PT1-R1/README.md). One source check added: the population files have no missing single-age cells.
 
 **Next:** step 10, blind adjudication (prompt tests/prompts/PT1-ADJ1.txt, fresh GPT chat).
+
+## Step 10: blind adjudication (7 October 2026)
+
+- **GPT, fresh chat** (raw/2026-10-07_chatgpt_PT1-ADJ1.md). **Verdicts, accepted as given:** PT1 Inconclusive (full weight); G25 Supported (half weight); G25-C Not supported (half weight). PT1-S correctly not run. SS descriptive. No faults; none of D-1 to D-5, the missing projections or G1 to G6 changes a verdict.
+- **Recorded** in v0.18 Sections 10 to 13 and in CONTROL. **PT1 closed.**
