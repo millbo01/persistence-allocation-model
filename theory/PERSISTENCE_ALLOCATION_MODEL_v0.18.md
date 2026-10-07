@@ -1,6 +1,6 @@
 # The Persistence Allocation Model, v0.18 (canonical state, 6 October 2026)
 
-**Status:** working model (phase 3). **The vocabulary is frozen** (James approved v0.18, 6 October 2026). **Corrected 7 October 2026** (James approved): three consistency fixes and one open question logged, no change of content; a second correction from the maths (exported load is residue, not a resource term; resources are drawn from a flow); and a third from the literature map (the stores' value renamed; bundles of activity under joint scarcity; pathway capacity as maximum flow; a complementarity check in mapping). See the changelog. The probing phase is over. No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
+**Status:** working model (phase 3). **The vocabulary is frozen** (James approved v0.18, 6 October 2026). **Corrected 7 October 2026** (James approved): three consistency fixes and one open question logged, no change of content; a second correction from the maths (exported load is residue, not a resource term; resources are drawn from a flow); and a third from the literature map (the stores' value renamed; bundles of activity under joint scarcity; pathway capacity as maximum flow; a complementarity check in mapping); and an amendment (7 October 2026: recovery by marginal value; collapse and death by viability; G3, G12 and G20 sharpened; the partial-refill prediction). See the changelog. The probing phase is over. No new mechanism enters unless an existing mapping fails a pre-committed test (the standing check, Section 10).
 
 **The single reference** for the model as it stands.
 - **History:** theory/tier_queue_changelog.md.
@@ -36,7 +36,7 @@
 
 **Central claim** (v0.18. It is v0.17's approved wording with these changes: the governor regulates access (F1), part death (A6), access in place of allocation where the mechanism is described, and, in revision 2, shortfall from either side and "a system that regulates its own persistence"):
 
-> In a system that regulates its own persistence, a governor holds the levels its persistence depends on by regulating access to finite shared resources among parts that have no demand of their own; the allocation among parts is the resulting flow. Each part works to the limit of the scarcest resource that reaches it. When the resources available fall short of what the reference state requires, whether supply falls or requirement rises, the governor draws its stores, and lower-ranked parts lose access first and switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: the resource gap is met from stores, met from outside the boundary, or left unmet at a named part, and unmet load leaves its residue in switched-off, lost or scarred units, or in work not done, which may land across the boundary. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Repair is its own network, governed like any part: under a sustained shortfall it loses access and lost units wait. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. A part dies only when its route back is cut; the system dies when load reaches the top or a non-bypassable link is cut.
+> In a system that regulates its own persistence, a governor holds the levels its persistence depends on by regulating access to finite shared resources among parts that have no demand of their own; the allocation among parts is the resulting flow. Each part works to the limit of the scarcest resource that reaches it. When the resources available fall short of what the reference state requires, whether supply falls or requirement rises, the governor draws its stores, and lower-ranked parts lose access first and switch units off. The routine output, the record, holds until nothing more can be taken: the record sees compromise, not stress. Load is relocated, never removed: the resource gap is met from stores, met from outside the boundary, or left unmet at a named part, and unmet load leaves its residue in switched-off, lost or scarred units, or in work not done, which may land across the boundary. A part scales down without harm when supply falls no faster than it can switch units off; units are lost when supply falls faster; the part is scarred only when those losses destroy what rebuilds it. Repair is its own network, governed like any part: under a sustained shortfall it loses access and lost units wait. Recovery runs the other way: the intake first, then parts and stores in order of value, with stores first when the system has learned its world is scarce. A part dies only when its route back is cut; the system collapses when load reaches the top or a non-bypassable link is cut, and dies only when no route back remains.
 
 ## 2. Scope
 
@@ -186,11 +186,20 @@
   - **Losing some routes lowers capacity,** and flow moves onto the rest. If they saturate, they fail in turn: a cascade (G24).
   - **Severance is a pathway's capacity at zero** (the minimum cut between source and part has capacity zero), however many cuts that took.
   - **Severing a bypassable route relocates flow; severing a non-bypassable link stops it.**
-- **The death cascade (exhaustion).** Parts switch off in ascending rank, then lose units in ascending rank. The top loses its last units last: system death.
+- **The exhaustion cascade.** Parts switch off in ascending rank, then lose units in ascending rank. The top loses its last units last: **system collapse.**
 - **Severance of a non-bypassable link** breaks the record while stores are full and other parts are funded.
+- **Collapse and death** (viability theory; theory/PAM_recovery_value_and_viability.md).
+  - **The viable set** is the states in which the record and the levels it depends on hold, fixed at mapping.
+  - **Collapse:** the system is outside the viable set, but a route back exists: some admissible course of access returns it (the state is inside the capture basin).
+  - **Death:** no admissible route back remains.
+  - **Exhaustion and severance are the two routes to collapse.** They end in death only when the route back is lost too: the template is scarred, stores and intake cannot rebuild the top before other parts' basal maintenance fails, or a severed link cannot be repaired.
+  - **Whether outside support is admissible** (an anaesthetist, a bail-out, a defibrillator) is fixed at mapping. The same state can be collapse with it and death without it.
 - **Recovery runs the other way.**
   - The intake comes first.
-  - Parts and stores then compete for surplus by value.
+  - Parts and stores then compete for surplus by **marginal value** (inventory theory; METRIC):
+    - **a unit of store** is worth the probability that the next shortfall will be deeper than what is already stored, times the cost of being short. That is the expected frequency of shortfall times the chance of a deficit beyond the store's level, so its value falls as the store fills;
+    - **a unit of a part** is worth the probability that it will be needed, times the cost of that part's output being short;
+    - each unit of surplus goes to whichever is worth more.
   - After a short episode, parts come back first. After a long one, the stores do.
 
 ## 7. Read-outs
@@ -200,11 +209,16 @@
 - against the reference allocation, the resource ledger: gap = store draw + unmet reference allocations + resource drawn in from outside;
 - separately, the state ledger: the residue each unmet allocation leaves (Section 6).
 
+**Added read-outs:**
+- **The record breaks at two thresholds:** at once when what is available falls below the top's own need, and one step later, through its dependence on support parts, when it falls below the top's need plus everyone's basal maintenance plus support parts' needs (results R1).
+- **Time of crisis:** the time spent outside the viable set before re-entry.
+- **Cost of restoration:** the resource needed to get back. Its inverse is resilience (Martin 2004).
+
 ## 8. Mapping a system
 
 Do this before opening any outcome data.
 
-1. **Boundary, currency and protected level.** Name the system, its boundary and the level whose viability is protected. Fix all three before outcomes are seen: they are the model's main safeguards.
+1. **Boundary, currency and protected level.** Name the system, its boundary and the level whose viability is protected. Fix all three before outcomes are seen: they are the model's main safeguards. **Also fix the viable set,** and **whether outside support counts as admissible** (it decides collapse against death).
 2. **Resources, carriers and stores.**
    - Which resources does work need, in what ratio?
    - **Are they complementary** (used in fixed proportion)? The law of the minimum applies only where they are. Substitutable inputs are mapped as one resource, or declared.
@@ -249,8 +263,11 @@ Do this before opening any outcome data.
 | No. | Prediction | Layer | Status |
 |---|---|---|---|
 | G2 (note) | Lower-ranked parts lose access first, in ascending rank | 2 | As v0.17; "supply" read as "access" |
-| G12 (note) | With a tapering store, recovery from small knocks slows before the break; with full release until a switch, no warning | 1 | **Fails in its first held-out test** (H1 VitalDB, blood loss under anaesthesia, release profile committed as taper; adjudicated 7 October 2026). Weight: fallback cohort, half. Qualifications: runnable only under the pre-data reading of missing bins; step-down inside the fallback cohort not stated in the pre-registration. tests/results/H1-VDB/README.md |
+| G3 (sharpened) | With a store carrying the gap and its release not binding, the break comes at the same cumulative shortfall whatever the rate. Where release binds (a tapering store, or a gap above the release rate), faster onset breaks earlier | 1 | Derived (results R4); stress-test candidate |
+| G20 (sharpened) | No part loses units while there is somewhere else to take resources from. The top goes last. Failure with willing receivers intact means a cut link **or damage from outside** to the top or its supports | 1 | Derived (results R6); untested |
+| G12 (sharpened) | Recovery from small knocks slows before the break when the break is approached through shrinking release headroom (a tapering store, or a gap rising towards the release rate). It does not when the break comes with headroom intact (a store with full release emptying, or a switch) | 1 | **Fails in its first held-out test** (H1 VitalDB, blood loss under anaesthesia, release profile committed as taper; adjudicated 7 October 2026). Weight: fallback cohort, half. Qualifications: runnable only under the pre-data reading of missing bins; step-down inside the fallback cohort not stated in the pre-registration. tests/results/H1-VDB/README.md |
 | G24 | **Cascade along substitutes.** Losing some routes of a pathway moves their flow onto the rest; where those saturate, they fail in turn, so failure spreads along the substitutes, not by rank | 1 | Derived (F3); known in power systems; untested as a model prediction |
+| G26 | **Partial refill.** In recovery, a store refills only until its marginal value falls to that of the best competing use, so it need not refill to full while parts are still short | 2 | Derived (marginal analysis; theory/PAM_recovery_value_and_viability.md); untested |
 | G25 | **Order of sacrifice from access.** Under scarcity, the order in which parts lose adequate supply is predicted by properties of access documented beforehand (constriction under sympathetic drive, autoregulation, redundancy; discretionary budgets) | 2 | Derived (F1); compatible: splanchnic and renal vasoconstriction protecting heart and brain in haemorrhage; untested with access fixed in advance |
 
 **The standing check (unchanged):** before adding any rule, attempt a complete mapping with the existing parts, resources, stores, ranks, links, boundary, objective and clock. Add a mechanism only after a confirmed qualitative failure in a pre-committed test.
@@ -278,7 +295,7 @@ Do this before opening any outcome data.
 - **Sensitivity to framing.**
 
 **Tier 2: refining a surviving model.**
-- **Collapse or death of the whole system** (logged 7 October 2026). A part dies only when its route back is severed. **The open question:** does the same criterion apply to the system? If the top reaches zero capacity with its route back intact, is that collapse or death? Exhaustion currently calls it "system death". It is left open unless a mapping forces the distinction.
+- **Collapse or death of the whole system: closed (7 October 2026).** The same criterion applies to the system: death is the loss of every route back (viability theory, Section 6).
 - **The release profile** (a knee, or full release until a switch). **Live after H1:** the taper reading failed for blood loss under anaesthesia.
 - **The repair network:** resident and mobile kept apart, or one workforce?
 - **What starts anticipatory economising;** how the expected frequency of shortfall is learned; what sets a template limit.
@@ -335,7 +352,11 @@ Do this before opening any outcome data.
 - **Pathway capacity:** the maximum flow from a resource's source to a part (the sum of the routes in the parallel case).
 - **Severance:** pathway capacity at zero.
 - **Switched off, lost, scar, economising, chronic:** as v0.17.
-- **Exhaustion and severance:** the two routes to system death.
+- **Exhaustion and severance:** the two routes to system collapse.
+- **Viable set:** the states in which the record and the levels it depends on hold; fixed at mapping.
+- **Collapse:** outside the viable set with a route back (inside the capture basin).
+- **Death:** no admissible route back remains.
+- **Time of crisis:** time spent outside the viable set before re-entry.
 - **Nested system** (extension): a component with its own loop regulating its own access.
 - **Capture** (extension): a nested system changing the signals or gates that set its own access.
 

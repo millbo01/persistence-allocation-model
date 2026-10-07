@@ -6,6 +6,19 @@ The history of the canonical model (theory/TIER_QUEUE_MODEL_v*.md), moved out of
 
 The model is now called **the Persistence Allocation Model** (formerly the tier-queue model). The name changes from now on. File names, engine names (tq_*, TQ runs) and frozen documents, including the H1 VitalDB pre-registration, keep the old name.
 
+## v0.18 amended (James approved, 7 October 2026)
+
+From the derived results (theory/PAM_results_v0.18.md) and the maths items 2 and 3 (theory/PAM_recovery_value_and_viability.md):
+1. **Central claim:** "the system dies when load reaches the top or a non-bypassable link is cut" becomes "the system **collapses** when load reaches the top or a non-bypassable link is cut, and **dies only when no route back remains**".
+2. **Collapse and death defined by viability theory:**
+   - the viable set, fixed at mapping;
+   - collapse = outside it with a route back (inside the capture basin);
+   - death = no admissible route back;
+   - outside support is admissible or not as fixed at mapping.
+   The Tier 2 question on collapse and death is closed.
+3. **Recovery by marginal value:** a store unit is worth the probability that the next shortfall is deeper than the store, times the cost of being short. A part unit is worth the probability it is needed, times the cost of its output being short. G10 stays qualitative unless costs are mapped. **New prediction G26:** partial refill.
+4. **G3, G12 and G20 sharpened** (results flags 1 to 3). The record's two thresholds, the time of crisis and the cost of restoration are added to the read-outs.
+
 ## v0.18 corrected a third time, from the literature map (James approved, 7 October 2026)
 
 From theory/PAM_maths_literature_map.md (James's GPT chat on the maths; raw/2026-10-07_chatgpt_PAM-maths-literature-and-MRAP.md):
