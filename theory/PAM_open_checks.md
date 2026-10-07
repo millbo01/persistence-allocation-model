@@ -122,6 +122,17 @@ The check 1 searches found two research programmes closer to PAM's governor than
 
 That is a smaller and more defensible claim than "the governor and order of loss are new". It also gives the paper a clear structure: three domain theories, one general model, and predictions that separate it (G25 outside biology; G23 b; G24 cascades; the ledger).
 
+## James's position (7 October 2026)
+
+Reframe accepted as the working basis, with his reasons:
+1. PAM reached the same structure without having read EMAL or the Selfish Brain. It was PAM's own proposition, even though the paper cannot claim priority.
+2. The Selfish Brain theory is a single-domain theory; PAM is more general. Every theory builds on earlier ones.
+3. Had PAM been published without finding them, the novelty would still have been mainly the combination and unification of PAM's own and others' findings. **Prior findings validate and add weight.** Many more existing works will need acknowledging.
+
+**Claude's note, agreed framing:** the independence is partial. PAM drew on the same physiology (fasting tables, haemorrhage, shorebirds), so the paper presents convergence, not separate discovery.
+
+**How prior work will be handled: a unification table** (to build as reading goes on). Rows are prior theories; columns are PAM's components (governor, access and rank, stores, the units rule, repair, the load ledger, viability and the template); each cell says whether the theory has the component and in what form. The table is the unification argument. Its empty columns show what is PAM's own. Each new find fills a cell instead of threatening the claim.
+
 ## Still open
 
 - **Check 1:** a proper systematic search (see proposal).
