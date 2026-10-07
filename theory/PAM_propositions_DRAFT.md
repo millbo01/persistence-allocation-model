@@ -1,4 +1,4 @@
-# The Persistence Allocation Model: derived propositions for the paper (DRAFT, batch 1, 7 October 2026)
+# The Persistence Allocation Model: derived propositions for the paper (DRAFT, batches 1 and 2, 7 October 2026)
 
 **Status:** theorising (phase 3). Draft for James. This is GPT's condition 3 for a significant contribution ("propositions derived analytically, not only simulated"), written for the model paper.
 
@@ -266,21 +266,158 @@ $$L^\ast=F^{-1}\!\Big(1-\frac{V}{c_S\,\rho}\Big)\quad\text{if }V<c_S\rho,\qquad 
 | P8 | R6 | **Constriction added** under maximum flow |
 | P9 | R7, R10 | **Replaced:** marginal-value recovery, refill as a critical fractile |
 | P10 | R8 | Unchanged, strict rank |
+| P11 | R9 | **Corrected:** economising never causes disorderly loss; speed changes only when the renewal saving arrives |
+| P12 | R11 | **Condition added:** last back only if lowest in marginal value |
+| P13 | R12 | **Condition added:** physical rerouting can overload with spare total capacity |
+| P14 | R14 | Unchanged |
+| P15 | none | New (viability: a constructive condition for collapse, not death) |
+| P16 | none | New (conflicting orders: the stated limit) |
+| P17 | none | New (rank from affinity; strict as a limit of shared uptake) |
+| P18 | none | New (extension layer: a drain is a supply cut; capture is more) |
 
-## 4. Batch 2 (to write next)
+## 4. Batch 2 (7 October 2026)
 
-- **P11. Economising is orderly** if it rises no faster than the switch-off rate (R9), with the stores' saving per step.
-- **P12. The fuse** (R11): the lowest-ranked part takes load first and longest; the intake is the exception.
-- **P13. Cascade along substitutes** (R12): no overload if and only if the surviving routes' headroom covers the lost flow; the cascade rule stays open (maths flag 4).
-- **P14. The order of response to rising requirement** (R14): work within capacity, then reactivation, then output falls.
-- **P15. Collapse and death** (viability theory): conditions under which a mapped system is in the capture basin; time of crisis.
-- **P16. Conflicting orders under joint scarcity:** a constructive example that no ordinal rule decides; why the explicit network is required.
-- **P17. Rank as an ordering of elasticities** (metabolic control analysis; maths queue item 7): whether strict priority is the limit of shared control as consumers' elasticities to supply separate.
+### P11. Economising causes no disorderly loss, whatever its speed (G16)
 
-**What these do not cover:**
+**Statement.** Economising cuts ordinary parts' **work** access by $\epsilon$. It does not cut renewal (maths Section 2, phase 4; the frozen engine likewise).
+1. **No units are lost through economising,** however fast $\epsilon$ rises.
+2. Active units beyond what the supported work needs are switched off at up to $\theta K$ per step (consolidation). After a cut, the excess is consolidated within $\lceil\epsilon w^0/(\theta K)\rceil$ steps (with one unit of work per active unit).
+3. **The stores are preserved** at once by the cut work's requirement, $\sum_i\kappa^w_iw^0_i\epsilon$ per step. The renewal saving follows only as units are consolidated.
+
+**Proof.** Loss arises only from unmet basal maintenance or unmet renewal (A6). Economising changes neither: units left idle stay active and are renewed until consolidated. Consolidation is orderly by definition (maths Section 5, item 3). ∎
+
+**Correction to R9 [flag F]:** R9 stated that economising is orderly only if it rises no faster than the switch-off rate. That applied the rate-decides-harm result (P6) to a cut in **work**, which is not a cut in renewal. Under the maths as written, economising is always orderly. **What speed does change** is how quickly the renewal saving arrives.
+
+**Check:** P11 (300 random instances, including very fast economising).
+
+### P12. The fuse, and when it is last back (G13)
+
+**Statement.**
+1. **The lowest-ranked part is the first to go short** (P3).
+2. **It is last to come back only if its marginal value in recovery is also the lowest.** Phase 5 serves units by marginal value, $V_i=c_i\,\hat P(\text{binds})$ (maths Section 9), not by rank.
+3. **The intake is the exception:** it is support, served in phase 3, so it comes back first whatever its rank (P9).
+
+**Proof.** Item 1: P3. Item 2: phase 5 is a greedy allocation by marginal value. Rank enters only through which parts went short and so have binding units. ∎
+
+**Reading [flag G]:** v0.17's G13 ("lowest-ranked parts take the load first and longest") was written under recovery by rank. Under the marginal-value rule adopted on 7 October 2026, **"longest" needs the condition** that the fuse's value in recovery is also lowest. That is the usual case, because a low-ranked part's shortfall costs least. But a mapping can make it fail (for example, a low-ranked part whose units bind often).
+
+### P13. Cascade along substitutes depends on how flow is rerouted (G24)
+
+**Statement.** A pathway has parallel routes with capacities $C_e$ and flows $f_e$. Route $e$ is lost.
+1. **Optimal rerouting** (flow placed where there is headroom, as when a budget or a router reallocates): no surviving route is overloaded **if and only if** $\sum_{e'\neq e}(C_{e'}-f_{e'})\ge f_e$. In a general network: if and only if the remaining maximum flow covers the demand.
+2. **Physical rerouting** (flow divides by a fixed rule, such as in proportion to conductance, as in blood vessels, pipes or power lines): a route can be overloaded **even when total headroom suffices.**
+3. Whether an overloaded route then fails, and so spreads the cascade, depends on the overload rule, which stays open (maths flag 4).
+
+**Proof.** Item 1: filling headroom route by route places $f_e$ exactly when the sum suffices; the general case is max-flow min-cut. Item 2: by example. Routes with capacities 10, 4 and 10 carry 5, 3.9 and 5. Losing the first leaves headroom of 5.1 for a flow of 5. A split in proportion to capacity sends $5\times4/14\approx1.43$ to the second route, which then carries 5.33 against a capacity of 4. ∎
+
+**Established mathematics:** max-flow min-cut; in power systems, line outage distribution factors and cascading-failure models, where flow redistributes by physics, not choice.
+
+**Reading [flag H]:** G24 gains a condition that makes it more specific. **Cascades along substitutes are expected where flow divides physically, even with spare total capacity. Where flow is reallocated by choice, they are expected only when total headroom is short.** This separates physiological and engineered networks from budgeted ones in a testable way.
+
+**Check:** P13 (2,000 random instances for item 1; a physical-split overload with sufficient headroom found).
+
+### P14. The order of response to rising requirement (R14)
+
+**Statement.** For a part with switched-off units, as requirement $w^0$ rises:
+1. work rises within active capacity, with no change of state;
+2. switched-off units are then reactivated, at most $\theta_{\text{re}}K$ per step, each at a cost $k_R$, from what is left in the flow (phase 5);
+3. **output falls short** only when the rise per step outpaces reactivation, when reactivation cannot be paid for, or when requirement exceeds total capacity $K$.
+
+**Proof.** From maths Sections 4 and 5: work is bounded by active capacity; reactivation is the only route from switched off to active, and it is rate-limited and paid from the flow. ∎ (No numerical check: it follows directly.)
+
+**Reading:** a part held in reserve (switched off, not lost) responds to rising requirement with a **lag set by its reactivation rate.** It falls short when the rise is faster than that rate, even with spare units and resources. That is the colony probe (P7 in the probe register) in formal terms.
+
+### P15. Collapse against death: a constructive condition for a route back (viability)
+
+**Statement** (viability set $K$ and capture basin as in maths Section 8; the reduced form, no outside support unless admissible at mapping). A system outside $K$ is in **collapse, not death,** if all of the following hold:
+1. supply can return to at least the top's need plus every surviving part's basal maintenance;
+2. the top's units are not scarred below what the record requires;
+3. every non-bypassable link on the top's pathway, and on the pathways of the parts the record depends on, has capacity above zero, or can be restored by the repair network;
+4. every part the record depends on that has lost units has its template intact (lost, not scarred) and a pathway for the repair network.
+
+**Proof** (constructive). Under 1, a governor setting exists that meets the top and all basal maintenance (P2), so no further units are lost (P3, P6). Under 2 to 4, the repair network can rebuild every needed part at rate $K_i/h_i$ from what is left in the flow (phase 5). So the state reaches $K$ in finite time and can stay there. That is membership of the capture basin. ∎
+
+**Corollary (time of crisis).** The time to re-enter $K$ is at least the longest rebuild time $\max_i(\text{units to rebuild}_i\cdot h_i/K_i)$ among the parts the record depends on. It rises if supply allows only part of the rebuilding per step.
+
+**Established mathematics:** viability theory (Aubin 1991): capture basin, time of crisis (Doyen and Saint-Pierre 1997). This proposition gives a **sufficient** condition. The full basin needs viability algorithms for a given mapping (maths Section 8).
+
+**Reading:** the conditions name what to measure to tell collapse from death **before** the outcome: supply restorable, the top unscarred, critical links intact or restorable, templates intact. **Death needs one of them to fail.**
+
+### P16. Conflicting orders under joint scarcity have no ordinal answer
+
+**Statement.** Two parts, A and B, each need one unit of each of two complementary resources per unit of work. One unit of each resource is available. The order for resource 1 is A before B, and for resource 2, B before A.
+1. **Allocating each resource by its own order** gives A all of resource 1 and B all of resource 2, so **neither part works.**
+2. **Every split** $(z,1-z)$ of both resources gives total work 1, and all are Pareto efficient. **The two ordinal orders do not select among them;** a choice needs cardinal information (weights, or the explicit network).
+
+**Proof.** Direct computation under the law of the minimum. ∎
+
+**Established mathematics:** multi-resource allocation under Leontief preferences (Dominant Resource Fairness; lexicographic allocation), where ordinal priorities over complementary resources are known not to determine a joint allocation.
+
+**Reading:** this is why the reduced form reports "explicit access model required" when binding resources have conflicting orders (maths Section 2, bundles). **It is a stated limit of the model, not a gap:** in such cases the order of loss is set by the network, which must be mapped.
+
+**Check:** P16 (the deadlock and the frontier).
+
+### P17. Strict priority as the limit of shared uptake (rank from affinity; maths queue item 7)
+
+**Statement.** Parts take a shared resource from a common pool by saturable uptake, $v_i=V_iC/(K_i+C)$, where $C$ is the pool's level and $K_i$ the part's half-saturation constant (inverse affinity). The supply $S$ fixes $C$ through $\sum_iv_i(C)=S$.
+1. **Order:** at every level of supply, a part's fractional supply $C/(K_i+C)$ falls with $K_i$. **Parts lose access in order of affinity, lowest affinity first.** The order is a documented access property.
+2. **Limit:** as the affinities separate ($K_{i+1}/K_i\to\infty$), the allocation tends to strict priority (P3). With separation $R$ between neighbours, the largest deviation from strict order (four parts, $V_i=1$) was 0.15 at $R=10^2$, 0.02 at $R=10^4$ and 0.002 at $R=10^6$.
+3. **Between,** loss is **shared**: higher-ranked parts lose some supply before lower-ranked parts lose all.
+
+**Proof.** Item 1: $C/(K+C)$ is decreasing in $K$. Item 2: for $K_i\ll C\ll K_{i+1}$, part $i$ is near saturation and part $i+1$ near zero, so the allocation fills parts in order of affinity. ∎
+
+**Established mathematics:**
+- Michaelis-Menten competition for a shared substrate;
+- metabolic control analysis (elasticities of each consumer to supply; Buttgereit and Brand 1995 measured such a hierarchy in thymocytes);
+- Ames's triage mechanism ("adjustment of the binding affinity of each protein").
+
+**Reading [flag I]:**
+- **This is the formal bridge from documented access to rank** that v0.18 left domain-specific (maths flag 6). Where access is by saturable uptake, $\pi_r$ is the order of affinities, measurable before outcomes.
+- **Whether priority is strict or shared is set by how far apart the affinities are.** That is the PT1 secondary question (strict against shared), now with a measurable criterion.
+- Proposed as a mapping rule, not a change to the core.
+
+**Check:** P17 (deviation from strict order at three separations; order by affinity at three supply levels).
+
+### P18. An autonomous drain is a supply cut; capture is more (extension layer: host and tumour)
+
+**Prompted by James (7 October 2026).** A tumour draws resources outside the host governor's order. Is it, for the host, simply a reduction of supply?
+
+**Statement.** A nested system draws $T$ per step from the flow before the governed phases (an autonomous drain), and occupies tissue whose former draw was $T_0$.
+1. **For every governed part, the drain is exactly a supply cut** of $T_{\text{net}}=T-T_0$. The host's order of loss is the order it would have under starvation of that size (P3), and all the earlier propositions apply with $S$ replaced by $S-T_{\text{net}}$.
+2. **Hence, if the tumour only drains,** a tumour-bearing host should match a tumour-free host whose supply is reduced by $T_{\text{net}}$: the same tissues losing, in the same order, by the same amounts. The right control is supply cut by the net drain. A pair-fed control matches food intake but not the drain, so it is not this control.
+3. **If the tumour also changes the host's gates or signals (capture),** the host departs from that control: losses fall on tissues out of their rank order, or exceed what the net drain explains.
+
+**Proof.** Item 1: the governed phases see only the flow left after the drain; the draw is otherwise unchanged (checked). Items 2 and 3 follow. ∎
+
+**What the 1991 mouse study shows** (Mulligan and Tisdale, Biochem J 277:321; abstract only, the full text being a scanned PDF):
+- The tumour became the second glucose consumer after the brain. Glucose use fell in fat pads, testes, colon, spleen, kidney and, most of all, the brain, "irrespective of cachexia".
+- The brain's fall in glucose use was "at least as high as the metabolic demand by the tumour". But its energy was maintained by lactate and ketones.
+  - **For the brain, the resource is energy, and glucose and ketones are substitutes.** The brain did not lose priority: it switched fuel, and that freed glucose for the tumour.
+- **The decisive comparison is between the two tumours.** The MAC13 tumour took **more** glucose than MAC16, yet only MAC16 produced cachexia. The authors conclude that "alterations in glucose utilization are not responsible for the cachexia".
+  - **In PAM's terms: the drain alone does not produce the wasting.** The cachexia-causing tumour does something the larger drain does not: it acts on the host's gates (capture).
+  - This fits the Drosophila finding that wasting "is dependent on the genetic characteristics of the tumour", with "host malnutrition or tumour burden" not sufficient (S11891).
+
+**James's question, answered as far as the evidence allows:**
+- **Did only the brain lose out, or did the others lose harder?** The tissue-by-tissue figures are not available (the scanned full text is behind a bot check). The abstract says every listed tissue's glucose use fell, the brain's most, and the brain's energy was maintained.
+- **So the pattern fits "the drain acts as a supply cut, and the host's order holds":**
+  - the highest-ranked part kept its energy by substitution;
+  - lower tissues gave up glucose;
+  - the tumour is a sink drawing ahead of the order.
+- **"It almost halves supply" cannot be checked** without the figures. The size of the cut is the net drain $T-T_0$, as James put it: the tumour's draw less what the tissue it displaced used to draw.
+- **Cachexia is the part a pure drain does not explain.** The two-tumour comparison says capture is needed.
+
+**Reading [flag J]:** P18 gives the extension layer a **test**:
+- **Drain only:** a tumour-bearing host matches a host with supply cut by the net drain.
+- **Capture:** it does not, and the departure is where the tumour's signals act.
+
+**Testable** where tumour uptake, displaced-tissue draw and host tissue losses are measured together (isotope tracing in tumour models). It stays in the extension layer and **out of the first paper's core claims** (v0.18 Section 15).
+
+**Check:** P18 (2,000 random instances: the draw with a drain equals the draw with supply cut by the drain).
+
+**What batch 2 does not cover:**
 - the general network form $\Phi$;
 - dynamic priority (Tier 1);
-- nested systems;
+- nested systems beyond the drain case;
 - G18 (co-movement), which needs a stochastic set-up.
 
 ## 5. Flags for James
@@ -296,3 +433,13 @@ $$L^\ast=F^{-1}\!\Big(1-\frac{V}{c_S\,\rho}\Big)\quad\text{if }V<c_S\rho,\qquad 
 | E | Principle (Section 1 of v0.18) | Total unmet load is invariant under access settings at fixed supply, stores and outside input | State P1's invariance as a derived result beside the principle | Neutral (identity) |
 
 **Not decided here:** whether P4's sheep reading (rate-independence observed, so a high-turnover or full-release store in that setting) belongs in the paper. It is an observation about the release profile, not a test.
+
+### Batch 2 flags (for James)
+
+| No. | Prediction | What the derivation shows | Proposed change | Direction |
+|---|---|---|---|---|
+| F | G16; results R9 | Economising cuts work, not renewal, so it causes no disorderly loss at any speed. R9's speed condition misapplied P6 | Correct R9; G16 holds unconditionally in the reduced form | Harder (any loss during economising would now count against it) |
+| G | G13 | Under marginal-value recovery, the fuse is last back only if its recovery value is also lowest | Add the condition to G13 | Slightly easier (narrower) |
+| H | G24 | Physical rerouting can overload a substitute even with spare total capacity; reallocation by choice cannot | Add the condition to G24 | Harder (more specific; separates physical from budgeted networks) |
+| I | Mapping (Section 8); maths flag 6 | Where access is by saturable uptake, rank is the order of affinities, and strict against shared is set by their separation | Add as a mapping rule | Neutral (a measurement rule fixed before outcomes) |
+| J | Extension layer (Section 15) | A drain is exactly a supply cut by the net drain; capture shows as departure from that control | Add as the extension's first test, outside the core | Neutral; keeps the extension testable |

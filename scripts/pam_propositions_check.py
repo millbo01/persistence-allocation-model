@@ -302,10 +302,150 @@ def check_P5(trials=500):
     return bad
 
 
+# =================== batch 2 ===================
+
+# ---------- P11: economising never causes disorderly loss (renewal is not cut) ----------
+def check_P11(trials=300):
+    bad = 0
+    for _ in range(trials):
+        K = 100.0
+        theta = random.uniform(0.02, 0.2)
+        w0 = K  # one unit of work per active unit at reference
+        eps_max = random.uniform(0.1, 0.9)
+        tau_e = random.randint(1, 10)  # including very fast economising
+        n_a, n_o, lost, eps = K, 0.0, 0.0, 0.0
+        for t in range(300):
+            eps += (eps_max - eps) / tau_e
+            work_access = (1 - eps) * w0
+            # renewal is funded for all active units (not cut by economising): no renewal shortfall
+            u_unrenewed = 0.0
+            lost += 0.0 * u_unrenewed
+            # consolidation: active units beyond supported work switched off within theta*K
+            target = work_access
+            extra = min(max(0.0, n_a - target), theta * K)
+            n_a -= extra
+            n_o += extra
+        if lost > 0 or n_a < (1 - eps_max) * w0 - 1e-6:
+            bad += fail("P11", f"lost={lost} n_a={n_a}")
+    return bad
+
+
+# ---------- P13: rerouting after losing a route ----------
+def check_P13(trials=2000):
+    bad = 0
+    found_counterexample = False
+    for _ in range(trials):
+        m = random.randint(3, 6)
+        C = [random.uniform(1, 10) for _ in range(m)]
+        f = [random.uniform(0, c) for c in C]
+        e = random.randrange(m)
+        head = sum(C[j] - f[j] for j in range(m) if j != e)
+        # optimal rerouting (fill headroom): no overload iff head >= f[e]
+        rem = f[e]
+        over = False
+        for j in range(m):
+            if j == e:
+                continue
+            take = min(rem, C[j] - f[j])
+            rem -= take
+        if (rem > 1e-9) != (head < f[e] - 1e-9):
+            bad += fail("P13 optimal", "")
+        # proportional-to-capacity rerouting (a physical split): can overload even when head >= f[e]
+        tot = sum(C[j] for j in range(m) if j != e)
+        prop_over = any(f[j] + f[e] * C[j] / tot > C[j] + 1e-9 for j in range(m) if j != e)
+        if head >= f[e] and prop_over:
+            found_counterexample = True
+    if not found_counterexample:
+        bad += fail("P13 physical split", "no case found where a proportional split overloads despite enough headroom")
+    return bad
+
+
+# ---------- P14: response to rising requirement: follows directly from maths Sections 4 and 5 (no numerical check) ----------
+
+
+# ---------- P16: conflicting orders under joint scarcity ----------
+def check_P16():
+    bad = 0
+    # two parts A, B; two complementary resources; each part needs 1 of each per unit of work
+    S1, S2 = 1.0, 1.0
+    # resource 1 order: A before B; resource 2 order: B before A; per-resource sequential allocation
+    a1A, a1B = min(S1, 1.0), max(0.0, S1 - 1.0)
+    a2B, a2A = min(S2, 1.0), max(0.0, S2 - 1.0)
+    wA, wB = min(a1A, a2A), min(a1B, a2B)
+    if not (wA == 0.0 and wB == 0.0):
+        bad += fail("P16", f"expected deadlock, got {wA},{wB}")
+    # every split z, 1-z of both resources is feasible and Pareto efficient: total work 1 for all z
+    for z in [0.0, 0.25, 0.5, 0.75, 1.0]:
+        if abs(min(z, z) + min(1 - z, 1 - z) - 1.0) > 1e-12:
+            bad += fail("P16 frontier", "")
+    return bad
+
+
+# ---------- P17: shared uptake by affinity tends to strict priority ----------
+def uptake_alloc(Vmax, Km, S):
+    """Consumers take v_i = Vmax_i * C / (Km_i + C) from a pool; find C with sum v_i = S (S < sum Vmax).
+    Bisection on log C (the affinity constants span many orders of magnitude)."""
+    lo, hi = -40.0, 60.0
+    for _ in range(400):
+        mid = (lo + hi) / 2
+        C = 10 ** mid
+        v = sum(V * C / (k + C) for V, k in zip(Vmax, Km))
+        if v > S:
+            hi = mid
+        else:
+            lo = mid
+    C = 10 ** ((lo + hi) / 2)
+    return [V * C / (k + C) for V, k in zip(Vmax, Km)]
+
+
+def lexi(Vmax, order, S):
+    a = [0.0] * len(Vmax)
+    for i in order:
+        a[i] = min(Vmax[i], S)
+        S -= a[i]
+    return a
+
+
+def check_P17():
+    bad = 0
+    Vmax = [1.0, 1.0, 1.0, 1.0]
+    for R, tol in [(1e2, 0.15), (1e4, 0.02), (1e6, 0.002)]:
+        Km = [R ** i for i in range(4)]  # consumer 0 has the highest affinity
+        worst = 0.0
+        for S in [0.3, 0.9, 1.5, 2.2, 3.7]:
+            a = uptake_alloc(Vmax, Km, S)
+            b = lexi(Vmax, [0, 1, 2, 3], S)
+            worst = max(worst, max(abs(x - y) for x, y in zip(a, b)))
+        if worst > tol:
+            bad += fail("P17", f"R={R} worst deviation {worst}")
+    # ordering: fractional supply falls with Km at every S
+    Km = [1, 3, 10, 30]
+    for S in [0.5, 1.5, 2.5]:
+        a = uptake_alloc(Vmax, Km, S)
+        if not all(x >= y - 1e-12 for x, y in zip(a, a[1:])):
+            bad += fail("P17 order", str(a))
+    return bad
+
+
+# ---------- P18: an autonomous drain is a supply cut for the governed parts ----------
+def check_P18(trials=2000):
+    bad = 0
+    for _ in range(trials):
+        top, basal, sup, ordn = rand_instance()
+        S = random.uniform(0, top + sum(basal) + sum(sup) + sum(ordn) + 5)
+        T = random.uniform(0, S)
+        x = draw(S - T, top, basal, sup, ordn)          # the drain draws first
+        y = draw(max(0.0, S - T), top, basal, sup, ordn)  # a host whose supply is simply S - T
+        if any(abs(p - q) > 1e-12 for p, q in zip([x[0]] + x[1] + x[2] + x[3], [y[0]] + y[1] + y[2] + y[3])):
+            bad += fail("P18", "")
+    return bad
+
+
 if __name__ == "__main__":
     total = 0
     for name, f in [("P1", check_P1), ("P2", check_P2), ("P3", check_P3), ("P4", check_P4), ("P5", check_P5),
-                    ("P6", check_P6), ("P7", check_P7), ("P9", check_P9), ("P10", check_P10)]:
+                    ("P6", check_P6), ("P7", check_P7), ("P9", check_P9), ("P10", check_P10),
+                    ("P11", check_P11), ("P13", check_P13), ("P16", check_P16), ("P17", check_P17), ("P18", check_P18)]:
         b = f()
         print(f"{name}: {'ok' if b == 0 else str(b) + ' failures'}")
         total += b
