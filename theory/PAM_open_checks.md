@@ -48,7 +48,7 @@ Three checks were set before the paper claims any of them:
   - circulation and neuron-glia models (autoregulation; stores drawn first).
 
   None of them has unit loss, switching off or scars; repair competing for access; a conserved load ledger; viability; or use outside its own domain.
-- **Logged as found:** in tumour-bearing mice the brain's glucose use fell while the tumour became the second consumer (S11597, Biochem J 1991). This is against brain priority, at one study's weight.
+- **Logged, then corrected:** in tumour-bearing mice the brain's glucose use fell while the tumour became the second glucose consumer (S11597, Mulligan and Tisdale 1991). **Corrected 7 October 2026 (full abstract read, PMID 1859359; the full text is a scanned PDF, so tissue-by-tissue values are not available):** the brain's **glucose** use fell, but "brain metabolism in the tumour-bearing state was maintained by an increased use of lactate and 3-hydroxybutyrate". The brain switched fuel; its energy was not cut. **Not against brain priority:** for the brain the resource is energy, and glucose and ketones are substitutes (the complementarity check, v0.18 Section 8). The earlier entry misread a truncated abstract. See propositions P18 (a drain is a supply cut) for what the study does show.
 
 **Limit (earlier):** web searches are not a systematic review. If the paper is to say "no DEB model orders organs by access", that sentence needs a proper search: a database search with stated terms, run by Claude or by a sourcing model with a prompt. **Proposal for James below.**
 

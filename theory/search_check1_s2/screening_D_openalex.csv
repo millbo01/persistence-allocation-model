@@ -41,7 +41,7 @@ S11593,OpenAlex,1995,Effect of glutamine on tumor and host growth,UNSURE,X-off,"
 S11594,OpenAlex,1977,Classification of tumor and host.,,X-title,excluded at the title pass (agents)
 S11595,OpenAlex,1965,Ultrastructure of the liver of the tumor-bearing host,,X-title,excluded at the title pass (agents)
 S11596,OpenAlex,1970,THE HUMAN TUMOR-EGG HOST SYSTEM,,X-title,excluded at the title pass (agents)
-S11597,OpenAlex,1991,Metabolic substrate utilization by tumour and host tissues in cancer cachexia,UNSURE,E,tumour-bearing mice: tumour the second glucose consumer after the brain; brain glucose use FELL (against brain priority; logged as found)
+S11597,OpenAlex,1991,Metabolic substrate utilization by tumour and host tissues in cancer cachexia,UNSURE,E,tumour-bearing mice: tumour the second glucose consumer after the brain; brain glucose use fell but brain energy maintained by lactate and ketones (fuel substitution; not against brain priority; corrected after full abstract)
 S11598,OpenAlex,2006,Tumour-Associated Host Cells Participating at Invasion and Metastasis: Targets for Therapy ?,,X-title,excluded at the title pass (agents)
 S11599,OpenAlex,2005,Interaction of Tumour with Host Stroma in Hepatocellular Carcinoma,,X-title,excluded at the title pass (agents)
 S11600,OpenAlex,2020,The Selfish Immune System when the Immune System Overrides the ‘Selfish’ Brain,NEIGHBOUR,X1-neighbour,selfish immune system overriding the selfish brain

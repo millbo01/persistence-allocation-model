@@ -107,7 +107,7 @@ Strand C is therefore of limited sensitivity, as the protocol requires.
 | Empirical | 30 |
 
 **Two empirical records to note, logged as found:**
-- **S11597** (Biochem J 1991, 2-deoxyglucose): in tumour-bearing mice the tumour became the second glucose consumer after the brain, and the brain's glucose use **fell**, whether or not the mice were cachectic. This runs against brain priority, at one study's weight.
+- **S11597** (Mulligan and Tisdale, Biochem J 1991, 2-deoxyglucose): in tumour-bearing mice the tumour became the second glucose consumer after the brain, and the brain's glucose use fell, whether or not the mice were cachectic. **Corrected 7 October 2026 (full abstract read, PMID 1859359; the full text is a scanned PDF, so tissue-by-tissue values are not available):** the brain's **glucose** use fell, but "brain metabolism in the tumour-bearing state was maintained by an increased use of lactate and 3-hydroxybutyrate". The brain switched fuel; its energy was not cut. **Not against brain priority:** for the brain the resource is energy, and glucose and ketones are substitutes (the complementarity check, v0.18 Section 8). The earlier entry misread a truncated abstract.
 - **S15185** (J Surg Res 1989): the tumour gained protein while liver and gut mucosa were depleted. This is an order among host tissues under a parasitic sink.
 
 **Search 2 is complete.** Strand D, with both databases screened, has 21 includes:
