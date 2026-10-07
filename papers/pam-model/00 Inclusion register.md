@@ -2,7 +2,7 @@
 
 **Purpose:** decide what goes in the paper, where, and at what length, in one place, before the remaining sections are drafted (James, 7 October 2026). Every proposition, prediction, piece of evidence, example, citation and figure gets a tier and a word cost. Sections are then drafted to the register, not to the length of their working files.
 
-**Status:** Claude's first pass. **Tiers marked ◆ are arguable and need James's call** (Section 6).
+**Status:** decided (James, 7 October 2026). The ◆ tiers were settled as listed in Section 6.
 
 ## 1. The paper's five jobs
 
@@ -204,6 +204,8 @@ Rule: at most **one example per idea in the main text**, chosen for range across
 - **Kept in the main text:** about 9,100 words, three figures, four tables.
 
 ## 6. Calls for James (◆)
+
+**All eight decided as Claude suggested (James, 7 October 2026):** repair under strict rank critical; warning lead time supplementary; G18 supporting, one sentence; stroke example held until Rosso et al. 2012 is read; sheep plus plants for the silence, kidney to the supplement; honeybee and fasting penguins to the supplement; mapping procedure summarised in the main text; the extension as one sentence of future work.
 
 1. **Repair under strict rank (paper Proposition 16) as critical.** It is the only formal claim about the repair network, a component no prior theory formalises, but it is untested. Claude: critical.
 2. **The warning lead time (paper Proposition 4) as supplementary.** It bears on G12, which failed at H1. Promoting it could read as a rescue. Claude: supplementary, with G12's failure reported plainly in the main text.
