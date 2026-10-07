@@ -363,3 +363,15 @@ James accepted all five flags from the derived propositions (theory/PAM_proposit
 
 No new mechanism.
 
+## v0.18 and maths, amended: derived propositions batch 2, flags F to J; wear restored (7 October 2026)
+
+James accepted flags F to J (theory/PAM_propositions_DRAFT.md, batch 2):
+- **F. G16 and results R9:** economising causes no unit loss at any speed (work is cut, not renewal); R9's speed condition was a misapplication of the rate-decides-harm result.
+- **Wear restored (James's prompt).** Renewal is a baseline per active unit plus wear per unit of work. The engine has carried the wear term since TQ11; the maths restatement had dropped it by omission. Economising therefore cuts wear renewal at once. Maths Sections 0, 2, 6, 7 and 12 corrected; v0.18 mapping item 4 notes it.
+- **G. G13:** the fuse is last back only where its recovery value is also lowest (recovery is by marginal value).
+- **H. G24:** rerouting after a lost or narrowed route; overload cascades and steal where flow divides by physics, even with spare capacity; only on short total headroom where flow is reallocated by choice.
+- **I. Mapping:** where access is by saturable uptake, rank is the order of affinities; strict only where they are far apart, shared otherwise.
+- **J. Extension:** drain against capture as the extension's first test; MAC13 against MAC16 (Mulligan and Tisdale 1991) as the motivating case.
+
+No new mechanism (the wear term restores an engine form).
+

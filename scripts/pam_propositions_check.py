@@ -304,29 +304,38 @@ def check_P5(trials=500):
 
 # =================== batch 2 ===================
 
-# ---------- P11: economising never causes disorderly loss (renewal is not cut) ----------
+# ---------- P11: economising causes no unit loss; work and wear saving at once ----------
 def check_P11(trials=300):
     bad = 0
     for _ in range(trials):
         K = 100.0
         theta = random.uniform(0.02, 0.2)
+        kw, kn, ku = random.uniform(0.5, 2), random.uniform(0.02, 0.2), random.uniform(0.05, 0.5)
         w0 = K  # one unit of work per active unit at reference
         eps_max = random.uniform(0.1, 0.9)
         tau_e = random.randint(1, 10)  # including very fast economising
-        n_a, n_o, lost, eps = K, 0.0, 0.0, 0.0
+        n_a, eps, prev_draw = K, 0.0, None
+        base_draw = kw * w0 + kn * K + ku * w0
         for t in range(300):
-            eps += (eps_max - eps) / tau_e
-            work_access = (1 - eps) * w0
-            # renewal is funded for all active units (not cut by economising): no renewal shortfall
-            u_unrenewed = 0.0
-            lost += 0.0 * u_unrenewed
+            eps_new = eps + (eps_max - eps) / tau_e
+            w = (1 - eps_new) * w0
+            # renewal need: baseline per active unit plus wear per unit of work; access funds it in full
+            need = kn * n_a + ku * w
+            funded = kn * n_a + ku * w  # renewal access is not cut by economising
+            if funded < need - 1e-12:
+                bad += fail("P11 renewal shortfall", "")
+            draw_now = kw * w + need
+            # immediate saving: the work and wear part falls with work in the same step
+            if t == 0:
+                immediate = base_draw - draw_now
+                if abs(immediate - (kw + ku) * w0 * eps_new) > 1e-9:
+                    bad += fail("P11 immediate saving", f"{immediate}")
             # consolidation: active units beyond supported work switched off within theta*K
-            target = work_access
-            extra = min(max(0.0, n_a - target), theta * K)
+            extra = min(max(0.0, n_a - w), theta * K)
             n_a -= extra
-            n_o += extra
-        if lost > 0 or n_a < (1 - eps_max) * w0 - 1e-6:
-            bad += fail("P11", f"lost={lost} n_a={n_a}")
+            eps = eps_new
+        if n_a < (1 - eps_max) * w0 - 1e-6:
+            bad += fail("P11", f"n_a={n_a}")
     return bad
 
 

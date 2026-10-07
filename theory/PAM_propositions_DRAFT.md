@@ -277,18 +277,22 @@ $$L^\ast=F^{-1}\!\Big(1-\frac{V}{c_S\,\rho}\Big)\quad\text{if }V<c_S\rho,\qquad 
 
 ## 4. Batch 2 (7 October 2026)
 
-### P11. Economising causes no disorderly loss, whatever its speed (G16)
+### P11. Economising causes no unit loss, whatever its speed, and cuts wear at once (G16)
 
-**Statement.** Economising cuts ordinary parts' **work** access by $\epsilon$. It does not cut renewal (maths Section 2, phase 4; the frozen engine likewise).
+**Set-up.** Renewal need is a baseline per active unit plus wear per unit of work: $\kappa^n n^{\text{a}}+\kappa^u w$ (maths Sections 0 and 6; the wear term restored 7 October 2026 at James's prompt; the engine has carried it since TQ11). Economising cuts ordinary parts' **work** access by $\epsilon$; it does not cut their renewal access.
+
+**Statement.**
 1. **No units are lost through economising,** however fast $\epsilon$ rises.
-2. Active units beyond what the supported work needs are switched off at up to $\theta K$ per step (consolidation). After a cut, the excess is consolidated within $\lceil\epsilon w^0/(\theta K)\rceil$ steps (with one unit of work per active unit).
-3. **The stores are preserved** at once by the cut work's requirement, $\sum_i\kappa^w_iw^0_i\epsilon$ per step. The renewal saving follows only as units are consolidated.
+2. **The saving per step arrives in two parts:**
+   - **at once:** the work's own requirement and its wear renewal, $\sum_i(\kappa^w_i+\kappa^u_i)\,w^0_i\,\epsilon$;
+   - **as units are switched off:** the baseline renewal of idle units, $\kappa^n$ per unit consolidated. Consolidation runs at up to $\theta K$ per step, so the excess is switched off within $\lceil\epsilon w^0/(\theta K)\rceil$ steps (one unit of work per active unit).
+3. **The lower renewal burden lasts as long as work stays cut.** That is so after any repair backlog has been cleared too, and the flow it frees is available to the repair network for rebuilding once supply allows.
 
-**Proof.** Loss arises only from unmet basal maintenance or unmet renewal (A6). Economising changes neither: units left idle stay active and are renewed until consolidated. Consolidation is orderly by definition (maths Section 5, item 3). ∎
+**Proof.** Loss arises only from unmet basal maintenance or unmet renewal (A6). Economising lowers the work draw, and with it the wear part of renewal need, by the same factor; the baseline need of units still active stays funded until they are switched off. So no renewal shortfall arises from economising. Consolidation is orderly by definition (maths Section 5, item 3). ∎
 
-**Correction to R9 [flag F]:** R9 stated that economising is orderly only if it rises no faster than the switch-off rate. That applied the rate-decides-harm result (P6) to a cut in **work**, which is not a cut in renewal. Under the maths as written, economising is always orderly. **What speed does change** is how quickly the renewal saving arrives.
+**Correction to R9 [flag F, accepted]:** R9 stated that economising is orderly only if it rises no faster than the switch-off rate. That applied the rate-decides-harm result (P6) to a cut in **work**, which is not a cut in renewal. Economising is always orderly. **What speed changes** is only how soon the baseline saving arrives; the work and wear saving is immediate.
 
-**Check:** P11 (300 random instances, including very fast economising).
+**Check:** P11 (300 random instances, including very fast economising, with wear renewal tied to work).
 
 ### P12. The fuse, and when it is last back (G13)
 
@@ -299,20 +303,23 @@ $$L^\ast=F^{-1}\!\Big(1-\frac{V}{c_S\,\rho}\Big)\quad\text{if }V<c_S\rho,\qquad 
 
 **Proof.** Item 1: P3. Item 2: phase 5 is a greedy allocation by marginal value. Rank enters only through which parts went short and so have binding units. ∎
 
-**Reading [flag G]:** v0.17's G13 ("lowest-ranked parts take the load first and longest") was written under recovery by rank. Under the marginal-value rule adopted on 7 October 2026, **"longest" needs the condition** that the fuse's value in recovery is also lowest. That is the usual case, because a low-ranked part's shortfall costs least. But a mapping can make it fail (for example, a low-ranked part whose units bind often).
+**Reading [flag G, accepted]:** v0.17's G13 ("lowest-ranked parts take the load first and longest") was written under recovery by rank. Under the marginal-value rule adopted on 7 October 2026, **"longest" needs the condition** that the fuse's value in recovery is also lowest. That is the usual case, because a low-ranked part's shortfall costs least. But a mapping can make it fail (for example, a low-ranked part whose units bind often).
 
 ### P13. Cascade along substitutes depends on how flow is rerouted (G24)
 
 **Statement.** A pathway has parallel routes with capacities $C_e$ and flows $f_e$. Route $e$ is lost.
 1. **Optimal rerouting** (flow placed where there is headroom, as when a budget or a router reallocates): no surviving route is overloaded **if and only if** $\sum_{e'\neq e}(C_{e'}-f_{e'})\ge f_e$. In a general network: if and only if the remaining maximum flow covers the demand.
 2. **Physical rerouting** (flow divides by a fixed rule, such as in proportion to conductance, as in blood vessels, pipes or power lines): a route can be overloaded **even when total headroom suffices.**
-3. Whether an overloaded route then fails, and so spreads the cascade, depends on the overload rule, which stays open (maths flag 4).
+3. **Steal.** Where routes to different parts share a source, and a collateral connects one part's branch to another's, losing the second part's direct route sends flow to it through the collateral. At fixed supply, every unit arriving that way is taken from the first part's branch (conservation at the junction; P1). Under physical splitting this happens whether or not the first part can spare it; under reallocation by choice, only from headroom.
+4. Whether an overloaded route then fails, and so spreads the cascade, depends on the overload rule, which stays open (maths flag 4).
 
 **Proof.** Item 1: filling headroom route by route places $f_e$ exactly when the sum suffices; the general case is max-flow min-cut. Item 2: by example. Routes with capacities 10, 4 and 10 carry 5, 3.9 and 5. Losing the first leaves headroom of 5.1 for a flow of 5. A split in proportion to capacity sends $5\times4/14\approx1.43$ to the second route, which then carries 5.33 against a capacity of 4. ∎
 
-**Established mathematics:** max-flow min-cut; in power systems, line outage distribution factors and cascading-failure models, where flow redistributes by physics, not choice.
+**Established mathematics:** max-flow min-cut; in power systems, line outage distribution factors and cascading-failure models, where flow redistributes by physics, not choice. **Physiology:** subclavian steal (an occluded subclavian artery is supplied backwards through a vertebral artery, at the brain's expense) and coronary steal under vasodilators.
 
-**Reading [flag H]:** G24 gains a condition that makes it more specific. **Cascades along substitutes are expected where flow divides physically, even with spare total capacity. Where flow is reallocated by choice, they are expected only when total headroom is short.** This separates physiological and engineered networks from budgeted ones in a testable way.
+**What rerouting means here (James's question, 7 October 2026).** Severance or constriction of a route is the trigger, usually of the main, lowest-resistance route, since it carries the most flow. Rerouting is what follows: where the displaced flow goes. The question is **who sets the split**: the network's physics (resistance, impedance), or a choice (a budget holder, a router). In bodies, physics makes the first split and the governor's gates (autoregulation, constriction) correct it over seconds to minutes; where a bed has no effective gate, the physical split stands.
+
+**Reading [flag H, accepted]:** G24 gains a condition that makes it more specific. **Overload cascades and steals are expected where flow divides physically, even with spare total capacity. Where flow is reallocated by choice, they are expected only when total headroom is short.** This separates physiological and engineered networks from budgeted ones in a testable way.
 
 **Check:** P13 (2,000 random instances for item 1; a physical-split overload with sufficient headroom found).
 
@@ -371,7 +378,7 @@ $$L^\ast=F^{-1}\!\Big(1-\frac{V}{c_S\,\rho}\Big)\quad\text{if }V<c_S\rho,\qquad 
 - metabolic control analysis (elasticities of each consumer to supply; Buttgereit and Brand 1995 measured such a hierarchy in thymocytes);
 - Ames's triage mechanism ("adjustment of the binding affinity of each protein").
 
-**Reading [flag I]:**
+**Reading [flag I, accepted]:**
 - **This is the formal bridge from documented access to rank** that v0.18 left domain-specific (maths flag 6). Where access is by saturable uptake, $\pi_r$ is the order of affinities, measurable before outcomes.
 - **Whether priority is strict or shared is set by how far apart the affinities are.** That is the PT1 secondary question (strict against shared), now with a measurable criterion.
 - Proposed as a mapping rule, not a change to the core.
@@ -406,7 +413,7 @@ $$L^\ast=F^{-1}\!\Big(1-\frac{V}{c_S\,\rho}\Big)\quad\text{if }V<c_S\rho,\qquad 
 - **"It almost halves supply" cannot be checked** without the figures. The size of the cut is the net drain $T-T_0$, as James put it: the tumour's draw less what the tissue it displaced used to draw.
 - **Cachexia is the part a pure drain does not explain.** The two-tumour comparison says capture is needed.
 
-**Reading [flag J]:** P18 gives the extension layer a **test**:
+**Reading [flag J, accepted]:** P18 gives the extension layer a **test**:
 - **Drain only:** a tumour-bearing host matches a host with supply cut by the net drain.
 - **Capture:** it does not, and the departure is where the tumour's signals act.
 
@@ -434,7 +441,9 @@ $$L^\ast=F^{-1}\!\Big(1-\frac{V}{c_S\,\rho}\Big)\quad\text{if }V<c_S\rho,\qquad 
 
 **Not decided here:** whether P4's sheep reading (rate-independence observed, so a high-turnover or full-release store in that setting) belongs in the paper. It is an observation about the release profile, not a test.
 
-### Batch 2 flags (for James)
+### Batch 2 flags
+
+**All five accepted (James, 7 October 2026):** F (G16 and R9; renewal written with the wear term in the maths), G (G13), H (G24, with steal), I (rank from affinity in mapping), J (drain against capture in the extension).
 
 | No. | Prediction | What the derivation shows | Proposed change | Direction |
 |---|---|---|---|---|
