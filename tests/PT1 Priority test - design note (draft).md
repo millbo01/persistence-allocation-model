@@ -144,3 +144,39 @@ So a graded response that tracks expected value, with no declared role change, i
 - **Status:** a secondary question in the pre-registration. It does not enter the PT1 verdict.
 - **Why it matters:** the same question applies to repair (results flag 5).
 - **The resource:** PT1 has one scarce resource (general revenue), so the multi-resource problem does not arise (theory/PAM_maths_literature_map.md).
+
+## PT1-S2 assessment (7 October 2026)
+
+**Stored:** raw/2026-10-07_gemini_PT1-S2.md (SHA-256 begins d70dd4c7).
+
+**Format.**
+- No figures, trends or comparisons appear.
+- **Breach:** the source list includes councils' own documents (reorganisation proposals, budget books, finance strategies, a transport plan), which the prompt forbade. Gemini's self-check wrongly says none were used. They are cited only for which tier delivers which service and for funding definitions, and no values are reported. Logged; the points resting on them are treated as unverified.
+
+**What it establishes:**
+1. **Individual-council RO outturn and RA budget data are published for every year from 2013-14 to 2020-21,** with release dates.
+   - **Budgets** are published in June or July of the year itself. They are set before the year begins.
+   - **Final outturn** follows 5 to 26 months after the year ends.
+2. **Projection publication dates:**
+   - 2010-based: 21 March 2012;
+   - 2011-based interim: autumn 2012;
+   - 2012-based: not stated;
+   - 2014-based: May 2016;
+   - 2016-based: 24 May 2018;
+   - 2018-based: 24 March 2020.
+3. **Two-tier responsibilities** (from council documents, unverified): counties run adult social care, highways and regulatory services; districts run waste collection and housing; unitaries run everything. **Metropolitan districts and London boroughs: not stated.**
+4. **Not stated:**
+   - the RO sub-line list and its changes across years;
+   - reorganisations and their treatment;
+   - the RAP and SALT measures;
+   - library and waste series.
+5. **Funding:** Core Spending Power per council from 2015-16; Settlement Funding Assessment per council.
+
+**Design decisions this points to** (for the setting map and pre-registration; not yet fixed):
+- **Single-tier councils only** (unitaries, metropolitan districts, London boroughs). They deliver the full range, so the two-tier split and its unverified documentation are avoided. The Isles of Scilly and the City of London are excluded as atypical.
+- **The council set:** councils present with the same code in every year of the window. This removes reorganised councils mechanically, without needing a documented list.
+- **Window:** 2013-14 to 2019-20 (after the public-health transfer, before the pandemic).
+- **The H-dynamic covariate** comes from the population projection **published before each year's budget was set** (a fixed rule: the latest edition published before 1 February of the year the budget takes effect). **Each service's client group is defined by age,** fixed at mapping (for example 65 and over for adult social care, 0 to 17 for children's social care, the total population for services with no age-defined group). Current demand uses the same groups from mid-year estimates. This avoids the incomplete demand series.
+- **Line list and consistency:** PT1-C1 will list the 2016-17 sub-lines from the guidance. Across years, lines are matched by name. **A line not present in all years of the window is excluded,** by a rule fixed before data.
+
+**Next:** run PT1-C1 (statutory classification), then write the setting map and mapping.
