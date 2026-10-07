@@ -1,0 +1,751 @@
+{
+  "counts": {
+    "councils_seen": 459,
+    "councils_kept": 121,
+    "councils_dropped_not_single_tier": 332,
+    "councils_dropped_excluded_code": 2,
+    "councils_dropped_missing_year": 4,
+    "spending_rows_out_of_scope": 66308,
+    "lines_in_scope_seen": 97,
+    "lines_matched_all_years": 95,
+    "lines_dropped_not_all_years": [
+      "RO2:Bus lane enforcement",
+      "RO5:Allotments"
+    ],
+    "series_total": 11495,
+    "series_dropped_duplicate_names": 0,
+    "series_dropped_incomplete": 0,
+    "series_dropped_missing_nce": 0,
+    "series_dropped_nonpositive": 6345,
+    "series_dropped_below_minimum": 443,
+    "series_kept": 4707,
+    "series_kept_by_class": {
+      "A": 1334,
+      "C": 1233,
+      "B": 1214,
+      "ambiguous": 926
+    },
+    "rows_usable_PT1": 23373,
+    "rows_usable_G25": 18905,
+    "rows_with_missing_projected_growth_after_series_rules": 162
+  },
+  "PT1": {
+    "beta": 0.05365540857799814,
+    "se": 0.4053479939146038,
+    "p_one_sided": 0.4474571628802931,
+    "p_two_sided": 0.8949143257605862,
+    "ci95": [
+      -0.7489054092126979,
+      0.8562162263686941
+    ],
+    "N": 23373,
+    "councils": 121,
+    "lines": 93,
+    "verdict": "Inconclusive"
+  },
+  "G25": {
+    "delta_A": 0.04643135742304267,
+    "delta_B": 0.0040615750330515645,
+    "se_A": 0.0064144463307049225,
+    "se_B": 0.006687346680169637,
+    "p_A": 2.3461129093745866e-11,
+    "p_A_two_sided": 4.692225818749173e-11,
+    "p_B": 0.2723823686504444,
+    "p_B_two_sided": 0.5447647373008888,
+    "p_A_minus_B": 1.2843724672152401e-08,
+    "p_A_minus_B_two_sided": 2.5687449344304802e-08,
+    "N": 18905,
+    "councils": 121,
+    "verdict": "Supported",
+    "weight": 0.5
+  },
+  "G25_C": {
+    "interaction": 0.22466894673887663,
+    "se": 0.2481072495592584,
+    "p_one_sided": 0.18349919700629594,
+    "p_two_sided": 0.3669983940125919,
+    "N": 18905,
+    "councils": 121,
+    "verdict": "Not supported",
+    "weight": 0.5
+  },
+  "SS": {
+    "council_years_with_in_scope_real_spending_fall": 320,
+    "hits": 310,
+    "share_A_fell_while_C_kept_over_half": 0.96875,
+    "base_year_for_C": 2014,
+    "verdict": null
+  },
+  "sensitivity": {
+    "1_adult_social_care_included": {
+      "counts": {
+        "councils_seen": 459,
+        "councils_kept": 121,
+        "councils_dropped_not_single_tier": 332,
+        "councils_dropped_excluded_code": 2,
+        "councils_dropped_missing_year": 4,
+        "spending_rows_out_of_scope": 65582,
+        "lines_in_scope_seen": 98,
+        "lines_matched_all_years": 96,
+        "lines_dropped_not_all_years": [
+          "RO2:Bus lane enforcement",
+          "RO5:Allotments"
+        ],
+        "series_total": 11616,
+        "series_dropped_duplicate_names": 0,
+        "series_dropped_incomplete": 0,
+        "series_dropped_missing_nce": 0,
+        "series_dropped_nonpositive": 6345,
+        "series_dropped_below_minimum": 443,
+        "series_kept": 4828,
+        "series_kept_by_class": {
+          "A": 1334,
+          "C": 1233,
+          "B": 1214,
+          "ambiguous": 1047
+        },
+        "rows_usable_PT1": 23974,
+        "rows_usable_G25": 18905,
+        "rows_with_missing_projected_growth_after_series_rules": 166
+      },
+      "PT1": {
+        "beta": 0.03010881244888204,
+        "se": 0.39474519650093504,
+        "p_one_sided": 0.4696640478745281,
+        "p_two_sided": 0.9393280957490562,
+        "ci95": [
+          -0.7514592043635617,
+          0.8116768292613259
+        ],
+        "N": 23974,
+        "councils": 121,
+        "lines": 94,
+        "verdict": "Inconclusive"
+      },
+      "G25": {
+        "delta_A": 0.04643135742304267,
+        "delta_B": 0.0040615750330515645,
+        "se_A": 0.0064144463307049225,
+        "se_B": 0.006687346680169637,
+        "p_A": 2.3461129093745866e-11,
+        "p_A_two_sided": 4.692225818749173e-11,
+        "p_B": 0.2723823686504444,
+        "p_B_two_sided": 0.5447647373008888,
+        "p_A_minus_B": 1.2843724672152401e-08,
+        "p_A_minus_B_two_sided": 2.5687449344304802e-08,
+        "N": 18905,
+        "councils": 121,
+        "verdict": "Supported",
+        "weight": 0.5
+      },
+      "G25_C": {
+        "interaction": 0.22466894673887663,
+        "se": 0.2481072495592584,
+        "p_one_sided": 0.18349919700629594,
+        "p_two_sided": 0.3669983940125919,
+        "N": 18905,
+        "councils": 121,
+        "verdict": "Not supported",
+        "weight": 0.5
+      },
+      "SS": {
+        "council_years_with_in_scope_real_spending_fall": 272,
+        "hits": 262,
+        "share_A_fell_while_C_kept_over_half": 0.9632352941176471,
+        "base_year_for_C": 2014,
+        "verdict": null
+      }
+    },
+    "2_long_difference": {
+      "counts": {
+        "councils_seen": 459,
+        "councils_kept": 121,
+        "councils_dropped_not_single_tier": 332,
+        "councils_dropped_excluded_code": 2,
+        "councils_dropped_missing_year": 4,
+        "spending_rows_out_of_scope": 66308,
+        "lines_in_scope_seen": 97,
+        "lines_matched_all_years": 95,
+        "lines_dropped_not_all_years": [
+          "RO2:Bus lane enforcement",
+          "RO5:Allotments"
+        ],
+        "series_total": 11495,
+        "series_dropped_duplicate_names": 0,
+        "series_dropped_incomplete": 0,
+        "series_dropped_missing_nce": 0,
+        "series_dropped_nonpositive": 6345,
+        "series_dropped_below_minimum": 443,
+        "series_kept": 4707,
+        "series_kept_by_class": {
+          "A": 1334,
+          "C": 1233,
+          "B": 1214,
+          "ambiguous": 926
+        },
+        "rows_usable_PT1": 23373,
+        "rows_usable_G25": 18905,
+        "rows_with_missing_projected_growth_after_series_rules": 162
+      },
+      "PT1": {
+        "beta": -2.5936128391377014,
+        "se": 2.158818045482789,
+        "p_one_sided": 0.8839998537259781,
+        "p_two_sided": 0.23200029254804377,
+        "ci95": [
+          -6.86866030583699,
+          1.6814346275615875
+        ],
+        "N": 4626,
+        "councils": 119,
+        "lines": 93,
+        "verdict": "Inconclusive"
+      }
+    },
+    "3_ambiguous_lowest": {
+      "counts": {
+        "councils_seen": 459,
+        "councils_kept": 121,
+        "councils_dropped_not_single_tier": 332,
+        "councils_dropped_excluded_code": 2,
+        "councils_dropped_missing_year": 4,
+        "spending_rows_out_of_scope": 66308,
+        "lines_in_scope_seen": 97,
+        "lines_matched_all_years": 95,
+        "lines_dropped_not_all_years": [
+          "RO2:Bus lane enforcement",
+          "RO5:Allotments"
+        ],
+        "series_total": 11495,
+        "series_dropped_duplicate_names": 0,
+        "series_dropped_incomplete": 0,
+        "series_dropped_missing_nce": 0,
+        "series_dropped_nonpositive": 6345,
+        "series_dropped_below_minimum": 443,
+        "series_kept": 4707,
+        "series_kept_by_class": {
+          "A": 1334,
+          "C": 1233,
+          "B": 1214,
+          "ambiguous": 926
+        },
+        "rows_usable_PT1": 23373,
+        "rows_usable_G25": 18905,
+        "rows_with_missing_projected_growth_after_series_rules": 162
+      },
+      "G25": {
+        "delta_A": 0.03542457101391467,
+        "delta_B": 0.00892274226296571,
+        "se_A": 0.005746783289845607,
+        "se_B": 0.006173720097851545,
+        "p_A": 4.909679502823073e-09,
+        "p_A_two_sided": 9.819359005646147e-09,
+        "p_B": 0.07549310522955502,
+        "p_B_two_sided": 0.15098621045911004,
+        "p_A_minus_B": 7.137052124718e-05,
+        "p_A_minus_B_two_sided": 0.00014274104249436,
+        "N": 23535,
+        "councils": 121,
+        "verdict": "Supported",
+        "weight": 0.5
+      }
+    },
+    "3_ambiguous_highest": {
+      "counts": {
+        "councils_seen": 459,
+        "councils_kept": 121,
+        "councils_dropped_not_single_tier": 332,
+        "councils_dropped_excluded_code": 2,
+        "councils_dropped_missing_year": 4,
+        "spending_rows_out_of_scope": 66308,
+        "lines_in_scope_seen": 97,
+        "lines_matched_all_years": 95,
+        "lines_dropped_not_all_years": [
+          "RO2:Bus lane enforcement",
+          "RO5:Allotments"
+        ],
+        "series_total": 11495,
+        "series_dropped_duplicate_names": 0,
+        "series_dropped_incomplete": 0,
+        "series_dropped_missing_nce": 0,
+        "series_dropped_nonpositive": 6345,
+        "series_dropped_below_minimum": 443,
+        "series_kept": 4707,
+        "series_kept_by_class": {
+          "A": 1334,
+          "C": 1233,
+          "B": 1214,
+          "ambiguous": 926
+        },
+        "rows_usable_PT1": 23373,
+        "rows_usable_G25": 18905,
+        "rows_with_missing_projected_growth_after_series_rules": 162
+      },
+      "G25": {
+        "delta_A": 0.04503967518803558,
+        "delta_B": 0.014301350972300335,
+        "se_A": 0.0066447240598641955,
+        "se_B": 0.006416452502416856,
+        "p_A": 2.418115588507035e-10,
+        "p_A_two_sided": 4.83623117701407e-10,
+        "p_B": 0.013842692174816217,
+        "p_B_two_sided": 0.027685384349632434,
+        "p_A_minus_B": 5.751497819810297e-07,
+        "p_A_minus_B_two_sided": 1.1502995639620594e-06,
+        "N": 23535,
+        "councils": 121,
+        "verdict": "Supported",
+        "weight": 0.5
+      }
+    },
+    "4_RO6_client_facing_lines_included": {
+      "counts": {
+        "councils_seen": 459,
+        "councils_kept": 121,
+        "councils_dropped_not_single_tier": 332,
+        "councils_dropped_excluded_code": 2,
+        "councils_dropped_missing_year": 4,
+        "spending_rows_out_of_scope": 62678,
+        "lines_in_scope_seen": 102,
+        "lines_matched_all_years": 100,
+        "lines_dropped_not_all_years": [
+          "RO2:Bus lane enforcement",
+          "RO5:Allotments"
+        ],
+        "series_total": 12100,
+        "series_dropped_duplicate_names": 0,
+        "series_dropped_incomplete": 0,
+        "series_dropped_missing_nce": 0,
+        "series_dropped_nonpositive": 6627,
+        "series_dropped_below_minimum": 461,
+        "series_kept": 5012,
+        "series_kept_by_class": {
+          "A": 1458,
+          "C": 1337,
+          "B": 1214,
+          "ambiguous": 1003
+        },
+        "rows_usable_PT1": 24890,
+        "rows_usable_G25": 20045,
+        "rows_with_missing_projected_growth_after_series_rules": 170
+      },
+      "PT1": {
+        "beta": 0.15208501178239914,
+        "se": 0.40500975899194014,
+        "p_one_sided": 0.35397226397651654,
+        "p_two_sided": 0.7079445279530331,
+        "ci95": [
+          -0.6498061244008544,
+          0.9539761479656526
+        ],
+        "N": 24890,
+        "councils": 121,
+        "lines": 97,
+        "verdict": "Inconclusive"
+      },
+      "G25": {
+        "delta_A": 0.044094582933624206,
+        "delta_B": 0.000862367675672261,
+        "se_A": 0.006073648793456334,
+        "se_B": 0.00669504765577961,
+        "p_A": 2.1018312473062728e-11,
+        "p_A_two_sided": 4.2036624946125456e-11,
+        "p_B": 0.44886307907607975,
+        "p_B_two_sided": 0.8977261581521595,
+        "p_A_minus_B": 2.2326521089764742e-09,
+        "p_A_minus_B_two_sided": 4.4653042179529485e-09,
+        "N": 20045,
+        "councils": 121,
+        "verdict": "Supported",
+        "weight": 0.5
+      },
+      "G25_C": {
+        "interaction": 0.21205672643900597,
+        "se": 0.22574572897537537,
+        "p_one_sided": 0.17471620754503572,
+        "p_two_sided": 0.34943241509007145,
+        "N": 20045,
+        "councils": 121,
+        "verdict": "Not supported",
+        "weight": 0.5
+      },
+      "SS": {
+        "council_years_with_in_scope_real_spending_fall": 318,
+        "hits": 309,
+        "share_A_fell_while_C_kept_over_half": 0.9716981132075472,
+        "base_year_for_C": 2014,
+        "verdict": null
+      }
+    },
+    "5_ten_year_projected_growth": {
+      "counts": {
+        "councils_seen": 459,
+        "councils_kept": 121,
+        "councils_dropped_not_single_tier": 332,
+        "councils_dropped_excluded_code": 2,
+        "councils_dropped_missing_year": 4,
+        "spending_rows_out_of_scope": 66308,
+        "lines_in_scope_seen": 97,
+        "lines_matched_all_years": 95,
+        "lines_dropped_not_all_years": [
+          "RO2:Bus lane enforcement",
+          "RO5:Allotments"
+        ],
+        "series_total": 11495,
+        "series_dropped_duplicate_names": 0,
+        "series_dropped_incomplete": 0,
+        "series_dropped_missing_nce": 0,
+        "series_dropped_nonpositive": 6345,
+        "series_dropped_below_minimum": 443,
+        "series_kept": 4707,
+        "series_kept_by_class": {
+          "A": 1334,
+          "C": 1233,
+          "B": 1214,
+          "ambiguous": 926
+        },
+        "rows_usable_PT1": 23373,
+        "rows_usable_G25": 18905,
+        "rows_with_missing_projected_growth_after_series_rules": 162
+      },
+      "PT1": {
+        "beta": 0.20126714161670287,
+        "se": 0.1917264021910961,
+        "p_one_sided": 0.14796849491206338,
+        "p_two_sided": 0.29593698982412675,
+        "ci95": [
+          -0.1783377915385129,
+          0.5808720747719186
+        ],
+        "N": 23373,
+        "councils": 121,
+        "lines": 93,
+        "verdict": "Inconclusive"
+      }
+    },
+    "6_no_winsorising": {
+      "counts": {
+        "councils_seen": 459,
+        "councils_kept": 121,
+        "councils_dropped_not_single_tier": 332,
+        "councils_dropped_excluded_code": 2,
+        "councils_dropped_missing_year": 4,
+        "spending_rows_out_of_scope": 66308,
+        "lines_in_scope_seen": 97,
+        "lines_matched_all_years": 95,
+        "lines_dropped_not_all_years": [
+          "RO2:Bus lane enforcement",
+          "RO5:Allotments"
+        ],
+        "series_total": 11495,
+        "series_dropped_duplicate_names": 0,
+        "series_dropped_incomplete": 0,
+        "series_dropped_missing_nce": 0,
+        "series_dropped_nonpositive": 6345,
+        "series_dropped_below_minimum": 443,
+        "series_kept": 4707,
+        "series_kept_by_class": {
+          "A": 1334,
+          "C": 1233,
+          "B": 1214,
+          "ambiguous": 926
+        },
+        "rows_usable_PT1": 23373,
+        "rows_usable_G25": 18905,
+        "rows_with_missing_projected_growth_after_series_rules": 162
+      },
+      "PT1": {
+        "beta": 0.060744485494286,
+        "se": 0.47920987705436535,
+        "p_one_sided": 0.44967138575126503,
+        "p_two_sided": 0.8993427715025301,
+        "ci95": [
+          -0.8880577205014699,
+          1.009546691490042
+        ],
+        "N": 23373,
+        "councils": 121,
+        "lines": 93,
+        "verdict": "Inconclusive"
+      },
+      "G25": {
+        "delta_A": 0.05004934522179277,
+        "delta_B": 0.0067986350300742035,
+        "se_A": 0.007779301103297392,
+        "se_B": 0.007798256200159172,
+        "p_A": 1.330719028199879e-09,
+        "p_A_two_sided": 2.661438056399758e-09,
+        "p_B": 0.19252519021337244,
+        "p_B_two_sided": 0.3850503804267449,
+        "p_A_minus_B": 5.224055158620221e-07,
+        "p_A_minus_B_two_sided": 1.0448110317240442e-06,
+        "N": 18905,
+        "councils": 121,
+        "verdict": "Supported",
+        "weight": 0.5
+      },
+      "G25_C": {
+        "interaction": 0.26728822558329374,
+        "se": 0.3054244130651296,
+        "p_one_sided": 0.19162379373112062,
+        "p_two_sided": 0.38324758746224125,
+        "N": 18905,
+        "councils": 121,
+        "verdict": "Not supported",
+        "weight": 0.5
+      },
+      "SS": {
+        "council_years_with_in_scope_real_spending_fall": 320,
+        "hits": 310,
+        "share_A_fell_while_C_kept_over_half": 0.96875,
+        "base_year_for_C": 2014,
+        "verdict": null
+      }
+    },
+    "7_london_boroughs_excluded": {
+      "counts": {
+        "councils_seen": 459,
+        "councils_kept": 89,
+        "councils_dropped_not_single_tier": 332,
+        "councils_dropped_excluded_code": 2,
+        "councils_dropped_missing_year": 4,
+        "councils_kept_before_sensitivity_filter": 121,
+        "spending_rows_out_of_scope": 48772,
+        "lines_in_scope_seen": 97,
+        "lines_matched_all_years": 95,
+        "lines_dropped_not_all_years": [
+          "RO2:Bus lane enforcement",
+          "RO5:Allotments"
+        ],
+        "series_total": 8455,
+        "series_dropped_duplicate_names": 0,
+        "series_dropped_incomplete": 0,
+        "series_dropped_missing_nce": 0,
+        "series_dropped_nonpositive": 4445,
+        "series_dropped_below_minimum": 390,
+        "series_kept": 3620,
+        "series_kept_by_class": {
+          "A": 997,
+          "C": 984,
+          "B": 937,
+          "ambiguous": 702
+        },
+        "rows_usable_PT1": 17938,
+        "rows_usable_G25": 14590,
+        "rows_with_missing_projected_growth_after_series_rules": 162
+      },
+      "PT1": {
+        "beta": 0.003026917202070747,
+        "se": 0.6029156623470693,
+        "p_one_sided": 0.49800281437454275,
+        "p_two_sided": 0.9960056287490855,
+        "ci95": [
+          -1.1951412679282314,
+          1.2011951023323728
+        ],
+        "N": 17938,
+        "councils": 89,
+        "lines": 92,
+        "verdict": "Inconclusive"
+      },
+      "G25": {
+        "delta_A": 0.040973264162352675,
+        "delta_B": -0.003130923273928085,
+        "se_A": 0.007335047220609144,
+        "se_B": 0.007496479999133399,
+        "p_A": 1.2776034560230878e-07,
+        "p_A_two_sided": 2.5552069120461756e-07,
+        "p_B": 0.6613907381413532,
+        "p_B_two_sided": 0.6772185237172936,
+        "p_A_minus_B": 6.12186938053492e-08,
+        "p_A_minus_B_two_sided": 1.224373876106984e-07,
+        "N": 14590,
+        "councils": 89,
+        "verdict": "Partly supported",
+        "weight": 0.5
+      },
+      "G25_C": {
+        "interaction": 0.11833530132342217,
+        "se": 0.3657138557258853,
+        "p_one_sided": 0.37351434662990246,
+        "p_two_sided": 0.7470286932598049,
+        "N": 14590,
+        "councils": 89,
+        "verdict": "Not supported",
+        "weight": 0.5
+      },
+      "SS": {
+        "council_years_with_in_scope_real_spending_fall": 237,
+        "hits": 229,
+        "share_A_fell_while_C_kept_over_half": 0.9662447257383966,
+        "base_year_for_C": 2014,
+        "verdict": null
+      }
+    },
+    "8_minimum_50_thousand": {
+      "counts": {
+        "councils_seen": 459,
+        "councils_kept": 121,
+        "councils_dropped_not_single_tier": 332,
+        "councils_dropped_excluded_code": 2,
+        "councils_dropped_missing_year": 4,
+        "spending_rows_out_of_scope": 66308,
+        "lines_in_scope_seen": 97,
+        "lines_matched_all_years": 95,
+        "lines_dropped_not_all_years": [
+          "RO2:Bus lane enforcement",
+          "RO5:Allotments"
+        ],
+        "series_total": 11495,
+        "series_dropped_duplicate_names": 0,
+        "series_dropped_incomplete": 0,
+        "series_dropped_missing_nce": 0,
+        "series_dropped_nonpositive": 6345,
+        "series_dropped_below_minimum": 194,
+        "series_kept": 4956,
+        "series_kept_by_class": {
+          "A": 1364,
+          "C": 1316,
+          "B": 1265,
+          "ambiguous": 1011
+        },
+        "rows_usable_PT1": 24608,
+        "rows_usable_G25": 19725,
+        "rows_with_missing_projected_growth_after_series_rules": 172
+      },
+      "PT1": {
+        "beta": -0.029142906684089916,
+        "se": 0.41658206990772884,
+        "p_one_sided": 0.5278279053838726,
+        "p_two_sided": 0.9443441892322549,
+        "ci95": [
+          -0.8539464131065809,
+          0.7956605997384011
+        ],
+        "N": 24608,
+        "councils": 121,
+        "lines": 93,
+        "verdict": "Inconclusive"
+      },
+      "G25": {
+        "delta_A": 0.048940916752391934,
+        "delta_B": 0.006722048420768308,
+        "se_A": 0.006731562726614418,
+        "se_B": 0.007062056859944879,
+        "p_A": 1.9926749178853835e-11,
+        "p_A_two_sided": 3.985349835770767e-11,
+        "p_B": 0.17154211214404394,
+        "p_B_two_sided": 0.3430842242880879,
+        "p_A_minus_B": 1.9969097727410338e-08,
+        "p_A_minus_B_two_sided": 3.9938195454820677e-08,
+        "N": 19725,
+        "councils": 121,
+        "verdict": "Supported",
+        "weight": 0.5
+      },
+      "G25_C": {
+        "interaction": 0.22287205169795754,
+        "se": 0.24605629497854273,
+        "p_one_sided": 0.18343457595098606,
+        "p_two_sided": 0.3668691519019721,
+        "N": 19725,
+        "councils": 121,
+        "verdict": "Not supported",
+        "weight": 0.5
+      },
+      "SS": {
+        "council_years_with_in_scope_real_spending_fall": 319,
+        "hits": 309,
+        "share_A_fell_while_C_kept_over_half": 0.9686520376175548,
+        "base_year_for_C": 2014,
+        "verdict": null
+      }
+    },
+    "8_minimum_250_thousand": {
+      "counts": {
+        "councils_seen": 459,
+        "councils_kept": 121,
+        "councils_dropped_not_single_tier": 332,
+        "councils_dropped_excluded_code": 2,
+        "councils_dropped_missing_year": 4,
+        "spending_rows_out_of_scope": 66308,
+        "lines_in_scope_seen": 97,
+        "lines_matched_all_years": 95,
+        "lines_dropped_not_all_years": [
+          "RO2:Bus lane enforcement",
+          "RO5:Allotments"
+        ],
+        "series_total": 11495,
+        "series_dropped_duplicate_names": 0,
+        "series_dropped_incomplete": 0,
+        "series_dropped_missing_nce": 0,
+        "series_dropped_nonpositive": 6345,
+        "series_dropped_below_minimum": 1134,
+        "series_kept": 4016,
+        "series_kept_by_class": {
+          "A": 1241,
+          "B": 1030,
+          "C": 994,
+          "ambiguous": 751
+        },
+        "rows_usable_PT1": 19944,
+        "rows_usable_G25": 16325,
+        "rows_with_missing_projected_growth_after_series_rules": 136
+      },
+      "PT1": {
+        "beta": 0.025137896641751315,
+        "se": 0.4002300310335861,
+        "p_one_sided": 0.47501169970527257,
+        "p_two_sided": 0.9500233994105451,
+        "ci95": [
+          -0.7672897108287344,
+          0.8175655041122372
+        ],
+        "N": 19944,
+        "councils": 121,
+        "lines": 91,
+        "verdict": "Inconclusive"
+      },
+      "G25": {
+        "delta_A": 0.04729544286158379,
+        "delta_B": 0.006435413816461123,
+        "se_A": 0.006435912964897143,
+        "se_B": 0.007274275416730765,
+        "p_A": 1.3315673585254474e-11,
+        "p_A_two_sided": 2.6631347170508948e-11,
+        "p_B": 0.1890489241909565,
+        "p_B_two_sided": 0.378097848381913,
+        "p_A_minus_B": 2.127861721210873e-07,
+        "p_A_minus_B_two_sided": 4.255723442421746e-07,
+        "N": 16325,
+        "councils": 121,
+        "verdict": "Supported",
+        "weight": 0.5
+      },
+      "G25_C": {
+        "interaction": 0.30288673207476163,
+        "se": 0.2617042625949741,
+        "p_one_sided": 0.1247113866190743,
+        "p_two_sided": 0.2494227732381486,
+        "N": 16325,
+        "councils": 121,
+        "verdict": "Not supported",
+        "weight": 0.5
+      },
+      "SS": {
+        "council_years_with_in_scope_real_spending_fall": 321,
+        "hits": 312,
+        "share_A_fell_while_C_kept_over_half": 0.9719626168224299,
+        "base_year_for_C": 2014,
+        "verdict": null
+      }
+    }
+  },
+  "implementation": {
+    "fixed_effect_absorption": "Frisch-Waugh-Lovell projection on sparse FE dummy matrix using scipy.sparse.linalg.lsqr",
+    "cluster": "council",
+    "cluster_df": "G-1",
+    "cluster_small_sample_factor": "G/(G-1) * (N-1)/(N-K), with nested council-year/council FE excluded from K and line FE counted",
+    "ss_total_spending_fix": "ambiguous statutory lines remain in total in-scope spending; only A/C labels are used for the hit condition"
+  }
+}

@@ -144,3 +144,11 @@
 - **One warning** ("divide by zero encountered in log", in G25-C): traced by a diagnostic run (output to a scratch folder, not kept) to zero Core Spending Power for the Dorset reorganisation codes, none of which is in the panel. It does not reach any estimate.
 
 **Next:** step 9, computation replicated by a second model (prompt tests/prompts/PT1-R1.txt).
+
+## Step 9: computation replicated by a second model (7 October 2026)
+
+- **GPT's audit and script:** raw/2026-10-07_chatgpt_PT1-R1.md; script extracted unedited to tests/scripts/pt1_check.py and run on the same tidy files (exit 0).
+- **Result: replicated exactly.** Same counts at every step; PT1, G25 and G25-C estimates, standard errors, p values and verdicts identical to at least eight digits; every shared sensitivity identical. Only SS (descriptive) differs, because GPT keeps ambiguous lines in the spending total (320 against 349 council-years; 96.9% against 96.8%).
+- **Audit findings checked against the data;** none changes a scored estimate (tests/results/PT1-R1/README.md). One source check added: the population files have no missing single-age cells.
+
+**Next:** step 10, blind adjudication (prompt tests/prompts/PT1-ADJ1.txt, fresh GPT chat).

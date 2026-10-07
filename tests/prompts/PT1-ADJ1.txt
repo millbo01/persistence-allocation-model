@@ -1,0 +1,735 @@
+PT1-ADJ1: blind adjudication of a pre-registered data test (English council spending: PT1 and G25)
+
+You are the adjudicator for a pre-registered test. Apply the frozen rules to the reported results. You have no stake in the outcome; you are not told what anyone expected or hoped for. Work only from the inputs below.
+
+FORMAT RULE: no introduction or essay. Start directly with item 1.
+
+INPUTS (embedded below, in full)
+1. The frozen pre-registration (Markdown). Its Section 6 holds the verdict tables; Section 8 the weights.
+2. The general adjudication rules G1 to G6 of the project. NOTE: these "G1 to G6" are adjudication rules and are unrelated to the model's prediction numbered G25 in the pre-registration.
+3. The implementation notes fixed in the analysis code before the data were opened.
+4. The count-step output (counts.json).
+5. The analysis output (summary.json), run once with the analysis code unchanged (the first attempt stopped with an error before producing any result; see input 6).
+6. The procedure-log record of parser settings, deviations D-1 to D-5, the count of missing projections, and the run (facts as logged).
+7. The record of the computation replication (facts only).
+
+QUESTIONS
+1. PT1 VERDICT. Apply the Section 6 PT1 table to the primary result. State the verdict, the row of the table that decides it, and the numbers used (coefficient, one-sided and two-sided p, 95% interval, the smallest meaningful effect).
+2. PT1-S. State whether the pre-registration requires PT1-S to run given item 1, and whether its absence is correct.
+3. G25 VERDICT AND WEIGHT. Apply the Section 6 G25 table. State the verdict, the row that decides it, the numbers used, and the weight the pre-registration assigns, quoting the relevant sentences of Section 8.
+4. G25-C VERDICT AND WEIGHT. Apply the Section 6 rule. State the verdict, the numbers and the weight.
+5. SS. Confirm it is descriptive only and carries no verdict. State the reported figure and whether the difference recorded in input 7 matters under the frozen rules.
+6. SENSITIVITY ANALYSES. Confirm that Section 7 makes them reported but not part of the verdicts. State briefly whether any of them would, if it were the primary analysis, have produced a different verdict for PT1, G25 or G25-C, naming which.
+7. DEVIATIONS D-1 TO D-5 AND MISSING PROJECTIONS. For each, state whether, under the frozen rules, it makes any verdict unsafe or requires it to be qualified. Use only the facts in input 6.
+8. ADJUDICATION RULES G1 TO G6. For each, state whether it applies to these results and, if so, what it implies. If none changes a verdict, say so.
+9. FAULTS. List any obvious misclassification, rules error, or fault in this prompt or its inputs that would make a verdict unsafe. If none, write "none found".
+
+OUTPUT
+- Items 1 to 9, each with the sentences or numbers it relies on.
+- A final line: "VERDICTS: PT1 <verdict> (full weight); G25 <verdict> (<weight>); G25-C <verdict> (<weight>)".
+- A self-check: no introduction; only the inputs used; every item answered.
+
+==================== INPUT 1: FROZEN PRE-REGISTRATION ====================
+# PT1, fixed against dynamic priority (with G25): pre-registration (FROZEN 7 October 2026)
+
+Drafted by Claude, 7 October 2026. **Status: frozen 7 October 2026 (James confirmed). No spending, population or funding data for this test had been opened when this was committed.** Any later change is a new, separately logged experiment.
+
+**Sources:**
+- **Model:** theory/PERSISTENCE_ALLOCATION_MODEL_v0.18.md, as corrected on 7 October 2026 (access-limited load; "chronic").
+- **Setting map and mapping:** tests/PT1 Priority test - setting map and mapping (draft).md. James decided D1 to D6, all as recommended, on 7 October 2026.
+- **Design note:** tests/PT1 Priority test - design note (draft).md (H-fixed against H-dynamic; the rescue routes R1 to R3).
+- **Structure only:** raw/2026-10-07_gemini_PT1-S1.md and _PT1-S2.md.
+- **The statutory classification:** tests/PT1_statutory_classification.csv (176 lines; SHA-256 begins faf45875). Built blind by GPT under a fixed rule (raw/2026-10-07_chatgpt_PT1-C1b.md, _C1c.md).
+
+## 1. Questions and hypotheses
+
+| Code | Role | Statement |
+|---|---|---|
+| **PT1** | Primary (Tier 1) | Within a council and year, a service line's **projected client-group growth** (published before the budget) predicts how well its real spending per head of client group is protected, once the line, the council-year and realised client-group growth are held constant. **H-fixed:** no effect. **H-dynamic:** a positive effect |
+| PT1-S | Secondary (runs only if PT1 finds an effect) | **Graded or stepped:** is the effect linear in projected growth, or a single threshold? |
+| **G25** | Primary, **half weight** (contamination) | Statutory class predicts the order of sacrifice: within council-years, A lines are protected more than B, and B more than C |
+| G25-C | Secondary, half weight | **Scarcity reveals the order:** the gap between A and C is larger where the council's real funding fell more |
+| SS | Descriptive, not scored | **Strict or shared:** did C lines absorb whole cuts before A lines lost anything? |
+
+**Rescue routes declared now** (design note, Section 1). Under H-fixed, an apparent reversal is allowed only through:
+- **R1, a role change:** none declared. No service line is mapped as support for the top or as the intake.
+- **R2, local autoregulation:** none declared.
+- **R3, a governor mode:** **none declared,** consistent with mapping step 8 (no modes or gates claimed).
+
+**So any PT1 effect counts against H-fixed for this system,** whatever its shape. PT1-S says only which alternative fits better.
+
+**Interpretation, stated in advance.** Councils are governed by people (nested systems) who plan ahead. A positive PT1 result would show anticipation entering this governor. That earns dynamic priority **for institutions of this kind,** not for biology.
+
+## 2. Data (fixed now; downloaded only after freezing)
+
+| Item | Source | Use |
+|---|---|---|
+| Spending by service line | MHCLG Revenue Outturn, individual local authority data, **final outturn**, 2014-15 to 2019-20 (RO2, RO3, RO4, RO5; RO6 in a sensitivity analysis) | **Net current expenditure** per line, council and year |
+| Prices | ONS consumer prices index (CPI), annual average for each financial year (April to March), from the published monthly index | Real terms, 2014-15 prices |
+| Current population | ONS mid-year population estimates by single year of age and local authority, mid-2014 to mid-2019 (mid-year t for financial year t to t+1) | Client-group populations; realised growth |
+| Projected population | ONS subnational population projections, **the latest edition published before 1 February of the calendar year in which the financial year begins** | Projected five-year growth of each client group |
+| Funding | MHCLG Core Spending Power per council, 2015-16 to 2019-20 (final settlement tables) | Scarcity, for G25-C |
+
+**Which projection applies to which budget** (by publication date; dates from PT1-S2, plus one to confirm):
+- 2014-15 budget (set before February 2014): **2011-based interim** (published autumn 2012).
+- 2015-16 and 2016-17: **2012-based** (publication date not stated in the documentation; **to confirm from the ONS release page** before data is opened, as documentation).
+- 2017-18 and 2018-19: **2014-based** (published May 2016).
+- 2019-20: **2016-based** (published 24 May 2018).
+
+If the confirmed 2012-based date is later than 1 February 2015, the rule assigns the 2011-based interim edition to the 2015-16 budget instead. **The rule, not a choice, decides.**
+
+## 3. Councils, lines and client groups
+
+**Councils (D2):**
+- Unitary authorities, metropolitan districts and London boroughs, excluding the City of London and the Isles of Scilly.
+- **The same ONS code in every year from 2014-15 to 2019-20** in the spending data, which removes reorganised councils mechanically.
+- **A council missing a final outturn return** in any year is excluded, and the number is reported.
+
+**Lines (D4):**
+- **In scope:** the classified lines in RO2 (highways and transport), RO4 (housing), RO5 (cultural, environmental, regulatory, planning) and RO3 children's social care (lines 10 to 27; the total line 30 is excluded).
+- **Excluded:**
+  - public health (RO3 61 to 90);
+  - adult social care (RO3 lines 8, 9 and 32 to 60) from the primary analyses (D3);
+  - RO1;
+  - RO6 (a sensitivity analysis keeps the client-facing lines 430, 441, 442, 460 and 475);
+  - levies (RO5 226, 244);
+  - police and fire.
+- **Matching across years, by name:**
+  - A line is matched across years by **its normalised name within its form** (lower case, punctuation and spacing removed). Codes changed over the period, for example the RO4 temporary accommodation lines.
+  - **The classification attaches to the line name** in the 2025-26 guidance.
+  - **A line whose normalised name is not found in all six years is excluded.** The number is reported, with the names.
+- **Series rules** (per council and line):
+  - excluded if net current expenditure is zero or negative in any year (income-generating lines such as parking);
+  - excluded if mean real net current expenditure over the window is below £100,000 (2014-15 prices), to avoid noise from tiny lines.
+
+**Client groups (D5), fixed now:**
+
+| Lines | Client group |
+|---|---|
+| RO3 children's social care (10 to 27) | Aged 0 to 17 |
+| RO2 71 statutory concessionary fares | Aged 65 and over |
+| All other in-scope lines (RO2 except 71; RO4; RO5) | Total population |
+| Adult social care total (sensitivity only) | Aged 18 and over |
+
+## 4. Measures
+
+For council $c$, line $l$, financial year $t$ (2015-16 to 2019-20, each against the year before):
+
+- **Outcome (protection):**
+$$y_{clt}=\ln\frac{E_{clt}/P_{clt}}{E_{cl,t-1}/P_{cl,t-1}}$$
+  - $E$ is real net current expenditure;
+  - $P$ is the client-group population (mid-year estimate).
+  - The outcome is **winsorised** at the 1st and 99th percentiles of the pooled sample.
+- **Realised client growth:** $g^{\text{real}}_{clt}=\ln(P_{clt}/P_{cl,t-1})$.
+- **Projected client growth (H-dynamic's variable):**
+$$g^{\text{proj}}_{clt}=\ln\frac{\hat P_{cl}(\tau+5)}{\hat P_{cl}(\tau)}$$
+  - $\hat P$ comes from the projection edition assigned to year $t$'s budget (Section 2);
+  - $\tau$ is the calendar year in which financial year $t$ begins.
+- **Statutory class:** A, B or C from the classification. **Ambiguous lines** are excluded from G25 in the primary analysis (D6).
+- **Scarcity** (for G25-C): the change in the council's real Core Spending Power per head (total population) from 2015-16 to 2019-20.
+
+## 5. Models and tests
+
+All standard errors are **clustered by council.** Tests are one-sided at α = 0.05 unless stated.
+
+**PT1 (primary):**
+$$y_{clt}=\beta\,g^{\text{proj}}_{clt}+\gamma\,g^{\text{real}}_{clt}+\alpha_l+\alpha_{ct}+\varepsilon_{clt}$$
+- $\alpha_l$ are line fixed effects. They absorb each line's average trend, and with it its statutory class.
+- $\alpha_{ct}$ are council-by-year fixed effects. They absorb each council's overall cut in each year.
+- **The test:** $\beta>0$.
+
+**PT1-S (secondary, only if PT1 finds $\beta>0$):**
+- **The comparison:** the linear model above against a **single-threshold model**, in which $g^{\text{proj}}$ is replaced by an indicator that it exceeds a threshold. The threshold is chosen from the nine deciles of $g^{\text{proj}}$.
+- **Both are compared by BIC,** counting the threshold as one extra parameter.
+- **The reading:**
+  - **graded** if the linear model's BIC is lower by more than 2;
+  - **stepped** if the threshold model's is lower by more than 2;
+  - **indeterminate** otherwise.
+
+**G25 (primary, half weight):**
+$$y_{clt}=\delta_A\,[\text{A}]+\delta_B\,[\text{B}]+\gamma\,g^{\text{real}}_{clt}+\alpha_{ct}+\varepsilon_{clt}$$
+- C is the reference class; ambiguous lines are excluded.
+- **The tests:** $\delta_A>0$ (A protected more than C), $\delta_B>0$, and $\delta_A-\delta_B>0$.
+
+**G25-C (secondary, half weight):** the G25 model with an interaction between $[\text{A}]$ and scarcity.
+- **The test:** the A-against-C gap widens where funding fell more. The interaction is positive when scarcity is coded so that a larger value means a deeper fall.
+
+**SS (descriptive):**
+- **The council-years counted:** those in which in-scope real spending fell.
+- **What is reported:** the share in which any A line's real spending fell while C lines kept more than half of their base-year spending.
+- **How to read it:** under strict priority the share is near zero; under shared cutting it is substantial. No verdict.
+
+## 6. Verdict table
+
+**PT1** (the verdict for H-fixed against H-dynamic in this system). The smallest effect that matters is set now: $\beta^{\ast}=0.25$. That means a 10% higher projected five-year client growth goes with 2.5 percentage points more protection per year.
+
+| Result | Verdict |
+|---|---|
+| $\beta>0$ (one-sided p < 0.05) | **H-fixed fails in this system; dynamic priority earned for institutions of this kind.** PT1-S then reports graded, stepped or indeterminate |
+| $\beta$ not significant, and the upper 95% confidence bound below 0.25 | **H-fixed supported:** no meaningful anticipation |
+| $\beta$ not significant, upper bound at or above 0.25 | **Inconclusive** (not enough precision) |
+| $\beta<0$ with two-sided p < 0.05 | **Contrary to H-dynamic** (protection moves away from growing groups). Logged as found |
+
+**G25** (half weight):
+
+| Result | Verdict |
+|---|---|
+| $\delta_A>0$ (p < 0.05), with point estimates ordered $\delta_A\ge\delta_B\ge0$ | **Supported** |
+| $\delta_A>0$ (p < 0.05), but the order is violated | **Partly supported** |
+| $\delta_A$ not significantly greater than 0 | **Fails** |
+| $\delta_A<0$ with two-sided p < 0.05 | **Contradicted** |
+
+**G25-C:** supported if the interaction test passes; not supported otherwise. Half weight.
+
+## 7. Sensitivity analyses (reported; not part of the verdicts)
+
+1. **Adult social care included** (the total line, client group 18 and over).
+2. **Long difference:** one observation per council and line, from 2014-15 to 2019-20. The projection is the one assigned to the 2014-15 budget; growth is realised over the window.
+3. **Ambiguous lines in G25,** set to their lowest and their highest candidate class.
+4. **RO6 client-facing lines included** (430, 441, 442, 460, 475).
+5. **Ten-year projected growth** in place of five-year.
+6. **No winsorising.**
+7. **London boroughs excluded.**
+8. **The £100,000 minimum** replaced by £50,000 and by £250,000.
+
+## 8. Contamination and weights
+
+- **G25 carries half weight.** Claude knows the broad pattern (discretionary services were cut most; social care was relatively protected). The classifier declared similar background knowledge and disclaimed using it.
+- **PT1 carries full weight.** Claude does not know whether projected client growth predicts protection once line, council-year and realised growth are held constant.
+- **The classification was produced blind,** before any data, by a model applying a fixed rule with citations.
+
+## 9. Procedure
+
+**Before any data is opened:**
+1. **James confirms;** the pre-registration is frozen, and its SHA is recorded in CONTROL.md.
+2. **The 2012-based projection's publication date** is confirmed from the ONS release page (documentation) and recorded.
+3. **Claude writes the analysis code** (tests/scripts/pt1_councils.py) and tests it on synthetic data built to give each verdict. It is committed with its SHA.
+
+**Opening the data:**
+4. **The data is downloaded** into data/ (git-ignored), with sources and checksums in data/README.md.
+5. **Structure inspection.** The spreadsheet layouts (sheet names, header rows, line labels, council codes) are not documented, so a structure-only script prints headers and labels, **never values**, to configure the parser. Every parser setting is logged as an implementation note **before** the analysis runs.
+6. **A counting step** reports, with no outcome values:
+   - councils in and out (and why);
+   - lines matched and excluded (with names);
+   - series excluded by the positivity and £100,000 rules.
+
+**Running:**
+7. **The analysis runs once,** unchanged. Outputs go to tests/results/PT1/ (README.md and summary.json).
+8. **Deviations** (a bug, a missing field, a changed name) are logged with reasons, never silently fixed.
+
+**After the run:**
+9. **Computation replicated by a second model** from the same files and this pre-registration.
+10. **Blind adjudication by GPT** (a fresh chat) against Section 6. Its verdict is recorded verbatim.
+
+## 10. Decision log (methodology choices, with the direction each pushes)
+
+| No. | Choice | Direction |
+|---|---|---|
+| 1 | Window 2014-15 to 2019-20 (D1) | Neutral: avoids definition breaks and the pandemic |
+| 2 | Single-tier councils with stable codes (D2) | Neutral: fewer councils, cleaner responsibilities |
+| 3 | Adult social care excluded from the primary analyses (D3) | **Harder for G25:** it removes the largest A-class service, which is expected to look protected. **Neutral for PT1:** earmarked funding would otherwise confound it |
+| 4 | Public health excluded (ring-fenced; its class is an artefact of the source) | Neutral |
+| 5 | Lines matched by name; lines missing in any year excluded | Neutral: some lines lost |
+| 6 | Line and council-year fixed effects in PT1 | **Harder for H-dynamic:** only variation in projected growth within line and council-year counts |
+| 7 | Realised growth controlled | **Harder for H-dynamic:** anticipation must show beyond what actually happened |
+| 8 | No modes or role changes declared (R1 to R3 closed) | **Harder for H-fixed:** any effect counts against it |
+| 9 | Smallest meaningful effect $\beta^\ast=0.25$, which allows "H-fixed supported" from a null | **Easier for H-fixed** (a null can support it). Limited by requiring the confidence bound below $\beta^\ast$; otherwise inconclusive |
+| 10 | One-sided tests | **Favours detecting the predicted direction.** "Contrary" uses two-sided tests |
+| 11 | Ambiguous lines excluded from primary G25 (D6) | Neutral; bounded by sensitivity 3 |
+| 12 | Winsorising at 1 and 99 per cent | Neutral; sensitivity 6 |
+| 13 | Positivity and £100,000 series rules | Neutral; sensitivity 8 |
+| 14 | Structure inspection of spreadsheets after freezing (no values) | **Procedural:** parser settings logged before the run |
+
+==================== INPUT 2: ADJUDICATION RULES G1 TO G6 ====================
+# Adjudication rules G1 to G6
+
+Moved verbatim from the archived State tab (28 September 2026). Referenced from CLAUDE.md. Changes go to James for approval. Apply in phase 5 only (CLAUDE.md, Research discipline).
+
+- G1 Universal wording: a clean counterexample makes the verdict at least narrowed and downgrades the modality to tendency; striking still needs standard 6.
+- G2 Existence ("can") claims: tested only inside the listed domains, reported as prevalence.
+- G3 Definitions and normative clauses are not tested.
+- G4 No hidden constraints: local value, constraints and accounting boundaries fixed before outcomes are coded.
+- G5 Distortion defences: only those named in the frozen tables, with independent evidence of the incentive; where a defence would push data towards IPF, contrary evidence from that source counts double (standard 3).
+- G6 A supposed example that was never an instance is not a violation. Different studies of one case count as one domain.
+
+Standards 1 to 7 are in the Red phase document (tests/18 Red phase.md) under "Plan and order".
+
+==================== INPUT 3: IMPLEMENTATION NOTES (from the analysis code) ====================
+1. Line names are normalised by lower-casing and removing every character that is not a letter or digit; the leading 'line NN' label, if present in a name, is removed before normalising.
+2. Scope: classification rows in RO2, RO4, RO5, and RO3 lines 10 to 27 (children's social care), minus RO5 226 and 244. Sensitivity 1 adds RO3 60 (total adult social care); sensitivity 4 adds RO6 430, 441, 442, 460, 475.
+3. A spending line is in scope if its normalised name equals the normalised name of an in-scope classification row in the same form; lines in the data with no such match are out of scope (counted).
+4. Councils: la_type in UA, MD, LB; City of London and Isles of Scilly excluded; a council must have spending rows in all six years (same ONS code).
+5. Duplicate names: if a normalised line name occurs more than once in the same council, year and form, that council's series for the line is dropped (counted); names must identify a line uniquely.
+6. Series rules per council-line: positive nce in all six years; mean real nce over the window at least the minimum (GBP thousands, 2014-15 prices; primary 100, sensitivity 50 and 250).
+7. Real terms: nce divided by cpi(year)/cpi(2014).
+8. Client groups: RO3 children's social care 0_17; RO2 71 statutory concessionary fares 65plus; RO3 60 adult social care total 18plus; all others 'all'. RO2 71 is identified by its normalised name.
+9. Outcome winsorised at the 1st and 99th percentiles of the pooled sample of the model being estimated.
+10. Projected growth: ln(P(tau+h)/P(tau)) from the edition assigned to the budget year, tau = financial year start, h = 5 (sensitivity 5: h = 10; where an edition does not reach tau+10, the growth to its last year is scaled by 10/available years).
+11. Fixed effects absorbed by alternating projections (convergence 1e-10 on the maximum change). Cluster-robust standard errors by council with the small-sample factor G/(G-1)*(N-1)/(N-K), K = estimated coefficients plus the number of line fixed effects (council-year effects are nested in clusters and not counted); t distribution with G-1 degrees of freedom.
+12. PT1-S thresholds: the nine deciles of g_proj in the estimation sample; BIC = N ln(RSS/N) + k ln(N) computed on the fixed-effect-demeaned data, k = slope parameters (+1 for the threshold).
+13. G25-C scarcity: minus the change in ln(real CSP per head of total population) from 2015-16 to 2019-20; the interaction is [A] x scarcity (scarcity's main effect is absorbed by council-year effects).
+14. SS: council-years (2015-16 on) where total in-scope real nce fell from the year before; share in which any A-class series fell while the C-class series in that council kept more than half their 2014-15 real total.
+15. Ambiguous candidates ordered A > B > C; 'lowest' takes the last (C-most) candidate, 'highest' the first.
+
+==================== INPUT 4: counts.json ====================
+{
+  "spend_rows_out_of_scope": 238215,
+  "councils_single_tier_all_years": 121,
+  "councils_dropped": 338,
+  "lines_matched_all_years": 95,
+  "lines_dropped_not_all_years": [
+    "RO2:buslaneenforcement",
+    "RO5:allotments"
+  ],
+  "series_dropped_duplicate_names": 0,
+  "series_total": 11495,
+  "series_dropped_incomplete": 0,
+  "series_dropped_nonpositive": 6345,
+  "series_dropped_below_minimum": 443,
+  "series_kept": 4707,
+  "rows_in_panel": 28242,
+  "rows_with_outcome": 23535,
+  "rows_missing_population": 0,
+  "rows_missing_projection": 243,
+  "councils_with_missing_projection": [
+    "E06000057",
+    "E08000037"
+  ],
+  "missing_projection_by_year": {
+    "2014": 81,
+    "2015": 81,
+    "2016": 81
+  },
+  "rows_usable_PT1": 23373,
+  "rows_usable_G25": 18905,
+  "series_by_class": {
+    "A": 1334,
+    "B": 1214,
+    "C": 1233,
+    "ambiguous": 926
+  },
+  "lines_in_panel": [
+    "RO2:airportsharboursandtollfacilities",
+    "RO2:discretionaryconcessionaryfares",
+    "RO2:environmentalsafetyandroutinemaintenanceotherlocalauthorityroads",
+    "RO2:environmentalsafetyandroutinemaintenanceprincipalroads",
+    "RO2:highwaysmaintenanceplanningpolicyandstrategy",
+    "RO2:offstreetparking",
+    "RO2:onstreetparking",
+    "RO2:othertrafficmanagement",
+    "RO2:publicandothertransportplanningpolicyandstrategy",
+    "RO2:publictransportcoordination",
+    "RO2:roadsafetyeducationandsaferoutesincludingschoolcrossingpatrols",
+    "RO2:statutoryconcessionaryfares",
+    "RO2:streetlightingincludingenergycosts",
+    "RO2:structuralmaintenancebridges",
+    "RO2:structuralmaintenanceotherlocalauthorityroads",
+    "RO2:structuralmaintenanceprincipalroads",
+    "RO2:supporttooperatorsbusservices",
+    "RO2:supporttooperatorsotherpublictransportservices",
+    "RO2:winterservice",
+    "RO3:childrenssocialcareasylumseekers",
+    "RO3:childrenssocialcarechildrenlookedafter",
+    "RO3:childrenssocialcarefamilysupportservices",
+    "RO3:childrenssocialcareotherchildrensandfamiliesservices",
+    "RO3:childrenssocialcaresafeguardingchildrenandyoungpeoplesservices",
+    "RO3:childrenssocialcareservicesforyoungpeople",
+    "RO3:childrenssocialcaresurestartchildrenscentresandearlyyears",
+    "RO3:childrenssocialcareyouthjustice",
+    "RO4:administrationoffinancialsupportforrepairsandimprovements",
+    "RO4:anyothertypeoftemporaryaccommodationincludingprivatelandlordandnotknown",
+    "RO4:bedandbreakfasthotelsincludingsharedannexes",
+    "RO4:homelessnessservicesadministrationpreventionreliefmainduty",
+    "RO4:homelessnessservicesspecialistservicesandsupport",
+    "RO4:hostelsincludingreceptioncentresemergencyunitsandrefuges",
+    "RO4:housingadvances",
+    "RO4:housingbenefitsadministration",
+    "RO4:housingstrategyadviceandenabling",
+    "RO4:localauthorityorhousingassociationlahastock",
+    "RO4:nightlypaidprivatelymanagedaccommodationselfcontained",
+    "RO4:nonhrarentrebatesdiscretionarypayments",
+    "RO4:othercouncilproperty",
+    "RO4:otherprivatesectorhousingrenewal",
+    "RO4:otherwelfareservices",
+    "RO4:privatesectoraccommodationleasedbyauthorityorbyaregisteredprovider",
+    "RO4:rentallowancesdiscretionarypayments",
+    "RO4:rentrebatestohratenantsdiscretionarypayments",
+    "RO4:supportingpeople",
+    "RO5:agriculturalandfisheriesservices",
+    "RO5:animalandpublichealthinfectiousdiseasecontrol",
+    "RO5:archives",
+    "RO5:artsdevelopmentandsupport",
+    "RO5:buildingcontrol",
+    "RO5:businesssupport",
+    "RO5:cctv",
+    "RO5:cemeterycremationandmortuaryservices",
+    "RO5:climatechangecosts",
+    "RO5:coastprotection",
+    "RO5:communitycentresandpublichalls",
+    "RO5:communitydevelopment",
+    "RO5:conservationandlistedbuildingsplanningpolicy",
+    "RO5:crimereduction",
+    "RO5:defencesagainstflooding",
+    "RO5:developmentcontrol",
+    "RO5:economicdevelopment",
+    "RO5:economicresearch",
+    "RO5:environmentalinitiatives",
+    "RO5:environmentalprotectionnoiseandnuisance",
+    "RO5:foodsafety",
+    "RO5:foreshore",
+    "RO5:healthandsafety",
+    "RO5:heritage",
+    "RO5:housingstandards",
+    "RO5:landdrainageandrelatedworkexcludinglevyspeciallevies",
+    "RO5:libraryservices",
+    "RO5:licensingalcoholandentertainmentlicensingtaxilicensing",
+    "RO5:museumsandgalleries",
+    "RO5:otherplanningpolicy",
+    "RO5:parksandopenspacesincludingplayareascommunityparksandopenspaces",
+    "RO5:pestcontrol",
+    "RO5:porthealthexcludinglevies",
+    "RO5:publicconveniences",
+    "RO5:recycling",
+    "RO5:safetyservices",
+    "RO5:sportsandleisurefacilitiesincludinggolfcourses",
+    "RO5:sportsdevelopmentandcommunityrecreation",
+    "RO5:streetcleansingnotchargeabletohighways",
+    "RO5:theatresandpublicentertainment",
+    "RO5:tourism",
+    "RO5:tradewaste",
+    "RO5:tradingstandards",
+    "RO5:wastecollection",
+    "RO5:wastedisposal",
+    "RO5:wasteminimisation",
+    "RO5:watersafety"
+  ],
+  "councils_in_panel": 121,
+  "councils_by_type": {
+    "LB": 32,
+    "MD": 36,
+    "UA": 53
+  }
+}
+
+==================== INPUT 5: summary.json (implementation notes moved to input 3) ====================
+{
+  "prereg": "tests/PT1 Priority test - pre-registration.md",
+  "prereg_sha256_begins": "a4aab81d",
+  "code_sha256": "995abfc5949f07feb1a9cb0d0ad11357bc8f5071062e462accfa1396e4b25540",
+  "classification_sha256": "faf4587523c85a17461090a2a854b93ed17fb7de264b49ef49784da6fbfe1d52",
+  "counts": {
+    "spend_rows_out_of_scope": 238215,
+    "councils_single_tier_all_years": 121,
+    "councils_dropped": 338,
+    "lines_matched_all_years": 95,
+    "lines_dropped_not_all_years": [
+      "RO2:buslaneenforcement",
+      "RO5:allotments"
+    ],
+    "series_dropped_duplicate_names": 0,
+    "series_total": 11495,
+    "series_dropped_incomplete": 0,
+    "series_dropped_nonpositive": 6345,
+    "series_dropped_below_minimum": 443,
+    "series_kept": 4707
+  },
+  "PT1": {
+    "beta": 0.05365540857799718,
+    "se": 0.405347993914426,
+    "p_one_sided": 0.44745716288027115,
+    "p_two_sided": 0.8949143257605423,
+    "ci95": [
+      -0.7489054092123467,
+      0.8562162263683412
+    ],
+    "gamma_realised": -1.4359524435049635,
+    "N": 23373,
+    "councils": 121,
+    "lines": 93,
+    "verdict": "Inconclusive (insufficient precision)"
+  },
+  "G25": {
+    "delta_A": 0.046431357423042594,
+    "delta_B": 0.004061575033051625,
+    "p_A": 2.3461129093747666e-11,
+    "p_A_two_sided": 4.692225818749533e-11,
+    "p_B": 0.2723823686504416,
+    "p_A_minus_B": 1.2843724672153372e-08,
+    "N": 18905,
+    "councils": 121,
+    "verdict": "Supported",
+    "weight": 0.5
+  },
+  "G25_C": {
+    "interaction": 0.22466894673887297,
+    "se": 0.2481072495592643,
+    "p_one_sided": 0.18349919700630546,
+    "verdict": "Not supported",
+    "weight": 0.5
+  },
+  "SS": {
+    "council_years_with_fall": 349,
+    "share_A_fell_while_C_kept_over_half": 0.9684813753581661
+  },
+  "sensitivity": {
+    "1_adult_social_care_included": {
+      "PT1": {
+        "beta": 0.030108812448883096,
+        "se": 0.39474519649486517,
+        "p_one_sided": 0.46966404787406146,
+        "p_two_sided": 0.9393280957481229,
+        "ci95": [
+          -0.7514592043515428,
+          0.811676829249309
+        ],
+        "gamma_realised": -1.3003579213467602,
+        "N": 23974,
+        "councils": 121,
+        "lines": 94,
+        "verdict": "Inconclusive (insufficient precision)"
+      }
+    },
+    "2_long_difference": {
+      "beta": -2.593612839137705,
+      "se": 2.158818045477654,
+      "p_one_sided": 0.8839998537265303,
+      "N": 4626
+    },
+    "3_ambiguous_lowest": {
+      "delta_A": 0.03542457101391482,
+      "delta_B": 0.008922742262965721,
+      "p_A": 4.909679502822127e-09,
+      "p_A_two_sided": 9.819359005644254e-09,
+      "p_B": 0.07549310522955487,
+      "p_A_minus_B": 7.137052124717458e-05,
+      "N": 23535,
+      "councils": 121,
+      "verdict": "Supported",
+      "weight": 0.5
+    },
+    "3_ambiguous_highest": {
+      "delta_A": 0.04503967518803535,
+      "delta_B": 0.014301350972300416,
+      "p_A": 2.418115588507306e-10,
+      "p_A_two_sided": 4.836231177014612e-10,
+      "p_B": 0.013842692174815605,
+      "p_A_minus_B": 5.751497819811468e-07,
+      "N": 23535,
+      "councils": 121,
+      "verdict": "Supported",
+      "weight": 0.5
+    },
+    "4_RO6_client_lines": {
+      "PT1": {
+        "beta": 0.15208501178239747,
+        "se": 0.40500975898762903,
+        "p_one_sided": 0.35397226397503595,
+        "p_two_sided": 0.7079445279500719,
+        "ci95": [
+          -0.6498061243923203,
+          0.9539761479571154
+        ],
+        "gamma_realised": -1.4149001222380555,
+        "N": 24890,
+        "councils": 121,
+        "lines": 97,
+        "verdict": "Inconclusive (insufficient precision)"
+      },
+      "G25": {
+        "delta_A": 0.04409458293362392,
+        "delta_B": 0.0008623676756722472,
+        "p_A": 2.101831247306681e-11,
+        "p_A_two_sided": 4.203662494613362e-11,
+        "p_B": 0.4488630790760807,
+        "p_A_minus_B": 2.2326521089769482e-09,
+        "N": 20045,
+        "councils": 121,
+        "verdict": "Supported",
+        "weight": 0.5
+      }
+    },
+    "5_ten_year_projection": {
+      "PT1": {
+        "beta": 0.20126714161670248,
+        "se": 0.1917264021907188,
+        "p_one_sided": 0.14796849491159075,
+        "p_two_sided": 0.2959369898231815,
+        "ci95": [
+          -0.17833779153776622,
+          0.5808720747711712
+        ],
+        "gamma_realised": -1.6559703546572604,
+        "N": 23373,
+        "councils": 121,
+        "lines": 93,
+        "verdict": "Inconclusive (insufficient precision)"
+      }
+    },
+    "6_no_winsorising": {
+      "PT1": {
+        "beta": 0.06074448549428701,
+        "se": 0.4792098770557685,
+        "p_one_sided": 0.4496713857514108,
+        "p_two_sided": 0.8993427715028216,
+        "ci95": [
+          -0.8880577205042471,
+          1.009546691492821
+        ],
+        "gamma_realised": -1.3964256601246887,
+        "N": 23373,
+        "councils": 121,
+        "lines": 93,
+        "verdict": "Inconclusive (insufficient precision)"
+      },
+      "G25": {
+        "delta_A": 0.05004934522179264,
+        "delta_B": 0.006798635030074245,
+        "p_A": 1.330719028200012e-09,
+        "p_A_two_sided": 2.661438056400024e-09,
+        "p_B": 0.19252519021337108,
+        "p_A_minus_B": 5.224055158620636e-07,
+        "N": 18905,
+        "councils": 121,
+        "verdict": "Supported",
+        "weight": 0.5
+      }
+    },
+    "7_london_excluded": {
+      "PT1": {
+        "beta": 0.0030269172020732666,
+        "se": 0.6029156623470192,
+        "p_one_sided": 0.4980028143745409,
+        "p_two_sided": 0.9960056287490818,
+        "ci95": [
+          -1.1951412679281292,
+          1.201195102332276
+        ],
+        "gamma_realised": -2.0909255395193513,
+        "N": 17938,
+        "councils": 89,
+        "lines": 92,
+        "verdict": "Inconclusive (insufficient precision)"
+      },
+      "G25": {
+        "delta_A": 0.040973264162352634,
+        "delta_B": -0.0031309232739280685,
+        "p_A": 1.2776034560230581e-07,
+        "p_A_two_sided": 2.5552069120461163e-07,
+        "p_B": 0.6613907381413526,
+        "p_A_minus_B": 6.121869380534941e-08,
+        "N": 14590,
+        "councils": 89,
+        "verdict": "Partly supported",
+        "weight": 0.5
+      }
+    },
+    "8_minimum_50": {
+      "PT1": {
+        "beta": -0.029142906684090513,
+        "se": 0.4165820699082706,
+        "p_one_sided": 0.527827905383837,
+        "p_two_sided": 0.9443441892323261,
+        "ci95": [
+          -0.8539464131076542,
+          0.7956605997394732
+        ],
+        "gamma_realised": -1.4619930572781998,
+        "N": 24608,
+        "councils": 121,
+        "lines": 93,
+        "verdict": "Inconclusive (insufficient precision)"
+      },
+      "G25": {
+        "delta_A": 0.04894091675239158,
+        "delta_B": 0.00672204842076834,
+        "p_A": 1.9926749178856346e-11,
+        "p_A_two_sided": 3.985349835771269e-11,
+        "p_B": 0.171542112144042,
+        "p_A_minus_B": 1.9969097727415305e-08,
+        "N": 19725,
+        "councils": 121,
+        "verdict": "Supported",
+        "weight": 0.5
+      }
+    },
+    "8_minimum_250": {
+      "PT1": {
+        "beta": 0.0251378966417517,
+        "se": 0.4002300310302273,
+        "p_one_sided": 0.47501169970506274,
+        "p_two_sided": 0.9500233994101255,
+        "ci95": [
+          -0.7672897108220839,
+          0.8175655041055873
+        ],
+        "gamma_realised": -1.447944194309695,
+        "N": 19944,
+        "councils": 121,
+        "lines": 91,
+        "verdict": "Inconclusive (insufficient precision)"
+      },
+      "G25": {
+        "delta_A": 0.04729544286158426,
+        "delta_B": 0.006435413816461176,
+        "p_A": 1.3315673585250572e-11,
+        "p_A_two_sided": 2.6631347170501145e-11,
+        "p_B": 0.18904892419095526,
+        "p_A_minus_B": 2.1278617212104103e-07,
+        "N": 16325,
+        "councils": 121,
+        "verdict": "Supported",
+        "weight": 0.5
+      }
+    }
+  }
+}
+
+==================== INPUT 6: PROCEDURE LOG: PARSER SETTINGS, DEVIATIONS D-1 TO D-5, MISSING PROJECTIONS, THE RUN (facts as logged) ====================
+**Parser settings (implementation notes, fixed now):**
+1. **Net current expenditure** is the column headed "Net Current Expenditure" in each line's block. Non-numeric cells become missing.
+2. **Population groups** are summed from single years of age, both sexes: all ages, 0 to 17, 65 and over, 18 and over. "90 and over" is age 90; the "All ages" rows are not used. The same applies to projections (persons).
+3. **CPI** is the mean of the 12 monthly D7BT values from April to March for each financial year.
+4. **Core Spending Power** is converted from £ millions to £ thousands (×1000). The analysis uses ratios, so units do not affect results.
+
+**Deviations from the pre-registration (name matching, Section 3).** These are of the kind the pre-registration anticipates ("a changed name"), and were decided from names only, before any values.
+
+- **D-1. Name crosswalk.** 21 data names in the window years differ from the 2025-26 guidance names that the classification uses. They are mapped by tests/PT1_line_name_crosswalk.csv, with a reason for each.
+  - **The differences:** abbreviations ("other LA roads"); singular and plural ("Library service"); earlier names ("Open spaces", "Sports and recreation facilities"); and the RO4 temporary accommodation and homelessness lines, which are finer in the window than in 2025-26.
+  - **Without the crosswalk,** the frozen exact-name rule would drop core lines (libraries, parks, sports facilities, most temporary accommodation and homelessness) for a purely editorial reason.
+  - **Direction: neutral.** Names only, no values.
+- **D-2. Many-to-one lines summed.** Where the crosswalk maps several window-year lines to one 2025-26 line, they are summed into that line for each council and year (missing only if every component is missing). Examples: leased by the authority + leased by registered social landlords → line 81; homelessness administration + prevention → line 87.
+  - **This follows the official 2020-21 recoding,** which combined these lines (PT1-S1).
+  - **Without it,** the duplicate-name rule would drop them.
+  - **Direction: neutral.**
+- **D-3. A labelling error in the source** (RO5, 2019-20). Two adjacent blocks are both labelled "Sports development and community recreation". In every other year, the second position is "Sports and recreation facilities, including golf courses". The second block is relabelled by position.
+  - **Without the fix,** the duplicate-name rule would drop both sports lines in every council.
+  - **Direction: neutral.**
+- **D-4 (a limitation, no intervention).** From 2019-20, "Allotments" is reported separately from "Parks & Open Spaces". Both open-spaces names map to line 131. The 2019-only allotments line drops out under the all-years rule. If allotments sat inside "Open spaces" before 2019-20, line 131 has a small definitional fall in 2019-20. **Not corrected; reported.**
+
+**Missing projections:**
+- **243 rows,** all for 2014-15 to 2016-17, in two councils whose codes changed before the window: Northumberland (E06000057) and Gateshead (E08000037).
+- **That is 1.0% of PT1 rows. Not material,** so no code-history deviation is proposed; the rows drop out as the frozen code handles missing values.
+
+## Step 7, attempt 1: the run stopped with an error before any result (7 October 2026)
+
+- **Command:** `python tests/scripts/pt1_councils.py --data data/pt1/tidy --out tests/results/PT1` (code unchanged, SHA-256 begins 995abfc5).
+- **What happened:** the script stopped in G25-C, when it reshaped the Core Spending Power table: "Index contains duplicate entries, cannot reshape" (tests/results/PT1/run.log). **Nothing was printed before the error and no summary file was written. No result has been seen.**
+- **Cause:** the Core Spending Power "input" sheet gives one ONS code, E31000040, to two bodies: Greater Manchester Fire and the Greater Manchester Combined Authority (which took over fire functions in 2017). Neither is a single-tier council or in the panel (all 121 panel councils have E06, E08 or E09 codes). Checked by code and name only, numbers masked.
+- **Proposed D-5 (awaiting James):** the parser keeps only E06, E08 and E09 codes in the Core Spending Power table (tests/scripts/pt1_parse.py, build_csp). The analysis code stays unchanged. No council in scope is affected. **Direction: neutral.** After the fix, data/pt1/tidy/csp.csv is rebuilt and its checksum replaced in the manifest, coverage of the 121 councils is checked, and the run is repeated once. Because attempt 1 produced no result, the repeat is not a choice among results.
+
+**D-5 approved by James and applied (7 October 2026).** data/pt1/tidy/csp.csv rebuilt: 635 rows, 127 codes, no duplicates. All 121 panel councils present, with no missing spending power cells. New checksum begins ba78a1e9; the other four tidy files are unchanged. Analysis code unchanged (995abfc5).
+
+## Step 7, attempt 2: the single run (7 October 2026)
+
+- **Command and code:** as attempt 1 (SHA-256 995abfc5, unchanged), on data/pt1/tidy after D-5. Exit 0. Output: tests/results/PT1/summary.json, run.log; results written up in tests/results/PT1/README.md.
+- **Computed verdicts (not adjudicated):** PT1 inconclusive (insufficient precision); PT1-S not run; G25 supported (half weight); G25-C not supported; SS descriptive.
+- **One warning** ("divide by zero encountered in log", in G25-C): traced by a diagnostic run (output to a scratch folder, not kept) to zero Core Spending Power for the Dorset reorganisation codes, none of which is in the panel. It does not reach any estimate.
+
+==================== INPUT 7: COMPUTATION REPLICATION (facts) ====================
+- A second model (GPT, separate chat) audited the analysis code and the parser against the pre-registration and the logged deviations, and wrote its own implementation from the tidy files (fixed effects absorbed by sparse least squares, with convergence and full-rank checks, instead of alternating projections). It was run on the same data files.
+- It reproduced the run exactly: the same counts at every step (121 councils, 95 lines, 11,495 series, 4,707 kept; 23,373 PT1 rows; 18,905 G25 rows), and the same PT1, G25 and G25-C estimates, standard errors, p values and verdicts to at least eight significant digits. Every sensitivity analysis present in both outputs matched to the same precision, with the same verdicts.
+- One difference, in SS only (descriptive): the second implementation kept ambiguous lines in the total in-scope spending that defines a falling council-year; the analysis code dropped them first. Council-years with a fall: 320 against 349; share: 0.969 against 0.968.
+- The second implementation also ran G25-C and SS inside sensitivity analyses 1, 4, 6, 7 and 8, which the analysis code did not. G25-C was "not supported" in every one (interaction 0.12 to 0.30; one-sided p 0.12 to 0.37); SS ranged from 0.963 to 0.972. These are not part of any verdict.
+- The second model's audit found no discrepancy that changes a scored estimate in this run. Its points were checked against the data: the council rule gives the same 121 councils under a stricter all-rows check; no spending series has a blank value; every panel council has a scarcity value; the population sources have no missing single-age cells; the 2012-based projections were published on 29 May 2014, before the 1 February 2015 cut-off that assigns them to 2015-16.
+
+==================== END OF INPUTS ====================
