@@ -1,5 +1,11 @@
 # Record for "From cells to councils: a conservation law of allocation under scarcity"
 
+**From cells to councils: a conservation law of allocation under scarcity.** James Miller, independent researcher.
+
+- **Preprint (SSRN):** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7579199. DOI: [10.2139/ssrn.7579199](https://doi.org/10.2139/ssrn.7579199).
+- **This record on Zenodo (all versions):** [10.5281/zenodo.23222615](https://doi.org/10.5281/zenodo.23222615).
+- **Full commit history in Software Heritage:** swh:1:snp:edaef399095f17ba2dfd9963f4d65265ba7cf8cb (snapshot after release v1.2). The paper cites the earlier snapshot swh:1:snp:cbdafe9b4e6c27ea5f2ce307d86ebcd49ca11fcf (after v1.1), which holds the same history up to that point.
+
 ## What this is
 
 This repository is the record behind the paper. It was extracted from the author's working repository with its commit history and dates preserved.
@@ -127,7 +133,7 @@ The work began from the author's earlier framework for institutions, dated 27 Se
 
 - **Zenodo** (the files at each release): concept DOI 10.5281/zenodo.23222615, which always resolves to the latest version.
 - **Software Heritage** (the full commit history with its dates): snapshot swh:1:snp:cbdafe9b4e6c27ea5f2ce307d86ebcd49ca11fcf, taken on 7 October 2026 after release v1.1.
-- **SSRN:** the paper was posted there on 7 October 2026 (release v1.2 matches the posted version).
+- **SSRN:** posted on 7 October 2026 (abstract ID 7579199, DOI 10.2139/ssrn.7579199). Release v1.2 matches the posted version.
 
 ## Licence
 
