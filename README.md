@@ -4,7 +4,7 @@
 
 - **Preprint (SSRN):** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7579199. DOI: [10.2139/ssrn.7579199](https://doi.org/10.2139/ssrn.7579199).
 - **This record on Zenodo (all versions):** [10.5281/zenodo.23222615](https://doi.org/10.5281/zenodo.23222615).
-- **Full commit history in Software Heritage:** swh:1:snp:edaef399095f17ba2dfd9963f4d65265ba7cf8cb (snapshot after release v1.2). The paper cites the earlier snapshot swh:1:snp:cbdafe9b4e6c27ea5f2ce307d86ebcd49ca11fcf (after v1.1), which holds the same history up to that point.
+- **Full commit history in Software Heritage:** swh:1:snp:9d74b3d245ecd46518ffda7b11a718a37bed3e07 (snapshot after release v1.3). The paper cites the earlier snapshot swh:1:snp:cbdafe9b4e6c27ea5f2ce307d86ebcd49ca11fcf (after v1.1), which holds the same history up to that point.
 
 ## What this is
 
