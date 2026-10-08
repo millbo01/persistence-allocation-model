@@ -1,6 +1,6 @@
 # From cells to councils: a conservation law of allocation under scarcity
 
-*Draft 3, 7 October 2026: draft 2 with James's draft 3 fixes 1 to 7 applied. Framed under the framing rule in CLAUDE.md. Formal content as in draft 1, with citations verified (04 Citation check.md). Supplementary material: 03 Supplement draft 1.md (S11 now written).*
+*Version posted to SSRN on 7 October 2026; public record v1.2 onwards (https://doi.org/10.5281/zenodo.23222615). Supplementary material: From cells to councils - supplement.md. Reference checks: Citation check.md.*
 
 ---
 

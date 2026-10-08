@@ -2,21 +2,25 @@
 
 ## What this is
 
-This repository is the record behind the paper. It was extracted from our working repository with its commit history and dates preserved.
+This repository is the record behind the paper. It was extracted from the author's working repository with its commit history and dates preserved.
 
-**The current files:**
-- **The paper:** `papers/pam-model/08 Paper draft 3.md`.
-- **The supplement:** `papers/pam-model/03 Supplement draft 1.md`.
-- **The citation check:** `papers/pam-model/04 Citation check.md`.
-- **The paper as posted to SSRN** (the paper with the supplement appended, as a PDF): `papers/pam-model/From cells to councils.pdf`, built from the two Markdown files by `scripts/build_pdf.py`.
+**The paper:**
+- **The paper:** `papers/pam-model/From cells to councils.md`.
+- **The supplement:** `papers/pam-model/From cells to councils - supplement.md`.
+- **The paper as posted to SSRN** (the paper with the supplement appended): `papers/pam-model/From cells to councils.pdf`. It is built from the two Markdown files by `scripts/build_pdf.py`.
+- **The reference check:** `papers/pam-model/Citation check.md`. Every reference was checked against Crossref, PubMed or OpenAlex, with corrections listed.
+
+**The record behind it:**
 - **The model:**
   - the current version, `theory/PERSISTENCE_ALLOCATION_MODEL_v0.19.md`;
   - the two versions the held-out tests were derived from: `theory/TIER_QUEUE_MODEL_v0.17.md` for H1 and `theory/PERSISTENCE_ALLOCATION_MODEL_v0.18.md` for PT1.
-- **The derived propositions and their numerical check:** `theory/PAM_propositions_DRAFT.md`, `scripts/`.
+- **The derived propositions and their numerical check:** the working derivations in `theory/PAM_propositions_DRAFT.md`, and the check in `scripts/pam_propositions_check.py` with its output. The paper states the propositions in their final form.
 - **The comparison with prior theories, the open checks and the probe register:** `theory/PAM_*`.
 - **The natural-system checks:** `theory/natural_test_*`.
 - **The literature searches:** `theory/search_check*/` and their protocols.
 - **The two held-out tests (H1 and PT1):** in `tests/` and `raw/`. That covers their pre-registrations, setting maps, procedure logs, prompts, scripts, results, replications and blind adjudications.
+
+**Why some record files still say "draft":** names such as `setting map and mapping (draft).md`, `design note (draft).md` and `PAM_propositions_DRAFT.md` are kept exactly as they were when the tests were run, because the frozen pre-registrations and other records cite them by name. The paper files were renamed on 8 October 2026 (from `08 Paper draft 3.md`, `03 Supplement draft 1.md` and `04 Citation check.md`), and git keeps their full history across the rename.
 
 **Earlier versions are in the history.** Earlier drafts of the paper, earlier versions of the model (from v0.1 on 5 October 2026), and working files were removed from the current files on 7 October 2026, after release v1.0. They remain in the commit history with their dates.
 - **To see them:** open a file's history on GitHub, or run `git log --all -- <path>` and `git show <commit>:<path>`.

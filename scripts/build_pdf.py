@@ -16,8 +16,8 @@ import sys
 from markdown_it import MarkdownIt
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAPER = os.path.join(ROOT, "papers", "pam-model", "08 Paper draft 3.md")
-SUPP = os.path.join(ROOT, "papers", "pam-model", "03 Supplement draft 1.md")
+PAPER = os.path.join(ROOT, "papers", "pam-model", "From cells to councils.md")
+SUPP = os.path.join(ROOT, "papers", "pam-model", "From cells to councils - supplement.md")
 OUT_HTML = os.path.join(ROOT, "papers", "pam-model", "From cells to councils.html")
 OUT_PDF = os.path.join(ROOT, "papers", "pam-model", "From cells to councils.pdf")
 CHROME = [r"C:\Program Files\Google\Chrome\Application\chrome.exe",

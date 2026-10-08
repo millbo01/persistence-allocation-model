@@ -1,6 +1,6 @@
-# Supplementary material (draft 1, 7 October 2026)
+# Supplementary material
 
-*All sections are written in full. Files named in the text are in the public record (see the repository README).*
+*Supplementary material for "From cells to councils: a conservation law of allocation under scarcity". Version posted to SSRN on 7 October 2026. Files named in the text are in the public record (see the repository README).*
 
 ## S1. Supplementary propositions and proofs
 
