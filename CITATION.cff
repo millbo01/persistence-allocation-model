@@ -6,6 +6,7 @@ authors:
   - family-names: Miller
     given-names: James
     affiliation: Independent researcher
+    orcid: "https://orcid.org/0009-0009-6595-647X"
 license: CC-BY-4.0
 repository-code: "https://github.com/millbo01/persistence-allocation-model"
 keywords:

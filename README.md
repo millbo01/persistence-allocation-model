@@ -1,6 +1,6 @@
 # Record for "From cells to councils: a conservation law of allocation under scarcity"
 
-**From cells to councils: a conservation law of allocation under scarcity.** James Miller, independent researcher.
+**From cells to councils: a conservation law of allocation under scarcity.** James Miller, independent researcher. ORCID: [0009-0009-6595-647X](https://orcid.org/0009-0009-6595-647X).
 
 - **Preprint (SSRN):** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7579199. DOI: [10.2139/ssrn.7579199](https://doi.org/10.2139/ssrn.7579199).
 - **This record on Zenodo (all versions):** [10.5281/zenodo.23222615](https://doi.org/10.5281/zenodo.23222615).
