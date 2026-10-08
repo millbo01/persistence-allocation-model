@@ -2,7 +2,7 @@
 
 ## What this is
 
-This repository is the record behind the paper. It was extracted from the author's working repository with its commit history and dates preserved.
+This repository is the record behind the paper. It was extracted from our working repository with its commit history and dates preserved.
 
 **The current files:**
 - **The paper:** `papers/pam-model/08 Paper draft 3.md`.
