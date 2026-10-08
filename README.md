@@ -14,6 +14,11 @@ This repository is the record behind the paper. It was extracted from the author
 - **The paper:** `papers/pam-model/From cells to councils.md`.
 - **The supplement:** `papers/pam-model/From cells to councils - supplement.md`.
 - **The paper as posted to SSRN** (the paper with the supplement appended): `papers/pam-model/From cells to councils.pdf`. It is built from the two Markdown files by `scripts/build_pdf.py`.
+  - The current version is the revision of 8 October 2026, which added five figures.
+  - The first SSRN version, of 7 October 2026, is release v1.2.
+- **The figures:** `papers/pam-model/figures/`, as PNG and SVG.
+  - `scripts/make_figures.py` computes them from the model's reduced form, with nothing fitted. Figure 5 reads `tests/results/PT1/summary.json`.
+  - The script also writes a square image for a social-media post. That image is not part of the record.
 - **The reference check:** `papers/pam-model/Citation check.md`. Every reference was checked against Crossref, PubMed or OpenAlex, with corrections listed.
 
 **The record behind it:**

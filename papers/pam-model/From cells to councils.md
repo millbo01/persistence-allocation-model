@@ -1,6 +1,6 @@
 # From cells to councils: a conservation law of allocation under scarcity
 
-*Version posted to SSRN on 7 October 2026; public record v1.2 onwards (https://doi.org/10.5281/zenodo.23222615). Supplementary material: From cells to councils - supplement.md. Reference checks: Citation check.md.*
+*Revised 8 October 2026: five figures added (scripts/make_figures.py). The version posted to SSRN on 7 October 2026 is public record v1.2 (https://doi.org/10.5281/zenodo.23222615). Supplementary material: From cells to councils - supplement.md. Reference checks: Citation check.md.*
 
 ---
 
@@ -101,7 +101,7 @@ A part consists of $K_i$ units, each **active**, **switched off** (its route bac
 
 ### 3.2 The reduced form
 
-Where the network is not modelled explicitly, the flow is written as an ordered draw. For resource $r$ the available flow in a step is $S_r=U_r+I_r+\sum_sd_s$: supply through the intake, resource drawn in across the boundary, and store draws. Parts draw from it in phases, and within a phase in a fixed **order** $\pi_r$, each up to its draw:
+Where the network is not modelled explicitly, the flow is written as an ordered draw (Figure 1). For resource $r$ the available flow in a step is $S_r=U_r+I_r+\sum_sd_s$: supply through the intake, resource drawn in across the boundary, and store draws. Parts draw from it in phases, and within a phase in a fixed **order** $\pi_r$, each up to its draw:
 1. the top's full need;
 2. every other part's basal maintenance;
 3. support parts' work and renewal (parts the top depends on, and the intake);
@@ -109,6 +109,10 @@ Where the network is not modelled explicitly, the flow is written as an ordered 
 5. what is left: reactivation and rebuilding against refilling the stores, by marginal value.
 
 What a part does not draw stays in the flow; nothing is returned.
+
+![Figure 1: the model's architecture](figures/fig1_architecture.png)
+
+**Figure 1. The model's architecture in the reduced form.** The governor sets access (store release, intake, gates and pathway capacity), not allocations. The flow available in a step (supply through the intake, outside input and store draws) is drawn by parts in a fixed order: the top's full need; every part's basal maintenance; support parts and the intake; other parts by rank; and what is left, which goes by marginal value to rebuilding or to refilling stores. Under scarcity, shortfall lands from the bottom of the order upward. The footer gives the load ledger (Proposition 1), the residue unmet load leaves in units, and the failure conditions (Propositions 7 and 9).
 
 **Rank.** $\pi_r$ is the order in which parts lose adequate access to $r$ when $r$ alone is scarce. **It is fixed in advance from documented properties of access** and never read off an observed order of loss.
 
@@ -146,17 +150,25 @@ Proofs are in Appendix A. Six further results (a warning lead time, the limit un
 1. **Scarcity-limited regime.** Where the flow is fully used and no part receives above its reference, total unmet load is the same under every access ordering at fixed supply, store draw and outside input. Access decides only where it lands.
 2. **Access-limited regime.** Where a gate leaves resource unused, total unmet load rises one for one with the resource left unused, balanced by refill or spill. Opening the gate removes that load without any other part losing.
 
-The identity is elementary. Its content is the reference fixed in advance and never lowered, and the named exceptions: resource added, requirement lowered, or a gate opened (Section 1). In a resource-short system, restoring one part's supply without adding resource leaves an equal deficit elsewhere. In an access-limited system (growth signalling holding a maintenance process shut while nutrients are present), opening the gate relieves the process with no deficit elsewhere. The two regimes predict different consequences of the same intervention.
+The identity is elementary. Its content is the reference fixed in advance and never lowered, and the named exceptions: resource added, requirement lowered, or a gate opened (Section 1). In a resource-short system, restoring one part's supply without adding resource leaves an equal deficit elsewhere (Figure 2). In an access-limited system (growth signalling holding a maintenance process shut while nutrients are present), opening the gate relieves the process with no deficit elsewhere. The two regimes predict different consequences of the same intervention.
+
+![Figure 2: the conservation law, a worked example](figures/fig2_law.png)
+
+**Figure 2. Proposition 1 in the scarcity-limited regime, a worked example.** Four parts, A to D, each need 3 units, and supply is 7, so the system is 5 units short. Left: with rank A, B, C, D, the shortfall lands on C (2 units) and D (3). Centre: part D's deficit is corrected by moving it to the front of the order, with no resource added; the shortfall moves to B and C, and the total stays at 5. Right: adding 2 units of resource, one of the named exceptions, lowers the total to 3.
 
 **The silence and the break**
 
 **Proposition 2 (silence).** The top's draw is met if and only if $S\ge N$; every part's basal maintenance and every support part's draw is met if and only if $S\ge N+B+P$. Hence the record is flat this step and the next if and only if $\Gamma\le\sum_sd_s+I+M$.
 
-Inside that region the record carries no information about load below the top. Outside input extends the silence exactly as a store does. It breaks at two thresholds: at once, and one step later through dependency.
+Inside that region the record carries no information about load below the top (Figure 3). Outside input extends the silence exactly as a store does. It breaks at two thresholds: at once, and one step later through dependency.
 
 **Proposition 3 (store left at the break).** A constant gap $\Gamma$ per step is carried by one store from level $L_0$, with no outside input, and $M<\Gamma\le kL_0$. Under full release the record breaks when the store is empty, whatever $\Gamma$. Under proportional release it breaks when the store falls to $L^\ast=(\Gamma-M)/k$: **a faster shortfall leaves more of the store unused,** linearly, with slope $1/k$.
 
 The intuitive rate-independence of the break holds only for full release. Under the default release, the reserve remaining at decompensation should rise with the rate of loss.
+
+![Figure 3: the silence and the break](figures/fig3_silence_and_break.png)
+
+**Figure 3. The silence and the break (Propositions 2 to 4), simulated in the reduced form.** A constant shortfall of 12 units a step (need 26: the top 10, basal maintenance 4, supports 3 and three ordinary parts at 3 each; supply 14) is carried by one store with proportional release ($k=0.08$). The top's work depends on its supports one step later, so $M$ is the ordinary parts' draw, 9 units. Bottom: ordinary parts lose supply in reverse rank, C first and A last (Proposition 4). Top: the record stays flat while all three go short (Proposition 2). Middle: the record breaks when the store falls to $L^\ast=(\Gamma-M)/k$, an eighth of its starting level (Proposition 3). Parameter values are illustrative.
 
 **The order of loss**
 
@@ -175,7 +187,11 @@ Rank is then a measurable property, fixed before outcomes. It combines affinity,
 2. If $\varphi>\theta K$, the loss satisfies $\Delta(1-\theta K/\varphi)-\tau_f(\varphi-\theta K)\le\Lambda\le\Delta(1-\theta K/\varphi)$.
 3. A scar is possible only if $\Delta(1-\theta K/\varphi)>Q^\ast K$, and certain if the lower bound exceeds $Q^\ast K$.
 
-Depth without speed never harms; speed without depth never scars; a scar needs both, and the threshold depth falls as speed rises. Fixed capital ($Q^\ast=0$) is scarred by any fall faster than its switch-off rate.
+Depth without speed never harms; speed without depth never scars; a scar needs both, and the threshold depth falls as speed rises (Figure 4). Fixed capital ($Q^\ast=0$) is scarred by any fall faster than its switch-off rate.
+
+![Figure 4: rate decides harm](figures/fig4_rate_decides_harm.png)
+
+**Figure 4. Rate decides harm (Proposition 6), simulated.** A part of $K=100$ units, with switch-off rate $\theta K=5$ units a step and failure time $\tau_f=4$ steps, faces a fall in the units the repair network can renew, of depth $\Delta$ (8, 20 or 40) and speed $\varphi$. Below the switch-off rate no units are lost at any depth. Above it, losses rise with speed, and further the deeper the fall; only the deepest fall crosses the template limit $Q^\ast K=10$, beyond which losses scar. Parameter values are illustrative.
 
 **Failure**
 
@@ -268,10 +284,14 @@ Both tests were pre-registered before any outcome data were opened. Each computa
 - **Data:** single-tier councils in England, 2014-15 to 2019-20: 121 councils and 93 spending lines.
 - **Access property:** each line was classified **blind**, before any spending data were opened, by whether a statutory duty attaches to it: class A, a duty; class B, a duty of uncertain level; class C, discretionary.
 - **Primary question (fixed against dynamic priority): inconclusive** at full weight. Projected client growth published before each budget showed no detectable effect on which lines were protected (β = 0.05; 95% interval −0.75 to 0.86), but the interval includes the smallest effect set in advance as meaningful (0.25).
-- **G25: supported, at half weight** (the broad pattern was known in advance). Within a council and year, real spending per head on class A lines grew about 4.6 percentage points a year faster than on class C lines (one-sided p = 2×10⁻¹¹). Class B was not distinguishable from class C, and that step fails its ordering when London is excluded.
+- **G25: supported, at half weight** (the broad pattern was known in advance). Within a council and year, real spending per head on class A lines grew about 4.6 percentage points a year faster than on class C lines (one-sided p = 2×10⁻¹¹; Figure 5). Class B was not distinguishable from class C, and that step fails its ordering when London is excluded.
 - **G25-C: not supported, at half weight.** The scarcity version, that the gap widens where funding fell more, failed: the interaction was 0.22 (SE 0.25).
 
 This is the model's first application outside bodies, and its first held-out support, for order of loss only.
+
+![Figure 5: PT1, order of loss in English councils](figures/fig5_pt1_order_of_loss.png)
+
+**Figure 5. PT1: order of loss in English single-tier councils, 2014-15 to 2019-20 (G25; 121 councils).** Difference in the growth of real spending per head between classes of spending line, within a council and year: duty (A) minus discretionary (C), 4.6 percentage points a year (one-sided p = 2×10⁻¹¹); duty of uncertain level (B) minus discretionary (C), 0.4 (p = 0.27). Bars are approximate 95% intervals, recovered from the one-sided p-values with the analysis's t distribution (120 degrees of freedom), because the G25 results record p-values, not standard errors. The scarcity version (G25-C), not supported, is not shown.
 
 ### 5.2 Natural-system observations
 

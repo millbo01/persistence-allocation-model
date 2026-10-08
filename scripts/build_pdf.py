@@ -1,4 +1,4 @@
-"""Build the SSRN PDF: the paper with the supplement appended (James, 7 October 2026).
+"""Build the paper PDF: the paper with the supplement appended (James, 7 October 2026; figures from 8 October).
 
 Usage: python scripts/build_pdf.py
 Output: papers/pam-model/From cells to councils.pdf (and the intermediate .html beside it)
@@ -73,10 +73,26 @@ def link_dois(h):
     return h
 
 
+# Printed width of each figure as a share of the text width (tall figures narrower, to limit blank page ends).
+FIG_WIDTH = {"fig2_law": "80%", "fig3_silence_and_break": "78%", "fig4_rate_decides_harm": "90%",
+             "fig5_pt1_order_of_loss": "88%"}
+
+
+def figures(h):
+    """Wrap each image and the 'Figure n.' caption paragraph after it in one figure, kept on one page."""
+    def wrap(m):
+        img, cap = m.group(1), m.group(2)
+        name = re.search(r'src="figures/([^".]+)\.', img)
+        w = FIG_WIDTH.get(name.group(1) if name else "", "100%")
+        img = img.replace("<img ", f'<img style="width:{w}" ', 1)
+        return f"<figure>{img}<figcaption>{cap}</figcaption></figure>"
+    return re.sub(r"<p>(<img [^>]*>)</p>\s*<p>(<strong>Figure \d+\..*?)</p>", wrap, h, flags=re.S)
+
+
 def to_html(md):
     md, store = protect_math(md)
     h = MarkdownIt("commonmark", {"html": False}).enable("table").render(md)
-    return link_dois(restore_math(h, store))
+    return link_dois(restore_math(figures(h), store))
 
 
 def main():
@@ -106,6 +122,9 @@ def main():
     .titlepage .meta { font-size: 11.5pt; margin-top: 14pt; line-height: 1.6; }
     .supplement { page-break-before: always; }
     .supplement-title { font-size: 17pt; margin-bottom: 12pt; }
+    figure { margin: 10pt 0 12pt 0; page-break-inside: avoid; break-inside: avoid; }
+    figure img { display: block; width: 100%; height: auto; margin: 0 auto 6pt auto; }
+    figcaption { font-size: 8.8pt; line-height: 1.38; color: #222; }
     .katex { font-size: 1.02em; }
     .katex-display { margin: 6pt 0; overflow: hidden; }
     """
