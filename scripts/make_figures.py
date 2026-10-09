@@ -55,12 +55,12 @@ def fig_architecture():
     ax.set_ylim(-4, 64)
     ax.axis("off")
 
-    def box(x, y, w, h, title, body="", fc="#f4f6f9", tsize=9.5, bsize=8):
+    def box(x, y, w, h, title, body="", fc="#f4f6f9", tsize=9.5, bsize=8, bgap=5.6):
         ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.25,rounding_size=1.2",
                                     fc=fc, ec=MUTED, lw=0.9))
         ax.text(x + w / 2, y + h - 2.0, title, ha="center", va="top", fontsize=tsize, fontweight="bold", color=INK)
         if body:
-            ax.text(x + w / 2, y + h - 5.6, body, ha="center", va="top", fontsize=bsize, color=INK2, linespacing=1.3)
+            ax.text(x + w / 2, y + h - bgap, body, ha="center", va="top", fontsize=bsize, color=INK2, linespacing=1.3)
 
     def arrow(p, q, color=INK2, lw=1.1, ls="-", rad=0.0):
         ax.add_patch(FancyArrowPatch(p, q, arrowstyle="-|>", mutation_scale=10, color=color, lw=lw,
@@ -74,7 +74,7 @@ def fig_architecture():
     # inputs (left), shared flow and stores (centre-left)
     box(0.5, 39.5, 12.5, 12, "Supply", "through the\nintake", fc="#eef5ee", bsize=7.6)
     box(0.5, 23.5, 12.5, 12, "Outside", "input across\nthe boundary", fc="#eef5ee", bsize=7.6)
-    box(21, 27, 18, 20, "Shared flow", "what reaches\nthe parts this\nstep; what is\nnot drawn is\nnot returned", fc="#f4f6f9")
+    box(21, 27, 18, 20, "Shared flow", "what reaches\nthe parts this\nstep; what a\npart does not\ndraw stays in\nthe flow", fc="#f4f6f9")
     box(21, 11.5, 18, 12, "Stores", "drawn first; release\nlimited (proportional\nby default)", fc="#eaf1fb", bsize=7.4)
     arrow((13.2, 45.5), (20.8, 42))
     arrow((13.2, 29.5), (20.8, 33))
@@ -82,19 +82,17 @@ def fig_architecture():
     ax.text(31, 25.2, "store draw", fontsize=7, color=INK2, va="center")
 
     # governor (top)
-    box(24, 50.5, 31, 10, "Governor", "sets access: store release, intake,\ngates, pathway capacity", fc="#fff5ec", bsize=7.6)
-    arrow((30, 50.3), (30, 47.3), color=S2, ls=(0, (3, 2)))
-    arrow((55.2, 53.5), (66, 46.4), color=S2, ls=(0, (3, 2)))
+    box(24, 49.4, 31, 12, "Governor", "holds its targets by setting access:\nstore release, intake, gates, routes and\nthe access of each part whose access it sets", fc="#fff5ec", bsize=6.4, bgap=4.8)
+    arrow((30, 49.2), (30, 47.3), color=S2, ls=(0, (3, 2)))
 
     # ordered draw ladder (right)
-    lx, lw_, lh = 62, 35.5, 5.4
+    lx, lw_, lh = 61.5, 33.5, 5.4
     ax.text(lx + lw_ / 2 + 2, 57.5, "The ordered draw", ha="center", fontsize=8.6, color=INK, fontweight="bold")
-    ax.text(lx + lw_ / 2 + 2, 54.6, "each takes its need, in order", ha="center", fontsize=7.4, color=INK2)
-    steps = [("1  The top", "its output is the record the governor holds"),
-             ("2  Basal maintenance", "of every part"),
-             ("3  Supports and the intake", "work and renewal"),
-             ("4  Other parts, by rank", "work and renewal; repair is one of them"),
-             ("5  What is left", "rebuild, or refill stores, by marginal value")]
+    ax.text(lx + lw_ / 2 + 2, 54.6, "each setting met in order of priority", ha="center", fontsize=7.4, color=INK2)
+    steps = [("1  The top", "the protected flow; others limited first"),
+             ("2  Supports and the intake", "full draws, in rank order"),
+             ("3  Other parts, by rank", "full draws, upkeep before work"),
+             ("4  What is left", "rebuild, or refill stores, by marginal value")]
     ys = []
     for i, (tt, b) in enumerate(steps):
         y = 40.5 - i * (lh + 1.0)
@@ -103,26 +101,32 @@ def fig_architecture():
                                     fc="#fff5ec" if i == 0 else "#f4f6f9", ec=MUTED, lw=0.7))
         ax.text(lx + 1.4, y + lh / 2 + 0.95, tt, fontsize=8.1, fontweight="bold", va="center", color=INK)
         ax.text(lx + 1.4, y + lh / 2 - 1.25, b, fontsize=7.1, va="center", color=INK2)
-    arrow((39.2, 44), (61.8, ys[0] + lh / 2))
-    ax.text(50, 44.6, "the flow is drawn\nfrom the top down", fontsize=7, color=INK2, ha="center", va="bottom")
-    # refill: step 5 back to the stores (leaves below the shortfall arrow's foot, so the two do not cross)
-    arrow((61.8, ys[4] + 1.6), (39.4, ys[4] + 1.6), ls=(0, (3, 2)), color=S1)
-    ax.text(50, ys[4] + 0.4, "refill", fontsize=7, color=INK2, ha="center", va="top")
-    # shortfall: lands from the bottom up
-    s0, s1 = ys[4] + 0.7 * lh, ys[1] + lh
+    arrow((39.2, 44), (lx - 0.2, ys[0] + lh / 2))
+    ax.text(50, 44.6, "access by\npriority", fontsize=7, color=INK2, ha="center", va="bottom")
+    # the governor sets the access of the parts below the top (boxes 2 and 3), not the top's
+    gx, gy = 97.2, 60.2
+    ax.plot([55.4, gx, gx], [gy, gy, ys[2] + lh / 2], color=S2, lw=1.1, ls=(0, (3, 2)))
+    for i in (1, 2):
+        arrow((gx, ys[i] + lh / 2), (lx + lw_ + 0.2, ys[i] + lh / 2), color=S2, ls=(0, (3, 2)))
+    ax.text(76, gy + 0.5, "sets the access it controls", fontsize=7, color=INK2, ha="center", va="bottom")
+    # refill: the last step back to the stores (below the arrow's foot, so the two do not cross)
+    arrow((lx - 0.2, ys[3] + 1.6), (39.4, ys[3] + 1.6), ls=(0, (3, 2)), color=S1)
+    ax.text(50, ys[3] + 0.4, "refill", fontsize=7, color=INK2, ha="center", va="top")
+    # access is cut from the lowest-ranked part up
+    s0, s1 = ys[3] + 0.7 * lh, ys[1] + lh
     ax.add_patch(FancyArrowPatch((59.6, s0), (59.6, s1), arrowstyle="-|>", mutation_scale=10, color=S2, lw=1.5))
-    ax.text(58.4, (s0 + s1) / 2, "under scarcity,\nshortfall lands\nfrom the bottom up", rotation=90,
+    ax.text(58.4, (s0 + s1) / 2, "under scarcity, access\nis cut from the lowest-\nranked part up", rotation=90,
             fontsize=7.2, color=INK2, ha="right", va="center", linespacing=1.2)
 
     # footer: ledger, residue, collapse
-    ax.text(0.5, 5.2, "The load ledger:", fontsize=8, fontweight="bold", color=INK, va="center")
-    ax.text(17.5, 5.2, "gap = store draw + outside input + load left unmet at named parts. "
-            "Access decides where load lands, not how much.", fontsize=7.6, color=INK2, va="center")
+    ax.text(0.5, 5.2, "The resource ledger:", fontsize=8, fontweight="bold", color=INK, va="center")
+    ax.text(21.0, 5.2, "with the flow fully used and no part above its reference: gap = store draw + outside input + shortfall "
+            "at named parts. Access decides which parts go short, not how much.", fontsize=6.9, color=INK2, va="center")
     ax.text(0.5, 1.4, "Residue in units:", fontsize=8, fontweight="bold", color=INK, va="center")
-    ax.text(17.5, 1.4, "switched off (route back kept) → lost (rebuildable) → scarred (template lost).",
+    ax.text(21.0, 1.4, "switched off (route back kept) → lost (rebuildable) → scarred (lost for good).",
             fontsize=7.6, color=INK2, va="center")
     ax.text(0.5, -2.4, "Failure:", fontsize=8, fontweight="bold", color=INK, va="center")
-    ax.text(17.5, -2.4, "collapse when load reaches the top or a non-bypassable link is cut; death only when no route back remains.",
+    ax.text(21.0, -2.4, "collapse when the protected flow cannot be met or a non-bypassable link is cut; death only when no route back remains.",
             fontsize=7.6, color=INK2, va="center")
     save(fig, "fig1_architecture")
 
@@ -155,7 +159,7 @@ def plot_law(ax, title_size=10.5):
         ax.text(i, bottom + 0.25, f"total {bottom:g}", ha="center", va="bottom", fontsize=9, color=INK)
     ax.set_xticks(range(3))
     ax.set_xticklabels([d[0] for d in data], fontsize=8.6)
-    ax.set_ylabel("Total shortfall, by the part that carries it (units)")
+    ax.set_ylabel("Total shortfall, by the part that goes short (units)")
     ax.set_ylim(0, 6.6)
     ax.grid(axis="x", visible=False)
     ax.tick_params(axis="x", length=0)
@@ -169,24 +173,27 @@ def fig_law():
 
 # ---------------------------------------------------------------- Figure 3: the silence and the break
 def silence_series(T=48):
-    N, Bas, P = 10.0, 4.0, 3.0
-    ords = [3.0, 3.0, 3.0]              # ordinary parts A, B, C in rank order
-    U = 14.0
-    need = N + Bas + P + sum(ords)
+    """Reading B (version 2): the top, then the support part in full, then the other parts A, B, C in full, in rank
+    order; within each part, upkeep before work. Delivery to the top depends on the support part's work one step later."""
+    N = 10.0
+    sup = (1.0, 2.0)                                # (upkeep, work)
+    others = [(1.0, 2.0), (1.0, 2.0), (1.0, 2.0)]   # parts A, B, C in rank order
+    P, D = sum(sup), sum(b + w for b, w in others)
+    U = 10.0
+    need = N + P + D
     gap = need - U
     L, k = 300.0, 0.08
     rows, sup_prev = [], 1.0
     for t in range(T):
         d = min(k * L, gap, L)
-        S = U + d
-        a = draw(S, [N, Bas, P] + ords)
-        record = sup_prev                 # the top's work this step depends on last step's supports
-        sup_prev = min(1.0, (a[1] + a[2]) / (Bas + P))
-        rows.append(dict(t=t, record=100 * record, store=100 * L / 300.0,
-                         A=100 * a[3] / ords[0], B=100 * a[4] / ords[1], C=100 * a[5] / ords[2]))
+        a = draw(U + d, [N, *sup] + [x for bw in others for x in bw])
+        flow = sup_prev                             # delivery this step depends on last step's support part
+        sup_prev = min(1.0, a[2] / sup[1])            # delivery depends on the support part's work
+        part = lambda i: 100 * (a[3 + 2 * i] + a[4 + 2 * i]) / sum(others[i])
+        rows.append(dict(t=t, record=100 * flow, store=100 * L / 300.0, A=part(0), B=part(1), C=part(2)))
         L -= d
-    # Proposition 3: with the top dependent on its supports, M is the ordinary parts' draws (D_4)
-    lstar_pct = 100 * (gap - sum(ords)) / k / 300.0
+    # Proposition 3: with delivery dependent on the support part, M is the other parts' full draws (D)
+    lstar_pct = 100 * (gap - D) / k / 300.0
     return rows, lstar_pct
 
 
@@ -197,11 +204,11 @@ def fig_silence():
     fig, axs = plt.subplots(3, 1, figsize=(6.4, 5.6), sharex=True,
                             gridspec_kw={"height_ratios": [1, 1, 1.3], "hspace": 0.32})
     axs[0].plot(t, [r["record"] for r in rows], color=INK, lw=2)
-    axs[0].set_ylabel("Record\n(% of normal)")
+    axs[0].set_ylabel("Protected flow\n(% of the top's need)")
     axs[1].plot(t, [r["store"] for r in rows], color=S1, lw=2)
     axs[1].set_ylabel("Store\n(% of start)")
     axs[1].axhline(lstar, color=MUTED, lw=0.8, ls=(0, (1, 2)))
-    axs[1].text(brk + 0.8, lstar + 22, "store left at the break:\n" + r"$L^{*}=(\Gamma-M)/k$", fontsize=8,
+    axs[1].text(brk + 0.8, lstar + 22, "store when the margin is used up:\n" + r"$L^{*}=(\Gamma-M)/k$", fontsize=8,
                 color=INK2, va="bottom", linespacing=1.3)
     names = {"A": "part A (ranked first)", "B": "part B", "C": "part C (ranked last)"}
     for (key, c), lev in zip((("A", S1), ("B", S2), ("C", S3)), (35, 50, 65)):
@@ -214,15 +221,15 @@ def fig_silence():
                     bbox=dict(boxstyle="round,pad=0.15", fc=SURF, ec="none"))
     axs[2].legend(loc="upper right", frameon=False, fontsize=7.6, handlelength=1.6, labelcolor=INK2)
     axs[2].set_ylabel("Supply reaching\nlower parts (%)")
-    axs[2].set_xlabel("Time (steps), constant shortfall of supply")
+    axs[2].set_xlabel("Time (steps), constant gap between need and supply")
     for ax in axs:
         ax.set_ylim(-5, 112)
         ax.axvline(brk, color=INK2, lw=1, ls=(0, (3, 2)))
-    axs[0].text(brk + 0.6, 50, "the break", color=INK2, fontsize=8.5)
+    axs[0].text(brk + 0.6, 22, "the break", color=INK2, fontsize=8.5)
     quiet_end = next(r["t"] for r in rows if r["C"] < 99.9)
     axs[0].annotate("", xy=(quiet_end, 112), xytext=(brk, 112), annotation_clip=False,
                     arrowprops=dict(arrowstyle="<->", color=MUTED, lw=0.8))
-    axs[0].text((quiet_end + brk) / 2, 118, "the record is flat while lower parts go short", ha="center",
+    axs[0].text((quiet_end + brk) / 2, 118, "the protected flow is held while lower parts go short", ha="center",
                 fontsize=8, color=INK2, clip_on=False)
     save(fig, "fig3_silence_and_break")
     return brk
@@ -256,7 +263,7 @@ def fig_harm():
     ax.text(39.5, Qs + 0.5, "template limit: losses above it scar", fontsize=8, color=INK2, ha="right")
     ax.axvline(theta * K, color=MUTED, lw=0.8)
     ax.text(theta * K + 0.5, 17, "switch-off rate:\nno loss below it,\nat any depth", fontsize=8, color=INK2, va="center")
-    ax.set_xlabel("Speed of the fall in what the repair network can renew (units per step)")
+    ax.set_xlabel("Speed of the fall in what the part's access can renew (units per step)")
     ax.set_ylabel("Units lost")
     ax.set_xlim(0, 40)
     ax.set_ylim(0, 20)
@@ -300,10 +307,10 @@ def linkedin_square():
     fig = plt.figure(figsize=(6, 6))
     fig.text(0.07, 0.94, "Nothing is saved, only moved", fontsize=19, fontweight="bold", color=INK, va="top")
     fig.text(0.07, 0.875, "Under scarcity, no ordering of access reduces the total shortfall.\n"
-             "It only decides which part carries it.", fontsize=11, color=INK2, va="top", linespacing=1.35)
+             "It only decides which parts go short.", fontsize=11, color=INK2, va="top", linespacing=1.35)
     ax = fig.add_axes([0.12, 0.19, 0.84, 0.58])
     plot_law(ax)
-    ax.set_ylabel("Shortfall, by the part that carries it")
+    ax.set_ylabel("Shortfall, by the part that goes short")
     fig.text(0.07, 0.065, "From cells to councils: a conservation law of allocation under scarcity.\n"
              "J. Miller, SSRN 2026. doi:10.2139/ssrn.7579199", fontsize=8.5, color=MUTED, va="bottom",
              linespacing=1.4)

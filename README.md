@@ -4,6 +4,7 @@
 
 - **Preprint (SSRN):** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7579199. DOI: [10.2139/ssrn.7579199](https://doi.org/10.2139/ssrn.7579199).
 - **This record on Zenodo (all versions):** [10.5281/zenodo.23222615](https://doi.org/10.5281/zenodo.23222615).
+- **Version 2 of the paper** (9 October 2026) is release v2.0. Version 1's permanent copies: v1.3, as last posted ([10.5281/zenodo.23241491](https://doi.org/10.5281/zenodo.23241491)), and v1.2, the first posting ([10.5281/zenodo.23224208](https://doi.org/10.5281/zenodo.23224208)). What changed is stated in the paper's section "Changes from version 1".
 - **Full commit history in Software Heritage:** swh:1:snp:9d74b3d245ecd46518ffda7b11a718a37bed3e07 (snapshot after release v1.3). The paper cites the earlier snapshot swh:1:snp:cbdafe9b4e6c27ea5f2ce307d86ebcd49ca11fcf (after v1.1), which holds the same history up to that point.
 
 ## What this is
@@ -14,22 +15,25 @@ This repository is the record behind the paper. It was extracted from the author
 - **The paper:** `papers/pam-model/From cells to councils.md`.
 - **The supplement:** `papers/pam-model/From cells to councils - supplement.md`.
 - **The paper as posted to SSRN** (the paper with the supplement appended): `papers/pam-model/From cells to councils.pdf`. It is built from the two Markdown files by `scripts/build_pdf.py`.
-  - The current version is the revision of 8 October 2026, which added five figures.
-  - The first SSRN version, of 7 October 2026, is release v1.2.
+  - The current version is version 2, of 9 October 2026 (release v2.0).
+  - Version 1 as last posted, the revision of 8 October 2026 that added five figures, is release v1.3; the first SSRN version, of 7 October 2026, is release v1.2.
 - **The figures:** `papers/pam-model/figures/`, as PNG and SVG.
-  - `scripts/make_figures.py` computes them from the model's reduced form, with nothing fitted. Figure 5 reads `tests/results/PT1/summary.json`.
+  - `scripts/make_figures.py` computes them from the model's reduced form, with nothing fitted. In version 2 the file `fig5` is Figure 4 (PT1), which reads `tests/results/PT1/summary.json`, and `fig4` is Figure S1.
   - The script also writes a square image for a social-media post. That image is not part of the record.
-- **The reference check:** `papers/pam-model/Citation check.md`. Every reference was checked against Crossref, PubMed or OpenAlex, with corrections listed.
+- **The reference check:** `papers/pam-model/Citation check.md`. Every reference was checked against Crossref, PubMed or OpenAlex (or, for one book, its publisher's contents page), with corrections listed.
 
 **The record behind it:**
+- **The laws of the model:** `CANON.md`, with its dated log. The model document and the paper are checked against it.
 - **The model:**
-  - the current version, `theory/PERSISTENCE_ALLOCATION_MODEL_v0.19.md`;
+  - the current version, `theory/PERSISTENCE_ALLOCATION_MODEL_v0.20.md` (version 1's was `theory/PERSISTENCE_ALLOCATION_MODEL_v0.19.md`, kept);
   - the two versions the held-out tests were derived from: `theory/TIER_QUEUE_MODEL_v0.17.md` for H1 and `theory/PERSISTENCE_ALLOCATION_MODEL_v0.18.md` for PT1.
-- **The derived propositions and their numerical check:** the working derivations in `theory/PAM_propositions_DRAFT.md`, and the check in `scripts/pam_propositions_check.py` with its output. The paper states the propositions in their final form.
+- **The derived propositions and their numerical check:** the working derivations in `theory/PAM_propositions_DRAFT.md`, and the check in `scripts/pam_propositions_check.py` with its output. The check covers version 2's order of the draw, the dependency lag and the recovery lag, and keeps version 1's checks as records. The paper states the propositions in their final form.
 - **The comparison with prior theories, the open checks and the probe register:** `theory/PAM_*`.
 - **The natural-system checks:** `theory/natural_test_*`.
 - **The literature searches:** `theory/search_check*/` and their protocols.
 - **The two held-out tests (H1 and PT1):** in `tests/` and `raw/`. That covers their pre-registrations, setting maps, procedure logs, prompts, scripts, results, replications and blind adjudications.
+  - **The corrected H1 mapping** (version 2; made after the result, post hoc, and not a test): `tests/H1 VitalDB G12 - mapping corrected (v2).md`, beside the frozen setting map, which is unchanged.
+  - **The G18 follow-up** (exploratory, post hoc, not scored): `tests/scripts/h1_g18_followup.py` and `tests/results/H1-VDB-G18-followup/`.
 
 **Why some record files still say "draft":** names such as `setting map and mapping (draft).md`, `design note (draft).md` and `PAM_propositions_DRAFT.md` are kept exactly as they were when the tests were run, because the frozen pre-registrations and other records cite them by name. The paper files were renamed on 8 October 2026 (from `08 Paper draft 3.md`, `03 Supplement draft 1.md` and `04 Citation check.md`), and git keeps their full history across the rename.
 
@@ -138,7 +142,7 @@ The work began from the author's earlier framework for institutions, dated 27 Se
 
 - **Zenodo** (the files at each release): concept DOI 10.5281/zenodo.23222615, which always resolves to the latest version.
 - **Software Heritage** (the full commit history with its dates): snapshot swh:1:snp:cbdafe9b4e6c27ea5f2ce307d86ebcd49ca11fcf, taken on 7 October 2026 after release v1.1.
-- **SSRN:** posted on 7 October 2026 (abstract ID 7579199, DOI 10.2139/ssrn.7579199). Release v1.2 matches the posted version.
+- **SSRN:** posted on 7 October 2026 (abstract ID 7579199, DOI 10.2139/ssrn.7579199), revised on 8 October (release v1.3), and revised to version 2 (release v2.0). Release v1.2 matches the first posted version.
 
 ## Licence
 

@@ -1,6 +1,6 @@
 {
   "title": "Record for \"From cells to councils: a conservation law of allocation under scarcity\"",
-  "description": "The record behind the paper \"From cells to councils: a conservation law of allocation under scarcity\" (SSRN preprint, doi:10.2139/ssrn.7579199): the paper and its supplement as posted, with the PDF; the Persistence Allocation Model (current version, and the versions the held-out tests were derived from; earlier versions are in the commit history); derived propositions with a numerical check; literature searches; natural-system checks; and two pre-registered held-out tests (H1, VitalDB; PT1, English local government) with their pre-registrations, analysis code, results, replications and blind adjudications. Extracted from the author's working repository with commit history and dates preserved; see README.md.",
+  "description": "The record behind the paper \"From cells to councils: a conservation law of allocation under scarcity\" (SSRN preprint, doi:10.2139/ssrn.7579199): version 2 of the paper and its supplement as posted, with the PDF; the laws of the model (CANON.md, with its dated log); the Persistence Allocation Model (current version, and the versions the held-out tests were derived from; earlier versions are in the commit history); derived propositions with a numerical check; literature searches; natural-system checks; and two pre-registered held-out tests (H1, VitalDB; PT1, English local government) with their pre-registrations, analysis code, results, replications and blind adjudications, and the corrected H1 mapping (post hoc). Extracted from the author's working repository with commit history and dates preserved; see README.md.",
   "upload_type": "dataset",
   "creators": [
     {
@@ -351,6 +351,31 @@
     },
     {
       "identifier": "10.1007/s10669-018-9708-3",
+      "relation": "cites",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1161/01.str.26.10.1794",
+      "relation": "cites",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1016/j.pneurobio.2017.05.004",
+      "relation": "cites",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1038/nrn2787",
+      "relation": "cites",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1098/rsif.2013.0475",
+      "relation": "cites",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.3109/10641969109042085",
       "relation": "cites",
       "scheme": "doi"
     }

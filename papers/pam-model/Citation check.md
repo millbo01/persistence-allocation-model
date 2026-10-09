@@ -110,3 +110,39 @@
 - **Withdrawn, not cited:** unsourced "compatible" examples in the working prediction table (gut of pythons, migrating birds, hibernation, sudden against gradual cardiac ischaemia). S4 lists compatible observations only where a source is given.
 - **Cherel and Groscolas (1998):** congress proceedings, read through a summary of the online page. Cited as such.
 
+
+## v2 additions (8 October 2026)
+
+Checked by the same method before entering v2 (constraint 3 of the v2 prompt).
+
+| Reference | Bibliographic check | Read | Claim in v2 |
+|---|---|---|---|
+| Bondar RL, Kassam MS, Stein F, Dunphy PT, Fortney S, Riedesel ML (1995). Simultaneous cerebrovascular and cardiovascular responses during presyncope. *Stroke* 26:1794-1800. doi:10.1161/01.str.26.10.1794 (PMID 7570727) | Crossref; OpenAlex | Abstract | Nine healthy volunteers under lower-body negative pressure to presyncope: middle cerebral artery mean flow velocity fell by 27.3 ± 14% of baseline (P < .05) while mean arterial pressure was 2.0 ± 27% above baseline; estimated cerebrovascular resistance rose; velocity fell before pressure. Used for Table 4's "Protected flow held" row and S7.3. Velocity is a proxy for flow. This is the source behind natural check 1's "S5" (read there only through search abstracts) |
+
+**Added before approval (9 October 2026), checked by the same method:**
+
+| Reference | Bibliographic check | Read | Claim in v2 |
+|---|---|---|---|
+| Peters A, McEwen BS, Friston K (2017). *Prog Neurobiol* 156:164-188. doi:10.1016/j.pneurobio.2017.05.004 (PMID 28576664) | Crossref; PubMed | Abstract | Links the Selfish Brain to the free energy principle: in uncertainty the brain demands extra energy from the body; if it cannot reduce uncertainty, a persistent cerebral energy crisis may develop, burdening the individual by allostatic load (systemic and brain malfunction). The approach is information-theoretic; the brain-body link is stated in words. Two compartments are not named in the abstract. Section 2; S3 note 10. The abstract says "the individual", so the paper does not say the cost falls on the body alone |
+| Ashby WR (1952). *Design for a Brain*. Chapman & Hall, London | OpenAlex (book, no DOI); contemporary reviews confirm publisher and extent (Kapp 1953, doi:10.1093/bjps/iv.14.169; Garner 1954) | Sections 3/14, 5/3, 5/9, 7/1, 8/4, 8/8, 9/1, 9/5 of the 1954 reprint with corrections (Internet Archive scan, OCR text) | Essential variables must stay within physiological limits (3/14); adaptive behaviour keeps them there (5/3); survival as a region of phase space (5/9); step-functions change value at critical states nearer the normal values than the limits (9/1, 9/5); the homeostat is a machine built to the definition of the ultrastable system (8/8). Section 2; S3 notes 56 to 58. "Oldest form of the governor" not used: homeostasis (Cannon) is earlier; "an early form" is used |
+| Friston K (2010). *Nat Rev Neurosci* 11:127-138. doi:10.1038/nrn2787 (PMID 20068583) | Crossref; PubMed | Abstract | A free-energy principle accounts for action, perception and learning; the quantity optimised is surprise. Section 2; S3 note 59. "Self-organising" is not this abstract's word and is not attributed to it |
+| Friston K (2013). *J R Soc Interface* 10:20130475. doi:10.1098/rsif.2013.0475 (PMID 23825119) | Crossref; PubMed | Abstract | A heuristic proof, with simulations, "suggesting" that any (ergodic) random dynamical system with a Markov blanket will appear to act on its world to preserve its integrity, leading to homeostasis. Section 2; S3 notes 60 and 61 (Sys scored p, not F, for that reason) |
+
+**Added after FINAL_CHECK round 2 (9 October 2026), checked by the same method:**
+
+| Reference | Bibliographic check | Read | Claim in v2 |
+|---|---|---|---|
+| Chapleau MW, Hajduczok G, Abboud FM (1991). Paracrine role of prostanoids in activation of arterial baroreceptors: an overview. *Clin Exp Hypertens A* 13:817-824. doi:10.3109/10641969109042085 (PMID 1773513) | Crossref; PubMed; DOI resolves | Abstract | The arterial baroreflex: baroreceptors in the carotid sinuses and aortic arch are activated as pressure rises, the reflex buffers the rise, and activation is by mechanical deformation (stretch) of the receptor endings (Section 5.1; S5.1; the corrected H1 mapping). A short overview: version 2.1 replaces it with a standard review of the arterial baroreflex (James) |
+| Wood AJ, Wollenberg BF, Sheblé GB (2014). *Power Generation, Operation, and Control*, 3rd edn. Wiley, Hoboken, NJ (ISBN 978-0-471-79055-6) | Not in Crossref; the publisher's page (Wiley-VCH lists December 2013) and an IEEE Power and Energy Magazine review of the third edition (2014, doi:10.1109/MPE.2014.2313803) | Contents only: Chapter 7 "Power System Security", §7.3 "Contingency Analysis: Detection of Network Problems", Appendix 7B.2 "Calculation of LODF Factors" | Rerouting by physics is known in power engineering, where contingency analysis computes how flow shifts onto the surviving lines after an outage (Section 4; Table 3) |
+| Hochachka et al. 1996 (as above), a further use | Crossref (as above) | Abstract (checked by James) | "Spike arrest" in neurons, from brain cortical cells of the anoxia-tolerant turtle: the scope sentence on the top economising (S1.4; beside G16 in S4) |
+| Evans et al. 2001 (as above), a further use | PubMed (PMID 11428384) | Abstract | Anaesthetic agents blunt or abolish the compensation during phase I (e.g. halothane) or its failure during phase II (e.g. alfentanil): the release-profile paragraph (Section 5.1; S5.1) |
+
+**Still to be sourced before use (not in v2):**
+- the arithmetic link between mean arterial pressure and heart rate;
+- the governor's other sensed levels in the corrected H1 mapping (stretch in the heart's filling chambers and great veins; oxygen and carbon dioxide); arterial wall stretch is now cited (Chapleau, Hajduczok and Abboud 1991);
+- the brain's oxygen extraction or oxygenation up to presyncope (S7.3, the second candidate);
+- the brain's resting need;
+- the bed-by-bed constriction order;
+- the carbon dioxide candidate (S7.3);
+- water to the growing points as a tree's protected flow;
+- how the Vigileo and EV1000 monitors derive stroke volume.

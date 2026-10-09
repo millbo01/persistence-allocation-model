@@ -537,8 +537,581 @@ def check_P2_gap(trials=2000):
     return bad
 
 
+# =================== version 2, reading A (considered and not adopted; kept as the record of the alternative) ===================
+# Reading A kept every other part's basal maintenance ahead of any other part's work. James chose reading B (below).
+# Phases: (1) the top's full need N; (2) support parts' full draws (basal maintenance and work), in rank order;
+# (3) every other part's basal maintenance, in rank order; (4) every other part's work, in rank order.
+# Within a part, work is cut before basal maintenance. Parts are (basal, work) pairs, highest rank first.
+
+def draw_v2a(S, N, sup, ordn):
+    a_top = min(S, N)
+    S -= a_top
+    a_sup = []
+    for b, w in sup:                       # phase 2: full draw; basal maintenance covered before work
+        ab = min(S, b)
+        S -= ab
+        aw = min(S, w)
+        S -= aw
+        a_sup.append((ab, aw))
+    a_ob = []
+    for b, _ in ordn:                      # phase 3
+        x = min(S, b)
+        a_ob.append(x)
+        S -= x
+    a_ow = []
+    for _, w in ordn:                      # phase 4
+        x = min(S, w)
+        a_ow.append(x)
+        S -= x
+    return a_top, a_sup, a_ob, a_ow, S
+
+
+def rand_instance_v2(n_sup=2, n_ord=6):
+    N = random.uniform(1, 5)
+    sup = [(random.uniform(0.1, 1.0), random.uniform(0.1, 2.0)) for _ in range(n_sup)]
+    ordn = [(random.uniform(0.1, 1.5), random.uniform(0.1, 3.0)) for _ in range(n_ord)]
+    return N, sup, ordn
+
+
+def totals_v2(N, sup, ordn):
+    P = sum(b + w for b, w in sup)
+    B = sum(b for b, _ in ordn)
+    D4 = sum(w for _, w in ordn)
+    return P, B, D4
+
+
+def shortfall_v2(N, sup, ordn, alloc):
+    a_top, a_sup, a_ob, a_ow, _ = alloc
+    s = N - a_top
+    s += sum((b - ab) + (w - aw) for (b, w), (ab, aw) in zip(sup, a_sup))
+    s += sum(b - a for (b, _), a in zip(ordn, a_ob)) + sum(w - a for (_, w), a in zip(ordn, a_ow))
+    return s
+
+
+def met(a, x):
+    return a >= x - TOL
+
+
+# ---------- v2 P1: ledger closes; total shortfall unchanged by any re-ranking within phases, or the old phase order ----------
+def check_P1_v2a(trials=2000):
+    bad = 0
+    for _ in range(trials):
+        N, sup, ordn = rand_instance_v2()
+        P, B, D4 = totals_v2(N, sup, ordn)
+        need = N + P + B + D4
+        U = random.uniform(0, need)
+        d = random.uniform(0, need - U)
+        S = U + d
+        al = draw_v2a(S, N, sup, ordn)
+        sf = shortfall_v2(N, sup, ordn, al)
+        if abs((need - U) - (d + sf)) > 1e-7:
+            bad += fail("v2 P1 ledger", f"{need - U} vs {d + sf}")
+        s2, o2 = sup[:], ordn[:]
+        random.shuffle(s2)
+        random.shuffle(o2)
+        sf2 = shortfall_v2(N, s2, o2, draw_v2a(S, N, s2, o2))
+        # the v1 phase order as another access setting: same total
+        flat_basal = [b for b, _ in sup] + [b for b, _ in ordn]
+        a1 = draw(S, N, flat_basal, [w for _, w in sup], [w for _, w in ordn])
+        sf1 = (N - a1[0]) + sum(x - a for x, a in zip(flat_basal, a1[1])) + sum(w - a for (_, w), a in zip(sup, a1[2])) \
+            + sum(w - a for (_, w), a in zip(ordn, a1[3]))
+        if abs(sf - sf2) > 1e-7 or abs(sf - sf1) > 1e-7:
+            bad += fail("v2 P1 invariance", f"{sf} {sf2} {sf1}")
+    return bad
+
+
+# ---------- v2 Proposition 2: thresholds in S, and in terms of the gap with outside input ----------
+def check_P2_v2a(trials=2000):
+    bad = 0
+    for _ in range(trials):
+        N, sup, ordn = rand_instance_v2()
+        P, B, D4 = totals_v2(N, sup, ordn)
+        need = N + P + B + D4
+        U = random.uniform(0, need)
+        I = random.uniform(0, need - U)
+        d = random.uniform(0, max(0.0, need - U - I))
+        S = U + I + d
+        a_top, a_sup, a_ob, _, _ = draw_v2a(S, N, sup, ordn)
+        gap = need - U
+        top_met = met(a_top, N)
+        sup_met = top_met and all(met(ab, b) and met(aw, w) for (b, w), (ab, aw) in zip(sup, a_sup))
+        ob_met = sup_met and all(met(a, b) for (b, _), a in zip(ordn, a_ob))
+        if top_met != (S >= N - TOL):
+            bad += fail("v2 P2 top threshold", f"S={S}")
+        if sup_met != (S >= N + P - TOL):
+            bad += fail("v2 P2 support threshold", f"S={S}")
+        if ob_met != (S >= N + P + B - TOL):
+            bad += fail("v2 P2 basal threshold", f"S={S}")
+        if top_met != (gap <= d + I + P + B + D4 + TOL):          # no delivery dependency: M = P + B + D4
+            bad += fail("v2 P2 gap, no dependency", f"gap={gap}")
+        if sup_met != (gap <= d + I + B + D4 + TOL):              # delivery depends on supports: M = B + D4
+            bad += fail("v2 P2 gap, dependency", f"gap={gap}")
+    return bad
+
+
+# ---------- v2 Proposition 4: lower segments; work before basal within a part; supports and top last ----------
+def check_P4_order_v2a(trials=3000):
+    bad = 0
+    for _ in range(trials):
+        N, sup, ordn = rand_instance_v2()
+        P, B, D4 = totals_v2(N, sup, ordn)
+        S = random.uniform(0, N + P + B + D4)
+        a_top, a_sup, a_ob, a_ow, _ = draw_v2a(S, N, sup, ordn)
+        def lower_segment(short, alloc):
+            if any(short):
+                k = short.index(True)
+                return not any(a > TOL for a in alloc[k + 1:])
+            return True
+        sup_short = [not (met(ab, b) and met(aw, w)) for (b, w), (ab, aw) in zip(sup, a_sup)]
+        if not lower_segment(sup_short, [ab + aw for ab, aw in a_sup]):
+            bad += fail("v2 P4 lower segment, supports", str(a_sup))
+        if not lower_segment([not met(a, b) for (b, _), a in zip(ordn, a_ob)], a_ob):
+            bad += fail("v2 P4 lower segment, basal", str(a_ob))
+        if not lower_segment([not met(a, w) for (_, w), a in zip(ordn, a_ow)], a_ow):
+            bad += fail("v2 P4 lower segment, work", str(a_ow))
+        for (b, w), (ab, aw) in zip(sup, a_sup):            # within a part, work is cut before basal maintenance
+            if not met(ab, b) and aw > TOL:
+                bad += fail("v2 P4 work before basal, within a support part", "")
+        if any(not met(a, b) for (b, _), a in zip(ordn, a_ob)) and sum(a_ow) > TOL:
+            bad += fail("v2 P4 basal before work, other parts", "")
+        if any(sup_short) and (sum(a_ob) + sum(a_ow)) > TOL:
+            bad += fail("v2 P4 supports after other parts", "")
+        if not met(a_top, N) and (sum(ab + aw for ab, aw in a_sup) + sum(a_ob) + sum(a_ow)) > TOL:
+            bad += fail("v2 P4 top last", "")
+    return bad
+
+
+# ---------- v2 Proposition 3, S1.1 lead time and the G27 window, by full simulation of the draw with one store ----------
+def simulate_v2a(N, sup, ordn, U, L0, k, dependency, T=200000):
+    """Constant supply U; one store with proportional release. Returns (t_warn, t_break, L at break, taps),
+    where taps[t] is the index of the first draw short at step t in the flattened draw order (len = none short)."""
+    flat = [N] + [x for bw in sup for x in bw] + [b for b, _ in ordn] + [w for _, w in ordn]
+    need = sum(flat)
+    gap = need - U
+    L, t_warn, taps = L0, None, []
+    for t in range(T):
+        if t_warn is None and k * L < gap - TOL:
+            t_warn = t
+        d = min(k * L, gap, L)
+        a_top, a_sup, a_ob, a_ow, _ = draw_v2a(U + d, N, sup, ordn)
+        alloc = [a_top] + [x for ab in a_sup for x in ab] + a_ob + a_ow
+        short = [not met(a, x) for a, x in zip(alloc, flat)]
+        taps.append(short.index(True) if any(short) else len(flat))
+        top_ok = met(a_top, N)
+        sup_ok = top_ok and all(met(ab, b) and met(aw, w) for (b, w), (ab, aw) in zip(sup, a_sup))
+        if (dependency and not sup_ok) or (not dependency and not top_ok):
+            return t_warn, t, L, taps
+        L -= d
+    return t_warn, None, L, taps
+
+
+def check_P3_S11_G27_v2a(trials=400):
+    bad = 0
+    done = 0
+    while done < trials:
+        N, sup, ordn = rand_instance_v2(n_sup=2, n_ord=4)
+        P, B, D4 = totals_v2(N, sup, ordn)
+        need = N + P + B + D4
+        dependency = random.random() < 0.5
+        M = (B + D4) if dependency else (P + B + D4)
+        L0 = random.uniform(100, 400)
+        k = random.uniform(0.01, 0.2)
+        if k * L0 < M + 0.5 or need < M + 0.5:
+            continue
+        gap = random.uniform(M + 0.1, min(k * L0, need))
+        U = need - gap
+        t_warn, t_break, L_b, taps = simulate_v2a(N, sup, ordn, U, L0, k, dependency)
+        done += 1
+        Lstar = (gap - M) / k
+        if t_break is None or not (Lstar * (1 - k) - 1e-6 <= L_b <= Lstar + 1e-6):
+            bad += fail("v2 P3 store left at the break", f"dep={dependency} L={L_b} L*={Lstar}")
+            continue
+        lead = t_break - t_warn
+        pred = math.log(gap / (gap - M)) / -math.log(1 - k)
+        if abs(lead - pred) > 1.0 + 1e-9:
+            bad += fail("v2 S1.1 lead time", f"lead={lead} pred={pred}")
+        n_flat = 1 + 2 * len(sup) + 2 * len(ordn)
+        protected_end = 1 + (2 * len(sup) if dependency else 0)   # draws that must stay met before the break
+        # G27: no draw is short while the store has headroom; then the first short draw climbs the draw order
+        # (its index never increases) and stays below the protected draws until the break
+        if any(tp != n_flat for tp in taps[:t_warn]):
+            bad += fail("v2 G27 store first", "")
+        window = taps[t_warn:t_break]
+        if any(b > a for a, b in zip(window, window[1:])):
+            bad += fail("v2 G27 tap climbs", str(window[:12]))
+        if any(tp < protected_end for tp in window):
+            bad += fail("v2 G27 protected until the break", "")
+    return bad
+
+
+# =================== version 2, reading B: rank first, part by part (James, 8 October 2026; CANON 3 and 4) ===================
+# Phases: (1) the top's full need N; (2) support parts' full draws, in rank order; (3) every other part's full draw,
+# in rank order. Each part is drawn in full in its turn; what reaches a part covers its upkeep first, then its work.
+# Parts are (upkeep, work) pairs, highest rank first. D is the other parts' full draws.
+
+def draw_v2b(S, N, sup, oth):
+    a_top = min(S, N)
+    S -= a_top
+    out = []
+    for group in (sup, oth):
+        g = []
+        for b, w in group:
+            ab = min(S, b)
+            S -= ab
+            aw = min(S, w)
+            S -= aw
+            g.append((ab, aw))
+        out.append(g)
+    return a_top, out[0], out[1], S
+
+
+def draw_v2a_as_parts(S, N, sup, oth):
+    """Reading A, re-expressed part by part, so the reading-B checks can be fed reading A's order."""
+    a_top, a_sup, a_ob, a_ow, left = draw_v2a(S, N, sup, oth)
+    return a_top, a_sup, list(zip(a_ob, a_ow)), left
+
+
+def totals_v2b(N, sup, oth):
+    return sum(b + w for b, w in sup), sum(b + w for b, w in oth)      # P, D
+
+
+def shortfall_v2b(N, sup, oth, alloc):
+    a_top, a_sup, a_oth, _ = alloc
+    return (N - a_top) + sum((b - ab) + (w - aw) for (b, w), (ab, aw) in zip(sup + oth, a_sup + a_oth))
+
+
+def check_P1_v2b(trials=2000):
+    bad = 0
+    for _ in range(trials):
+        N, sup, oth = rand_instance_v2()
+        P, D = totals_v2b(N, sup, oth)
+        need = N + P + D
+        U = random.uniform(0, need)
+        d = random.uniform(0, need - U)
+        S = U + d
+        sf = shortfall_v2b(N, sup, oth, draw_v2b(S, N, sup, oth))
+        if abs((need - U) - (d + sf)) > 1e-7:
+            bad += fail("v2b P1 ledger", f"{need - U} vs {d + sf}")
+        s2, o2 = sup[:], oth[:]
+        random.shuffle(s2)
+        random.shuffle(o2)
+        sf2 = shortfall_v2b(N, s2, o2, draw_v2b(S, N, s2, o2))
+        sfa = shortfall_v2b(N, sup, oth, draw_v2a_as_parts(S, N, sup, oth))   # reading A as another access setting
+        if abs(sf - sf2) > 1e-7 or abs(sf - sfa) > 1e-7:
+            bad += fail("v2b P1 invariance", f"{sf} {sf2} {sfa}")
+    return bad
+
+
+def check_P2_v2b(trials=2000):
+    bad = 0
+    for _ in range(trials):
+        N, sup, oth = rand_instance_v2()
+        P, D = totals_v2b(N, sup, oth)
+        need = N + P + D
+        U = random.uniform(0, need)
+        I = random.uniform(0, need - U)
+        d = random.uniform(0, max(0.0, need - U - I))
+        S = U + I + d
+        a_top, a_sup, _, _ = draw_v2b(S, N, sup, oth)
+        gap = need - U
+        top_met = met(a_top, N)
+        sup_met = top_met and all(met(ab, b) and met(aw, w) for (b, w), (ab, aw) in zip(sup, a_sup))
+        if top_met != (S >= N - TOL):
+            bad += fail("v2b P2 top threshold", f"S={S}")
+        if sup_met != (S >= N + P - TOL):
+            bad += fail("v2b P2 support threshold", f"S={S}")
+        if top_met != (gap <= d + I + P + D + TOL):        # no delivery dependency: M = P + D
+            bad += fail("v2b P2 gap, no dependency", f"gap={gap}")
+        if sup_met != (gap <= d + I + D + TOL):            # delivery depends on supports: M = D
+            bad += fail("v2b P2 gap, dependency", f"gap={gap}")
+    return bad
+
+
+def order_violations(N, sup, oth, alloc):
+    """Proposition 4 (reading B): parts short of their draw form a lower segment of the whole rank order (top, supports,
+    others); at most one part is partly supplied; within a short part, work is cut before upkeep."""
+    a_top, a_sup, a_oth, _ = alloc
+    parts = [(N, 0.0)] + sup + oth
+    allocs = [(a_top, 0.0)] + a_sup + a_oth
+    v = []
+    short = [not (met(ab, b) and met(aw, w)) for (b, w), (ab, aw) in zip(parts, allocs)]
+    if any(short):
+        k = short.index(True)
+        if any(ab + aw > TOL for ab, aw in allocs[k + 1:]):
+            v.append("a part is short while a lower-ranked part draws")
+    for (b, w), (ab, aw) in zip(parts, allocs):
+        if not met(ab, b) and aw > TOL:
+            v.append("work drawn while upkeep short, within a part")
+    return v
+
+
+def check_P4_v2b(trials=3000, draw_fn=None, label="v2b P4"):
+    draw_fn = draw_fn or draw_v2b
+    bad = 0
+    for _ in range(trials):
+        N, sup, oth = rand_instance_v2()
+        P, D = totals_v2b(N, sup, oth)
+        S = random.uniform(0, N + P + D)
+        for msg in order_violations(N, sup, oth, draw_fn(S, N, sup, oth)):
+            bad += 1
+            if bad <= 3:
+                print(f"FAIL {label}: {msg}")
+    return bad
+
+
+def simulate_v2b(N, sup, oth, U, L0, k, dependency, draw_fn, T=200000):
+    """Constant supply U; one store with proportional release. Returns (t_warn, t_break, L at break, cut, viol), where
+    cut[t] is the index (in the part order top, supports, others) of the first part not fully supplied at step t."""
+    parts = [(N, 0.0)] + sup + oth
+    need = sum(b + w for b, w in parts)
+    gap = need - U
+    L, t_warn, cut, viol = L0, None, [], 0
+    for t in range(T):
+        if t_warn is None and k * L < gap - TOL:
+            t_warn = t
+        d = min(k * L, gap, L)
+        al = draw_fn(U + d, N, sup, oth)
+        allocs = [(al[0], 0.0)] + al[1] + al[2]
+        short = [not (met(ab, b) and met(aw, w)) for (b, w), (ab, aw) in zip(parts, allocs)]
+        cut.append(short.index(True) if any(short) else len(parts))
+        viol += len(order_violations(N, sup, oth, al))
+        top_ok = met(al[0], N)
+        sup_ok = top_ok and all(met(ab, b) and met(aw, w) for (b, w), (ab, aw) in zip(sup, al[1]))
+        if (dependency and not sup_ok) or (not dependency and not top_ok):
+            return t_warn, t, L, cut, viol
+        L -= d
+    return t_warn, None, L, cut, viol
+
+
+def check_P3_S11_G27_v2b(trials=400, draw_fn=None, label="v2b"):
+    draw_fn = draw_fn or draw_v2b
+    bad = 0
+    done = 0
+    while done < trials:
+        N, sup, oth = rand_instance_v2(n_sup=2, n_ord=4)
+        P, D = totals_v2b(N, sup, oth)
+        need = N + P + D
+        dependency = random.random() < 0.5
+        M = D if dependency else (P + D)
+        L0 = random.uniform(100, 400)
+        k = random.uniform(0.01, 0.2)
+        if k * L0 < M + 0.5 or need < M + 0.5:
+            continue
+        gap = random.uniform(M + 0.1, min(k * L0, need))
+        U = need - gap
+        t_warn, t_break, L_b, cut, viol = simulate_v2b(N, sup, oth, U, L0, k, dependency, draw_fn)
+        done += 1
+        Lstar = (gap - M) / k
+        if t_break is None or not (Lstar * (1 - k) - 1e-6 <= L_b <= Lstar + 1e-6):
+            bad += fail(f"{label} P3 store left at the break", f"dep={dependency} L={L_b} L*={Lstar}")
+            continue
+        lead = t_break - t_warn
+        pred = math.log(gap / (gap - M)) / -math.log(1 - k)
+        if abs(lead - pred) > 1.0 + 1e-9:
+            bad += fail(f"{label} S1.1 lead time", f"lead={lead} pred={pred}")
+        n_parts = 1 + len(sup) + len(oth)
+        protected_end = 1 + (len(sup) if dependency else 0)
+        if any(c != n_parts for c in cut[:t_warn]):
+            bad += fail(f"{label} G27 store first", "")
+        window = cut[t_warn:t_break]
+        if any(b > a for a, b in zip(window, window[1:])):
+            bad += fail(f"{label} G27 the part being cut climbs the order", str(window[:12]))
+        if any(c < protected_end for c in window):
+            bad += fail(f"{label} G27 protected until the break", "")
+        if viol:
+            bad += 1
+            if bad <= 3:
+                print(f"FAIL {label} G27: {viol} steps where a part was short while a lower-ranked part still drew")
+    return bad
+
+
+# ---------- J2 (FINAL_CHECK round 1, 9 October 2026): the delivery dependency across steps ----------
+# Delivery to the top in a step is capped by the support parts' work in the step before: the top receives
+# min(its draw, N x the share of the supports' full work they received in the step before). What the cap holds back
+# is not delivered (variant "unused") or stays in the flow for the parts below (variant "returned").
+
+def run_with_lag(N, sup, oth, S_seq, returned):
+    """Returns one record per step: (supports met in the step before, S, top received, alloc of the reduced draw)."""
+    work_total = sum(w for _, w in sup)
+    frac_prev = 1.0                       # the supports were met before the run starts
+    out = []
+    for S in S_seq:
+        cap = N * frac_prev
+        a_top = min(S, N, cap)
+        rest = S - a_top if returned else S - min(S, N)
+        _, a_sup, a_oth, left = _draw_below(rest, sup, oth)
+        out.append((frac_prev >= 1.0 - 1e-12, S, a_top, (a_top, a_sup, a_oth, left)))
+        got = sum(aw for _, aw in a_sup)
+        frac_prev = (got / work_total) if work_total > 0 else 1.0
+    return out
+
+
+def _draw_below(S, sup, oth):
+    """The ordered draw below the top: supports, then other parts, each in full in its turn, upkeep before work."""
+    res = []
+    for group in (sup, oth):
+        g = []
+        for b, w in group:
+            ab = min(S, b)
+            S -= ab
+            aw = min(S, w)
+            S -= aw
+            g.append((ab, aw))
+        res.append(g)
+    return None, res[0], res[1], S
+
+
+def check_lag_v2b(trials=3000):
+    """Restated Propositions 2 and 4 and S1.9 (ruling 6 and J2), in steps where the supports were met in the step
+    before; and the dependency lag itself, which must occur when they were not."""
+    bad, lag_steps = 0, 0
+    for _ in range(trials):
+        N, sup, oth = rand_instance_v2(n_sup=2, n_ord=4)
+        P, D = totals_v2b(N, sup, oth)
+        need = N + P + D
+        S_seq = [min(need, random.uniform(0, 1.3 * need)) for _ in range(6)]   # some steps at full supply
+        for returned in (False, True):
+            for prev_met, S, a_top, alloc in run_with_lag(N, sup, oth, S_seq, returned):
+                _, a_sup, a_oth, _ = alloc
+                others_draw = any(ab + aw > TOL for ab, aw in a_oth)
+                others_full = all(met(ab, b) and met(aw, w) for (b, w), (ab, aw) in zip(sup + oth, a_sup + a_oth))
+                if prev_met:
+                    if met(a_top, N) != (S >= N - TOL):
+                        bad += fail("J2 Proposition 2 (supports met the step before)", f"S={S} top={a_top}")
+                    for msg in order_violations(N, sup, oth, alloc):
+                        bad += fail("J2 Proposition 4 (supports met the step before)", msg)
+                    if not met(a_top, N) and others_draw:
+                        bad += fail("J2 S1.9 (no cut, no damage)", "top short while a part outside the supports draws")
+                elif not met(a_top, N) and others_full:
+                    lag_steps += 1
+    # the worked example in S1.9: N = 10, P = 3 (upkeep 1, work 2), three other parts of 3; S = 11 then 22
+    ex = run_with_lag(10.0, [(1.0, 2.0)], [(1.0, 2.0)] * 3, [11.0, 22.0], returned=False)
+    if not (ex[0][0] and met(ex[0][2], 10.0) and not ex[1][0] and ex[1][2] <= TOL
+            and all(met(ab, 1.0) and met(aw, 2.0) for ab, aw in ex[1][3][2])):
+        bad += fail("J2 worked example", str([(r[0], r[2]) for r in ex]))
+    if lag_steps == 0:
+        bad += fail("J2 dependency lag", "no step found with the top short and every other part met")
+    print(f"   dependency-lag steps found (supports short the step before; top short; every other part met in full): {lag_steps}")
+    return bad
+
+
+# ---------- version 2: the recovery lag (FINAL_CHECK round 2, J1): unit states for the top and a support part ----------
+def run_with_units(top, sup, oth, S_seq, dependency):
+    """top and sup are dicts: K units, u upkeep and w work per unit, theta (switch-off per step), re (reactivation per
+    step), c (cost per unit reactivated). A switched-off unit takes upkeep only and does no work; unmet work switches
+    units off; units come back at up to re per step, paid from what is left once every part has drawn (CANON 3).
+    oth is a list of (upkeep, work) full draws. Returns one record per step."""
+    a_t, a_s = float(top["K"]), float(sup["K"])
+    N = top["K"] * (top["u"] + top["w"])
+    P = sup["K"] * (sup["u"] + sup["w"])
+    prev_sup_met, prev_sup_work = True, sup["K"] * sup["w"]
+    out = []
+    for S in S_seq:
+        back = a_t < top["K"] - 1e-9 or a_s < sup["K"] - 1e-9          # a unit of the top or a support part coming back
+        draw_t = top["u"] * top["K"] + top["w"] * a_t
+        draw_s = sup["u"] * sup["K"] + sup["w"] * a_s
+        take_t = min(S, draw_t); rem = S - take_t
+        take_s = min(rem, draw_s); rem -= take_s
+        a_oth = []
+        for b, w in oth:
+            ab = min(rem, b); rem -= ab
+            aw = min(rem, w); rem -= aw
+            a_oth.append((ab, aw))
+        work_s = max(0.0, take_s - sup["u"] * sup["K"])
+        deliv = take_t * (min(1.0, prev_sup_work / (sup["K"] * sup["w"])) if dependency else 1.0)
+        out.append(dict(S=S, back=back, prev_sup_met=prev_sup_met, deliv=deliv, N=N, P=P, take_s=take_s,
+                        draw_s=draw_s, a_oth=a_oth, back_top=a_t < top["K"] - 1e-9))
+        for part, take, draw, key in ((top, take_t, draw_t, "t"), (sup, take_s, draw_s, "s")):
+            act = a_t if key == "t" else a_s
+            if take < draw - TOL:                                       # unmet work: switch units off
+                funded = max(0.0, (take - part["u"] * part["K"]) / part["w"])
+                act -= min(part["theta"], max(0.0, act - funded))
+            elif act < part["K"] - 1e-9 and rem > TOL:                 # come back from what is left
+                n = min(part["re"], part["K"] - act, rem / part["c"])
+                act += n; rem -= n * part["c"]
+            if key == "t":
+                a_t = act
+            else:
+                a_s = act
+        prev_sup_met = take_s >= P - TOL
+        prev_sup_work = work_s
+    return out
+
+
+def check_recovery_lag_v2b(trials=3000):
+    """Propositions 2 and 4 and S1.9 with unit states: in steps where the support parts were met in the step before
+    and no unit of the top or a support part is still coming back, the protected flow is met iff S >= N, and the top
+    is never short while a part outside the supports draws. Otherwise the recovery lag must occur: the top short
+    while every other part draws in full, with the supports met in the step before."""
+    bad, lag_steps = 0, 0
+    for _ in range(trials):
+        top = dict(K=random.randint(5, 20), u=random.uniform(0.1, 0.4))
+        top["w"] = 1.0 - top["u"]
+        sup = dict(K=random.randint(2, 10), u=random.uniform(0.1, 0.5), w=random.uniform(0.5, 1.5))
+        for p in (top, sup):
+            p["theta"] = random.uniform(0.2, 0.6) * p["K"]
+            p["re"] = random.uniform(0.05, 0.3) * p["K"]
+            p["c"] = random.uniform(0.05, 0.5)
+        oth = [(random.uniform(0.5, 3.0), random.uniform(0.5, 3.0)) for _ in range(random.randint(2, 5))]
+        need = top["K"] * (top["u"] + top["w"]) + sup["K"] * (sup["u"] + sup["w"]) + sum(b + w for b, w in oth)
+        S_seq = [need * (random.uniform(0.2, 0.9) if random.random() < 0.3 else random.uniform(1.0, 1.3))
+                 for _ in range(10)]
+        for dependency in (False, True):
+            for r in run_with_units(top, sup, oth, S_seq, dependency):
+                guard = (not r["back"]) and (r["prev_sup_met"] or not dependency)
+                others_draw = any(ab + aw > TOL for ab, aw in r["a_oth"])
+                others_full = all(met(ab, b) and met(aw, w) for (b, w), (ab, aw) in zip(oth, r["a_oth"]))
+                top_met = r["deliv"] >= r["N"] - TOL
+                if guard:
+                    if top_met != (r["S"] >= r["N"] - TOL):
+                        bad += fail("recovery lag: Proposition 2 under the guard", f"S={r['S']} deliv={r['deliv']} N={r['N']}")
+                    if not top_met and others_draw:
+                        bad += fail("recovery lag: S1.9 under the guard", "top short while a part outside the supports draws")
+                    if r["take_s"] < r["draw_s"] - TOL and others_draw:
+                        bad += fail("recovery lag: Proposition 4 under the guard", "support short while a lower part draws")
+                elif r["prev_sup_met"] and r["back_top"] and not top_met and others_full and r["take_s"] >= r["draw_s"] - TOL:
+                    lag_steps += 1
+    # the worked example (FINAL_CHECK round 2, pass 4): top of 10 units (upkeep 0.2, work 0.8 each), support 3
+    # (upkeep 1, work 2, one unit), others 9; switch-off 5 a step, reactivation 1 a step; supply 22, 6, then 22
+    top = dict(K=10, u=0.2, w=0.8, theta=5.0, re=1.0, c=0.2)
+    sup = dict(K=1, u=1.0, w=2.0, theta=0.0, re=1.0, c=0.2)          # as in the example, the support keeps its unit
+    oth = [(1.0, 2.0)] * 3
+    for dependency in (False, True):
+        ex = run_with_units(top, sup, oth, [22.0, 6.0] + [22.0] * 7, dependency)
+        got = [round(r["deliv"], 6) for r in ex[3:7]]
+        if got != [6.8, 7.6, 8.4, 9.2] or not all(r["prev_sup_met"] and r["back_top"] for r in ex[3:7]) \
+                or not all(all(met(ab, 1.0) and met(aw, 2.0) for ab, aw in r["a_oth"]) for r in ex[3:7]) \
+                or round(ex[7]["deliv"], 6) != 10.0:
+            bad += fail("recovery lag worked example", f"dependency={dependency} {[round(r['deliv'], 3) for r in ex]}")
+    if lag_steps == 0:
+        bad += fail("recovery lag", "no step found with the top short, every other part met and the supports met the step before")
+    print(f"   recovery-lag steps found (supports met the step before; top's units coming back; top short; every other part met in full): {lag_steps}")
+    return bad
+
+
 if __name__ == "__main__":
     total = 0
+    for name, f in [("v2 Proposition 1 (reading B)", check_P1_v2b), ("v2 Proposition 2 (reading B)", check_P2_v2b),
+                    ("v2 Proposition 4 (reading B)", check_P4_v2b),
+                    ("v2 Proposition 3, S1.1 and G27 (reading B, simulation)", check_P3_S11_G27_v2b)]:
+        b = f()
+        print(f"{name}: {'ok' if b == 0 else str(b) + ' failures'}")
+        total += b
+    print("-- reading A fed to the reading-B checks (they must fail) --")
+    na = check_P4_v2b(draw_fn=draw_v2a_as_parts, label="reading A, Proposition 4")
+    ng = check_P3_S11_G27_v2b(trials=100, draw_fn=draw_v2a_as_parts, label="reading A")
+    print(f"reading A, Proposition 4 check: {na} failures (expected > 0)")
+    print(f"reading A, G27 check: {ng} failures (expected > 0)")
+    if na == 0 or ng == 0:
+        total += 1
+        print("FAIL: the reading-B checks did not tell reading A apart")
+    print("-- version 2, reading A (record of the alternative considered) --")
+    for name, f in [("v2a P1", check_P1_v2a), ("v2a P2", check_P2_v2a), ("v2a P4 order", check_P4_order_v2a),
+                    ("v2a P3, S1.1 and G27", check_P3_S11_G27_v2a)]:
+        b = f()
+        print(f"{name}: {'ok' if b == 0 else str(b) + ' failures'}")
+        total += b
+    print("-- version 1 phase order (kept for the record) --")
     for name, f in [("P1", check_P1), ("P2", check_P2), ("P3", check_P3), ("P4", check_P4), ("P5", check_P5),
                     ("P6", check_P6), ("P7", check_P7), ("P9", check_P9), ("P10", check_P10),
                     ("P11", check_P11), ("P13", check_P13), ("P16", check_P16), ("P17", check_P17), ("P18", check_P18),
@@ -547,4 +1120,12 @@ if __name__ == "__main__":
         b = f()
         print(f"{name}: {'ok' if b == 0 else str(b) + ' failures'}")
         total += b
+    print("-- version 2: the delivery dependency across steps (J2, run last so the earlier checks keep their random draws) --")
+    b = check_lag_v2b()
+    print(f"v2 Propositions 2 and 4 and S1.9 across steps, and the dependency lag (J2): {'ok' if b == 0 else str(b) + ' failures'}")
+    total += b
+    print("-- version 2: the recovery lag, with unit states (J1, FINAL_CHECK round 2; run after the J2 check) --")
+    b = check_recovery_lag_v2b()
+    print(f"v2 Propositions 2 and 4 and S1.9 with unit states, and the recovery lag (J1): {'ok' if b == 0 else str(b) + ' failures'}")
+    total += b
     print("ALL OK" if total == 0 else f"{total} FAILURES")

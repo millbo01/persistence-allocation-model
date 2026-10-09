@@ -1,3 +1,22 @@
+v2 Proposition 1 (reading B): ok
+v2 Proposition 2 (reading B): ok
+v2 Proposition 4 (reading B): ok
+v2 Proposition 3, S1.1 and G27 (reading B, simulation): ok
+-- reading A fed to the reading-B checks (they must fail) --
+FAIL reading A, Proposition 4: a part is short while a lower-ranked part draws
+FAIL reading A, Proposition 4: a part is short while a lower-ranked part draws
+FAIL reading A, Proposition 4: a part is short while a lower-ranked part draws
+FAIL reading A G27: 14 steps where a part was short while a lower-ranked part still drew
+FAIL reading A G27: 3 steps where a part was short while a lower-ranked part still drew
+FAIL reading A G27: 23 steps where a part was short while a lower-ranked part still drew
+reading A, Proposition 4 check: 1719 failures (expected > 0)
+reading A, G27 check: 100 failures (expected > 0)
+-- version 2, reading A (record of the alternative considered) --
+v2a P1: ok
+v2a P2: ok
+v2a P4 order: ok
+v2a P3, S1.1 and G27: ok
+-- version 1 phase order (kept for the record) --
 P1: ok
 P2: ok
 P3: ok
@@ -15,4 +34,10 @@ P18: ok
 P1 general: ok
 P17 adequacy: ok
 P2 gap with outside input: ok
+-- version 2: the delivery dependency across steps (J2, run last so the earlier checks keep their random draws) --
+   dependency-lag steps found (supports short the step before; top short; every other part met in full): 2547
+v2 Propositions 2 and 4 and S1.9 across steps, and the dependency lag (J2): ok
+-- version 2: the recovery lag, with unit states (J1, FINAL_CHECK round 2; run after the J2 check) --
+   recovery-lag steps found (supports met the step before; top's units coming back; top short; every other part met in full): 210
+v2 Propositions 2 and 4 and S1.9 with unit states, and the recovery lag (J1): ok
 ALL OK
