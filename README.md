@@ -4,8 +4,8 @@
 
 - **Preprint (SSRN):** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7579199. DOI: [10.2139/ssrn.7579199](https://doi.org/10.2139/ssrn.7579199).
 - **This record on Zenodo (all versions):** [10.5281/zenodo.23222615](https://doi.org/10.5281/zenodo.23222615).
-- **Version 2 of the paper** (9 October 2026) is release v2.0. Version 1's permanent copies: v1.3, as last posted ([10.5281/zenodo.23241491](https://doi.org/10.5281/zenodo.23241491)), and v1.2, the first posting ([10.5281/zenodo.23224208](https://doi.org/10.5281/zenodo.23224208)). What changed is stated in the paper's section "Changes from version 1".
-- **Full commit history in Software Heritage:** swh:1:snp:9d74b3d245ecd46518ffda7b11a718a37bed3e07 (snapshot after release v1.3). The paper cites the earlier snapshot swh:1:snp:cbdafe9b4e6c27ea5f2ce307d86ebcd49ca11fcf (after v1.1), which holds the same history up to that point.
+- **Version 2 of the paper** (9 October 2026) is release v2.0 ([10.5281/zenodo.23265461](https://doi.org/10.5281/zenodo.23265461)). Version 1's permanent copies: v1.3, as last posted ([10.5281/zenodo.23241491](https://doi.org/10.5281/zenodo.23241491)), and v1.2, the first posting ([10.5281/zenodo.23224208](https://doi.org/10.5281/zenodo.23224208)). What changed is stated in the paper's section "Changes from version 1".
+- **Full commit history in Software Heritage:** swh:1:snp:e9a6fe8c27e8a7a26978d3c37730b453497e7c24 (snapshot after release v2.0). The paper cites the earlier snapshot swh:1:snp:cbdafe9b4e6c27ea5f2ce307d86ebcd49ca11fcf (after v1.1), which holds the same history up to that point.
 
 ## What this is
 
@@ -141,7 +141,7 @@ The work began from the author's earlier framework for institutions, dated 27 Se
 ## Archives
 
 - **Zenodo** (the files at each release): concept DOI 10.5281/zenodo.23222615, which always resolves to the latest version.
-- **Software Heritage** (the full commit history with its dates): snapshot swh:1:snp:cbdafe9b4e6c27ea5f2ce307d86ebcd49ca11fcf, taken on 7 October 2026 after release v1.1.
+- **Software Heritage** (the full commit history with its dates): the latest snapshot is swh:1:snp:e9a6fe8c27e8a7a26978d3c37730b453497e7c24, taken on 9 October 2026 after release v2.0. Earlier: swh:1:snp:cbdafe9b4e6c27ea5f2ce307d86ebcd49ca11fcf (7 October, after v1.1, cited in the paper) and swh:1:snp:9d74b3d245ecd46518ffda7b11a718a37bed3e07 (8 October, after v1.3).
 - **SSRN:** posted on 7 October 2026 (abstract ID 7579199, DOI 10.2139/ssrn.7579199), revised on 8 October (release v1.3), and revised to version 2 (release v2.0). Release v1.2 matches the first posted version.
 
 ## Licence
